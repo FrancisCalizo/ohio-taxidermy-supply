@@ -19,6 +19,7 @@ export default function ComedyRow() {
                 alt="Picture of the author"
                 width={310}
                 height={440}
+                quality={50}
               />
               <CardDialog>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>

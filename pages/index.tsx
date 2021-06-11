@@ -2,6 +2,7 @@ import Head from 'next/head';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import Header from 'components/page-index/Header';
 import BeautyCosmeticsRow from 'components/page-index/BeautyCosmeticsRow';
 import ComedyRow from 'components/page-index/ComedyRow';
 import CookingKitchenRow from 'components/page-index/CookingKitchenRow';
@@ -18,6 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Header />
       <BeautyCosmeticsRow />
       <ComedyRow />
       <CookingKitchenRow />

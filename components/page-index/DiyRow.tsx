@@ -19,6 +19,7 @@ export default function DiyRow() {
                 alt="Picture of the author"
                 width={354}
                 height={230}
+                quality={50}
               />
               <CardDialog>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>

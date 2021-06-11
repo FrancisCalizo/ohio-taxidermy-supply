@@ -8,7 +8,7 @@ export default function BeautyCosmesticsRow() {
   return (
     <Container>
       <RowTitle>
-        <span>Trending</span>
+        <span>Beauty & Cosmetics</span>
       </RowTitle>
       <Slider infinite speed={500} slidesToShow={4} slidesToScroll={1}>
         {profiles.map((influencer, key) => (
@@ -19,6 +19,7 @@ export default function BeautyCosmesticsRow() {
                 alt="Picture of the author"
                 width={310}
                 height={440}
+                quality={50}
               />
               <CardDialog>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
