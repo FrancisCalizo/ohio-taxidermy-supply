@@ -25,19 +25,19 @@ export const PictureContainer = styled.div`
 
   &:hover {
     background: rgba(0, 0, 0, 0.1);
-    ${StyledPictureVertical} {
+    img {
       opacity: 0.8;
     }
   }
 `;
 
-export const CardVertical = styled.div`
+export const Card = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border: 1px solid lightgray;
   border-radius: 5px;
 `;
 
-export const CardVerticalDialog = styled.div`
+export const CardDialog = styled.div`
   padding: 0.75rem;
 `;
 

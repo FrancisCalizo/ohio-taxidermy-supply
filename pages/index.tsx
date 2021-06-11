@@ -4,6 +4,10 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import BeautyCosmeticsRow from 'components/page-index/BeautyCosmeticsRow';
 import ComedyRow from 'components/page-index/ComedyRow';
+import CookingKitchenRow from 'components/page-index/CookingKitchenRow';
+import TravelRow from 'components/page-index/TravelRow';
+import DiyRow from 'components/page-index/DiyRow';
+import DramaRow from 'components/page-index/DramaRow';
 
 export default function Home() {
   return (
@@ -16,6 +20,10 @@ export default function Home() {
 
       <BeautyCosmeticsRow />
       <ComedyRow />
+      <CookingKitchenRow />
+      <TravelRow />
+      <DiyRow />
+      <DramaRow />
     </div>
   );
 }

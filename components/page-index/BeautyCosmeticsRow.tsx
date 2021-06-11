@@ -2,15 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 import Slider from 'react-slick';
 
-import {
-  Container,
-  PictureContainer,
-  CardVertical,
-  CardVerticalDialog,
-  RowTitle,
-} from 'components/utils/styled';
+import { Container, PictureContainer, Card, CardDialog, RowTitle } from 'components/utils/styled';
 
-export default function RowOne() {
+export default function BeautyCosmesticsRow() {
   return (
     <Container>
       <RowTitle>
@@ -19,14 +13,14 @@ export default function RowOne() {
       <Slider infinite speed={500} slidesToShow={4} slidesToScroll={1}>
         {profiles.map((influencer, key) => (
           <PictureContainer key={key}>
-            <CardVertical>
+            <Card>
               <Image
                 src={`/images/influencer-index/${influencer.pic}`}
                 alt="Picture of the author"
                 width={310}
                 height={440}
               />
-              <CardVerticalDialog>
+              <CardDialog>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <h3 style={{ margin: '.1rem' }}>{influencer.name}</h3>
                   <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -47,8 +41,8 @@ export default function RowOne() {
                     ))}
                   </h5>
                 </div>
-              </CardVerticalDialog>
-            </CardVertical>
+              </CardDialog>
+            </Card>
           </PictureContainer>
         ))}
       </Slider>
