@@ -17,6 +17,7 @@ export default function TravelRow() {
               <Image
                 src={`/images/influencer-index/${influencer.pic}`}
                 alt="Picture of the author"
+                layout="responsive"
                 width={354}
                 height={230}
                 quality={50}

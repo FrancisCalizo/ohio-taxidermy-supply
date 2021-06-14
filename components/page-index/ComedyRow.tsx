@@ -17,6 +17,7 @@ export default function ComedyRow() {
               <Image
                 src={`/images/influencer-index/${influencer.pic}`}
                 alt="Picture of the author"
+                layout="responsive"
                 width={310}
                 height={440}
                 quality={50}
