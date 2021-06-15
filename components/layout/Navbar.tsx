@@ -162,8 +162,7 @@ export const Nav = styled.nav<{ state: TransitionStatus }>`
   /* opacity: ${(props) => (props.state === 'entering' ? 0.0 : 1.0)}; */
   /* height: ${(props) => (props.state === 'entering' ? 0 : '85px')}; */
   color: black;
-  /* box-shadow: ${(props) =>
-    props.isNavColored ? '0 3px 1px -1px var(--heart)' : '0 4px 7px -7px #dff9fb'}; */
+  box-shadow: 0 4px 4px -3px #000;
   /* transition: height 500ms ease-in, opacity 100ms ease-in, background-color 100ms ease-in-out 100ms,
     color 100ms ease-in 300ms, box-shadow 100ms ease-in 300ms; */
   overflow: hidden;
