@@ -76,9 +76,9 @@ export default function Navbar() {
                 <NavLink>
                   <div>RSVP</div>
                 </NavLink>
-                <NavLink>
-                  <div>Contact</div>
-                </NavLink>
+                <NavButton>
+                  <span>Login</span>
+                </NavButton>
               </NavLinks>
             </Container>
           </Nav>
@@ -161,7 +161,7 @@ export const Nav = styled.nav<{ state: TransitionStatus }>`
   background-color: white;
   /* opacity: ${(props) => (props.state === 'entering' ? 0.0 : 1.0)}; */
   /* height: ${(props) => (props.state === 'entering' ? 0 : '85px')}; */
-  color: gray;
+  color: black;
   /* box-shadow: ${(props) =>
     props.isNavColored ? '0 3px 1px -1px var(--heart)' : '0 4px 7px -7px #dff9fb'}; */
   /* transition: height 500ms ease-in, opacity 100ms ease-in, background-color 100ms ease-in-out 100ms,
@@ -201,7 +201,7 @@ const NavLinks = styled.div`
 `;
 
 const Hamburger = styled.div`
-  /*border: 1px solid ${(props) => (props.isNavColored ? 'var(--header-gray)' : 'white')};*/
+  /*border: 1px solid ${(props) => (props.isNavColored ? 'var(--header-black)' : 'white')};*/
   border-radius: 10px;
   padding: 0.4rem 0.7rem;
   cursor: pointer;
@@ -223,7 +223,7 @@ const HamburgerLinks = styled.div`
   text-transform: uppercase;
   font-weight: 700;
   background: white;
-  color: gray;
+  color: black;
   z-index: 20;
   /* opacity: ${(props) => (props.state === 'entered' ? 1 : 0)}; */
 
@@ -242,7 +242,7 @@ const HamburgerLink = styled.div`
   width: 100%;
   padding: 1rem 0;
   cursor: pointer;
-  border-bottom: gray;
+  border-bottom: black;
 
   &:hover {
     background: 'rgba(235,235,235)';
@@ -252,7 +252,7 @@ const HamburgerLink = styled.div`
 const BurgerLine = styled.div`
   width: 40px;
   height: 3px;
-  background-color: gray;
+  background-color: black;
   margin: 8px 0;
   border-radius: 5px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.13), 0 2px 3px 0 rgba(0, 0, 0, 0.15);
@@ -291,18 +291,36 @@ const NavLink = styled.div`
   }
 `;
 
-const LogoContainer = styled.div`
-  transition: border 500ms ease-in;
-  border: 1px solid ${(props) => (props.isNavColored ? 'var(--header-gray)' : 'white')};
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-  padding: 0.3rem 0.7rem;
-  border-radius: 10px;
-  cursor: pointer;
+// const LogoContainer = styled.div`
+//   transition: border 500ms ease-in;
+//   border: 1px solid ${(props) => (props.isNavColored ? 'var(--header-black)' : 'white')};
+//   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+//   padding: 0.3rem 0.7rem;
+//   border-radius: 10px;
+//   cursor: pointer;
 
-  @media ${device.maxLg} {
-    font-size: 0.9rem;
+//   @media ${device.maxLg} {
+//     font-size: 0.9rem;
+//   }
+//   @media ${device.maxSm} {
+//     font-size: 0.8rem;
+//   }
+// `;
+
+const NavButton = styled.h3`
+  background: #e20046;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-left: 0.4rem;
+  color: white;
+  text-transform: uppercase;
+  transform: skewX(-20deg);
+
+  & > span {
+    transform: skewX(20deg);
   }
-  @media ${device.maxSm} {
-    font-size: 0.8rem;
-  }
+`;
+
+const LogoContainer = styled(NavButton)`
+  background: #000;
 `;
