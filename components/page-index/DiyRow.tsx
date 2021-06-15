@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Slider from 'react-slick';
 
 import { Container, PictureContainer, Card, CardDialog, RowTitle } from 'components/utils/styled';
+import { sliderResponsiveHorizontal } from 'components/utils';
 
 export default function DiyRow() {
   return (
@@ -10,7 +11,13 @@ export default function DiyRow() {
       <RowTitle>
         <span>DIY</span>
       </RowTitle>
-      <Slider infinite speed={500} slidesToShow={4} slidesToScroll={1}>
+      <Slider
+        infinite
+        speed={500}
+        slidesToShow={4}
+        slidesToScroll={1}
+        responsive={sliderResponsiveHorizontal}
+      >
         {profiles.map((influencer, key) => (
           <PictureContainer key={key}>
             <Card>
