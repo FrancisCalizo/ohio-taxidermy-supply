@@ -39,6 +39,17 @@ export const Card = styled.div`
 
 export const CardDialog = styled.div`
   padding: 0.75rem;
+
+  & > div > h3,
+  h5 {
+    margin: 0.1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    width: 100%;
+    min-width: 1;
+  }
 `;
 
 export const RowTitle = styled.h2`

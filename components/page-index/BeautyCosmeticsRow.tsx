@@ -25,7 +25,7 @@ export default function BeautyCosmesticsRow() {
               />
               <CardDialog>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <h3 style={{ margin: '.1rem' }}>{influencer.name}</h3>
+                  <h3>{influencer.name}</h3>
                   <div style={{ display: 'flex', alignItems: 'center' }}>
                     <h3 style={{ margin: 0 }}>{influencer.rating}/5</h3>
                     <img
