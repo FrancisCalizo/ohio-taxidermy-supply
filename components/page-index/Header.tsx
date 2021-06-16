@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 
 export default function Banner() {
   return (
-    <div>
+    <div style={{ marginTop: 83 }}>
       <Slider
         infinite={true}
         speed={500}
