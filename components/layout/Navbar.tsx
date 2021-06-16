@@ -27,6 +27,12 @@ export default function Navbar() {
             <NavLink>
               <div>Our Work</div>
             </NavLink>
+            <NavLink>
+              <div>Resources</div>
+            </NavLink>
+            <NavLink>
+              <div>Contact</div>
+            </NavLink>
             <NavButton>
               <span>Login</span>
             </NavButton>
@@ -82,7 +88,6 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: var(--container);
   margin: 0 3rem;
   height: 100%;
 
@@ -102,10 +107,40 @@ const NavLinks = styled.div`
   }
 `;
 
+const BurgerLine = styled.div<{ isHamburgerOpen: boolean }>`
+  width: 40px;
+  height: 3px;
+  background-color: gray;
+  margin: 8px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.13), 0 2px 3px 0 rgba(0, 0, 0, 0.15);
+
+  &:nth-child(1) {
+    opacity: ${(props) => (props.isHamburgerOpen ? 0 : 1)};
+  }
+
+  &:nth-child(2) {
+    transform: ${(props) => (props.isHamburgerOpen ? 'rotate(45deg)' : 'rotate(0)')};
+  }
+
+  &:nth-child(3) {
+    transform: ${(props) =>
+      props.isHamburgerOpen ? 'rotate(-45deg) translate(7px, -8px);' : 'rotate(0)'};
+  }
+
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out, background 300ms linear;
+`;
+
 const Hamburger = styled.div`
   border-radius: 10px;
   padding: 0.4rem 0.7rem;
   cursor: pointer;
+
+  &:hover {
+    ${BurgerLine} {
+      background: #e20046;
+    }
+  }
 
   @media ${device.minLg} {
     display: none;
@@ -145,30 +180,6 @@ const HamburgerLink = styled.div`
   }
 `;
 
-const BurgerLine = styled.div<{ isHamburgerOpen: boolean }>`
-  width: 40px;
-  height: 3px;
-  background-color: gray;
-  margin: 8px 0;
-  border-radius: 5px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.13), 0 2px 3px 0 rgba(0, 0, 0, 0.15);
-
-  &:nth-child(1) {
-    opacity: ${(props) => (props.isHamburgerOpen ? 0 : 1)};
-  }
-
-  &:nth-child(2) {
-    transform: ${(props) => (props.isHamburgerOpen ? 'rotate(45deg)' : 'rotate(0)')};
-  }
-
-  &:nth-child(3) {
-    transform: ${(props) =>
-      props.isHamburgerOpen ? 'rotate(-45deg) translate(7px, -8px);' : 'rotate(0)'};
-  }
-
-  transition: transform 500ms ease-in-out, opacity 500ms ease-in-out;
-`;
-
 const NavLink = styled.div`
   margin: 1rem 0.85rem;
   text-transform: uppercase;
@@ -181,8 +192,7 @@ const NavLink = styled.div`
   }
 
   & > div:hover {
-    border-bottom: 2px solid var(--heart);
-    transform: scale(1.05);
+    color: #e20046;
     cursor: pointer;
   }
 `;
@@ -191,7 +201,7 @@ const NavButton = styled.h3`
   background: #e20046;
   display: inline-block;
   padding: 0.5rem 1rem;
-  margin-left: 0.4rem;
+  margin-left: 0.7rem;
   color: white;
   text-transform: uppercase;
   transform: skewX(-20deg);
