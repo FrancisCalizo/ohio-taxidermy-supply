@@ -23,7 +23,7 @@ export default function Banner() {
               layout="responsive"
               width={825}
               height={450}
-              priority={influencer === 1 ? true : false}
+              priority={influencer === 1 || influencer === 2 ? true : false}
             />
           </div>
         ))}
