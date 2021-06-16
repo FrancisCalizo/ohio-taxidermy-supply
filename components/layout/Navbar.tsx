@@ -1,170 +1,76 @@
-import React, { useEffect, useState, Fragment } from 'react';
-import { Transition, TransitionStatus } from 'react-transition-group';
+import React, { useState, Fragment } from 'react';
 import styled from 'styled-components';
+import Image from 'next/image';
 
-export const size = {
-  sm: '425px',
-  md: '768px',
-  lg: '1024px',
-  xl: '1440px',
-};
-
-export const device = {
-  minSm: `(min-width: ${size.sm})`,
-  minMd: `(min-width: ${size.md})`,
-  minLg: `(min-width: ${size.lg})`,
-  minXl: `(min-width: ${size.xl})`,
-  maxSm: `(max-width: ${size.sm})`,
-  maxMd: `(max-width: ${size.md})`,
-  maxLg: `(max-width: ${size.lg})`,
-  maxXl: `(max-width: ${size.xl})`,
-};
+import { device } from 'components/utils/mediaQueries';
 
 export default function Navbar() {
-  const [isNavColored, setisNavColored] = useState(false);
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
-
-  const handleScroll = () => {
-    if (window.scrollY > 150) {
-      setisNavColored(true);
-    } else {
-      setisNavColored(false);
-    }
-  };
-
-  const handleClick = () => {
-    setIsHamburgerOpen(!isHamburgerOpen);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <Fragment>
-      <Transition in={isNavColored} timeout={500}>
-        {(state) => (
-          <Nav state={state} isHamburgerOpen={isHamburgerOpen}>
-            <Container>
-              <LogoContainer>Logo Here</LogoContainer>
-              <Hamburger onClick={handleClick}>
-                <BurgerLine isHamburgerOpen={isHamburgerOpen}></BurgerLine>
-                <BurgerLine isHamburgerOpen={isHamburgerOpen}></BurgerLine>
-                <BurgerLine isHamburgerOpen={isHamburgerOpen}></BurgerLine>
-              </Hamburger>
-              <NavLinks>
-                <NavLink>
-                  <div>Story</div>
-                </NavLink>
-                <NavLink>
-                  <div>When & Where</div>
-                </NavLink>
-                <NavLink>
-                  <div>Wedding Party</div>
-                </NavLink>
-                <NavLink>
-                  <div>Gallery</div>
-                </NavLink>
-                <NavLink>
-                  <div>Registry</div>
-                </NavLink>
-                <NavLink>
-                  <div>FAQs</div>
-                </NavLink>
-                <NavLink>
-                  <div>RSVP</div>
-                </NavLink>
-                <NavButton>
-                  <span>Login</span>
-                </NavButton>
-              </NavLinks>
-            </Container>
-          </Nav>
-        )}
-      </Transition>
-      <Transition in={isHamburgerOpen} timeout={0}>
-        {(state) => (
-          <HamburgerLinks state={state} isHamburgerOpen={isHamburgerOpen}>
-            <HamburgerLink
-              onClick={() => {
-                setIsHamburgerOpen(false);
-              }}
-            >
-              Home
-            </HamburgerLink>
-            <HamburgerLink
-              onClick={() => {
-                setIsHamburgerOpen(false);
-              }}
-            >
-              Story
-            </HamburgerLink>
-            <HamburgerLink
-              onClick={() => {
-                setIsHamburgerOpen(false);
-              }}
-            >
-              When And Where
-            </HamburgerLink>
-            <HamburgerLink
-              onClick={() => {
-                setIsHamburgerOpen(false);
-              }}
-            >
-              Wedding Party
-            </HamburgerLink>
-            <HamburgerLink
-              onClick={() => {
-                setIsHamburgerOpen(false);
-              }}
-            >
-              Gallery
-            </HamburgerLink>
-            <HamburgerLink
-              onClick={() => {
-                setIsHamburgerOpen(false);
-              }}
-            >
-              Registry
-            </HamburgerLink>
-            <HamburgerLink
-              onClick={() => {
-                setIsHamburgerOpen(false);
-              }}
-            >
-              FAQs
-            </HamburgerLink>
-            <HamburgerLink
-              onClick={() => {
-                setIsHamburgerOpen(false);
-              }}
-            >
-              RSVP
-            </HamburgerLink>
-            <HamburgerLink
-              onClick={() => {
-                setIsHamburgerOpen(false);
-              }}
-            >
-              Contact
-            </HamburgerLink>
-          </HamburgerLinks>
-        )}
-      </Transition>
+      <Nav isHamburgerOpen={isHamburgerOpen}>
+        <Container>
+          <LogoContainer>
+            <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
+            <div style={{ marginLeft: 10 }}>Influencer App</div>
+          </LogoContainer>
+          <Hamburger onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}>
+            <BurgerLine isHamburgerOpen={isHamburgerOpen}></BurgerLine>
+            <BurgerLine isHamburgerOpen={isHamburgerOpen}></BurgerLine>
+            <BurgerLine isHamburgerOpen={isHamburgerOpen}></BurgerLine>
+          </Hamburger>
+          <NavLinks>
+            <NavLink>
+              <div>About Us</div>
+            </NavLink>
+            <NavLink>
+              <div>Our Work</div>
+            </NavLink>
+            <NavButton>
+              <span>Login</span>
+            </NavButton>
+          </NavLinks>
+        </Container>
+      </Nav>
+      <HamburgerLinks isHamburgerOpen={isHamburgerOpen}>
+        <HamburgerLink
+          onClick={() => {
+            setIsHamburgerOpen(false);
+          }}
+        >
+          Home
+        </HamburgerLink>
+        <HamburgerLink
+          onClick={() => {
+            setIsHamburgerOpen(false);
+          }}
+        >
+          FAQs
+        </HamburgerLink>
+        <HamburgerLink
+          onClick={() => {
+            setIsHamburgerOpen(false);
+          }}
+        >
+          RSVP
+        </HamburgerLink>
+        <HamburgerLink
+          onClick={() => {
+            setIsHamburgerOpen(false);
+          }}
+        >
+          Contact
+        </HamburgerLink>
+      </HamburgerLinks>
     </Fragment>
   );
 }
 
-export const Nav = styled.nav<{ state: TransitionStatus }>`
+export const Nav = styled.nav<{ isHamburgerOpen: boolean }>`
   background-color: white;
-  /* opacity: ${(props) => (props.state === 'entering' ? 0.0 : 1.0)}; */
-  /* height: ${(props) => (props.state === 'entering' ? 0 : '85px')}; */
   color: black;
   box-shadow: 0 4px 4px -3px #000;
-  /* transition: height 500ms ease-in, opacity 100ms ease-in, background-color 100ms ease-in-out 100ms,
-    color 100ms ease-in 300ms, box-shadow 100ms ease-in 300ms; */
   overflow: hidden;
   position: fixed;
   top: 0;
@@ -177,7 +83,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   max-width: var(--container);
-  margin: 0 auto;
+  margin: 0 3rem;
   height: 100%;
 
   @media ${device.maxLg} {
@@ -185,9 +91,6 @@ const Container = styled.div`
   }
   @media ${device.maxMd} {
     margin: auto 1.2rem;
-  }
-  @media ${device.minLg} {
-    justify-content: space-around;
   }
 `;
 
@@ -200,7 +103,6 @@ const NavLinks = styled.div`
 `;
 
 const Hamburger = styled.div`
-  /*border: 1px solid ${(props) => (props.isNavColored ? 'var(--header-black)' : 'white')};*/
   border-radius: 10px;
   padding: 0.4rem 0.7rem;
   cursor: pointer;
@@ -210,7 +112,7 @@ const Hamburger = styled.div`
   }
 `;
 
-const HamburgerLinks = styled.div`
+const HamburgerLinks = styled.div<{ isHamburgerOpen: boolean }>`
   position: fixed;
   top: 85px;
   z-index: 10;
@@ -224,13 +126,8 @@ const HamburgerLinks = styled.div`
   background: white;
   color: black;
   z-index: 20;
-  /* opacity: ${(props) => (props.state === 'entered' ? 1 : 0)}; */
 
   transition: opacity 0.2s ease-in-out, background-color 1.4s;
-
-  /* & div:nth-child(8) {
-    border-bottom: none;
-  } */
 
   @media ${device.minLg} {
     display: none;
@@ -248,10 +145,10 @@ const HamburgerLink = styled.div`
   }
 `;
 
-const BurgerLine = styled.div`
+const BurgerLine = styled.div<{ isHamburgerOpen: boolean }>`
   width: 40px;
   height: 3px;
-  background-color: black;
+  background-color: gray;
   margin: 8px 0;
   border-radius: 5px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.13), 0 2px 3px 0 rgba(0, 0, 0, 0.15);
@@ -290,22 +187,6 @@ const NavLink = styled.div`
   }
 `;
 
-// const LogoContainer = styled.div`
-//   transition: border 500ms ease-in;
-//   border: 1px solid ${(props) => (props.isNavColored ? 'var(--header-black)' : 'white')};
-//   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-//   padding: 0.3rem 0.7rem;
-//   border-radius: 10px;
-//   cursor: pointer;
-
-//   @media ${device.maxLg} {
-//     font-size: 0.9rem;
-//   }
-//   @media ${device.maxSm} {
-//     font-size: 0.8rem;
-//   }
-// `;
-
 const NavButton = styled.h3`
   background: #e20046;
   display: inline-block;
@@ -321,5 +202,13 @@ const NavButton = styled.h3`
 `;
 
 const LogoContainer = styled(NavButton)`
+  display: flex;
+  align-items: center;
   background: #000;
+  transform: none;
+  text-transform: lowercase;
+
+  & > span {
+    transform: none;
+  }
 `;
