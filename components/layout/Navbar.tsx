@@ -45,21 +45,21 @@ export default function Navbar() {
             setIsHamburgerOpen(false);
           }}
         >
-          Home
+          About Us
         </HamburgerLink>
         <HamburgerLink
           onClick={() => {
             setIsHamburgerOpen(false);
           }}
         >
-          FAQs
+          Our Work
         </HamburgerLink>
         <HamburgerLink
           onClick={() => {
             setIsHamburgerOpen(false);
           }}
         >
-          RSVP
+          Resources
         </HamburgerLink>
         <HamburgerLink
           onClick={() => {
@@ -67,6 +67,13 @@ export default function Navbar() {
           }}
         >
           Contact
+        </HamburgerLink>
+        <HamburgerLink
+          onClick={() => {
+            setIsHamburgerOpen(false);
+          }}
+        >
+          Login
         </HamburgerLink>
       </HamburgerLinks>
     </Fragment>

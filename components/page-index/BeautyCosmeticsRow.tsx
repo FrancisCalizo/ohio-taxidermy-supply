@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Slider from 'react-slick';
+import Modal from 'react-modal';
 
 import { Container, PictureContainer, Card, CardDialog, RowTitle } from 'components/utils/styled';
 import { verticalSliderProps } from 'components/utils';
 
 export default function BeautyCosmesticsRow() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <Container>
       <RowTitle>
         <span>Beauty & Cosmetics</span>
       </RowTitle>
+
       <Slider {...verticalSliderProps}>
         {profiles.map((influencer, key) => (
-          <PictureContainer key={key}>
+          <PictureContainer key={key} onClick={() => setIsModalOpen(true)}>
             <Card>
               <Image
                 src={`/images/influencer-index/${influencer.pic}`}
@@ -49,6 +53,16 @@ export default function BeautyCosmesticsRow() {
           </PictureContainer>
         ))}
       </Slider>
+
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        contentLabel="Influencer Modal"
+        ariaHideApp={false}
+        style={{ overlay: { zIndex: 1000 } }}
+      >
+        <h2>Welcome to the jungle</h2>
+      </Modal>
     </Container>
   );
 }
