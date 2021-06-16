@@ -55,6 +55,13 @@ export default function DiyRow() {
 
 const profiles = [
   {
+    pic: 'travel-3.jpg',
+    name: 'Becky Smithers',
+    rating: 3.5,
+    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
+    industry: ['fitness, lifestyle'],
+  },
+  {
     pic: 'travel-1.jpg',
     name: 'Christian Guzman',
     rating: 5,
@@ -68,13 +75,7 @@ const profiles = [
     bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
     industry: ['fashion, beauty'],
   },
-  {
-    pic: 'travel-3.jpg',
-    name: 'Becky Smithers',
-    rating: 3.5,
-    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
-    industry: ['fitness, lifestyle'],
-  },
+
   {
     pic: 'travel-4.jpg',
     name: 'Alex Hamil',
