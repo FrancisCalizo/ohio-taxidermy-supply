@@ -55,13 +55,6 @@ export default function Skits() {
 
 const profiles = [
   {
-    pic: 'travel-1.jpg',
-    name: 'Christian Guzman',
-    rating: 5,
-    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
-    industry: ['fitness, lifestyle'],
-  },
-  {
     pic: 'travel-2.jpg',
     name: 'Yasmine Garcia',
     rating: 4,
@@ -93,6 +86,13 @@ const profiles = [
     pic: 'travel-6.jpg',
     name: 'Justin Walker',
     rating: 4,
+    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
+    industry: ['fitness, lifestyle'],
+  },
+  {
+    pic: 'travel-1.jpg',
+    name: 'Christian Guzman',
+    rating: 5,
     bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
     industry: ['fitness, lifestyle'],
   },
