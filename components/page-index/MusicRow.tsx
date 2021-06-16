@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Slider from 'react-slick';
 
 import { Container, PictureContainer, Card, CardDialog, RowTitle } from 'components/utils/styled';
-import { sliderResponsiveHorizontal } from 'components/utils';
+import { horizontalSliderProps } from 'components/utils';
 
 export default function Music() {
   return (
@@ -11,13 +11,7 @@ export default function Music() {
       <RowTitle>
         <span>Music</span>
       </RowTitle>
-      <Slider
-        infinite
-        speed={500}
-        slidesToShow={4}
-        slidesToScroll={1}
-        responsive={sliderResponsiveHorizontal}
-      >
+      <Slider {...horizontalSliderProps}>
         {profiles.map((influencer, key) => (
           <PictureContainer key={key}>
             <Card>

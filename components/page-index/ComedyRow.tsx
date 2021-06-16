@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Slider from 'react-slick';
 
 import { Container, PictureContainer, Card, CardDialog, RowTitle } from 'components/utils/styled';
-import { sliderResponsiveVertical } from 'components/utils';
+import { verticalSliderProps } from 'components/utils';
 
 export default function ComedyRow() {
   return (
@@ -11,13 +11,7 @@ export default function ComedyRow() {
       <RowTitle>
         <span>Comedy</span>
       </RowTitle>
-      <Slider
-        infinite
-        speed={500}
-        slidesToShow={4}
-        slidesToScroll={1}
-        responsive={sliderResponsiveVertical}
-      >
+      <Slider {...verticalSliderProps}>
         {profiles.map((influencer, key) => (
           <PictureContainer key={key}>
             <Card>

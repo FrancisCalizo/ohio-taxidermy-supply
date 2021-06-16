@@ -217,6 +217,7 @@ const LogoContainer = styled(NavButton)`
   background: #000;
   transform: none;
   text-transform: lowercase;
+  border-radius: 2px;
 
   & > span {
     transform: none;
