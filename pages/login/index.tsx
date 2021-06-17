@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 
 export default function Login() {
+  const router = useRouter();
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,7 +15,8 @@ export default function Login() {
         password: password,
       })
       .then((response) => {
-        console.log('Response', response);
+        router.push('/dashboard');
+
         console.log('User profile', response.data.user);
         console.log('User token', response.data.jwt);
       })
