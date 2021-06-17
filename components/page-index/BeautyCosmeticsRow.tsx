@@ -74,7 +74,7 @@ export default function BeautyCosmesticsRow() {
         </ModalHead>
 
         <Image
-          src={`/images/influencer-index/${influencerData.pic}`}
+          src={`/images/influencer-index/${influencerData?.pic}`}
           alt="Picture of the author"
           layout="responsive"
           width={310}
@@ -83,10 +83,10 @@ export default function BeautyCosmesticsRow() {
         />
 
         <ModalContent>
-          <h4>{influencerData.name}</h4>
+          <h4>{influencerData?.name}</h4>
 
           {/* TODO: Need to make `industry an actual array,` */}
-          {influencerData.industry[0].split(',').map((ind: any, key: any) => (
+          {influencerData?.industry[0].split(',').map((ind: any, key: any) => (
             <Industrybadge key={key}>{ind}</Industrybadge>
           ))}
 
