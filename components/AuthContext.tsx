@@ -3,8 +3,6 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import router, { useRouter } from 'next/router';
 
-//api here is an axios instance which has the baseURL set according to the env.
-
 const AuthContext = createContext({});
 
 const api = axios.create({
@@ -23,17 +21,15 @@ export const AuthProvider = ({ children }: ProviderProps) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Check if user is logged in on load
   useEffect(() => {
     async function loadUserFromCookies() {
       const token = Cookies.get('token');
 
       if (token) {
         console.log("Got a token in the cookies, let's see if it is valid");
-
         api.defaults.headers.Authorization = `Bearer ${token}`;
-        const { data: user } = await api.get('users/me');
-        console.log(user);
-        if (user) setUser(user);
+        // if (user) setUser(user);
       }
 
       setLoading(false);
