@@ -96,11 +96,18 @@ export const useAuth: any = () => useContext(AuthContext);
 
 export const ProtectRoute = ({ children }: any) => {
   const router = useRouter();
-
-  //@ts-ignore
   const { isAuthenticated, isLoading } = useAuth();
 
-  if (isLoading || (!isAuthenticated && !['/', '/login'].includes(router.pathname))) {
+  useEffect(() => {
+    if (!isAuthenticated && !['/', '/login'].includes(router.pathname)) {
+      router.push('/login');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  //@ts-ignore
+
+  if (isLoading) {
     return <h1>Loading...</h1>;
   }
 
