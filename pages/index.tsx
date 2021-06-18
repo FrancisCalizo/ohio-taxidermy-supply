@@ -25,6 +25,7 @@ export default function Home() {
         <meta name="description" content="Influencer Mockup App" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Navbar />
       <Header />
       <BeautyCosmeticsRow />

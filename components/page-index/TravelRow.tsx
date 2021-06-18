@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Slider from 'react-slick';
 
 import { Container, PictureContainer, Card, CardDialog, RowTitle } from 'components/utils/styled';
-import { sliderResponsiveHorizontal } from 'components/utils';
+import { horizontalSliderProps } from 'components/utils';
 
 export default function TravelRow() {
   return (
@@ -11,13 +11,7 @@ export default function TravelRow() {
       <RowTitle>
         <span>Travel</span>
       </RowTitle>
-      <Slider
-        infinite
-        speed={500}
-        slidesToShow={4}
-        slidesToScroll={1}
-        responsive={sliderResponsiveHorizontal}
-      >
+      <Slider {...horizontalSliderProps}>
         {profiles.map((influencer, key) => (
           <PictureContainer key={key}>
             <Card>
@@ -61,6 +55,20 @@ export default function TravelRow() {
 
 const profiles = [
   {
+    pic: 'travel-5.jpg',
+    name: 'Connor Mcgregor',
+    rating: 5,
+    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
+    industry: ['fitness, lifestyle'],
+  },
+  {
+    pic: 'travel-6.jpg',
+    name: 'Justin Walker',
+    rating: 4,
+    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
+    industry: ['fitness, lifestyle'],
+  },
+  {
     pic: 'travel-1.jpg',
     name: 'Christian Guzman',
     rating: 5,
@@ -87,19 +95,5 @@ const profiles = [
     rating: 4,
     bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
     industry: ['vlogging, fashion, lifestyle'],
-  },
-  {
-    pic: 'travel-5.jpg',
-    name: 'Connor Mcgregor',
-    rating: 5,
-    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
-    industry: ['fitness, lifestyle'],
-  },
-  {
-    pic: 'travel-6.jpg',
-    name: 'Justin Walker',
-    rating: 4,
-    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
-    industry: ['fitness, lifestyle'],
   },
 ];

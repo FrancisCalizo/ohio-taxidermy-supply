@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Slider from 'react-slick';
 
 import { Container, PictureContainer, Card, CardDialog, RowTitle } from 'components/utils/styled';
-import { sliderResponsiveVertical } from 'components/utils';
+import { verticalSliderProps } from 'components/utils';
 
 export default function ComedyRow() {
   return (
@@ -11,13 +11,7 @@ export default function ComedyRow() {
       <RowTitle>
         <span>Comedy</span>
       </RowTitle>
-      <Slider
-        infinite
-        speed={500}
-        slidesToShow={4}
-        slidesToScroll={1}
-        responsive={sliderResponsiveVertical}
-      >
+      <Slider {...verticalSliderProps}>
         {profiles.map((influencer, key) => (
           <PictureContainer key={key}>
             <Card>
@@ -61,6 +55,20 @@ export default function ComedyRow() {
 
 const profiles = [
   {
+    pic: 'influencer-4.jpg',
+    name: 'Alex Hamil',
+    rating: 4,
+    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
+    industry: ['vlogging, fashion, lifestyle'],
+  },
+  {
+    pic: 'influencer-5.jpg',
+    name: 'Connor Mcgregor',
+    rating: 5,
+    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
+    industry: ['fitness, lifestyle'],
+  },
+  {
     pic: 'influencer-1.jpg',
     name: 'Christian Guzman',
     rating: 5,
@@ -78,20 +86,6 @@ const profiles = [
     pic: 'influencer-3.jpg',
     name: 'Becky Smithers',
     rating: 3.5,
-    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
-    industry: ['fitness, lifestyle'],
-  },
-  {
-    pic: 'influencer-4.jpg',
-    name: 'Alex Hamil',
-    rating: 4,
-    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
-    industry: ['vlogging, fashion, lifestyle'],
-  },
-  {
-    pic: 'influencer-5.jpg',
-    name: 'Connor Mcgregor',
-    rating: 5,
     bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
     industry: ['fitness, lifestyle'],
   },

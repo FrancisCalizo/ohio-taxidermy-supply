@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Slider from 'react-slick';
 
 import { Container, PictureContainer, Card, CardDialog, RowTitle } from 'components/utils/styled';
-import { sliderResponsiveHorizontal } from 'components/utils';
+import { horizontalSliderProps } from 'components/utils';
 
 export default function Host() {
   return (
@@ -11,13 +11,7 @@ export default function Host() {
       <RowTitle>
         <span>Hosts</span>
       </RowTitle>
-      <Slider
-        infinite
-        speed={500}
-        slidesToShow={4}
-        slidesToScroll={1}
-        responsive={sliderResponsiveHorizontal}
-      >
+      <Slider {...horizontalSliderProps}>
         {profiles.map((influencer, key) => (
           <PictureContainer key={key}>
             <Card>
@@ -61,20 +55,6 @@ export default function Host() {
 
 const profiles = [
   {
-    pic: 'travel-1.jpg',
-    name: 'Christian Guzman',
-    rating: 5,
-    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
-    industry: ['fitness, lifestyle'],
-  },
-  {
-    pic: 'travel-2.jpg',
-    name: 'Yasmine Garcia',
-    rating: 4,
-    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
-    industry: ['fashion, beauty'],
-  },
-  {
     pic: 'travel-3.jpg',
     name: 'Becky Smithers',
     rating: 3.5,
@@ -101,5 +81,19 @@ const profiles = [
     rating: 4,
     bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
     industry: ['fitness, lifestyle'],
+  },
+  {
+    pic: 'travel-1.jpg',
+    name: 'Christian Guzman',
+    rating: 5,
+    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
+    industry: ['fitness, lifestyle'],
+  },
+  {
+    pic: 'travel-2.jpg',
+    name: 'Yasmine Garcia',
+    rating: 4,
+    bio: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt excepturi odio aspernatur perspiciatis, officia, beatae saepe earum totam, obcaecati corrupti unde laboriosam debitis quas! Quae at odit odio culpa aperiam?',
+    industry: ['fashion, beauty'],
   },
 ];
