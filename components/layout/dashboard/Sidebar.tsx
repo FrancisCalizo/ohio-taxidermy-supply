@@ -6,16 +6,7 @@ const Sidebar = () => {
   return (
     <SidebarContainer>
       <div>
-        <Link href="/">
-          <span>Title</span>
-        </Link>{' '}
-        <p>
-          Software Developer.
-          <br />
-          Frontend Enthusiast.
-          <br />
-          Creative Mind.
-        </p>
+        <Link href="/">Title</Link>
       </div>
       <SidebarLinks>
         <li>
@@ -48,15 +39,14 @@ const Sidebar = () => {
 export default Sidebar;
 
 export const SidebarContainer = styled.div`
-  background: #fff;
+  background: #fafafa;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   position: fixed;
   top: 0px;
   left: 0px;
   bottom: 0px;
-  z-index: 100;
+  z-index: 99;
   width: 280px;
   padding: 2rem 1.85rem;
   box-sizing: border-box;

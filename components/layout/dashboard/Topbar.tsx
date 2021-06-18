@@ -3,8 +3,6 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { slide as Menu } from 'react-burger-menu';
 
-import { device } from 'components/utils/mediaQueries';
-
 const Topbar = () => {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
 
@@ -130,18 +128,6 @@ export const TopbarContainer = styled.div`
     color: ${(props) => props.theme.textDark};
     text-decoration: none;
     transition: all 300ms ease-in-out;
-  }
-
-  @media (${device.minMd}) {
-    display: none;
-  }
-
-  @media (${device.maxSm}) {
-    > div {
-      > div:nth-child(2) {
-        display: none;
-      }
-    }
   }
 `;
 
