@@ -1,8 +1,8 @@
 import React, { useState, Fragment } from 'react';
-import { useRouter } from 'next/router';
-import styled from 'styled-components';
-import { darken, lighten } from 'polished';
 import Image from 'next/image';
+import styled from 'styled-components';
+import { useRouter } from 'next/router';
+import { darken, lighten } from 'polished';
 
 import { device } from 'components/utils/mediaQueries';
 
@@ -227,7 +227,7 @@ const NavButton = styled.h3`
   }
 `;
 
-const LogoContainer = styled(NavButton)`
+export const LogoContainer = styled(NavButton)`
   display: flex;
   align-items: center;
   background: #000;

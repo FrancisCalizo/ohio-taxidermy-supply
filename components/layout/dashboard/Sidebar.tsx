@@ -5,33 +5,26 @@ import styled from 'styled-components';
 const Sidebar = () => {
   return (
     <SidebarContainer>
-      <div>
-        <Link href="/">Title</Link>
-      </div>
       <SidebarLinks>
         <li>
           <GLink href="/">Home</GLink>
         </li>
         <li>
-          <GLink href="/skills">Skills</GLink>
+          <GLink href="/#">Discover</GLink>
         </li>
         <li>
-          <GLink href="/portfolio">Portfolio</GLink>
+          <GLink href="/#">Proposals</GLink>
         </li>
         <li>
-          <GLink href="/featured">Featured</GLink>
+          <GLink href="/#">Conversions</GLink>
         </li>
         <li>
-          <ALink
-            as="a"
-            href="https://ohyoufrancybruh.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          ></ALink>
+          <GLink href="/#">Payments</GLink>
         </li>
-        <li>Resume</li>
+        <li>
+          <GLink href="/#">Reporting</GLink>
+        </li>
       </SidebarLinks>
-      <div>Footer</div>
     </SidebarContainer>
   );
 };
@@ -105,11 +98,12 @@ export const SidebarLinks = styled.div`
   display: flex;
   flex-direction: column;
   list-style-type: none;
+  margin-top: 40px;
 
   li {
     font-size: 1rem;
     text-transform: uppercase;
-    margin: 0.7rem 0;
+    margin: 1rem 0;
     font-weight: 500;
     letter-spacing: 1.4px;
 
@@ -132,12 +126,5 @@ export const SidebarLinks = styled.div`
 export const GLink = styled(Link)`
   color: #000;
   border-bottom: 2px solid black;
-  transition: all 300ms ease-in-out;
-`;
-
-export const ALink = styled(GLink)`
-  color: ${(props) => props.theme.textLight};
-  font-weight: 500;
-  border: none;
   transition: all 300ms ease-in-out;
 `;

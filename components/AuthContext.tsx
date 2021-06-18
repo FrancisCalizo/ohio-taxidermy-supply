@@ -105,8 +105,6 @@ export const ProtectRoute = ({ children }: any) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  //@ts-ignore
-
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
