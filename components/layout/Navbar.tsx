@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import { darken, lighten } from 'polished';
 import Image from 'next/image';
 
 import { device } from 'components/utils/mediaQueries';
@@ -35,7 +36,7 @@ export default function Navbar() {
             <NavLink>
               <div>Contact</div>
             </NavLink>
-            <NavButton onClick={() => router.push('/login')} style={{ cursor: 'pointer' }}>
+            <NavButton onClick={() => router.push('/login')}>
               <span>Login</span>
             </NavButton>
           </NavLinks>
@@ -215,6 +216,11 @@ const NavButton = styled.h3`
   color: white;
   text-transform: uppercase;
   transform: skewX(-20deg);
+  cursor: pointer;
+
+  &:hover {
+    background: ${darken(0.05, '#e20046')};
+  }
 
   & > span {
     transform: skewX(20deg);
@@ -231,5 +237,9 @@ const LogoContainer = styled(NavButton)`
 
   & > span {
     transform: none;
+  }
+
+  &:hover {
+    background: ${lighten(0.05, '#000')};
   }
 `;
