@@ -1,10 +1,12 @@
 import React, { useState, Fragment } from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import Image from 'next/image';
 
 import { device } from 'components/utils/mediaQueries';
 
 export default function Navbar() {
+  const router = useRouter();
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
 
   return (
@@ -33,7 +35,7 @@ export default function Navbar() {
             <NavLink>
               <div>Contact</div>
             </NavLink>
-            <NavButton>
+            <NavButton onClick={() => router.push('/login')} style={{ cursor: 'pointer' }}>
               <span>Login</span>
             </NavButton>
           </NavLinks>
@@ -71,6 +73,7 @@ export default function Navbar() {
         <HamburgerLink
           onClick={() => {
             setIsHamburgerOpen(false);
+            router.push('/login');
           }}
         >
           Login

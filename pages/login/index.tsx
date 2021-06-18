@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { useAuth } from 'components/AuthContext';
 
 export default function Login() {
-  const { login } = useAuth();
+  const { login, user } = useAuth();
+  const router = useRouter();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -10,6 +12,10 @@ export default function Login() {
   const handleSubmit = () => {
     login(username, password);
   };
+
+  if (user) {
+    router.push('/dashboard');
+  }
 
   return (
     <div>

@@ -19,7 +19,7 @@ import SupplementsRow from 'components/page-index/SupplementsRow';
 
 export default function Home() {
   return (
-    <div>
+    <div style={{ background: '#f1f2f3' }}>
       <Head>
         <title>Influencer</title>
         <meta name="description" content="Influencer Mockup App" />
