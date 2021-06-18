@@ -1,38 +1,82 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { lighten } from 'polished';
+import {
+  faGlobeAmericas,
+  faWindowMaximize,
+  faEdit,
+  faFileInvoice,
+  faMoneyCheckAlt,
+  faChartBar,
+} from '@fortawesome/free-solid-svg-icons';
 
-const Sidebar = () => {
+export default function Sidebar() {
   return (
     <SidebarContainer>
       <SidebarLinks>
         <li>
-          <GLink href="/">Home</GLink>
+          <div style={{ display: 'inline-block', width: 40 }}>
+            <FontAwesomeIcon
+              icon={faWindowMaximize}
+              style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
+            />
+          </div>
+          <GLink href="/">Overview</GLink>
         </li>
         <li>
+          <div style={{ display: 'inline-block', width: 40 }}>
+            <FontAwesomeIcon
+              icon={faGlobeAmericas}
+              style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
+            />
+          </div>
           <GLink href="/#">Discover</GLink>
         </li>
         <li>
+          <div style={{ display: 'inline-block', width: 40 }}>
+            <FontAwesomeIcon
+              icon={faEdit}
+              style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
+            />
+          </div>
           <GLink href="/#">Proposals</GLink>
         </li>
         <li>
+          <div style={{ display: 'inline-block', width: 40 }}>
+            <FontAwesomeIcon
+              icon={faFileInvoice}
+              style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
+            />
+          </div>
           <GLink href="/#">Conversions</GLink>
         </li>
         <li>
+          <div style={{ display: 'inline-block', width: 40 }}>
+            <FontAwesomeIcon
+              icon={faMoneyCheckAlt}
+              style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
+            />
+          </div>
           <GLink href="/#">Payments</GLink>
         </li>
         <li>
+          <div style={{ display: 'inline-block', width: 40 }}>
+            <FontAwesomeIcon
+              icon={faChartBar}
+              style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
+            />
+          </div>
           <GLink href="/#">Reporting</GLink>
         </li>
       </SidebarLinks>
     </SidebarContainer>
   );
-};
-
-export default Sidebar;
+}
 
 export const SidebarContainer = styled.div`
-  background: #fafafa;
+  background: #f2f2f2;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -40,8 +84,8 @@ export const SidebarContainer = styled.div`
   left: 0px;
   bottom: 0px;
   z-index: 99;
-  width: 280px;
-  padding: 2rem 1.85rem;
+  width: 260px;
+  padding: 2rem 0;
   box-sizing: border-box;
   overflow-y: auto;
   transition: all 300ms ease-in-out;
@@ -102,10 +146,23 @@ export const SidebarLinks = styled.div`
 
   li {
     font-size: 1rem;
-    text-transform: uppercase;
-    margin: 1rem 0;
-    font-weight: 500;
-    letter-spacing: 1.4px;
+    padding: 1rem 1.85rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.1s ease-out;
+
+    &:hover {
+      background: ${lighten(0.45, '#e20046')};
+      cursor: pointer;
+
+      & a {
+        color: #000;
+      }
+
+      & svg {
+        color: #e20046 !important;
+      }
+    }
 
     & a {
       padding: 0.3rem;
@@ -113,12 +170,7 @@ export const SidebarLinks = styled.div`
       background: linear-gradient(to right, ${(props) => props.theme.bright} 50%, transparent 50%);
       background-size: 202% 100%;
       background-position: right bottom;
-      transition: all 0.3s ease-out;
-    }
-
-    & a:hover {
-      background-position: left bottom;
-      color: ${(props) => props.theme.bgAlt};
+      transition: all 0.1s ease-out;
     }
   }
 `;
@@ -127,4 +179,5 @@ export const GLink = styled(Link)`
   color: #000;
   border-bottom: 2px solid black;
   transition: all 300ms ease-in-out;
+  text-transform: capitalize;
 `;

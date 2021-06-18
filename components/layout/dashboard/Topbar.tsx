@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faBars } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -63,8 +63,16 @@ export default function Topbar() {
           <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
           <div style={{ marginLeft: 10 }}>Influencer App</div>
         </LogoContainer>
+
         <MenuContainer>
-          <span>Menu</span>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <FontAwesomeIcon icon={faBars} style={{ fontSize: 30, marginLeft: '1rem' }} />
+
+            <LogoContainerMobile>
+              <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
+              <div style={{ marginLeft: 10 }}>Influencer App</div>
+            </LogoContainerMobile>
+          </div>
           <Menu styles={menuStyles} onStateChange={getBurgerOpen} isOpen={isBurgerOpen}>
             <BurgerLink id="home" className="menu-item" href="/" onClick={handleClick}>
               Home
@@ -97,8 +105,12 @@ export default function Topbar() {
           </Menu>
         </MenuContainer>
       </div>
+
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        John Stamos
+        <div>
+          John Stamos
+          <p style={{ margin: '0 0 0 1px', fontSize: 11, color: 'darkgray' }}>Marketing Manager</p>
+        </div>
         <FontAwesomeIcon icon={faUserCircle} style={{ fontSize: 36, marginLeft: '1rem' }} />
       </div>
     </TopbarContainer>
@@ -118,7 +130,7 @@ const TopbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1.5rem;
+  padding: 0.75rem 1.5rem;
 `;
 
 const BurgerLink = styled(Link)<{ id: string; className: string; onClick: any }>`
@@ -146,18 +158,34 @@ const MenuContainer = styled.div`
   }
 `;
 
-export const LogoContainer = styled.h4`
+const LogoContainer = styled.h4`
   display: flex;
   align-items: center;
   background: #e20046;
   text-transform: lowercase;
   border-radius: 2px;
   padding: 0.5rem 1rem;
-  margin: 0 0 0 0.7rem;
+  margin: 0 0 0 0.4rem;
   color: white;
   cursor: pointer;
+  border: 1px solid #990030;
 
   &:hover {
     background: ${darken(0.05, '#e20046')};
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const LogoContainerMobile = styled(LogoContainer)`
+  @media (min-width: 768px) {
+    display: none;
+  }
+  @media (max-width: 767px) {
+    display: flex;
+    padding: 0.25rem 0.75rem;
+    margin: 0 0 0 1rem;
   }
 `;
