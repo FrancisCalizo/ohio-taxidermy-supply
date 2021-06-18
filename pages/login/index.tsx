@@ -3,14 +3,17 @@ import { useRouter } from 'next/router';
 import { useAuth } from 'components/AuthContext';
 
 export default function Login() {
-  const { login, user } = useAuth();
+  const { login, user, setUser } = useAuth();
   const router = useRouter();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
-    login(username, password);
+    // Temp Changes
+    // login(username, password);
+    setUser('notNull');
+    router.push('/dashboard');
   };
 
   if (user) {

@@ -4,9 +4,9 @@ import '../styles/globals.css';
 function MyApp({ Component, pageProps }: any) {
   return (
     <AuthProvider>
-      <ProtectRoute>
-        <Component {...pageProps} />
-      </ProtectRoute>
+      {/* <ProtectRoute> */}
+      <Component {...pageProps} />
+      {/* </ProtectRoute> */}
     </AuthProvider>
   );
 }
