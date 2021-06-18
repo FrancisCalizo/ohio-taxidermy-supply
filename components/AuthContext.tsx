@@ -27,8 +27,27 @@ export const AuthProvider = ({ children }: ProviderProps) => {
       const token = Cookies.get('token');
 
       if (token) {
-        console.log("Got a token in the cookies, let's see if it is valid");
         api.defaults.headers.Authorization = `Bearer ${token}`;
+
+        // TODO: REMOVE WHEN ABLE TO GET TOKEN FROM COOKIES VIA JWT ENCODE
+        setUser({
+          // @ts-ignore
+          blocked: false,
+          confirmed: false,
+          created_at: '2021-06-18T01:34:57.524Z',
+          email: 'francis@aagrav.com',
+          id: 1,
+          provider: 'local',
+          role: {
+            description: 'Default role given to authenticated user.',
+            id: 1,
+            name: 'Authenticated',
+            type: 'authenticated',
+            updated_at: '2021-06-18T01:34:57.531Z',
+          },
+          username: 'francis',
+        });
+
         // if (user) setUser(user);
       }
 
@@ -42,7 +61,6 @@ export const AuthProvider = ({ children }: ProviderProps) => {
       const { data } = await api.post('auth/local', { identifier, password });
 
       const { jwt: token, user } = data;
-
       if (token) {
         Cookies.set('token', token, { expires: 60000000 });
 
