@@ -1,9 +1,11 @@
 import React from 'react';
 
+import Sidebar from 'components/layout/dashboard/Sidebar';
+
 export default function index() {
   return (
     <div>
-      <h1>This is user dashboard</h1>
+      <Sidebar />
     </div>
   );
 }
