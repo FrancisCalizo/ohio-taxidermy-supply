@@ -12,7 +12,7 @@ import {
   faChartBar,
 } from '@fortawesome/free-solid-svg-icons';
 
-const LINKS = ['Overview', 'Discover', 'Proposals', 'Conversions', 'Payments', 'Reporting'];
+export const LINKS = ['Overview', 'Discover', 'Proposals', 'Conversions', 'Payments', 'Reporting'];
 const ICONS = [
   faWindowMaximize,
   faGlobeAmericas,

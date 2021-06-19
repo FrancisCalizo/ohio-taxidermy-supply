@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { lighten } from 'polished';
 import { slide as Menu } from 'react-burger-menu';
 
+import { LINKS } from 'components/layout/dashboard/Sidebar';
+
 interface MobileSidebarProps {
   isBurgerOpen: boolean;
   setIsBurgerOpen: any;
@@ -61,36 +63,16 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
         <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
         <div style={{ marginLeft: 10 }}>Influencer App</div>
       </SidebarLogoContainer>
-      <BurgerContainer>
-        <BurgerLink className="menu-item" href="/">
-          Overview
-        </BurgerLink>
-      </BurgerContainer>
-      <BurgerContainer>
-        <BurgerLink className="menu-item" href="/">
-          Discover
-        </BurgerLink>
-      </BurgerContainer>
-      <BurgerContainer>
-        <BurgerLink className="menu-item" href="/">
-          Proposals
-        </BurgerLink>
-      </BurgerContainer>
-      <BurgerContainer>
-        <BurgerLink className="menu-item" href="/">
-          Conversions
-        </BurgerLink>
-      </BurgerContainer>
-      <BurgerContainer>
-        <BurgerLink className="menu-item" href="/">
-          Payments
-        </BurgerLink>
-      </BurgerContainer>
-      <BurgerContainer>
-        <BurgerLink className="menu-item" href="/">
-          Reporting
-        </BurgerLink>
-      </BurgerContainer>
+      {LINKS.map((link: string, key: number) => (
+        <BurgerContainer key={key}>
+          <BurgerLink
+            className="menu-item"
+            href={key === 0 ? '/dashboard' : `/dashboard/${link.toLowerCase()}`}
+          >
+            {link}
+          </BurgerLink>
+        </BurgerContainer>
+      ))}
     </Menu>
   );
 }
