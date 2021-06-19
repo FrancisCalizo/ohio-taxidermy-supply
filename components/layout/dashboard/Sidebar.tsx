@@ -12,64 +12,31 @@ import {
   faChartBar,
 } from '@fortawesome/free-solid-svg-icons';
 
+const LINKS = ['Overview', 'Discover', 'Proposals', 'Conversions', 'Payments', 'Reporting'];
+const ICONS = [
+  faWindowMaximize,
+  faGlobeAmericas,
+  faEdit,
+  faFileInvoice,
+  faMoneyCheckAlt,
+  faChartBar,
+];
+
 export default function Sidebar() {
   return (
     <SidebarContainer>
       <SidebarLinks>
-        <li>
-          <div style={{ display: 'inline-block', width: 40 }}>
-            <FontAwesomeIcon
-              icon={faWindowMaximize}
-              style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
-            />
-          </div>
-          <GLink href="/">Overview</GLink>
-        </li>
-        <li>
-          <div style={{ display: 'inline-block', width: 40 }}>
-            <FontAwesomeIcon
-              icon={faGlobeAmericas}
-              style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
-            />
-          </div>
-          <GLink href="/dashboard/discover">Discover</GLink>
-        </li>
-        <li>
-          <div style={{ display: 'inline-block', width: 40 }}>
-            <FontAwesomeIcon
-              icon={faEdit}
-              style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
-            />
-          </div>
-          <GLink href="/#">Proposals</GLink>
-        </li>
-        <li>
-          <div style={{ display: 'inline-block', width: 40 }}>
-            <FontAwesomeIcon
-              icon={faFileInvoice}
-              style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
-            />
-          </div>
-          <GLink href="/#">Conversions</GLink>
-        </li>
-        <li>
-          <div style={{ display: 'inline-block', width: 40 }}>
-            <FontAwesomeIcon
-              icon={faMoneyCheckAlt}
-              style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
-            />
-          </div>
-          <GLink href="/#">Payments</GLink>
-        </li>
-        <li>
-          <div style={{ display: 'inline-block', width: 40 }}>
-            <FontAwesomeIcon
-              icon={faChartBar}
-              style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
-            />
-          </div>
-          <GLink href="/#">Reporting</GLink>
-        </li>
+        {LINKS.map((link: string, key: number) => (
+          <GLink key={key} href={key === 0 ? '/dashboard' : `/dashboard/${link.toLowerCase()}`}>
+            <li>
+              <FontAwesomeIcon
+                icon={ICONS[key]}
+                style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
+              />
+              <div>{link}</div>
+            </li>
+          </GLink>
+        ))}
       </SidebarLinks>
     </SidebarContainer>
   );
@@ -93,49 +60,6 @@ export const SidebarContainer = styled.div`
   @media (max-width: 768px) {
     display: none;
   }
-
-  a {
-    text-decoration: none;
-  }
-
-  & div:nth-child(1) {
-    & span {
-      color: ${(props) => props.theme.textDark};
-      font-size: 1.6rem;
-      font-weight: 600;
-      transition: all 300ms ease-in-out;
-    }
-
-    & p {
-      color: ${(props) => props.theme.textLight};
-      margin: 1rem 0 0;
-      line-height: 1.4;
-      font-size: 15px;
-      transition: all 300ms ease-in-out;
-    }
-  }
-
-  & div:nth-child(3) {
-    color: ${(props) => props.theme.textLight};
-    font-size: 15px;
-    transition: all 300ms ease-in-out;
-
-    & a {
-      color: ${(props) => props.theme.bright};
-      font-weight: 500;
-      text-decoration: underline;
-      transition: all 300ms ease-in-out;
-    }
-
-    & a:hover {
-      color: ${(props) => props.theme.hoverBright};
-      transition: color 0.2s ease-in-out;
-    }
-
-    & > div {
-      margin-top: 1.4rem;
-    }
-  }
 `;
 
 export const SidebarLinks = styled.div`
@@ -147,9 +71,13 @@ export const SidebarLinks = styled.div`
   li {
     font-size: 1rem;
     padding: 1rem 1.85rem;
+    transition: all 0.1s ease-out;
     display: flex;
     align-items: center;
-    transition: all 0.1s ease-out;
+
+    & svg {
+      width: 40px !important;
+    }
 
     &:hover {
       background: ${lighten(0.45, '#e20046')};
@@ -167,8 +95,6 @@ export const SidebarLinks = styled.div`
     & a {
       padding: 0.3rem;
       border-radius: 2px;
-      background: linear-gradient(to right, ${(props) => props.theme.bright} 50%, transparent 50%);
-      background-size: 202% 100%;
       background-position: right bottom;
       transition: all 0.1s ease-out;
     }
