@@ -32,7 +32,7 @@ export default function Sidebar() {
               style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
             />
           </div>
-          <GLink href="/#">Discover</GLink>
+          <GLink href="/dashboard/discover">Discover</GLink>
         </li>
         <li>
           <div style={{ display: 'inline-block', width: 40 }}>
