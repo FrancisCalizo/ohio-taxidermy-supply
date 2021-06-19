@@ -56,11 +56,20 @@ export const AuthProvider = ({ children }: ProviderProps) => {
     loadUserFromCookies();
   }, []);
 
+  // TODO: Delete after fixing auth
+  const TEMP_LOGIN = async () => {
+    Cookies.set('token', 'this is a fake token', { expires: 60000000 });
+
+    setUser(user);
+
+    router.push('/dashboard');
+  };
+
   const login = async (identifier: string, password: string) => {
     try {
       const { data } = await api.post('auth/local', { identifier, password });
-
       const { jwt: token, user } = data;
+
       if (token) {
         Cookies.set('token', token, { expires: 60000000 });
 
@@ -87,7 +96,7 @@ export const AuthProvider = ({ children }: ProviderProps) => {
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated: !!user, user, setUser, login, loading, logout }}
+      value={{ isAuthenticated: !!user, user, setUser, login, loading, logout, TEMP_LOGIN }}
     >
       {children}
     </AuthContext.Provider>

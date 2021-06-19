@@ -3,22 +3,25 @@ import { useRouter } from 'next/router';
 import { useAuth } from 'components/AuthContext';
 
 export default function Login() {
-  const { login, user, setUser } = useAuth();
+  const { user, TEMP_LOGIN } = useAuth();
   const router = useRouter();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
-    // Temp Changes
+    // TODO: Use AuthContext to handle user auth
     // login(username, password);
-    setUser('notNull');
+    TEMP_LOGIN();
     router.push('/dashboard');
   };
 
+  // If user, bypass this login page
   if (user) {
     router.push('/dashboard');
   }
+
+  console.log(user);
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import { AuthProvider, ProtectRoute } from 'components/AuthContext';
+import { AuthProvider } from 'components/AuthContext';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: any) {
