@@ -66,7 +66,7 @@ export default function Topbar() {
 
         <MenuContainer>
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <FontAwesomeIcon icon={faBars} style={{ fontSize: 30, marginLeft: '1rem' }} />
+            <FontAwesomeIcon icon={faBars} style={{ fontSize: 30 }} />
 
             <LogoContainerMobile>
               <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
@@ -131,6 +131,10 @@ const TopbarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1.5rem;
+
+  @media (max-width: 560px) {
+    padding: 0.75rem;
+  }
 `;
 
 const BurgerLink = styled(Link)<{ id: string; className: string; onClick: any }>`
@@ -183,9 +187,14 @@ const LogoContainerMobile = styled(LogoContainer)`
   @media (min-width: 768px) {
     display: none;
   }
+
   @media (max-width: 767px) {
     display: flex;
     padding: 0.25rem 0.75rem;
     margin: 0 0 0 1rem;
+  }
+
+  @media (max-width: 560px) {
+    display: none;
   }
 `;
