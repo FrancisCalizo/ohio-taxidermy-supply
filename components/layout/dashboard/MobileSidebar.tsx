@@ -104,7 +104,7 @@ const BurgerContainer = styled.div<{ isCurrent: boolean }>`
   color: ${(props) => (props.isCurrent ? '#fff !important' : 'inherit !important')};
 
   &:hover {
-    background: ${lighten(0.45, '#e20046')};
+    background: ${lighten(0.45, '#e20046')} !important;
   }
 `;
 
