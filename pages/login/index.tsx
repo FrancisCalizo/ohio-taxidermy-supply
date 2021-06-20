@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useAuth } from 'components/AuthContext';
 
@@ -24,41 +26,105 @@ export default function Login() {
   console.log(user);
 
   return (
-    <div>
-      <h1>Login</h1>
-      <div>
-        <label htmlFor="login">
-          Username or Email
-          <div>
-            <input
-              type="text"
-              id="login"
-              name="login"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-        </label>
-      </div>
+    <MainContainer>
+      <LoginBlockContainer>
+        <LogoContainer>
+          <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
+          <div style={{ marginLeft: 10 }}>Influencer App</div>
+        </LogoContainer>
 
-      <div>
-        <label htmlFor="password">
-          Password
-          <div>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-        </label>
-      </div>
+        <h1>Sign In</h1>
 
-      <button style={{ marginTop: 10 }} type="submit" onClick={handleSubmit}>
-        Login
-      </button>
-    </div>
+        <Input
+          type="text"
+          id="login"
+          name="login"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+
+        <Input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <LoginButton type="submit" onClick={handleSubmit}>
+          Login
+        </LoginButton>
+      </LoginBlockContainer>
+    </MainContainer>
   );
 }
+
+const MainContainer = styled.div`
+  background: url('https://global-uploads.webflow.com/5e60b5966f0e682e9f8fd42b/5e62700fdbb4cf1199775586_bg.svg');
+  background-size: cover;
+  background-repeat: repeat-y;
+  background-position: 50% 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const LoginBlockContainer = styled.div`
+  background-color: #e20046;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 2px;
+  max-height: 600px;
+  padding: 5rem 2rem;
+  border: 1px solid black;
+  margin: 0 1rem;
+
+  h1 {
+    text-align: center;
+    margin: 0 0 1rem 0;
+    color: #fff;
+  }
+`;
+
+const Input = styled.input`
+  display: block;
+  font-size: 18px;
+  padding: 0.5rem;
+  margin: 1rem auto;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid lightgray;
+`;
+
+const LoginButton = styled.button`
+  display: block;
+  font-size: 18px;
+  padding: 0.5rem;
+  margin: 2.5rem auto;
+  width: 100%;
+  max-width: 300px;
+  border: 2px solid #998a00;
+  background: #ffe400;
+  text-transform: uppercase;
+  font-weight: 700;
+`;
+
+const LogoContainer = styled.h4`
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  text-transform: lowercase;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  color: white;
+  cursor: pointer;
+  border: 1px solid #990030;
+  width: 210px;
+  font-size: 20px;
+  margin: 0 auto 1rem;
+`;
