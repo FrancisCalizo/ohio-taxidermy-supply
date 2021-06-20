@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { lighten } from 'polished';
 import {
@@ -11,6 +12,8 @@ import {
   faMoneyCheckAlt,
   faChartBar,
 } from '@fortawesome/free-solid-svg-icons';
+
+import { getPathName } from 'components/utils';
 
 export const LINKS = ['Overview', 'Discover', 'Proposals', 'Conversions', 'Payments', 'Reporting'];
 const ICONS = [
@@ -23,18 +26,32 @@ const ICONS = [
 ];
 
 export default function Sidebar() {
+  const router = useRouter();
+
+  const [currentRoute, setCurrentRoute] = useState<any>(null);
+
+  useEffect(() => {
+    setCurrentRoute(getPathName(router.pathname, 'dashboard/'));
+  }, [router.pathname]);
+
   return (
     <SidebarContainer>
       <SidebarLinks>
         {LINKS.map((link: string, key: number) => (
           <GLink key={key} href={key === 0 ? '/dashboard' : `/dashboard/${link.toLowerCase()}`}>
-            <li>
+            <Li
+              isCurrent={
+                currentRoute === undefined && link === LINKS[0]
+                  ? true
+                  : currentRoute === link.toLowerCase()
+              }
+            >
               <FontAwesomeIcon
                 icon={ICONS[key]}
                 style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
               />
               <div>{link}</div>
-            </li>
+            </Li>
           </GLink>
         ))}
       </SidebarLinks>
@@ -67,37 +84,40 @@ export const SidebarLinks = styled.div`
   flex-direction: column;
   list-style-type: none;
   margin-top: 40px;
+`;
 
-  li {
-    font-size: 1rem;
-    padding: 1rem 1.85rem;
-    transition: all 0.1s ease-out;
-    display: flex;
-    align-items: center;
+const Li = styled.li<{ isCurrent: boolean }>`
+  font-size: 1rem;
+  padding: 1rem 1.85rem;
+  transition: all 0.1s ease-out;
+  display: flex;
+  align-items: center;
+  background: ${(props) => (props.isCurrent ? '#e20046' : 'transparent')};
+  color: ${(props) => (props.isCurrent ? '#fff' : 'inherit')};
 
-    & svg {
-      width: 40px !important;
-    }
+  & svg {
+    width: 40px !important;
+    color: ${(props) => (props.isCurrent ? '#fff' : 'gray')} !important;
+  }
 
-    &:hover {
-      background: ${lighten(0.45, '#e20046')};
-      cursor: pointer;
-
-      & a {
-        color: #000;
-      }
-
-      & svg {
-        color: #e20046 !important;
-      }
-    }
+  &:hover {
+    background: ${lighten(0.45, '#e20046')};
+    cursor: pointer;
 
     & a {
-      padding: 0.3rem;
-      border-radius: 2px;
-      background-position: right bottom;
-      transition: all 0.1s ease-out;
+      color: #000;
     }
+
+    & svg {
+      color: #e20046 !important;
+    }
+  }
+
+  & a {
+    padding: 0.3rem;
+    border-radius: 2px;
+    background-position: right bottom;
+    transition: all 0.1s ease-out;
   }
 `;
 

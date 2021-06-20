@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
+import { getPathName } from 'components/utils';
+
 export default function Content({ children }: any) {
   const router = useRouter();
 
   const [title, setTitle] = useState<string>('');
-
-  const getPathName = (path: string, startPath: string) => {
-    return path.split(startPath)[1];
-  };
 
   useEffect(() => {
     setTitle(getPathName(router.pathname, 'dashboard/'));
