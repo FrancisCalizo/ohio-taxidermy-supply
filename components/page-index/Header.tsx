@@ -1,8 +1,8 @@
 import React from 'react';
-import Image from 'next/image';
 import Slider from 'react-slick';
+import styled from 'styled-components';
 
-export default function Banner() {
+export default function Header() {
   return (
     <div style={{ marginTop: 83 }}>
       <Slider
@@ -14,20 +14,18 @@ export default function Banner() {
         autoplay={true}
         autoplaySpeed={5000}
       >
-        {[1, 2, 3, 4].map((influencer) => (
-          <div key={influencer}>
-            <Image
-              src={`/images/influencer-index/banner-${influencer}.jpg`}
-              alt="Picture of the author"
-              quality={80}
-              layout="responsive"
-              width={825}
-              height={450}
-              priority={influencer === 1 || influencer === 2 ? true : false}
-            />
-          </div>
+        {[1, 2, 3, 4].map((num) => (
+          <Banner key={num} url={num} />
         ))}
       </Slider>
     </div>
   );
 }
+
+const Banner = styled.div<{ url: any }>`
+  height: calc(100vh - 83px);
+  background-image: ${({ url }) => `url(/images/influencer-index/banner-${url}.jpg)`};
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+`;
