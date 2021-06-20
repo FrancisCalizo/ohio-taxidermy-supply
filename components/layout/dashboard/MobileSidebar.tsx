@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { lighten } from 'polished';
 import { slide as Menu } from 'react-burger-menu';
 
 import { LINKS } from 'components/layout/dashboard/Sidebar';
+import { getPathName } from 'components/utils';
 
 interface MobileSidebarProps {
   isBurgerOpen: boolean;
@@ -13,6 +15,10 @@ interface MobileSidebarProps {
 }
 
 export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileSidebarProps) {
+  const router = useRouter();
+
+  const [currentRoute, setCurrentRoute] = useState<any>(null);
+
   const getBurgerOpen = (status: any) => {
     setIsBurgerOpen(status.isOpen);
   };
@@ -20,6 +26,10 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
   // const handleClick = () => {
   //   setIsBurgerOpen(false);
   // };
+
+  useEffect(() => {
+    setCurrentRoute(getPathName(router.pathname, 'dashboard/'));
+  }, [router.pathname]);
 
   const menuStyles = {
     bmBurgerButton: {
@@ -51,6 +61,8 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
     },
     bmItem: {
       display: 'inline-block',
+      width: '100%',
+      textAlign: 'center',
     },
     bmCross: {
       background: '#f00',
@@ -64,7 +76,14 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
         <div style={{ marginLeft: 10 }}>Influencer App</div>
       </SidebarLogoContainer>
       {LINKS.map((link: string, key: number) => (
-        <BurgerContainer key={key}>
+        <BurgerContainer
+          key={key}
+          isCurrent={
+            currentRoute === undefined && link === LINKS[0]
+              ? true
+              : currentRoute === link.toLowerCase()
+          }
+        >
           <BurgerLink
             className="menu-item"
             href={key === 0 ? '/dashboard' : `/dashboard/${link.toLowerCase()}`}
@@ -79,19 +98,16 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
 
 const BurgerLink = styled(Link)<{ className: string; href: string }>``;
 
-const BurgerContainer = styled.div`
-  margin: 1rem 0;
+const BurgerContainer = styled.div<{ isCurrent: boolean }>`
+  padding: 1rem 0;
+  background: ${(props) => (props.isCurrent ? '#e20046 !important' : 'transparent !important')};
+  color: ${(props) => (props.isCurrent ? '#fff !important' : 'inherit !important')};
 
-  & > a {
-    color: #000;
-    transition: all 300ms ease-in-out;
-
-    &:hover {
-      color: ${lighten(0.2, '#000')};
-      transition: color 0.2s ease-in-out;
-    }
+  &:hover {
+    background: ${lighten(0.45, '#e20046')};
   }
 `;
+
 const SidebarLogoContainer = styled.h4`
   display: flex !important;
   justify-content: center;
@@ -104,4 +120,5 @@ const SidebarLogoContainer = styled.h4`
   color: white;
   cursor: pointer;
   border: 1px solid #990030;
+  width: 210px !important;
 `;
