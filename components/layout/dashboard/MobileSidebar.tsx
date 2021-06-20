@@ -99,12 +99,16 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
 const BurgerLink = styled(Link)<{ className: string; href: string }>``;
 
 const BurgerContainer = styled.div<{ isCurrent: boolean }>`
-  padding: 1rem 0;
   background: ${(props) => (props.isCurrent ? '#e20046 !important' : 'transparent !important')};
   color: ${(props) => (props.isCurrent ? '#fff !important' : 'inherit !important')};
 
   &:hover {
     background: ${lighten(0.45, '#e20046')} !important;
+  }
+
+  & > a {
+    display: block !important;
+    padding: 1rem 0 !important;
   }
 `;
 
