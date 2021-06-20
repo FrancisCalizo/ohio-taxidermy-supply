@@ -50,7 +50,7 @@ export default function Sidebar() {
                 icon={ICONS[key]}
                 style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
               />
-              <div>{link}</div>
+              <div style={{ textTransform: 'capitalize' }}>{link}</div>
             </Li>
           </GLink>
         ))}

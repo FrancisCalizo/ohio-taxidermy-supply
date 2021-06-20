@@ -3,34 +3,39 @@ import styled from 'styled-components';
 
 import DashboardLayout from 'components/layout/dashboard/DashboardLayout';
 
-export default function index() {
+export default function Overview() {
   return (
     <DashboardLayout>
       <TopContainer>
-        <Card>
-          <CardBody>
-            <span>23</span>
-            <p>Influencers</p>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardBody>
-            <span>$29K</span>
-            <p>Revenue</p>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardBody>
-            <span>6/7</span>
-            <p>Conversions</p>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardBody>
-            <span>94%</span>
-            <p>Success</p>
-          </CardBody>
-        </Card>
+        <div>
+          <Card>
+            <CardBody>
+              <span>23</span>
+              <p>Influencers</p>
+            </CardBody>
+          </Card>
+          <Card>
+            <CardBody>
+              <span>$</span>
+              <span>20K</span>
+              <p>Revenue</p>
+            </CardBody>
+          </Card>
+        </div>
+        <div>
+          <Card>
+            <CardBody>
+              <span>6/7</span>
+              <p>Conversions</p>
+            </CardBody>
+          </Card>
+          <Card>
+            <CardBody>
+              <span>94%</span>
+              <p>Success</p>
+            </CardBody>
+          </Card>
+        </div>
       </TopContainer>
 
       <MainContainer>
@@ -78,9 +83,15 @@ export default function index() {
 
 const TopContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
 
   @media (max-width: 930px) {
     flex-wrap: wrap;
+  }
+
+  & > div {
+    display: flex;
+    flex: 1 1 0;
   }
 `;
 
@@ -95,7 +106,7 @@ const Card = styled.div`
   border: 1px solid gray;
   background: #fff;
   border-radius: 5px;
-  flex-grow: 1;
+  flex: 1 1 0;
   text-align: center;
   min-width: 160px;
 `;
