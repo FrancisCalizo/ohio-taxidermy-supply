@@ -30,7 +30,7 @@ export default function FitnessSports() {
                     <h3 style={{ margin: 0 }}>{influencer.rating}/5</h3>
                     <img
                       style={{ width: 20, height: 20, marginLeft: 6 }}
-                      src="images/star.png"
+                      src={`/images/star.png`}
                       alt="rating"
                     />
                   </div>

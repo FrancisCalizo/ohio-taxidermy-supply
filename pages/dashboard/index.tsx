@@ -46,6 +46,32 @@ export default function index() {
           itaque repellat dicta cumque?
         </p>
       </MainContainer>
+      <MainContainer>
+        <h2>Heading</h2>
+        <Hr />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit mollitia ut, dolorem ipsa
+          voluptatem omnis velit unde natus accusantium ratione architecto, saepe vitae at provident
+          corrupti. Ut deserunt eum quae. Nam at possimus non labore qui praesentium, provident
+          obcaecati sunt et sint eveniet aliquam, temporibus assumenda doloribus nulla a hic
+          pariatur, minima sequi voluptate! Vel, dolore consequatur! Sint repellendus repudiandae
+          odio quisquam dignissimos ipsam quas ducimus maiores possimus molestiae corrupti, officiis
+          itaque repellat dicta cumque?
+        </p>
+      </MainContainer>
+      <MainContainer>
+        <h2>Heading</h2>
+        <Hr />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit mollitia ut, dolorem ipsa
+          voluptatem omnis velit unde natus accusantium ratione architecto, saepe vitae at provident
+          corrupti. Ut deserunt eum quae. Nam at possimus non labore qui praesentium, provident
+          obcaecati sunt et sint eveniet aliquam, temporibus assumenda doloribus nulla a hic
+          pariatur, minima sequi voluptate! Vel, dolore consequatur! Sint repellendus repudiandae
+          odio quisquam dignissimos ipsam quas ducimus maiores possimus molestiae corrupti, officiis
+          itaque repellat dicta cumque?
+        </p>
+      </MainContainer>
     </DashboardLayout>
   );
 }

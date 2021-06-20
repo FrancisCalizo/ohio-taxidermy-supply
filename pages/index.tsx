@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 import Navbar from 'components/layout/Navbar';
 import Header from 'components/page-index/Header';
