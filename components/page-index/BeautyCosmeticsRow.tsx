@@ -67,7 +67,7 @@ export default function BeautyCosmesticsRow() {
         onRequestClose={() => setIsModalOpen(false)}
         contentLabel="Influencer Modal"
         ariaHideApp={false}
-        style={{ overlay: { zIndex: 1000 } }}
+        style={{ overlay: { zIndex: 1000 }, content: { maxWidth: 500, margin: '0 auto' } }}
       >
         <ModalHead>
           <button onClick={() => setIsModalOpen(false)}>X</button>
