@@ -1,15 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import Sidebar from 'components/layout/dashboard/Sidebar';
-import Topbar from 'components/layout/dashboard/Topbar';
-import Content from 'components/layout/dashboard/Content';
+import DashboardLayout from 'components/layout/dashboard/DashboardLayout';
 
 export default function index() {
   return (
-    <>
-      <Topbar />
-      <Sidebar />
-      <Content>This is some content</Content>
-    </>
+    <DashboardLayout>
+      <h2>blah</h2>
+    </DashboardLayout>
   );
 }
