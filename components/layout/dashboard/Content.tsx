@@ -24,7 +24,6 @@ export default function Content({ children }: any) {
 const MainContainer = styled.div`
   background: #d9d9d9;
   margin-top: 65px;
-  height: calc(100vh - 73px);
   padding: 1rem;
 
   @media (min-width: 769px) {
