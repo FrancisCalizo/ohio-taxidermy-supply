@@ -18,9 +18,11 @@ export default function Header() {
           <Banner key={num} url={num} />
         ))}
       </Slider>
-      <Title>
-        <span>In</span>fluencer<span>App</span>
-      </Title>
+      <TitleBlock>
+        <Title>
+          <span>In</span>fluencer<span>App</span>
+        </Title>
+      </TitleBlock>
     </div>
   );
 }
@@ -33,14 +35,17 @@ const Banner = styled.div<{ url: any }>`
   background-position: 50% 50%;
 `;
 
-const Title = styled.h1`
+const TitleBlock = styled.div`
   position: absolute;
   top: 0;
   width: 100%;
-  font-size: calc(48px + (100 - 48) * ((100vw) / (1200 - 300)));
   text-align: center;
   line-height: calc(100vh - 100px);
-  height: 100%;
+  overflow: hidden;
+`;
+
+const Title = styled.h1`
+  font-size: calc(48px + (100 - 48) * ((100vw) / (1200 - 300)));
   transform: skewX(-20deg);
   transform: rotate(-15deg);
   color: #fff;
