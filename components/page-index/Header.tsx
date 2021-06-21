@@ -37,13 +37,14 @@ const Title = styled.h1`
   position: absolute;
   top: 0;
   width: 100%;
-  font-size: calc(48px + (100 - 48) * ((100vw - 300px) / (1200 - 300)));
+  font-size: calc(48px + (100 - 48) * ((100vw) / (1200 - 300)));
   text-align: center;
   line-height: calc(100vh - 100px);
   height: 100%;
   transform: skewX(-20deg);
   transform: rotate(-15deg);
   color: #fff;
+  font-family: Shadows Into Light;
 
   span:nth-child(1) {
     color: #ffe400;

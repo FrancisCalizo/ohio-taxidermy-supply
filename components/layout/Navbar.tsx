@@ -16,7 +16,7 @@ export default function Navbar() {
         <Container>
           <LogoContainer>
             <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
-            <div style={{ marginLeft: 10 }}>Influencer App</div>
+            <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>Influencer App</div>
           </LogoContainer>
           <Hamburger onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}>
             <BurgerLine isHamburgerOpen={isHamburgerOpen}></BurgerLine>

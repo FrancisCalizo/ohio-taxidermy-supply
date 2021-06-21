@@ -34,10 +34,10 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
   const menuStyles = {
     bmBurgerButton: {
       position: 'fixed',
-      height: '20px',
+      height: '50px',
       width: '50px',
-      top: '18px',
-      left: '35px',
+      top: '5px',
+      left: '2px',
     },
     bmOverlay: {
       top: '0',
@@ -73,7 +73,7 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
     <Menu styles={menuStyles} onStateChange={getBurgerOpen} isOpen={isBurgerOpen}>
       <SidebarLogoContainer>
         <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
-        <div style={{ marginLeft: 10 }}>Influencer App</div>
+        <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>Influencer App</div>
       </SidebarLogoContainer>
       {LINKS.map((link: string, key: number) => (
         <BurgerContainer

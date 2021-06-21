@@ -15,7 +15,7 @@ export default function Topbar() {
       <div>
         <LogoContainer>
           <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
-          <div style={{ marginLeft: 10 }}>Influencer App</div>
+          <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>Influencer App</div>
         </LogoContainer>
 
         <MenuContainer>
@@ -24,7 +24,7 @@ export default function Topbar() {
 
             <LogoContainerMobile>
               <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
-              <div style={{ marginLeft: 10 }}>Influencer App</div>
+              <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>Influencer App</div>
             </LogoContainerMobile>
           </div>
 
