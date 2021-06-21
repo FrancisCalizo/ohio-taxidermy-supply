@@ -18,6 +18,9 @@ export default function Header() {
           <Banner key={num} url={num} />
         ))}
       </Slider>
+      <Title>
+        <span>In</span>fluencer<span>App</span>
+      </Title>
     </div>
   );
 }
@@ -28,4 +31,25 @@ const Banner = styled.div<{ url: any }>`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+`;
+
+const Title = styled.h1`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  font-size: calc(48px + (100 - 48) * ((100vw - 300px) / (1200 - 300)));
+  text-align: center;
+  line-height: calc(100vh - 100px);
+  height: 100%;
+  transform: skewX(-20deg);
+  transform: rotate(-15deg);
+  color: #fff;
+
+  span:nth-child(1) {
+    color: #ffe400;
+  }
+
+  span:nth-child(2) {
+    color: #e20046;
+  }
 `;
