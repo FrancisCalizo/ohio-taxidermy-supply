@@ -204,7 +204,7 @@ export const LogoContainer = styled.h3`
   display: flex;
   align-items: center;
   padding: 0.5rem 1rem;
-  background: #000;
+  background: ${(props) => props.theme.colors.purple};
   transform: none;
   text-transform: lowercase;
   border-radius: 2px;
