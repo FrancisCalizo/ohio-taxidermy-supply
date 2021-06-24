@@ -2,7 +2,7 @@ import React, { useState, Fragment } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { lighten } from 'polished';
+import { darken, lighten } from 'polished';
 
 import { device } from 'components/utils/mediaQueries';
 import { middleRoutes, routes } from 'components/utils/routes';
@@ -67,7 +67,6 @@ export default function Navbar() {
 
 export const Nav = styled.nav<{ isHamburgerOpen: boolean }>`
   background-color: white;
-  color: black;
   box-shadow: 0 4px 4px -3px #000;
   overflow: hidden;
   position: fixed;
@@ -137,10 +136,8 @@ const Hamburger = styled.div`
   padding: 0.4rem 0.7rem;
   cursor: pointer;
   width: 145px;
-
-  > div {
-    justify-content: flex-end;
-  }
+  display: flex;
+  justify-content: flex-end;
 
   &:hover {
     ${BurgerLine} {
@@ -194,13 +191,14 @@ const NavLink = styled.button`
   transform: translateY(3px);
   border: none;
   background: transparent;
+  color: ${(props) => props.theme.colors.purple};
 
   & > div {
     padding: 1rem 0;
   }
 
   & > div:hover {
-    color: #e20046;
+    color: ${(props) => darken(0.15, props.theme.colors.purple)};
     cursor: pointer;
   }
 `;
@@ -222,6 +220,6 @@ export const LogoContainer = styled.h3`
   }
 
   &:hover {
-    background: ${lighten(0.05, '#000')};
+    background: ${(props) => darken(0.15, props.theme.colors.teal)};
   }
 `;

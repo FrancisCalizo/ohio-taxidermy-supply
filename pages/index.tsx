@@ -19,8 +19,8 @@ export default function Home() {
   return (
     <div style={{ background: '#f1f2f3' }}>
       <Head>
-        <title>Influencer</title>
-        <meta name="description" content="Influencer Mockup App" />
+        <title>CastMeApp</title>
+        <meta name="description" content="CastMeApp Mockup" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
