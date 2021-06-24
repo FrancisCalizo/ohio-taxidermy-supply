@@ -20,7 +20,7 @@ export default function Header() {
       </Slider>
       <TitleBlock>
         <Title>
-          <span>In</span>fluencer<span>App</span>
+          <span>Cast</span>Me<span>App</span>
         </Title>
       </TitleBlock>
     </div>
@@ -52,10 +52,10 @@ const Title = styled.h1`
   font-family: Shadows Into Light;
 
   span:nth-child(1) {
-    color: #ffe400;
+    color: ${(props) => props.theme.colors.teal};
   }
 
   span:nth-child(2) {
-    color: #e20046;
+    color: ${(props) => props.theme.colors.pink};
   }
 `;

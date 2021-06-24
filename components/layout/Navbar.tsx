@@ -24,7 +24,7 @@ export default function Navbar() {
           <NavLinks>
             {[...middleRoutes, ...routes].map((route, key) => (
               <NavLink key={key} onClick={() => router.push(route.path)}>
-                <div>{route.title}</div>
+                {route.title}
               </NavLink>
             ))}
           </NavLinks>
@@ -33,7 +33,7 @@ export default function Navbar() {
           <MobileMiddleNavLinks>
             {middleRoutes.map((route, key) => (
               <NavLink key={key} onClick={() => router.push(route.path)}>
-                <div>{route.title}</div>
+                {route.title}
               </NavLink>
             ))}
           </MobileMiddleNavLinks>
@@ -67,7 +67,7 @@ export default function Navbar() {
 
 export const Nav = styled.nav<{ isHamburgerOpen: boolean }>`
   background-color: white;
-  box-shadow: 0 4px 4px -3px #000;
+  box-shadow: ${(props) => `0 4px 3px -1px ${props.theme.colors.pink}`};
   overflow: hidden;
   position: fixed;
   top: 0;
@@ -184,22 +184,39 @@ const HamburgerLink = styled.div`
 `;
 
 const NavLink = styled.button`
-  margin: 1rem 0.85rem;
+  margin: 1rem 0.6rem;
   text-transform: uppercase;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.9rem;
+  font-weight: 500;
   transform: translateY(3px);
   border: none;
   background: transparent;
   color: ${(props) => props.theme.colors.purple};
+  padding: 1rem 0.25rem;
+  transition: color 400ms linear;
+  border-bottom: 1.5px solid transparent;
+  cursor: pointer;
 
-  & > div {
-    padding: 1rem 0;
+  &:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 10px;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 50%;
+    position: absolute;
+    background: ${(props) => darken(0.1, props.theme.colors.purple)};
+    transition: width 300ms ease 0s, left 300ms ease 0s;
+    width: 0;
   }
 
-  & > div:hover {
-    color: ${(props) => darken(0.15, props.theme.colors.purple)};
-    cursor: pointer;
+  &:hover:after {
+    width: 100%;
+    left: 0;
+  }
+
+  &:hover {
+    color: ${(props) => darken(0.1, props.theme.colors.purple)};
   }
 `;
 
