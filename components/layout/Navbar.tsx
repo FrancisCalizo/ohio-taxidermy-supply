@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { darken, lighten } from 'polished';
-
 import MobileNavLinks from 'components/layout/MobileNavLinks';
 import { device } from 'components/utils/mediaQueries';
 import { middleRoutes, routes } from 'components/utils/routes';
@@ -17,7 +16,7 @@ export default function Navbar() {
       <Nav isHamburgerOpen={isHamburgerOpen}>
         <Container>
           <LogoContainer>
-            <Image src={`/circle-gradient.png`} alt="logo" width={70} height={70} quality={50} />
+            <Image src={`/circle-gradient.png`} alt="logo" width={55} height={55} quality={50} />
             <div className="title" style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>
               <span>Cast</span>
               <span>Me</span>
@@ -28,7 +27,7 @@ export default function Navbar() {
           {/* Browser Display */}
           <NavLinks>
             {[...middleRoutes, ...routes].map((route, key) => (
-              <>
+              <React.Fragment key={key}>
                 {!['Login', 'Contact'].includes(route.title) && (
                   <NavLink key={key} onClick={() => router.push(route.path)}>
                     {route.title}
@@ -46,7 +45,7 @@ export default function Navbar() {
                     {route.title}
                   </ContactButton>
                 )}
-              </>
+              </React.Fragment>
             ))}
           </NavLinks>
 
@@ -61,14 +60,15 @@ export default function Navbar() {
 
           <Hamburger>
             <div
+              className="burger-line"
               role="button"
               tabIndex={0}
               onKeyDown={() => setIsHamburgerOpen(!isHamburgerOpen)}
               onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}
             >
-              <BurgerLine isHamburgerOpen={isHamburgerOpen} />
-              <BurgerLine isHamburgerOpen={isHamburgerOpen} />
-              <BurgerLine isHamburgerOpen={isHamburgerOpen} />
+              <BurgerLine className="burger-line" isHamburgerOpen={isHamburgerOpen} />
+              <BurgerLine className="burger-line" isHamburgerOpen={isHamburgerOpen} />
+              <BurgerLine className="burger-line" isHamburgerOpen={isHamburgerOpen} />
             </div>
           </Hamburger>
         </Container>
@@ -152,7 +152,7 @@ const BurgerLine = styled.div<{ isHamburgerOpen: boolean }>`
 const Hamburger = styled.div`
   border-radius: 10px;
   padding: 0.4rem 0.7rem;
-  width: 145px;
+  width: 90px;
   display: flex;
   justify-content: flex-end;
 
@@ -239,7 +239,7 @@ const ContactButton = styled(LoginButton)`
 
 export const LogoContainer = styled.h3`
   position: relative;
-  margin: 0 0.85rem;
+  margin: 0 0.85rem 0 2rem;
   display: flex;
   align-items: center;
   border: 1px solid ${(props) => props.theme.colors.pink};
@@ -249,8 +249,8 @@ export const LogoContainer = styled.h3`
   & .title {
     color: gray;
     position: absolute;
-    left: -33px;
-    top: 10px;
+    left: -44px;
+    top: 5px;
     font-size: 30px;
 
     & > span:nth-child(1) {

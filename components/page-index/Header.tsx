@@ -34,7 +34,7 @@ const Banner = styled.div<{ url: any }>`
   background-image: ${({ url }) => `url(/images/influencer-index/banner-${url}.jpg)`};
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-position: 50% 10%;
 `;
 
 const TitleBlock = styled.div`
