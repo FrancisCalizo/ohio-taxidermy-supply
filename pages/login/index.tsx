@@ -28,7 +28,7 @@ export default function Login() {
       <LoginBlockContainer>
         <LogoContainer>
           <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
-          <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>Influencer App</div>
+          <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>CastMeApp</div>
         </LogoContainer>
 
         <h1>Sign In</h1>
