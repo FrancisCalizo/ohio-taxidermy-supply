@@ -1,10 +1,11 @@
 import React, { useState, Fragment } from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
-import { darken, lighten } from 'polished';
+import { lighten } from 'polished';
 
 import { device } from 'components/utils/mediaQueries';
+import { routes } from 'components/utils/routes';
 
 export default function Navbar() {
   const router = useRouter();
@@ -18,67 +19,35 @@ export default function Navbar() {
             <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
             <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>CastMeApp</div>
           </LogoContainer>
+
           <Hamburger onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}>
-            <BurgerLine isHamburgerOpen={isHamburgerOpen}></BurgerLine>
-            <BurgerLine isHamburgerOpen={isHamburgerOpen}></BurgerLine>
-            <BurgerLine isHamburgerOpen={isHamburgerOpen}></BurgerLine>
+            <BurgerLine isHamburgerOpen={isHamburgerOpen} />
+            <BurgerLine isHamburgerOpen={isHamburgerOpen} />
+            <BurgerLine isHamburgerOpen={isHamburgerOpen} />
           </Hamburger>
+
           <NavLinks>
-            <NavLink>
-              <div>About Us</div>
-            </NavLink>
-            <NavLink>
-              <div>Our Work</div>
-            </NavLink>
-            <NavLink>
-              <div>Resources</div>
-            </NavLink>
-            <NavLink>
-              <div>Contact</div>
-            </NavLink>
-            <NavButton onClick={() => router.push('/login')}>
-              <span>Login</span>
-            </NavButton>
+            {routes.map((route, key) => (
+              <NavLink key={key} onClick={() => router.push(route.path)}>
+                <div>{route.title}</div>
+              </NavLink>
+            ))}
           </NavLinks>
         </Container>
       </Nav>
+
       <HamburgerLinks isHamburgerOpen={isHamburgerOpen}>
-        <HamburgerLink
-          onClick={() => {
-            setIsHamburgerOpen(false);
-          }}
-        >
-          About Us
-        </HamburgerLink>
-        <HamburgerLink
-          onClick={() => {
-            setIsHamburgerOpen(false);
-          }}
-        >
-          Our Work
-        </HamburgerLink>
-        <HamburgerLink
-          onClick={() => {
-            setIsHamburgerOpen(false);
-          }}
-        >
-          Resources
-        </HamburgerLink>
-        <HamburgerLink
-          onClick={() => {
-            setIsHamburgerOpen(false);
-          }}
-        >
-          Contact
-        </HamburgerLink>
-        <HamburgerLink
-          onClick={() => {
-            setIsHamburgerOpen(false);
-            router.push('/login');
-          }}
-        >
-          Login
-        </HamburgerLink>
+        {routes.map((route, key) => (
+          <HamburgerLink
+            key={key}
+            onClick={() => {
+              setIsHamburgerOpen(false);
+              router.push(route.path);
+            }}
+          >
+            {route.path}
+          </HamburgerLink>
+        ))}
       </HamburgerLinks>
     </Fragment>
   );
@@ -191,12 +160,14 @@ const HamburgerLink = styled.div`
   }
 `;
 
-const NavLink = styled.div`
+const NavLink = styled.button`
   margin: 1rem 0.85rem;
   text-transform: uppercase;
   font-size: 0.8rem;
   font-weight: 700;
   transform: translateY(3px);
+  border: none;
+  background: transparent;
 
   & > div {
     padding: 1rem 0;
@@ -208,28 +179,12 @@ const NavLink = styled.div`
   }
 `;
 
-const NavButton = styled.h3`
-  background: #e20046;
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  margin-left: 0.7rem;
+export const LogoContainer = styled.h3`
+  margin: 1rem 0.85rem;
   color: white;
-  text-transform: uppercase;
-  transform: skewX(-20deg);
-  cursor: pointer;
-
-  &:hover {
-    background: ${darken(0.05, '#e20046')};
-  }
-
-  & > span {
-    transform: skewX(20deg);
-  }
-`;
-
-export const LogoContainer = styled(NavButton)`
   display: flex;
   align-items: center;
+  padding: 0.5rem 1rem;
   background: #000;
   transform: none;
   text-transform: lowercase;
