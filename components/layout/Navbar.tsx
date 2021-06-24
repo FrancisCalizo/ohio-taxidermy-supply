@@ -2,7 +2,7 @@ import React, { useState, Fragment } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { darken } from 'polished';
+import { darken, lighten } from 'polished';
 
 import MobileNavLinks from 'components/layout/MobileNavLinks';
 import { device } from 'components/utils/mediaQueries';
@@ -24,9 +24,25 @@ export default function Navbar() {
           {/* Browser Display */}
           <NavLinks>
             {[...middleRoutes, ...routes].map((route, key) => (
-              <NavLink key={key} onClick={() => router.push(route.path)}>
-                {route.title}
-              </NavLink>
+              <>
+                {!['Login', 'Contact'].includes(route.title) && (
+                  <NavLink key={key} onClick={() => router.push(route.path)}>
+                    {route.title}
+                  </NavLink>
+                )}
+
+                {route.title === 'Login' && (
+                  <LoginButton key={key} onClick={() => router.push(route.path)}>
+                    {route.title}
+                  </LoginButton>
+                )}
+
+                {route.title === 'Contact' && (
+                  <ContactButton key={key} onClick={() => router.push(route.path)}>
+                    {route.title}
+                  </ContactButton>
+                )}
+              </>
             ))}
           </NavLinks>
 
@@ -162,7 +178,6 @@ const NavLink = styled.button`
   color: ${(props) => props.theme.colors.purple};
   padding: 1rem 0.25rem;
   transition: color 400ms linear;
-  border-bottom: 1.5px solid transparent;
   cursor: pointer;
 
   &:after {
@@ -185,6 +200,36 @@ const NavLink = styled.button`
 
   &:hover {
     color: ${(props) => darken(0.1, props.theme.colors.purple)};
+  }
+`;
+
+const LoginButton = styled.button`
+  margin: 1rem 0.6rem;
+  padding: 0.1rem 1.25rem;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transform: translateY(3px);
+  border: ${(props) => `2px solid ${props.theme.colors.pink}`};
+  background: transparent;
+  color: ${(props) => props.theme.colors.pink};
+  border-radius: 50px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: color 250ms linear, background 250ms linear;
+
+  &:hover {
+    background: ${(props) => lighten(0.03, props.theme.colors.pink)};
+    color: #fff;
+  }
+`;
+
+const ContactButton = styled(LoginButton)`
+  background: ${(props) => props.theme.colors.pink};
+  color: #fff;
+
+  &:hover {
+    background: ${(props) => darken(0.1, props.theme.colors.pink)};
   }
 `;
 
