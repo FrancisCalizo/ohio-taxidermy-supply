@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { lighten } from 'polished';
 
 import { device } from 'components/utils/mediaQueries';
-import { routes } from 'components/utils/routes';
+import { middleRoutes, routes } from 'components/utils/routes';
 
 export default function Navbar() {
   const router = useRouter();
@@ -20,19 +20,29 @@ export default function Navbar() {
             <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>CastMeApp</div>
           </LogoContainer>
 
-          <Hamburger onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}>
-            <BurgerLine isHamburgerOpen={isHamburgerOpen} />
-            <BurgerLine isHamburgerOpen={isHamburgerOpen} />
-            <BurgerLine isHamburgerOpen={isHamburgerOpen} />
-          </Hamburger>
-
+          {/* Browser Display */}
           <NavLinks>
-            {routes.map((route, key) => (
+            {[...middleRoutes, ...routes].map((route, key) => (
               <NavLink key={key} onClick={() => router.push(route.path)}>
                 <div>{route.title}</div>
               </NavLink>
             ))}
           </NavLinks>
+
+          {/* Mobile Display */}
+          <MobileMiddleNavLinks>
+            {middleRoutes.map((route, key) => (
+              <NavLink key={key} onClick={() => router.push(route.path)}>
+                <div>{route.title}</div>
+              </NavLink>
+            ))}
+          </MobileMiddleNavLinks>
+
+          <Hamburger onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}>
+            <BurgerLine isHamburgerOpen={isHamburgerOpen} />
+            <BurgerLine isHamburgerOpen={isHamburgerOpen} />
+            <BurgerLine isHamburgerOpen={isHamburgerOpen} />
+          </Hamburger>
         </Container>
       </Nav>
 
@@ -45,7 +55,7 @@ export default function Navbar() {
               router.push(route.path);
             }}
           >
-            {route.path}
+            {route.title}
           </HamburgerLink>
         ))}
       </HamburgerLinks>
@@ -62,6 +72,7 @@ export const Nav = styled.nav<{ isHamburgerOpen: boolean }>`
   top: 0;
   width: 100%;
   z-index: 15;
+  max-height: 80px;
 `;
 
 const Container = styled.div`
@@ -71,7 +82,7 @@ const Container = styled.div`
   margin: 0 3rem;
   height: 100%;
 
-  @media ${device.maxLg} {
+  @media (max-width: 1200px) {
     margin: auto 3rem;
   }
   @media ${device.maxMd} {
@@ -82,8 +93,16 @@ const Container = styled.div`
 const NavLinks = styled.div`
   display: none;
 
-  @media ${device.minLg} {
+  @media (min-width: 1200px) {
     display: flex;
+  }
+`;
+
+const MobileMiddleNavLinks = styled(NavLinks)`
+  display: flex;
+
+  @media (min-width: 1200px) {
+    display: none;
   }
 `;
 
@@ -122,14 +141,14 @@ const Hamburger = styled.div`
     }
   }
 
-  @media ${device.minLg} {
+  @media (min-width: 1200px) {
     display: none;
   }
 `;
 
 const HamburgerLinks = styled.div<{ isHamburgerOpen: boolean }>`
   position: fixed;
-  top: 85px;
+  top: 78px;
   z-index: 10;
   width: 100%;
   display: ${(props) => (props.isHamburgerOpen ? 'flex' : 'none')};
@@ -144,7 +163,7 @@ const HamburgerLinks = styled.div<{ isHamburgerOpen: boolean }>`
 
   transition: opacity 0.2s ease-in-out, background-color 1.4s;
 
-  @media ${device.minLg} {
+  @media (min-width: 1200px) {
     display: none;
   }
 `;
