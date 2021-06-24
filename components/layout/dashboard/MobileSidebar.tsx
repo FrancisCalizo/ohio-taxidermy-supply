@@ -72,7 +72,7 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
   return (
     <Menu styles={menuStyles} onStateChange={getBurgerOpen} isOpen={isBurgerOpen}>
       <SidebarLogoContainer>
-        <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
+        <Image src={`/circle-gradient.png`} alt="logo" width={30} height={30} quality={50} />
         <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>CastMeApp</div>
       </SidebarLogoContainer>
       {LINKS.map((link: string, key: number) => (

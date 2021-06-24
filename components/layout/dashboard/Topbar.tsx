@@ -14,7 +14,7 @@ export default function Topbar() {
     <TopbarContainer>
       <div>
         <LogoContainer>
-          <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
+          <Image src={`/circle-gradient.png`} alt="logo" width={30} height={30} quality={50} />
           <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>CastMeApp</div>
         </LogoContainer>
 
@@ -23,7 +23,7 @@ export default function Topbar() {
             <FontAwesomeIcon icon={faBars} style={{ fontSize: 30 }} />
 
             <LogoContainerMobile>
-              <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
+              <Image src={`/circle-gradient.png`} alt="logo" width={30} height={30} quality={50} />
               <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>CastMeApp</div>
             </LogoContainerMobile>
           </div>

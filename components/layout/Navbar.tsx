@@ -17,8 +17,12 @@ export default function Navbar() {
       <Nav isHamburgerOpen={isHamburgerOpen}>
         <Container>
           <LogoContainer>
-            <Image src={`/appreciation.svg`} alt="logo" width={30} height={30} quality={50} />
-            <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>CastMeApp</div>
+            <Image src={`/circle-gradient.png`} alt="logo" width={70} height={70} quality={50} />
+            <div className="title" style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>
+              <span>Cast</span>
+              <span>Me</span>
+              <span>App</span>
+            </div>
           </LogoContainer>
 
           {/* Browser Display */}
@@ -234,14 +238,29 @@ const ContactButton = styled(LoginButton)`
 `;
 
 export const LogoContainer = styled.h3`
-  margin: 1rem 0.85rem;
-  color: white;
+  position: relative;
+  margin: 0 0.85rem;
   display: flex;
   align-items: center;
-  padding: 0.5rem 1rem;
-  background: ${(props) => props.theme.colors.teal};
+  border: 1px solid ${(props) => props.theme.colors.pink};
   transform: none;
-  text-transform: lowercase;
-  border-radius: 2px;
-  min-width: 145px;
+  border-radius: 100px;
+
+  & .title {
+    color: gray;
+    position: absolute;
+    left: -33px;
+    top: 10px;
+    font-size: 30px;
+
+    & > span:nth-child(1) {
+      color: ${(props) => props.theme.colors.teal};
+    }
+    & > span:nth-child(2) {
+      color: #fff;
+    }
+    & > span:nth-child(3) {
+      color: ${(props) => props.theme.colors.pink};
+    }
+  }
 `;
