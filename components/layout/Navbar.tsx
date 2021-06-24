@@ -61,13 +61,11 @@ export default function Navbar() {
           {/* Display One when smallest media */}
           <MobileMiddleNavLinksSmall>
             {middleRoutes.map((route, key) => (
-              <>
+              <React.Fragment key={key}>
                 {key === 0 && (
-                  <NavLink key={key} onClick={() => router.push(route.path)}>
-                    {route.title}
-                  </NavLink>
+                  <NavLink onClick={() => router.push(route.path)}>{route.title}</NavLink>
                 )}
-              </>
+              </React.Fragment>
             ))}
           </MobileMiddleNavLinksSmall>
 
