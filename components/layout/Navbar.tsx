@@ -58,6 +58,19 @@ export default function Navbar() {
             ))}
           </MobileMiddleNavLinks>
 
+          {/* Display One when smallest media */}
+          <MobileMiddleNavLinksSmall>
+            {middleRoutes.map((route, key) => (
+              <>
+                {key === 0 && (
+                  <NavLink key={key} onClick={() => router.push(route.path)}>
+                    {route.title}
+                  </NavLink>
+                )}
+              </>
+            ))}
+          </MobileMiddleNavLinksSmall>
+
           <Hamburger>
             <div
               className="burger-line"
@@ -104,6 +117,7 @@ const Container = styled.div`
   @media (max-width: 1200px) {
     margin: auto 3rem;
   }
+
   @media ${device.maxMd} {
     margin: auto 1.2rem;
   }
@@ -121,6 +135,17 @@ const MobileMiddleNavLinks = styled(NavLinks)`
   display: flex;
 
   @media (min-width: 1200px) {
+    display: none;
+  }
+
+  @media (max-width: 500px) {
+    display: none;
+  }
+`;
+
+const MobileMiddleNavLinksSmall = styled(MobileMiddleNavLinks)`
+  display: block;
+  @media (min-width: 500px) {
     display: none;
   }
 `;
@@ -261,6 +286,12 @@ export const LogoContainer = styled.h3`
     }
     & > span:nth-child(3) {
       color: ${(props) => props.theme.colors.pink};
+    }
+
+    @media (max-width: 600px) {
+      left: -27px;
+      top: 10px;
+      font-size: 22px;
     }
   }
 `;
