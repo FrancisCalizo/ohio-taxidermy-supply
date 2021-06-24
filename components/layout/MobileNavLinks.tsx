@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { darken, lighten } from 'polished';
+
+import useOnOutsideClick from 'components/hooks/useOnOutsideClick';
 
 interface MobileNavLinkProps {
   routes: any[];
@@ -9,15 +11,17 @@ interface MobileNavLinkProps {
   setIsHamburgerOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function MobileNavLinks({
-  routes,
-  isHamburgerOpen,
-  setIsHamburgerOpen,
-}: MobileNavLinkProps) {
+export default function MobileNavLinks(props: MobileNavLinkProps) {
+  const { routes, isHamburgerOpen, setIsHamburgerOpen } = props;
   const router = useRouter();
+
+  const ref = useRef();
+
+  useOnOutsideClick(ref, () => setIsHamburgerOpen(false));
+
   return (
     <div>
-      <HamburgerLinks isHamburgerOpen={isHamburgerOpen}>
+      <HamburgerLinks ref={ref} isHamburgerOpen={isHamburgerOpen}>
         {routes.map((route, key) => (
           <HamburgerLink
             key={key}
@@ -34,7 +38,7 @@ export default function MobileNavLinks({
   );
 }
 
-const HamburgerLinks = styled.div<{ isHamburgerOpen: boolean }>`
+const HamburgerLinks = styled.div<{ isHamburgerOpen: boolean; ref: any }>`
   position: fixed;
   top: 82px;
   z-index: 10;
