@@ -20,7 +20,9 @@ export default function Header() {
       </Slider>
       <TitleBlock>
         <Title>
-          <span>Cast</span>Me<span>App</span>
+          <span>
+            <span>Cast</span>Me<span>App</span>
+          </span>
         </Title>
       </TitleBlock>
     </div>
@@ -51,11 +53,16 @@ const Title = styled.h1`
   color: #fff;
   font-family: Shadows Into Light;
 
-  span:nth-child(1) {
-    color: ${(props) => props.theme.colors.teal};
-  }
+  & > span {
+    padding: 0.05rem 3rem;
+    background: rgba(255, 255, 255, 0.25);
 
-  span:nth-child(2) {
-    color: ${(props) => props.theme.colors.pink};
+    span:nth-child(1) {
+      color: ${(props) => props.theme.colors.teal};
+    }
+
+    span:nth-child(2) {
+      color: ${(props) => props.theme.colors.pink};
+    }
   }
 `;
