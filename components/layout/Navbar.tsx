@@ -2,8 +2,9 @@ import React, { useState, Fragment } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { darken, lighten } from 'polished';
+import { darken } from 'polished';
 
+import MobileNavLinks from 'components/layout/MobileNavLinks';
 import { device } from 'components/utils/mediaQueries';
 import { middleRoutes, routes } from 'components/utils/routes';
 
@@ -53,19 +54,11 @@ export default function Navbar() {
         </Container>
       </Nav>
 
-      <HamburgerLinks isHamburgerOpen={isHamburgerOpen}>
-        {routes.map((route, key) => (
-          <HamburgerLink
-            key={key}
-            onClick={() => {
-              setIsHamburgerOpen(false);
-              router.push(route.path);
-            }}
-          >
-            {route.title}
-          </HamburgerLink>
-        ))}
-      </HamburgerLinks>
+      <MobileNavLinks
+        routes={routes}
+        isHamburgerOpen={isHamburgerOpen}
+        setIsHamburgerOpen={setIsHamburgerOpen}
+      />
     </Fragment>
   );
 }
@@ -158,40 +151,6 @@ const Hamburger = styled.div`
   }
 `;
 
-const HamburgerLinks = styled.div<{ isHamburgerOpen: boolean }>`
-  position: fixed;
-  top: 83px;
-  z-index: 10;
-  width: 100%;
-  display: ${(props) => (props.isHamburgerOpen ? 'flex' : 'none')};
-  text-align: center;
-  align-content: center;
-  flex-wrap: wrap;
-  text-transform: uppercase;
-  font-weight: 700;
-  background: white;
-  color: black;
-  z-index: 20;
-
-  @media (min-width: 1200px) {
-    display: none;
-  }
-`;
-
-const HamburgerLink = styled.div`
-  width: 100%;
-  padding: 1rem 0;
-  cursor: pointer;
-  border-bottom: black;
-  font-weight: 400;
-  color: ${(props) => props.theme.colors.purple};
-  transition: background 250ms linear;
-
-  &:hover {
-    background: ${(props) => lighten(0.12, props.theme.colors.pink)};
-  }
-`;
-
 const NavLink = styled.button`
   margin: 1rem 0.6rem;
   text-transform: uppercase;
@@ -240,12 +199,4 @@ export const LogoContainer = styled.h3`
   text-transform: lowercase;
   border-radius: 2px;
   min-width: 145px;
-
-  & > span {
-    transform: none;
-  }
-
-  &:hover {
-    background: ${(props) => darken(0.15, props.theme.colors.teal)};
-  }
 `;
