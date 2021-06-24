@@ -38,8 +38,13 @@ export default function Navbar() {
             ))}
           </MobileMiddleNavLinks>
 
-          <Hamburger onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}>
-            <div>
+          <Hamburger>
+            <div
+              role="button"
+              tabIndex={0}
+              onKeyDown={() => setIsHamburgerOpen(!isHamburgerOpen)}
+              onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}
+            >
               <BurgerLine isHamburgerOpen={isHamburgerOpen} />
               <BurgerLine isHamburgerOpen={isHamburgerOpen} />
               <BurgerLine isHamburgerOpen={isHamburgerOpen} />
@@ -109,8 +114,8 @@ const MobileMiddleNavLinks = styled(NavLinks)`
 
 const BurgerLine = styled.div<{ isHamburgerOpen: boolean }>`
   width: 40px;
-  height: 3px;
-  background-color: gray;
+  height: 2px;
+  background-color: ${(props) => props.theme.colors.purple};
   margin: 8px 0;
   border-radius: 5px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.13), 0 2px 3px 0 rgba(0, 0, 0, 0.15);
@@ -128,21 +133,24 @@ const BurgerLine = styled.div<{ isHamburgerOpen: boolean }>`
       props.isHamburgerOpen ? 'rotate(-45deg) translate(7px, -8px);' : 'rotate(0)'};
   }
 
-  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out, background 300ms linear;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out, background 200ms linear;
 `;
 
 const Hamburger = styled.div`
   border-radius: 10px;
   padding: 0.4rem 0.7rem;
-  cursor: pointer;
   width: 145px;
   display: flex;
   justify-content: flex-end;
 
   &:hover {
     ${BurgerLine} {
-      background: #e20046;
+      background: ${(props) => props.theme.colors.pink};
     }
+  }
+
+  & > div {
+    cursor: pointer;
   }
 
   @media (min-width: 1200px) {
@@ -152,7 +160,7 @@ const Hamburger = styled.div`
 
 const HamburgerLinks = styled.div<{ isHamburgerOpen: boolean }>`
   position: fixed;
-  top: 78px;
+  top: 83px;
   z-index: 10;
   width: 100%;
   display: ${(props) => (props.isHamburgerOpen ? 'flex' : 'none')};
@@ -165,8 +173,6 @@ const HamburgerLinks = styled.div<{ isHamburgerOpen: boolean }>`
   color: black;
   z-index: 20;
 
-  transition: opacity 0.2s ease-in-out, background-color 1.4s;
-
   @media (min-width: 1200px) {
     display: none;
   }
@@ -177,9 +183,12 @@ const HamburgerLink = styled.div`
   padding: 1rem 0;
   cursor: pointer;
   border-bottom: black;
+  font-weight: 400;
+  color: ${(props) => props.theme.colors.purple};
+  transition: background 250ms linear;
 
   &:hover {
-    background: 'rgba(235,235,235)';
+    background: ${(props) => lighten(0.12, props.theme.colors.pink)};
   }
 `;
 
