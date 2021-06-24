@@ -39,9 +39,11 @@ export default function Navbar() {
           </MobileMiddleNavLinks>
 
           <Hamburger onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}>
-            <BurgerLine isHamburgerOpen={isHamburgerOpen} />
-            <BurgerLine isHamburgerOpen={isHamburgerOpen} />
-            <BurgerLine isHamburgerOpen={isHamburgerOpen} />
+            <div>
+              <BurgerLine isHamburgerOpen={isHamburgerOpen} />
+              <BurgerLine isHamburgerOpen={isHamburgerOpen} />
+              <BurgerLine isHamburgerOpen={isHamburgerOpen} />
+            </div>
           </Hamburger>
         </Container>
       </Nav>
@@ -134,6 +136,11 @@ const Hamburger = styled.div`
   border-radius: 10px;
   padding: 0.4rem 0.7rem;
   cursor: pointer;
+  width: 145px;
+
+  > div {
+    justify-content: flex-end;
+  }
 
   &:hover {
     ${BurgerLine} {
@@ -204,10 +211,11 @@ export const LogoContainer = styled.h3`
   display: flex;
   align-items: center;
   padding: 0.5rem 1rem;
-  background: ${(props) => props.theme.colors.purple};
+  background: ${(props) => props.theme.colors.teal};
   transform: none;
   text-transform: lowercase;
   border-radius: 2px;
+  min-width: 145px;
 
   & > span {
     transform: none;
