@@ -107,6 +107,7 @@ export default function VerticalRow({ categoryTitle, profiles }: VerticalRowProp
     </Container>
   );
 }
+
 const ContactButton = styled.button`
   display: block;
   width: 100%;
