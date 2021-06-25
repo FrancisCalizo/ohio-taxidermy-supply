@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { darken, lighten } from 'polished';
 import { useRouter } from 'next/router';
 
@@ -11,9 +11,11 @@ import { middleRoutes } from 'components/utils/routes';
 
 interface MobileNavMiddleDropdownProps {
   setIsMiddleSelectionOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isMiddleSelectionOpen: boolean;
 }
 
 export default function MobileNavMiddleDropdown({
+  isMiddleSelectionOpen,
   setIsMiddleSelectionOpen,
 }: MobileNavMiddleDropdownProps) {
   return (
@@ -21,8 +23,8 @@ export default function MobileNavMiddleDropdown({
       <NavLink>
         About Us
         <FontAwesomeIcon
-          icon={faChevronDown}
-          style={{ fontSize: 16, marginTop: 3, marginLeft: 10, color: theme.colors.pink }}
+          icon={isMiddleSelectionOpen ? faChevronUp : faChevronDown}
+          style={{ fontSize: 16, marginTop: 3, marginLeft: 12, color: theme.colors.pink }}
         />
       </NavLink>
     </MobileMiddleNavLinksSmall>

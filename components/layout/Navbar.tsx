@@ -64,7 +64,10 @@ export default function Navbar() {
           </MobileMiddleNavLinks>
 
           {/* Display middle dropdown when smallest media */}
-          <MobileNavMiddleDropdown setIsMiddleSelectionOpen={setIsMiddleSelectionOpen} />
+          <MobileNavMiddleDropdown
+            isMiddleSelectionOpen={isMiddleSelectionOpen}
+            setIsMiddleSelectionOpen={setIsMiddleSelectionOpen}
+          />
 
           <Hamburger>
             <div
