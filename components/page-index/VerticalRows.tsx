@@ -123,7 +123,7 @@ const ContactButton = styled.button`
   margin: 1rem 0.5rem 1rem 0;
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: ${(props) => props.theme.buttons.boxShadow};
+  box-shadow: ${(props) => props.theme.button.boxShadow};
 
   &:hover {
     background: ${(props) => darken(0.1, props.theme.colors.teal)};
