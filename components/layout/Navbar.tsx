@@ -55,13 +55,13 @@ export default function Navbar() {
           </NavLinks>
 
           {/* Mobile Display */}
-          <MobileMiddleNavLinks>
+          <MobileLinks>
             {middleRoutes.map((route, key) => (
               <NavLink key={key} onClick={() => router.push(route.path)}>
                 {route.title}
               </NavLink>
             ))}
-          </MobileMiddleNavLinks>
+          </MobileLinks>
 
           {/* Display middle dropdown when smallest media */}
           <MobileNavMiddleDropdown
@@ -91,7 +91,10 @@ export default function Navbar() {
         setIsHamburgerOpen={setIsHamburgerOpen}
       />
 
-      <MobileNavMiddleLinks isMiddleSelectionOpen={isMiddleSelectionOpen} />
+      <MobileNavMiddleLinks
+        isMiddleSelectionOpen={isMiddleSelectionOpen}
+        setIsMiddleSelectionOpen={setIsMiddleSelectionOpen}
+      />
     </Fragment>
   );
 }
@@ -213,7 +216,7 @@ export const NavLink = styled.button`
   }
 `;
 
-export const MobileMiddleNavLinks = styled(NavLinks)`
+export const MobileLinks = styled(NavLinks)`
   display: flex;
 
   @media (min-width: 1200px) {

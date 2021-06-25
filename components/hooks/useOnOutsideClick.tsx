@@ -8,6 +8,10 @@ export default function useOnOutsideClick(ref: any, callback: any) {
         return;
       }
 
+      if (event.target.classList.contains('middle-dropdown')) {
+        return;
+      }
+
       // Do nothing if clicking ref's element or descendent elements
       if (!ref.current || ref.current.contains(event.target)) {
         return;
