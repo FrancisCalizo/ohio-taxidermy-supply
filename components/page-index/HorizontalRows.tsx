@@ -71,7 +71,10 @@ export default function HorizontalRow({ categoryTitle, profiles }: HorizontalRow
         onRequestClose={() => setIsModalOpen(false)}
         contentLabel="Influencer Modal"
         ariaHideApp={false}
-        style={{ overlay: { zIndex: 1000 }, content: { maxWidth: 500, margin: '0 auto' } }}
+        style={{
+          overlay: { zIndex: 1000 },
+          content: { maxWidth: 500, height: '90vh', margin: '0 auto' },
+        }}
       >
         <ModalHead>
           <button onClick={() => setIsModalOpen(false)}>X</button>
