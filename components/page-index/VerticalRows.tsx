@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Slider from 'react-slick';
 import Modal from 'react-modal';
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 import { Container, PictureContainer, Card, CardDialog, RowTitle } from 'components/utils/styled';
 import { verticalSliderProps } from 'components/utils';
@@ -101,10 +102,10 @@ export default function VerticalRow({ categoryTitle, profiles }: VerticalRowProp
             aut natus. Harum, vel nam? Obcaecati.
           </p>
 
-          <div style={{ display: 'flex' }}>
+          <ModalFooter>
             <SaveButton>Save</SaveButton>
             <ContactButton>Contact</ContactButton>
-          </div>
+          </ModalFooter>
         </ModalContent>
       </Modal>
     </Container>
@@ -114,25 +115,34 @@ export default function VerticalRow({ categoryTitle, profiles }: VerticalRowProp
 const ContactButton = styled.button`
   display: block;
   width: 100%;
-  background: #e20046;
+  background: ${(props) => props.theme.colors.teal};
   color: white;
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 50px;
   margin: 1rem 0.5rem 1rem 0;
   font-size: 1rem;
+  cursor: pointer;
+  box-shadow: ${(props) => props.theme.buttons.boxShadow};
+
+  &:hover {
+    background: ${(props) => darken(0.1, props.theme.colors.teal)};
+  }
 `;
 
 const SaveButton = styled(ContactButton)`
-  background: #f1f2f3;
-  color: #000;
-  border: 1px solid #babfc4;
+  color: #fff;
+  background: ${(props) => props.theme.colors.pink};
+
+  &:hover {
+    background: ${(props) => darken(0.1, props.theme.colors.pink)};
+  }
 `;
 
 const Industrybadge = styled.div`
-  background: #e20046;
+  background: ${(props) => props.theme.colors.teal};
   display: inline-block;
-  color: white;
+  color: #000;
   padding: 0.25rem 0.75rem;
   border-radius: 50px;
   text-align: center;
@@ -150,7 +160,7 @@ const ModalHead = styled.div`
 
   & button {
     padding: 0.5rem 0.7rem;
-    background: #ff0051;
+    background: #e20046;
     color: white;
     border: 1px solid white;
     border-radius: 50px;
@@ -165,8 +175,18 @@ const ModalContent = styled.div`
     padding: 0.5rem 1rem;
     color: white;
     text-transform: uppercase;
+    border-radius: 20px;
 
     text-align: center;
     margin: 0;
   }
+`;
+
+const ModalFooter = styled.div`
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto 0 auto 0.4rem;
 `;
