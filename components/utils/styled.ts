@@ -53,11 +53,14 @@ export const CardDialog = styled.div`
 `;
 
 export const RowTitle = styled.h2`
-  background: #e20046;
+  background: ${(props) => props.theme.colors.teal};
+  border: 2px solid ${(props) => props.theme.colors.pink};
+  box-shadow: 0px 2px 9px ${(props) => props.theme.colors.pink};
   display: inline-block;
   padding: 0.5rem 1rem;
   margin: 1rem 1rem;
   color: white;
+  border-radius: 7px;
   text-transform: uppercase;
   transform: skewX(-20deg);
 

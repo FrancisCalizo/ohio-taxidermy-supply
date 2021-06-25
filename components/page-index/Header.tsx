@@ -52,17 +52,22 @@ const Title = styled.h1`
   transform: rotate(-15deg);
   color: #fff;
   font-family: Shadows Into Light;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
 
   & > span {
     padding: 0.05rem 3rem;
     background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 3px 45px 14px ${(props) => props.theme.colors.pink};
 
     span:nth-child(1) {
       color: ${(props) => props.theme.colors.teal};
+      -webkit-text-stroke-color: transparent;
     }
 
     span:nth-child(2) {
       color: ${(props) => props.theme.colors.pink};
+      -webkit-text-stroke-color: transparent;
     }
   }
 `;
