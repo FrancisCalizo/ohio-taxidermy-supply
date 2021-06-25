@@ -38,22 +38,27 @@ export default function MobileNavMiddleDropdown({
 interface MobileNavMiddleLinksProps {
   isMiddleSelectionOpen: boolean;
   setIsMiddleSelectionOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isHamburgerOpen: boolean;
 }
 
 export function MobileNavMiddleLinks({
   isMiddleSelectionOpen,
   setIsMiddleSelectionOpen,
+  isHamburgerOpen,
 }: MobileNavMiddleLinksProps) {
   const router = useRouter();
   const ref = React.useRef();
 
-  useOnOutsideClick(ref, () => setIsMiddleSelectionOpen(false));
+  useOnOutsideClick(ref, () => setIsMiddleSelectionOpen(false), {
+    isMiddleSelectionOpen,
+    isHamburgerOpen,
+  });
 
   return (
     <div>
       <MiddleLinks ref={ref} isMiddleSelectionOpen={isMiddleSelectionOpen}>
         {middleRoutes.map((route, key) => (
-          <HamburgerLink
+          <MiddleLink
             key={key}
             onClick={() => {
               setIsMiddleSelectionOpen(false);
@@ -61,7 +66,7 @@ export function MobileNavMiddleLinks({
             }}
           >
             {route.title}
-          </HamburgerLink>
+          </MiddleLink>
         ))}
       </MiddleLinks>
     </div>
@@ -75,7 +80,7 @@ const MobileMiddleNavLinksSmall = styled.div`
     display: none;
   }
 
-  @media (min-width: 500px) {
+  @media (min-width: 501px) {
     display: none;
   }
 `;
@@ -95,12 +100,12 @@ const MiddleLinks = styled.div<{ isMiddleSelectionOpen: boolean; ref: any }>`
   color: black;
   z-index: 20;
 
-  @media (min-width: 1200px) {
+  @media (min-width: 501px) {
     display: none;
   }
 `;
 
-const HamburgerLink = styled.div`
+const MiddleLink = styled.div`
   width: 100%;
   padding: 1rem 0;
   cursor: pointer;

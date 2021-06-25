@@ -7,17 +7,21 @@ import useOnOutsideClick from 'components/hooks/useOnOutsideClick';
 
 interface MobileNavLinkProps {
   routes: any[];
+  isMiddleSelectionOpen: boolean;
   isHamburgerOpen: boolean;
   setIsHamburgerOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function MobileNavLinks(props: MobileNavLinkProps) {
-  const { routes, isHamburgerOpen, setIsHamburgerOpen } = props;
+  const { routes, isHamburgerOpen, setIsHamburgerOpen, isMiddleSelectionOpen } = props;
   const router = useRouter();
 
   const ref = useRef();
 
-  useOnOutsideClick(ref, () => setIsHamburgerOpen(false));
+  useOnOutsideClick(ref, () => setIsHamburgerOpen(false), {
+    isMiddleSelectionOpen,
+    isHamburgerOpen,
+  });
 
   return (
     <div>

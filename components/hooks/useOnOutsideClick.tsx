@@ -1,14 +1,22 @@
 import { useEffect } from 'react';
 
-export default function useOnOutsideClick(ref: any, callback: any) {
+type OpenMenus = {
+  isHamburgerOpen: boolean;
+  isMiddleSelectionOpen: boolean;
+};
+
+export default function useOnOutsideClick(ref: any, callback: any, openMenus?: OpenMenus) {
   useEffect(() => {
     const listener = (event: any) => {
-      // Adding line to fix clicking on close hamburger bug
-      if (event.target.classList.contains('burger-line')) {
+      // I was having issues with the useOnOutsideClickHandler when trying to close the two
+      // dropdowns on the nav on mobile. The issues arose when trying to close the regular
+      // hamburger while the middle was open, and vice versa. Passing in to see if the resepective
+      // menu was open and determining where the user is clicked was the option I decided to go with,
+      // which is why an optional third parameter (state of the dropdowns) is being passed.
+      if (openMenus?.isHamburgerOpen && event.target.classList.contains('burger-line')) {
         return;
       }
-
-      if (event.target.classList.contains('middle-dropdown')) {
+      if (openMenus?.isMiddleSelectionOpen && event.target.classList.contains('middle-dropdown')) {
         return;
       }
 

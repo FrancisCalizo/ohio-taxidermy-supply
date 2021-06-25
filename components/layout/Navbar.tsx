@@ -89,11 +89,13 @@ export default function Navbar() {
         routes={routes}
         isHamburgerOpen={isHamburgerOpen}
         setIsHamburgerOpen={setIsHamburgerOpen}
+        isMiddleSelectionOpen={isMiddleSelectionOpen}
       />
 
       <MobileNavMiddleLinks
         isMiddleSelectionOpen={isMiddleSelectionOpen}
         setIsMiddleSelectionOpen={setIsMiddleSelectionOpen}
+        isHamburgerOpen={isHamburgerOpen}
       />
     </Fragment>
   );
