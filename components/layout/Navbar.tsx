@@ -3,13 +3,18 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { darken, lighten } from 'polished';
-import MobileNavLinks from 'components/layout/MobileNavLinks';
+
 import { device } from 'components/utils/mediaQueries';
 import { middleRoutes, routes } from 'components/utils/routes';
+import MobileNavLinks from 'components/layout/MobileNavLinks';
+import MobileNavMiddleDropdown, {
+  MobileNavMiddleLinks,
+} from 'components/layout/MobileNavMiddleLinks';
 
 export default function Navbar() {
   const router = useRouter();
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
+  const [isMiddleSelectionOpen, setIsMiddleSelectionOpen] = useState(false);
 
   return (
     <Fragment>
@@ -58,16 +63,8 @@ export default function Navbar() {
             ))}
           </MobileMiddleNavLinks>
 
-          {/* Display One when smallest media */}
-          <MobileMiddleNavLinksSmall>
-            {middleRoutes.map((route, key) => (
-              <React.Fragment key={key}>
-                {key === 0 && (
-                  <NavLink onClick={() => router.push(route.path)}>{route.title}</NavLink>
-                )}
-              </React.Fragment>
-            ))}
-          </MobileMiddleNavLinksSmall>
+          {/* Display middle dropdown when smallest media */}
+          <MobileNavMiddleDropdown setIsMiddleSelectionOpen={setIsMiddleSelectionOpen} />
 
           <Hamburger>
             <div
@@ -90,6 +87,8 @@ export default function Navbar() {
         isHamburgerOpen={isHamburgerOpen}
         setIsHamburgerOpen={setIsHamburgerOpen}
       />
+
+      <MobileNavMiddleLinks isMiddleSelectionOpen={isMiddleSelectionOpen} />
     </Fragment>
   );
 }
@@ -121,30 +120,11 @@ const Container = styled.div`
   }
 `;
 
-const NavLinks = styled.div`
+export const NavLinks = styled.div`
   display: none;
 
   @media (min-width: 1200px) {
     display: flex;
-  }
-`;
-
-const MobileMiddleNavLinks = styled(NavLinks)`
-  display: flex;
-
-  @media (min-width: 1200px) {
-    display: none;
-  }
-
-  @media (max-width: 500px) {
-    display: none;
-  }
-`;
-
-const MobileMiddleNavLinksSmall = styled(MobileMiddleNavLinks)`
-  display: block;
-  @media (min-width: 500px) {
-    display: none;
   }
 `;
 
@@ -194,7 +174,7 @@ const Hamburger = styled.div`
   }
 `;
 
-const NavLink = styled.button`
+export const NavLink = styled.button`
   margin: 1rem 0.6rem;
   text-transform: uppercase;
   font-size: 0.9rem;
@@ -227,6 +207,18 @@ const NavLink = styled.button`
 
   &:hover {
     color: ${(props) => darken(0.1, props.theme.colors.purple)};
+  }
+`;
+
+export const MobileMiddleNavLinks = styled(NavLinks)`
+  display: flex;
+
+  @media (min-width: 1200px) {
+    display: none;
+  }
+
+  @media (max-width: 500px) {
+    display: none;
   }
 `;
 
