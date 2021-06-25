@@ -6,6 +6,7 @@ import VerticalRows from 'components/page-index/VerticalRows';
 import HorizontalRows from 'components/page-index/HorizontalRows';
 
 import { categories } from 'data/categoryList';
+import { profilesVertical, profilesHorizontal } from 'data/profiles';
 
 export default function Home() {
   return (
@@ -22,13 +23,13 @@ export default function Home() {
       {categories
         .filter((cat) => ['beautyCosmetics', 'comedy'].includes(cat.id))
         .map((cat, key) => (
-          <VerticalRows key={key} categoryTitle={cat.title} />
+          <VerticalRows key={key} categoryTitle={cat.title} profiles={profilesVertical} />
         ))}
 
       {categories
         .filter((cat) => !['beautyCosmetics', 'comedy'].includes(cat.id))
         .map((cat, key) => (
-          <HorizontalRows key={key} categoryTitle={cat.title} />
+          <HorizontalRows key={key} categoryTitle={cat.title} profiles={profilesHorizontal} />
         ))}
     </div>
   );

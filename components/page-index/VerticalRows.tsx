@@ -7,13 +7,12 @@ import styled from 'styled-components';
 import { Container, PictureContainer, Card, CardDialog, RowTitle } from 'components/utils/styled';
 import { verticalSliderProps } from 'components/utils';
 
-import { profilesVertical } from 'data/profiles';
-
 interface VerticalRowProps {
   categoryTitle: string;
+  profiles: any[];
 }
 
-export default function VerticalRow({ categoryTitle }: VerticalRowProps) {
+export default function VerticalRow({ categoryTitle, profiles }: VerticalRowProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [influencerData, setInfluencerData] = useState<any>(null);
 
@@ -24,7 +23,7 @@ export default function VerticalRow({ categoryTitle }: VerticalRowProps) {
       </RowTitle>
 
       <Slider {...verticalSliderProps}>
-        {profilesVertical.map((influencer, key) => (
+        {profiles.map((influencer, key) => (
           <PictureContainer
             key={key}
             onClick={() => {

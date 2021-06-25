@@ -5,20 +5,19 @@ import Slider from 'react-slick';
 import { Container, PictureContainer, Card, CardDialog, RowTitle } from 'components/utils/styled';
 import { horizontalSliderProps } from 'components/utils';
 
-import { profilesHorizontal } from 'data/profiles';
-
 interface HorizontalRowProps {
   categoryTitle: string;
+  profiles: any[];
 }
 
-export default function HorizontalRow({ categoryTitle }: HorizontalRowProps) {
+export default function HorizontalRow({ categoryTitle, profiles }: HorizontalRowProps) {
   return (
     <Container>
       <RowTitle>
         <span>{categoryTitle}</span>
       </RowTitle>
       <Slider {...horizontalSliderProps}>
-        {profilesHorizontal.map((influencer, key) => (
+        {profiles.map((influencer, key) => (
           <PictureContainer key={key}>
             <Card>
               <Image
@@ -43,7 +42,7 @@ export default function HorizontalRow({ categoryTitle }: HorizontalRowProps) {
                 </div>
                 <div>
                   <h5 style={{ color: 'gray', margin: '.25rem .1rem' }}>
-                    {influencer.industry.map((i, idx) => (
+                    {influencer.industry.map((i: string, idx: number) => (
                       <span key={idx} style={{ textTransform: 'capitalize' }}>
                         {i}
                       </span>
