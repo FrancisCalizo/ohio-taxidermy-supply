@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { darken } from 'polished';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useAuth } from 'components/AuthContext';
 
-export default function Login() {
+export default function Signup() {
   const { user, TEMP_LOGIN } = useAuth();
   const router = useRouter();
 
@@ -40,16 +39,13 @@ export default function Login() {
         <h1>Log In</h1>
         <p>
           {/* eslint-disable-next-line react/no-unescaped-entities */}
-          Don't have an account?{' '}
-          <Link href="/signup">
-            <Signup>Sign Up</Signup>
-          </Link>
+          Don't have an account? <Link href="/signup">Sign Up</Link>
         </p>
 
         <Input
           type="text"
-          id="login"
-          name="login"
+          id="username"
+          name="username"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -64,9 +60,9 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <LoginButton type="submit" onClick={handleSubmit}>
-          Login
-        </LoginButton>
+        <SignupButton type="submit" onClick={handleSubmit}>
+          Signup
+        </SignupButton>
       </LoginBlockContainer>
     </MainContainer>
   );
@@ -145,7 +141,7 @@ const Input = styled.input`
   border: 1px solid lightgray;
 `;
 
-const LoginButton = styled.button`
+const SignupButton = styled.button`
   display: block;
   font-size: 18px;
   padding: 0.5rem;
@@ -192,16 +188,5 @@ const LogoContainer = styled.h3`
       top: 10px;
       font-size: 22px;
     }
-  }
-`;
-
-const Signup = styled.a`
-  color: ${(props) => props.theme.colors.teal};
-  font-weight: bold;
-  font-size: 18px;
-  cursor: pointer;
-
-  &:hover {
-    color: ${(props) => darken(0.1, props.theme.colors.teal)} !important;
   }
 `;
