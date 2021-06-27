@@ -71,10 +71,19 @@ export default function Signup() {
           <VerticalLine />
           <InfoContainer>
             <IconCircle>
-              <FontAwesomeIcon icon={faUserTie} style={{ fontSize: 24 }} />
+              <FontAwesomeIcon
+                icon={signupType === 'influencer' ? faUserTie : faPortrait}
+                style={{ fontSize: 24 }}
+              />
             </IconCircle>
-            <h3>Are you a Client/Sponser?</h3>
-            <button>Register here</button>
+            <h3>Are you {signupType === 'influencer' ? 'a Client/Sponser' : 'an Influencer'}?</h3>
+            <button
+              onClick={() =>
+                setSignupType((type) => (type === 'influencer' ? 'client' : 'influencer'))
+              }
+            >
+              Register here
+            </button>
             <p style={{ marginTop: '1.5rem !important' }}>
               {/* eslint-disable-next-line react/no-unescaped-entities */}
               Already have an account? <Link href="/signup">Login Here</Link>
@@ -269,6 +278,11 @@ const SignupButton = styled.button`
   text-transform: uppercase;
   font-weight: 700;
   border-radius: 50px;
+  cursor: pointer;
+
+  &:hover {
+    background: ${(props) => darken(0.03, props.theme.colors.pink)};
+  }
 `;
 
 const LogoContainer = styled.h3`
