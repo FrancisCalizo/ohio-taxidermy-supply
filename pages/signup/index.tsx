@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { darken } from 'polished';
 import Link from 'next/link';
 import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserTie, faPortrait } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
 import { useAuth } from 'components/AuthContext';
 
@@ -11,6 +14,7 @@ export default function Signup() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [signupType, setSignupType] = useState<'influencer' | 'client'>('influencer');
 
   const handleSubmit = () => {
     // TODO: Use AuthContext to handle user auth
@@ -36,37 +40,112 @@ export default function Signup() {
           </div>
         </LogoContainer>
 
-        <h1>Log In</h1>
-        <p>
-          {/* eslint-disable-next-line react/no-unescaped-entities */}
-          Don't have an account? <Link href="/signup">Sign Up</Link>
-        </p>
+        <h1>
+          Register as an <span style={{ textTransform: 'capitalize' }}>{signupType}</span>
+        </h1>
 
-        <Input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        <FlexContainer>
+          <div>
+            <Input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
 
-        <Input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+            <Input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-        <SignupButton type="submit" onClick={handleSubmit}>
-          Signup
-        </SignupButton>
+            <SignupButton type="submit" onClick={handleSubmit}>
+              Signup
+            </SignupButton>
+          </div>
+          <VerticalLine />
+          <InfoContainer>
+            <IconCircle>
+              <FontAwesomeIcon icon={faUserTie} style={{ fontSize: 24 }} />
+            </IconCircle>
+            <h3>Are you a Client/Sponser?</h3>
+            <button>Register here</button>
+            <p style={{ marginTop: '1.5rem !important' }}>
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              Already have an account? <Link href="/signup">Login Here</Link>
+            </p>
+          </InfoContainer>
+        </FlexContainer>
       </LoginBlockContainer>
     </MainContainer>
   );
 }
+
+const VerticalLine = styled.div`
+  height: 200px;
+  border-right: 2px dashed lightgray;
+  width: 1px !important;
+  margin: 0 20px;
+
+  @media (max-width: 630px) {
+    display: none;
+  }
+`;
+
+const IconCircle = styled.div`
+  border: 2px solid pink;
+  display: inline-block;
+  padding: 0.4rem 0.5rem;
+  border-radius: 50px;
+  color: pink;
+  margin-bottom: 0.25rem;
+`;
+
+const InfoContainer = styled.div`
+  text-align: center;
+
+  h3 {
+    margin: 0.25rem 0 0.5rem;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  button {
+    border: none;
+    background: transparent;
+    color: ${(props) => props.theme.colors.pink};
+    cursor: pointer;
+    font-size: 16px;
+
+    &:hover {
+      color: ${(props) => darken(0.1, props.theme.colors.pink)} !important;
+    }
+  }
+
+  & > p {
+    margin: 2rem 0 !important;
+    color: rgba(0, 0, 0, 0.7) !important;
+    font-size: 18px !important;
+
+    & > a {
+      display: block;
+      color: ${(props) => props.theme.colors.pink};
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 400 !important;
+      text-decoration: none !important;
+      margin-top: 8px;
+
+      &:hover {
+        color: ${(props) => darken(0.1, props.theme.colors.pink)} !important;
+      }
+    }
+  }
+`;
 
 const MainContainer = styled.div`
   height: 100vh;
@@ -101,16 +180,23 @@ const MainContainer = styled.div`
 const LoginBlockContainer = styled.div`
   background-color: #fff;
   width: 100%;
-  max-width: 500px;
+  max-width: 1000px;
   border-radius: 5px;
   max-height: 600px;
   padding: 3rem 2rem 5rem;
   margin: 0 1rem;
+  overflow-y: scroll;
 
   h1 {
     text-align: center;
-    margin: 0;
+    margin: 0 0 2rem;
     color: rgba(0, 0, 0, 0.6);
+    font-size: 30px;
+    font-weight: 600;
+
+    @media (max-width: 630px) {
+      margin-bottom: 0.5rem;
+    }
   }
 
   p {
@@ -129,6 +215,29 @@ const LoginBlockContainer = styled.div`
       }
     }
   }
+
+  @media (max-width: 630px) {
+    padding: 1.5rem 0.5rem 1.5rem;
+  }
+`;
+
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+
+  & > div {
+    width: 50%;
+
+    @media (max-width: 630px) {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  @media (max-width: 630px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Input = styled.input`
@@ -139,6 +248,10 @@ const Input = styled.input`
   width: 100%;
   max-width: 300px;
   border: 1px solid lightgray;
+
+  @media (max-width: 630px) {
+    max-width: none !important;
+  }
 `;
 
 const SignupButton = styled.button`
@@ -183,7 +296,7 @@ const LogoContainer = styled.h3`
       color: ${(props) => props.theme.colors.pink};
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 630px) {
       left: -27px;
       top: 10px;
       font-size: 22px;
