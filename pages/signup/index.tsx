@@ -195,6 +195,7 @@ const LoginBlockContainer = styled.div`
     font-weight: 600;
 
     @media (max-width: 630px) {
+      font-size: 24px;
       margin-bottom: 0.5rem;
     }
   }
@@ -217,7 +218,7 @@ const LoginBlockContainer = styled.div`
   }
 
   @media (max-width: 630px) {
-    padding: 1.5rem 0.5rem 1.5rem;
+    padding: 1.5rem 1rem 1.5rem;
   }
 `;
 
@@ -299,7 +300,7 @@ const LogoContainer = styled.h3`
     @media (max-width: 630px) {
       left: -27px;
       top: 10px;
-      font-size: 22px;
+      font-size: 26px;
     }
   }
 `;
