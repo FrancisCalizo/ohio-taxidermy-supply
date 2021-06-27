@@ -73,40 +73,42 @@ export default function VerticalRow({ categoryTitle, profiles }: VerticalRowProp
         ariaHideApp={false}
         style={{
           overlay: { zIndex: 1000 },
-          content: { maxWidth: 400, height: '90vh', margin: '0 auto' },
+          content: { maxWidth: 400, height: '90vh', margin: '0 auto', paddingBottom: '35px' },
         }}
       >
-        <ModalHead>
-          <button onClick={() => setIsModalOpen(false)}>X</button>
-        </ModalHead>
+        <div style={{ position: 'relative' }}>
+          <ModalHead>
+            <button onClick={() => setIsModalOpen(false)}>X</button>
+          </ModalHead>
 
-        <Image
-          src={`/images/influencer-index/${influencerData?.pic}`}
-          alt="Picture of the author"
-          layout="responsive"
-          width={310}
-          height={440}
-          quality={50}
-        />
+          <Image
+            src={`/images/influencer-index/${influencerData?.pic}`}
+            alt="Picture of the author"
+            layout="responsive"
+            width={310}
+            height={440}
+            quality={50}
+          />
 
-        <ModalContent>
-          <h4>{influencerData?.name}</h4>
+          <ModalContent>
+            <h4>{influencerData?.name}</h4>
 
-          {influencerData?.industry.map((ind: any, key: any) => (
-            <Industrybadge key={key}>{ind}</Industrybadge>
-          ))}
+            {influencerData?.industry.map((ind: any, key: any) => (
+              <Industrybadge key={key}>{ind}</Industrybadge>
+            ))}
 
-          <p style={{ fontSize: 12 }}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui fuga soluta porro voluptas
-            nesciunt excepturi reprehenderit quod aliquid expedita! Vero tenetur minima quae dolorum
-            aut natus. Harum, vel nam? Obcaecati.
-          </p>
+            <p style={{ fontSize: 12 }}>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui fuga soluta porro
+              voluptas nesciunt excepturi reprehenderit quod aliquid expedita! Vero tenetur minima
+              quae dolorum aut natus. Harum, vel nam? Obcaecati.
+            </p>
 
-          <ModalFooter>
-            <SaveButton>Save</SaveButton>
-            <ContactButton>Contact</ContactButton>
-          </ModalFooter>
-        </ModalContent>
+            <ModalFooter>
+              <SaveButton>Save</SaveButton>
+              <ContactButton>Contact</ContactButton>
+            </ModalFooter>
+          </ModalContent>
+        </div>
       </Modal>
     </Container>
   );
@@ -164,6 +166,11 @@ const ModalHead = styled.div`
     color: white;
     border: 1px solid white;
     border-radius: 50px;
+    cursor: pointer;
+
+    &:hover {
+      background: ${darken(0.1, '#e20046')};
+    }
   }
 `;
 
