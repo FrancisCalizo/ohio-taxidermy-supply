@@ -6,10 +6,10 @@ import { darken, lighten } from 'polished';
 
 import { device } from 'components/utils/mediaQueries';
 import { middleRoutes, routes } from 'components/utils/routes';
-import MobileNavLinks from 'components/layout/MobileNavLinks';
+import MobileNavLinks from 'components/layout/nav/MobileNavLinks';
 import MobileNavMiddleDropdown, {
   MobileNavMiddleLinks,
-} from 'components/layout/MobileNavMiddleLinks';
+} from 'components/layout/nav/MobileNavMiddleLinks';
 
 export default function Navbar() {
   const router = useRouter();

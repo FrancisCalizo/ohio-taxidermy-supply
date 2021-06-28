@@ -5,7 +5,7 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { darken, lighten } from 'polished';
 import { useRouter } from 'next/router';
 
-import { NavLink } from 'components/layout/Navbar';
+import { NavLink } from 'components/layout/nav/Navbar';
 import { theme } from 'components/Theme';
 import { middleRoutes } from 'components/utils/routes';
 import useOnOutsideClick from 'components/hooks/useOnOutsideClick';

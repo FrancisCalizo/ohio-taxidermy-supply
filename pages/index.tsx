@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import Navbar from 'components/layout/Navbar';
+import Navbar from 'components/layout/nav/Navbar';
 import Header from 'components/page-index/Header';
 import VerticalRows from 'components/page-index/VerticalRows';
 import HorizontalRows from 'components/page-index/HorizontalRows';
