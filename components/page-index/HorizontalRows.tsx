@@ -177,7 +177,7 @@ const ModalHead = styled.div`
 `;
 
 const ModalContent = styled.div`
-  padding: 1rem;
+  padding: 1rem 1rem 4rem;
 
   & h4 {
     background: #000;
