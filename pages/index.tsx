@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import Navbar from 'components/layout/nav/Navbar';
+import SiteLayout from 'components/layout/SiteLayout';
 import Header from 'components/page-index/Header';
 import VerticalRows from 'components/page-index/VerticalRows';
 import HorizontalRows from 'components/page-index/HorizontalRows';
@@ -17,7 +17,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
       <Header />
 
       {categories
@@ -34,3 +33,5 @@ export default function Home() {
     </div>
   );
 }
+
+Home.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;

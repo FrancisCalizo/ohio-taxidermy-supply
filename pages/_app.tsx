@@ -7,11 +7,13 @@ import '../styles/globals.css';
 import { theme } from 'components/Theme';
 
 function MyApp({ Component, pageProps }: any) {
+  const getLayout = Component.getLayout || ((page: any) => <>{page}</>);
+
   return (
     <ThemeProvider theme={theme}>
       <AuthProvider>
         {/* <ProtectRoute> */}
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
         {/* </ProtectRoute> */}
       </AuthProvider>
     </ThemeProvider>

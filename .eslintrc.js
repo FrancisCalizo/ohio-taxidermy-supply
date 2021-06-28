@@ -39,6 +39,7 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': ['warn'],
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
+        'react/display-name': 'off',
 
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         'prettier/prettier': ['error', {}, { usePrettierrc: true }], // Includes .prettierrc.js rules
