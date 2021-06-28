@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export default function Header() {
   return (
-    <div style={{ marginTop: 83 }}>
+    <div>
       <Slider
         infinite={true}
         speed={500}

@@ -5,7 +5,7 @@ export default function SiteLayout({ children }: any) {
   return (
     <div>
       <Navbar />
-      {children}
+      <div style={{ marginTop: 83 }}>{children}</div>
     </div>
   );
 }
