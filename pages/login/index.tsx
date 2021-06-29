@@ -143,6 +143,7 @@ const Input = styled.input`
   width: 100%;
   max-width: 300px;
   border: 1px solid lightgray;
+  border-radius: 4px;
 `;
 
 const LoginButton = styled.button`

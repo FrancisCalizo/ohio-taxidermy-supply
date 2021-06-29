@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faBars } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
@@ -8,12 +9,14 @@ import { darken } from 'polished';
 import MobileSidebar from 'components/layout/dashboard/MobileSidebar';
 
 export default function Topbar() {
+  const router = useRouter();
+
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
 
   return (
     <TopbarContainer>
       <div>
-        <LogoContainer>
+        <LogoContainer onClick={() => router.push('/')}>
           <Image src={`/circle-gradient.png`} alt="logo" width={30} height={30} quality={50} />
           <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>CastMeApp</div>
         </LogoContainer>
@@ -80,6 +83,7 @@ export const LogoContainer = styled.h4`
   color: white;
   cursor: pointer;
   border: 1px solid #990030;
+  cursor: pointer;
 
   &:hover {
     background: ${darken(0.05, '#e20046')};

@@ -20,7 +20,7 @@ export default function Navbar() {
     <Fragment>
       <Nav isHamburgerOpen={isHamburgerOpen}>
         <Container>
-          <LogoContainer>
+          <LogoContainer onClick={() => router.push('/')}>
             <Image src={`/circle-gradient.png`} alt="logo" width={55} height={55} quality={50} />
             <div className="title" style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>
               <span>Cast</span>
@@ -268,6 +268,7 @@ export const LogoContainer = styled.h3`
   border: 1px solid ${(props) => props.theme.colors.pink};
   transform: none;
   border-radius: 100px;
+  cursor: pointer;
 
   & .title {
     color: gray;
