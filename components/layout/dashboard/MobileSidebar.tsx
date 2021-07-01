@@ -57,7 +57,7 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
       textAlign: 'center',
     },
     bmCross: {
-      background: '#f00',
+      background: '#EDBECD',
     },
   };
 
@@ -67,10 +67,15 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
       onStateChange={(status: any) => setIsBurgerOpen(status.isOpen)}
       isOpen={isBurgerOpen}
     >
-      <SidebarLogoContainer>
-        <Image src={`/circle-gradient.png`} alt="logo" width={30} height={30} quality={50} />
-        <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>CastMeApp</div>
-      </SidebarLogoContainer>
+      <LogoContainer onClick={() => router.push('/')}>
+        <Image src={`/circle-gradient.png`} alt="logo" width={45} height={45} quality={50} />
+        <div className="title" style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>
+          <span>Cast</span>
+          <span>Me</span>
+          <span>App</span>
+        </div>
+      </LogoContainer>
+
       {LINKS.map((link: string, key: number) => (
         <BurgerContainer
           key={key}
@@ -110,17 +115,36 @@ const BurgerContainer = styled.div<{ isCurrent: boolean }>`
   }
 `;
 
-const SidebarLogoContainer = styled.h4`
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  background: #e20046;
-  text-transform: lowercase;
-  border-radius: 2px;
-  padding: 0.5rem 1rem;
+export const LogoContainer = styled.h3`
+  position: relative;
   margin: 3rem 0 !important;
-  color: white;
+  display: flex;
+  align-items: center;
+  border: 1px solid ${(props) => props.theme.colors.pink};
+  transform: none;
+  border-radius: 100px;
   cursor: pointer;
-  border: 1px solid #990030;
-  width: 210px !important;
+  width: 55px !important;
+
+  & .title {
+    color: gray;
+    position: absolute;
+    left: -45px;
+    top: 5px;
+    font-size: 24px;
+
+    & > span:nth-child(1) {
+      color: ${(props) => props.theme.colors.teal};
+    }
+    & > span:nth-child(2) {
+      color: #fff;
+    }
+    & > span:nth-child(3) {
+      color: ${(props) => props.theme.colors.pink};
+    }
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
