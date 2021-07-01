@@ -28,7 +28,7 @@ const MainContainer = styled.div`
 
   @media (min-width: 769px) {
     margin-left: 260px;
-    margin-top: 73px;
+    margin-top: 72px;
   }
 `;
 
