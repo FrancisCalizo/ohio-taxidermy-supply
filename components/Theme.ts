@@ -1,4 +1,24 @@
+import { css } from 'styled-components';
+
 export const theme = {
+  global: {
+    setFocus: (color: string) => {
+      return css`
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 8px 3px ${color};
+        }
+      `;
+    },
+    setInputFocus: (color: string) => {
+      return css`
+        &:focus {
+          outline: none;
+          border-color: ${color};
+        }
+      `;
+    },
+  },
   colors: {
     purple: '#AEB5D8',
     paleBlue: '#CCD7EA',

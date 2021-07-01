@@ -93,6 +93,8 @@ const Input = styled.input`
   width: 100%;
   border: 1px solid lightgray;
   border-radius: 4px;
+
+  ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.pink))}
 `;
 
 const TextArea = styled.textarea<{ rows: number }>`
@@ -103,6 +105,8 @@ const TextArea = styled.textarea<{ rows: number }>`
   margin: 1rem auto;
   border: 1px solid lightgray;
   border-radius: 4px;
+
+  ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.pink))}
 `;
 
 const FormContainer = styled.div`
@@ -149,6 +153,8 @@ const SaveButton = styled.button`
   &:hover {
     background: ${darken(0.1, '#f2869b')};
   }
+
+  ${(props) => props.theme.global.setFocus(props.theme.colors.pink)}
 `;
 
 index.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
