@@ -19,14 +19,6 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
 
   const [currentRoute, setCurrentRoute] = useState<any>(null);
 
-  const getBurgerOpen = (status: any) => {
-    setIsBurgerOpen(status.isOpen);
-  };
-
-  // const handleClick = () => {
-  //   setIsBurgerOpen(false);
-  // };
-
   useEffect(() => {
     setCurrentRoute(getPathName(router.pathname, 'dashboard/'));
   }, [router.pathname]);
@@ -70,7 +62,11 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
   };
 
   return (
-    <Menu styles={menuStyles} onStateChange={getBurgerOpen} isOpen={isBurgerOpen}>
+    <Menu
+      styles={menuStyles}
+      onStateChange={(status: any) => setIsBurgerOpen(status.isOpen)}
+      isOpen={isBurgerOpen}
+    >
       <SidebarLogoContainer>
         <Image src={`/circle-gradient.png`} alt="logo" width={30} height={30} quality={50} />
         <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>CastMeApp</div>
