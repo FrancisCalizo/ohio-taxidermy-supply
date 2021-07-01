@@ -27,11 +27,6 @@ export default function Topbar() {
         <MenuContainer>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <FontAwesomeIcon icon={faBars} style={{ fontSize: 30 }} />
-
-            <LogoContainerMobile>
-              <Image src={`/circle-gradient.png`} alt="logo" width={30} height={30} quality={50} />
-              <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>CastMeApp</div>
-            </LogoContainerMobile>
           </div>
 
           <MobileSidebar setIsBurgerOpen={setIsBurgerOpen} isBurgerOpen={isBurgerOpen} />
@@ -101,27 +96,9 @@ export const LogoContainer = styled.h3`
     & > span:nth-child(3) {
       color: ${(props) => props.theme.colors.pink};
     }
-
-    @media (max-width: 600px) {
-      left: -27px;
-      top: 10px;
-      font-size: 22px;
-    }
-  }
-`;
-
-const LogoContainerMobile = styled(LogoContainer)`
-  @media (min-width: 768px) {
-    display: none;
   }
 
-  @media (max-width: 767px) {
-    display: flex;
-    padding: 0.25rem 0.75rem;
-    margin: 0 0 0 1rem;
-  }
-
-  @media (max-width: 560px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;

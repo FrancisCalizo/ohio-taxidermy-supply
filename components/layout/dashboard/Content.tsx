@@ -23,8 +23,8 @@ export default function Content({ children }: any) {
 
 const MainContainer = styled.div`
   background: #d9d9d9;
-  margin-top: 65px;
   padding: 1rem;
+  margin-top: 61px;
 
   @media (min-width: 769px) {
     margin-left: 260px;
