@@ -78,7 +78,7 @@ export default function VerticalRow({ categoryTitle, profiles }: VerticalRowProp
       >
         <div style={{ position: 'relative' }}>
           <ModalHead>
-            <button onClick={() => setIsModalOpen(false)}>X</button>
+            <CloseButton onClick={() => setIsModalOpen(false)}>X</CloseButton>
           </ModalHead>
 
           <Image
@@ -130,6 +130,8 @@ const ContactButton = styled.button`
   &:hover {
     background: ${(props) => darken(0.1, props.theme.colors.teal)};
   }
+
+  ${(props) => props.theme.global.setFocus(props.theme.colors.teal)}
 `;
 
 const SaveButton = styled(ContactButton)`
@@ -139,6 +141,8 @@ const SaveButton = styled(ContactButton)`
   &:hover {
     background: ${(props) => darken(0.1, props.theme.colors.pink)};
   }
+
+  ${(props) => props.theme.global.setFocus(props.theme.colors.pink)}
 `;
 
 const Industrybadge = styled.div`
@@ -159,19 +163,21 @@ const ModalHead = styled.div`
   right: 7px;
   margin-bottom: 1rem;
   z-index: 1;
+`;
 
-  & button {
-    padding: 0.5rem 0.7rem;
-    background: #e20046;
-    color: white;
-    border: 1px solid white;
-    border-radius: 50px;
-    cursor: pointer;
+const CloseButton = styled.button`
+  cursor: pointer;
+  padding: 0.5rem 0.7rem;
+  background: #ff0051;
+  color: white;
+  border: 1px solid white;
+  border-radius: 50px;
 
-    &:hover {
-      background: ${darken(0.1, '#e20046')};
-    }
+  &:hover {
+    background: ${darken(0.1, '#e20046')};
   }
+
+  ${(props) => props.theme.global.setFocus('#e20046')}
 `;
 
 const ModalContent = styled.div`

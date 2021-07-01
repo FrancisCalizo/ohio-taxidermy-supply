@@ -216,6 +216,8 @@ export const NavLink = styled.button`
   &:hover {
     color: ${(props) => darken(0.1, props.theme.colors.purple)};
   }
+
+  ${(props) => props.theme.global.setFocus(props.theme.colors.purple)}
 `;
 
 export const MobileLinks = styled(NavLinks)`
@@ -249,6 +251,8 @@ const LoginButton = styled.button`
     background: ${(props) => lighten(0.03, props.theme.colors.pink)};
     color: #fff;
   }
+
+  ${(props) => props.theme.global.setFocus(props.theme.colors.pink)}
 `;
 
 const ContactButton = styled(LoginButton)`

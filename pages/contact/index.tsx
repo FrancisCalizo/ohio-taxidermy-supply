@@ -148,7 +148,7 @@ const SaveButton = styled.button`
   margin: 1rem 0.5rem 1rem 0;
   font-size: 1.3rem;
   cursor: pointer;
-  box-shadow: #f2869b;
+  box-shadow: ${(props) => props.theme.button.boxShadow};
 
   &:hover {
     background: ${darken(0.1, '#f2869b')};
