@@ -1,9 +1,12 @@
 import React from 'react';
 
+import DashboardLayout from 'components/layout/dashboard/DashboardLayout';
+import OverviewComponent from 'components/pages/dashboard/overview';
+
 export default function Discover() {
   return (
-    <>
-      <h1>Discover Stuff</h1>
-    </>
+    <DashboardLayout>
+      <OverviewComponent />
+    </DashboardLayout>
   );
 }
