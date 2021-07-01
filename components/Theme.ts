@@ -11,4 +11,8 @@ export const theme = {
   button: {
     boxShadow: `0px 4px 4px rgba(0, 0, 0, 0.4)`,
   },
+  input: {
+    fontSize: '1rem',
+    padding: '.75rem',
+  },
 };
