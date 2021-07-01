@@ -137,13 +137,15 @@ const LoginBlockContainer = styled.div`
 
 const Input = styled.input`
   display: block;
-  font-size: 18px;
-  padding: 0.5rem;
+  font-size: ${(props) => props.theme.input.fontSize};
+  padding: ${(props) => props.theme.input.padding};
   margin: 1rem auto;
   width: 100%;
   max-width: 300px;
   border: 1px solid lightgray;
   border-radius: 4px;
+
+  ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.pink))}
 `;
 
 const LoginButton = styled.button`
@@ -160,6 +162,8 @@ const LoginButton = styled.button`
   text-transform: uppercase;
   font-weight: 700;
   border-radius: 50px;
+
+  ${(props) => props.theme.global.setFocus(props.theme.colors.pink)}
 `;
 
 const LogoContainer = styled.h3`

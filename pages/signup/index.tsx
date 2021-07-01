@@ -252,8 +252,8 @@ const FlexContainer = styled.div`
 
 const Input = styled.input`
   display: block;
-  font-size: 18px;
-  padding: 0.5rem;
+  font-size: ${(props) => props.theme.input.fontSize};
+  padding: ${(props) => props.theme.input.padding};
   margin: 1rem auto;
   width: 100%;
   max-width: 300px;
@@ -263,6 +263,8 @@ const Input = styled.input`
   @media (max-width: 630px) {
     max-width: none !important;
   }
+
+  ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.pink))}
 `;
 
 const SignupButton = styled.button`
@@ -284,6 +286,8 @@ const SignupButton = styled.button`
   &:hover {
     background: ${(props) => darken(0.03, props.theme.colors.pink)};
   }
+
+  ${(props) => props.theme.global.setFocus(props.theme.colors.pink)}
 `;
 
 const LogoContainer = styled.h3`
