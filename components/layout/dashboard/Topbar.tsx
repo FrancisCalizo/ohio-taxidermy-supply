@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faBars } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { darken } from 'polished';
 
 import MobileSidebar from 'components/layout/dashboard/MobileSidebar';
 
@@ -17,8 +16,12 @@ export default function Topbar() {
     <TopbarContainer>
       <div>
         <LogoContainer onClick={() => router.push('/')}>
-          <Image src={`/circle-gradient.png`} alt="logo" width={30} height={30} quality={50} />
-          <div style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>CastMeApp</div>
+          <Image src={`/circle-gradient.png`} alt="logo" width={45} height={45} quality={50} />
+          <div className="title" style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>
+            <span>Cast</span>
+            <span>Me</span>
+            <span>App</span>
+          </div>
         </LogoContainer>
 
         <MenuContainer>
@@ -72,25 +75,38 @@ const MenuContainer = styled.div`
   }
 `;
 
-export const LogoContainer = styled.h4`
+export const LogoContainer = styled.h3`
+  position: relative;
+  margin: 0 0.85rem 0 2rem;
   display: flex;
   align-items: center;
-  background: #e20046;
-  text-transform: lowercase;
-  border-radius: 2px;
-  padding: 0.5rem 1rem;
-  margin: 0 0 0 0.4rem;
-  color: white;
-  cursor: pointer;
-  border: 1px solid #990030;
+  border: 1px solid ${(props) => props.theme.colors.pink};
+  transform: none;
+  border-radius: 100px;
   cursor: pointer;
 
-  &:hover {
-    background: ${darken(0.05, '#e20046')};
-  }
+  & .title {
+    color: gray;
+    position: absolute;
+    left: -48px;
+    top: 5px;
+    font-size: 24px;
 
-  @media (max-width: 768px) {
-    display: none;
+    & > span:nth-child(1) {
+      color: ${(props) => props.theme.colors.teal};
+    }
+    & > span:nth-child(2) {
+      color: #fff;
+    }
+    & > span:nth-child(3) {
+      color: ${(props) => props.theme.colors.pink};
+    }
+
+    @media (max-width: 600px) {
+      left: -27px;
+      top: 10px;
+      font-size: 22px;
+    }
   }
 `;
 
