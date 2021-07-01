@@ -92,7 +92,7 @@ const Li = styled.li<{ isCurrent: boolean }>`
   transition: all 0.1s ease-out;
   display: flex;
   align-items: center;
-  background: ${(props) => (props.isCurrent ? '#e20046' : 'transparent')};
+  background: ${(props) => (props.isCurrent ? props.theme.colors.teal : 'transparent')};
   color: ${(props) => (props.isCurrent ? '#fff' : 'inherit')};
 
   & svg {
@@ -101,15 +101,12 @@ const Li = styled.li<{ isCurrent: boolean }>`
   }
 
   &:hover {
-    background: ${lighten(0.45, '#e20046')};
+    background: ${(props) => lighten(0.075, props.theme.colors.teal)};
     cursor: pointer;
-
-    & a {
-      color: #000;
-    }
+    color: #fff;
 
     & svg {
-      color: #e20046 !important;
+      color: #fff !important;
     }
   }
 
