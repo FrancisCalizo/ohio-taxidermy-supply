@@ -78,7 +78,14 @@ export default function HorizontalRow({ categoryTitle, profiles }: HorizontalRow
           }}
         >
           <ModalHead>
-            <CloseButton onClick={() => setIsModalOpen(false)}>X</CloseButton>
+            <CloseButton
+              onClick={(e) => {
+                e.preventDefault();
+                setIsModalOpen(false);
+              }}
+            >
+              X
+            </CloseButton>
           </ModalHead>
 
           <Image

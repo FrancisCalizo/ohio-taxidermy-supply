@@ -78,7 +78,14 @@ export default function VerticalRow({ categoryTitle, profiles }: VerticalRowProp
       >
         <div style={{ position: 'relative' }}>
           <ModalHead>
-            <CloseButton onClick={() => setIsModalOpen(false)}>X</CloseButton>
+            <CloseButton
+              onClick={(e) => {
+                e.preventDefault();
+                setIsModalOpen(false);
+              }}
+            >
+              X
+            </CloseButton>
           </ModalHead>
 
           <Image
