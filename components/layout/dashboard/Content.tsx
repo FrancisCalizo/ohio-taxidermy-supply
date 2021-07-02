@@ -22,7 +22,7 @@ export default function Content({ children }: any) {
 }
 
 const MainContainer = styled.div`
-  background: #d9d9d9;
+  background: #f1f2f6;
   padding: 1rem;
   margin-top: 61px;
 

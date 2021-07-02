@@ -36,7 +36,7 @@ export default function Topbar() {
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div>
           John Stamos
-          <p style={{ margin: '0 0 0 1px', fontSize: 11, color: 'darkgray' }}>Marketing Manager</p>
+          <p style={{ margin: '0 0 0 1px', fontSize: 11, color: '#fff' }}>Marketing Manager</p>
         </div>
         <FontAwesomeIcon icon={faUserCircle} style={{ fontSize: 36, marginLeft: '1rem' }} />
       </div>
@@ -51,8 +51,14 @@ const TopbarContainer = styled.div`
   z-index: 100;
   text-transform: uppercase;
   font-size: 1.2rem;
-  background: #fff;
-  border-bottom: 1px solid #ddd;
+  background: linear-gradient(
+    0deg,
+    rgba(125, 140, 222, 1) 0%,
+    rgba(149, 160, 214, 1) 48%,
+    rgba(156, 166, 215, 1) 100%
+  );
+
+  border-bottom: 2px solid ${(props) => props.theme.colors.pink};
   transition: all 500ms ease-in-out;
   display: flex;
   justify-content: space-between;
@@ -75,7 +81,7 @@ export const LogoContainer = styled.h3`
   margin: 0 0.85rem 0 2rem;
   display: flex;
   align-items: center;
-  border: 1px solid ${(props) => props.theme.colors.pink};
+  border: 1px solid white;
   transform: none;
   border-radius: 100px;
   cursor: pointer;

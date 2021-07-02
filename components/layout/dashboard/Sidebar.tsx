@@ -60,7 +60,7 @@ export default function Sidebar() {
 }
 
 export const SidebarContainer = styled.div`
-  background: #f2f2f2;
+  background: #fff;
   display: flex;
   flex-direction: column;
   position: fixed;
