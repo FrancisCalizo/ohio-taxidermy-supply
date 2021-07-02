@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 import SiteLayout from 'components/layout/SiteLayout';
 
@@ -10,7 +11,7 @@ export default function Talent() {
 
   useEffect(() => {
     (async function fetchRandomImages() {
-      const res = await axios.get('https://randomuser.me/api/?inc=picture&results=50');
+      const res = await axios.get('https://randomuser.me/api/?inc=picture&results=52');
 
       setRandomProfilePictures(res.data.results.map((res: any) => res.picture.medium));
     })();
@@ -18,9 +19,8 @@ export default function Talent() {
 
   return (
     <MainContainer>
-      <h1>The Talent</h1>
       <GridContainer>
-        {randomProfilePictures.map((talent, key) => (
+        {randomProfilePictures.map((_, key) => (
           <TalentCard key={key}>
             <CardHeader>
               <Image
@@ -32,6 +32,33 @@ export default function Talent() {
               />
               <h3 className="handle">@theGreatWon23</h3>
             </CardHeader>
+            <CardContent>
+              <p className="description">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta iure rerum
+                accusamus adipisci et nesciunt voluptates, laudantium quam corrupti iste.
+              </p>
+
+              <div className="statistics">
+                <div>
+                  <h3>220K</h3>
+                  <p>Followers</p>
+                </div>
+                <div>
+                  <h3>2.2%</h3>
+                  <p>Engagement</p>
+                </div>
+              </div>
+
+              <div>
+                {['Comedy', 'Travel', 'Skits'].map((ind: string, key) => (
+                  <Industrybadge key={key}>{ind}</Industrybadge>
+                ))}
+              </div>
+            </CardContent>
+            <CardFooter>
+              <ViewProfileButton>View Profile</ViewProfileButton>
+              <ContactButton>Contact</ContactButton>
+            </CardFooter>
           </TalentCard>
         ))}
       </GridContainer>
@@ -39,9 +66,15 @@ export default function Talent() {
   );
 }
 
-const MainContainer = styled.div``;
+const MainContainer = styled.div`
+  padding: 1rem;
+`;
 
-const GridContainer = styled.div``;
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem 1rem;
+`;
 
 const TalentCard = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -52,6 +85,7 @@ const TalentCard = styled.div`
 
 const CardHeader = styled.div`
   display: flex;
+  margin-bottom: 0.75rem;
 
   img {
     border-radius: 50px;
@@ -61,6 +95,80 @@ const CardHeader = styled.div`
     font-size: 16px;
     margin-left: 10px;
   }
+`;
+
+const Industrybadge = styled.div`
+  background: ${(props) => props.theme.colors.green};
+  display: inline-block;
+  color: ${(props) => darken(0.6, props.theme.colors.green)};
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  text-align: center;
+  text-transform: capitalize;
+  margin: 1rem 0.5rem 1rem 0;
+  font-size: 12px;
+`;
+
+const CardContent = styled.div`
+  .description {
+    font-size: 0.75rem;
+    margin: 0;
+  }
+
+  .statistics {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin: 1rem 0;
+
+    & h3 {
+      margin: 0;
+    }
+
+    & p {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      margin: 0;
+    }
+  }
+`;
+
+const CardFooter = styled.div`
+  display: flex;
+`;
+
+const ViewProfileButton = styled.button`
+  display: block;
+  width: 100%;
+  background: ${(props) => props.theme.colors.pink};
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border-radius: 50px;
+  margin: 0.75rem 0.5rem 0.25rem 0;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: ${(props) => props.theme.button.boxShadow};
+  border: 1px solid ${(props) => darken(0.1, props.theme.colors.pink)};
+
+  &:hover {
+    background: ${(props) => darken(0.1, props.theme.colors.pink)};
+  }
+
+  ${(props) => props.theme.global.setFocus(props.theme.colors.pink)};
+`;
+
+const ContactButton = styled(ViewProfileButton)`
+  background: #fff;
+  color: ${(props) => props.theme.colors.gray};
+  border: 1px solid ${(props) => props.theme.colors.gray};
+
+  &:hover {
+    background: ${darken(0.1, '#fff')};
+  }
+
+  ${(props) => props.theme.global.setFocus(props.theme.colors.gray)};
 `;
 
 Talent.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
