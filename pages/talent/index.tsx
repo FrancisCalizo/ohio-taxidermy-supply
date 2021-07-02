@@ -49,7 +49,7 @@ export default function Talent() {
                 </div>
               </div>
 
-              <div>
+              <div className="badges">
                 {['Comedy', 'Travel', 'Skits'].map((ind: string, key) => (
                   <Industrybadge key={key}>{ind}</Industrybadge>
                 ))}
@@ -74,6 +74,18 @@ const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem 1rem;
+
+  @media (max-width: 1050px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 810px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const TalentCard = styled.div`
@@ -105,7 +117,7 @@ const Industrybadge = styled.div`
   border-radius: 50px;
   text-align: center;
   text-transform: capitalize;
-  margin: 1rem 0.5rem 1rem 0;
+  margin: 0.25rem 0.5rem 0.25rem 0;
   font-size: 12px;
 `;
 
@@ -131,6 +143,10 @@ const CardContent = styled.div`
       margin: 0;
     }
   }
+
+  .badges {
+    margin: 0.5rem 0 0.25rem;
+  }
 `;
 
 const CardFooter = styled.div`
@@ -147,7 +163,7 @@ const ViewProfileButton = styled.button`
   border-radius: 4px;
   border-radius: 50px;
   margin: 0.75rem 0.5rem 0.25rem 0;
-  font-size: 1rem;
+  font-size: calc(10px + (18 - 10) * ((100vw - 900px) / (1800 - 900)));
   cursor: pointer;
   box-shadow: ${(props) => props.theme.button.boxShadow};
   border: 1px solid ${(props) => darken(0.1, props.theme.colors.pink)};
@@ -157,6 +173,18 @@ const ViewProfileButton = styled.button`
   }
 
   ${(props) => props.theme.global.setFocus(props.theme.colors.pink)};
+
+  @media (max-width: 1050px) {
+    font-size: calc(10px + (14 - 10) * ((100vw - 600px) / (1050 - 600)));
+  }
+
+  @media (max-width: 810px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 1rem;
+  }
 `;
 
 const ContactButton = styled(ViewProfileButton)`
