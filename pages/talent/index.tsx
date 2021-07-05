@@ -9,6 +9,7 @@ import SiteLayout from 'components/layout/SiteLayout';
 export default function Talent() {
   const [randomProfilePictures, setRandomProfilePictures] = useState([]);
 
+  // TODO: Remove Later. Temporary pictures loaded for profiles
   useEffect(() => {
     (async function fetchRandomImages() {
       const res = await axios.get('https://randomuser.me/api/?inc=picture&results=52');
