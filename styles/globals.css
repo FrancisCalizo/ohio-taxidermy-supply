@@ -49,3 +49,8 @@ a {
 .ReactModal__Content {
   padding: 0 !important;
 }
+
+/* Prevent background scrolling when modal is open */
+.ReactModal__Body--open {
+  overflow: hidden;
+}
