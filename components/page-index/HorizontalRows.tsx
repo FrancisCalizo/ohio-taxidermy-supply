@@ -50,6 +50,7 @@ export default function HorizontalRow({ categoryTitle, profiles }: HorizontalRow
                 width={354}
                 height={230}
                 quality={50}
+                loading="eager"
               />
               <CardDialog>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>

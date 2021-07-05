@@ -51,6 +51,7 @@ export default function VerticalRow({ categoryTitle, profiles }: VerticalRowProp
                 width={310}
                 height={440}
                 quality={50}
+                loading="eager"
               />
               <CardDialog>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
