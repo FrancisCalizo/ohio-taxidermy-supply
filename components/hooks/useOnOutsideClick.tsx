@@ -34,5 +34,6 @@ export default function useOnOutsideClick(ref: any, callback: any, openMenus?: O
       document.removeEventListener('mousedown', listener);
       document.removeEventListener('touchstart', listener);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref, callback]);
 }
