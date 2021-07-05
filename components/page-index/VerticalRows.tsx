@@ -76,18 +76,17 @@ export default function VerticalRow({ categoryTitle, profiles }: VerticalRowProp
           </PictureContainer>
         ))}
       </Slider>
-
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
-        contentLabel="Influencer Modal"
-        ariaHideApp={false}
-        style={{
-          overlay: { zIndex: 1000 },
-          content: windowWidth > 600 ? regularModal : mobileModal,
-        }}
-      >
-        <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative' }}>
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={() => setIsModalOpen(false)}
+          contentLabel="Influencer Modal"
+          ariaHideApp={false}
+          style={{
+            overlay: { zIndex: 1000 },
+            content: windowWidth > 600 ? regularModal : mobileModal,
+          }}
+        >
           <ModalHead>
             <CloseButton
               onClick={(e) => {
@@ -126,8 +125,8 @@ export default function VerticalRow({ categoryTitle, profiles }: VerticalRowProp
               <ContactButton>Contact</ContactButton>
             </ModalFooter>
           </ModalContent>
-        </div>
-      </Modal>
+        </Modal>
+      </div>
     </Container>
   );
 }
