@@ -8,6 +8,7 @@ import { darken } from 'polished';
 import { Container, PictureContainer, Card, CardDialog, RowTitle } from 'components/utils/styled';
 import { verticalSliderProps } from 'components/utils';
 import useWindowResize from 'components/hooks/useWindowResize';
+import useDragDetection from 'components/hooks/useDragDetection';
 
 interface VerticalRowProps {
   categoryTitle: string;
@@ -19,6 +20,8 @@ export default function VerticalRow({ categoryTitle, profiles }: VerticalRowProp
   const [influencerData, setInfluencerData] = useState<any>(null);
 
   const [windowWidth] = useWindowResize();
+  // If slider is being dragged, don't trigger an onClick event
+  const { handleMouseDown, dragging } = useDragDetection();
 
   return (
     <Container>
@@ -30,9 +33,14 @@ export default function VerticalRow({ categoryTitle, profiles }: VerticalRowProp
         {profiles.map((influencer, key) => (
           <PictureContainer
             key={key}
-            onClick={() => {
-              setInfluencerData(influencer);
-              setIsModalOpen(true);
+            onMouseDownCapture={handleMouseDown}
+            onClickCapture={(e) => {
+              if (dragging) {
+                e.preventDefault();
+              } else {
+                setInfluencerData(influencer);
+                setIsModalOpen(true);
+              }
             }}
           >
             <Card>
