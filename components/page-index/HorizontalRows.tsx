@@ -7,6 +7,7 @@ import { darken } from 'polished';
 
 import { Container, PictureContainer, Card, CardDialog, RowTitle } from 'components/utils/styled';
 import { horizontalSliderProps } from 'components/utils';
+import useWindowResize from 'components/hooks/useWindowResize';
 
 interface HorizontalRowProps {
   categoryTitle: string;
@@ -16,6 +17,8 @@ interface HorizontalRowProps {
 export default function HorizontalRow({ categoryTitle, profiles }: HorizontalRowProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [influencerData, setInfluencerData] = useState<any>(null);
+
+  const [windowWidth] = useWindowResize();
 
   return (
     <Container>
@@ -74,7 +77,7 @@ export default function HorizontalRow({ categoryTitle, profiles }: HorizontalRow
           ariaHideApp={false}
           style={{
             overlay: { zIndex: 1000 },
-            content: { maxWidth: 500, height: '90vh', margin: '0 auto', paddingBottom: '35px' },
+            content: windowWidth > 600 ? regularModal : mobileModal,
           }}
         >
           <ModalHead>
@@ -211,3 +214,11 @@ const ModalFooter = styled.div`
   bottom: 0;
   margin: auto 0 auto 0.4rem;
 `;
+
+const mobileModal = { top: 0, bottom: 0, left: 0, right: 0 };
+const regularModal = {
+  maxWidth: 400,
+  height: '90vh',
+  margin: '0 auto',
+  padding: '0 0 0 35px',
+};

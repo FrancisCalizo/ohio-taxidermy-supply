@@ -7,6 +7,7 @@ import { darken } from 'polished';
 
 import { Container, PictureContainer, Card, CardDialog, RowTitle } from 'components/utils/styled';
 import { verticalSliderProps } from 'components/utils';
+import useWindowResize from 'components/hooks/useWindowResize';
 
 interface VerticalRowProps {
   categoryTitle: string;
@@ -16,6 +17,8 @@ interface VerticalRowProps {
 export default function VerticalRow({ categoryTitle, profiles }: VerticalRowProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [influencerData, setInfluencerData] = useState<any>(null);
+
+  const [windowWidth] = useWindowResize();
 
   return (
     <Container>
@@ -73,7 +76,7 @@ export default function VerticalRow({ categoryTitle, profiles }: VerticalRowProp
         ariaHideApp={false}
         style={{
           overlay: { zIndex: 1000 },
-          content: { maxWidth: 400, height: '90vh', margin: '0 auto', paddingBottom: '35px' },
+          content: windowWidth > 600 ? regularModal : mobileModal,
         }}
       >
         <div style={{ position: 'relative' }}>
@@ -210,3 +213,11 @@ const ModalFooter = styled.div`
   bottom: 0;
   margin: auto 0 auto 0.4rem;
 `;
+
+const mobileModal = { top: 0, bottom: 0, left: 0, right: 0 };
+const regularModal = {
+  maxWidth: 400,
+  height: '90vh',
+  margin: '0 auto',
+  padding: '0 0 0 35px',
+};
