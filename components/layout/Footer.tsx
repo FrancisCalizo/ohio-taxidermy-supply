@@ -44,8 +44,8 @@ export default function Footer() {
 
         <SubscribeContainer>
           <p>
-            Want influencer marketing updates straight to your inbox? Subscribe to our weekly
-            newsletter. You&apos;ll also be the first to know about our latest events!
+            Want marketing updates straight to your inbox? Subscribe to our weekly newsletter.
+            You&apos;ll also be the first to know about our latest events!
           </p>
 
           <div className="form-row">
@@ -66,16 +66,26 @@ const BackgroundContainer = styled.div`
 const MainContainer = styled.div`
   max-width: 1400px;
   margin: 0 auto;
+  padding: 2rem;
 
   .contacts-list {
     > p {
       margin: 0;
+
+      @media (max-width: 800px) {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 800px) {
+      margin-top: 2rem;
     }
   }
 `;
 
 const FooterTop = styled.div`
   display: flex;
+  flex-direction: row;
 
   > div {
     flex: 1 1 0;
@@ -85,6 +95,11 @@ const FooterTop = styled.div`
     font-family: Shadows Into Light;
     font-size: 3.5rem;
     margin: 0;
+
+    @media (max-width: 800px) {
+      font-size: 4.5rem;
+      text-align: center;
+    }
   }
 
   .social {
@@ -96,11 +111,30 @@ const FooterTop = styled.div`
       border: none;
       background: transparent;
       padding: 0;
+      cursor: pointer;
     }
+
+    @media (max-width: 800px) {
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    text-align: center;
   }
 `;
 
 const SubscribeContainer = styled.div`
+  p {
+    margin: 2rem 0 0;
+    font-size: 0.9rem;
+
+    @media (max-width: 800px) {
+      text-align: center;
+    }
+  }
+
   .form-row {
     display: flex;
     justify-content: space-between;
@@ -115,6 +149,15 @@ const SubscribeContainer = styled.div`
       border-radius: 4px;
 
       ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.pink))}
+
+      @media (max-width: 800px) {
+        margin: 0.5rem 0;
+      }
+    }
+
+    @media (max-width: 800px) {
+      flex-wrap: wrap;
+      margin-top: 1rem;
     }
   }
 `;
@@ -137,4 +180,10 @@ const SubscribeButton = styled.button`
   }
 
   ${(props) => props.theme.global.setFocus(props.theme.colors.teal)}
+
+  @media (max-width: 800px) {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1.25rem;
+  }
 `;
