@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { darken } from 'polished';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,6 +9,8 @@ import {
   faInstagram,
   faLinkedin,
 } from '@fortawesome/free-brands-svg-icons';
+
+import { footerHeaders, footerRoutes } from 'components/utils/routes';
 
 export default function Footer() {
   return (
@@ -54,6 +57,26 @@ export default function Footer() {
             <SubscribeButton>Subscribe</SubscribeButton>
           </div>
         </SubscribeContainer>
+
+        <RowLinks>
+          {footerRoutes.map((column, key) => (
+            <div key={key}>
+              <h4>{footerHeaders[key]}</h4>
+              <ul>
+                {column.map((route, idx) => (
+                  <li key={idx}>
+                    <Link href={route.path}>{route.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </RowLinks>
+
+        <FooterFooter>
+          <hr />
+          <p>@CastMeApp 2021 - All rights Reserved.</p>
+        </FooterFooter>
       </MainContainer>
     </BackgroundContainer>
   );
@@ -185,5 +208,50 @@ const SubscribeButton = styled.button`
     width: 100%;
     padding: 0.75rem 1rem;
     font-size: 1.25rem;
+  }
+`;
+
+const RowLinks = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0 0.5rem;
+
+  h4 {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+  }
+
+  ul {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    list-style-type: none;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(2, 1fr);
+
+    & > div {
+      justify-self: center;
+      text-align: center;
+    }
+  }
+`;
+
+const FooterFooter = styled.div`
+  hr {
+    margin: 1.5rem 0;
+  }
+
+  p {
+    margin: 0;
+    text-align: center;
+    font-size: 0.75rem;
   }
 `;
