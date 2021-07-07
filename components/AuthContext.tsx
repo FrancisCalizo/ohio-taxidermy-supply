@@ -91,7 +91,7 @@ export const AuthProvider = ({ children }: ProviderProps) => {
 
     delete api.defaults.headers.Authorization;
 
-    window.location.pathname = '/login';
+    router.push('/login');
   };
 
   return (

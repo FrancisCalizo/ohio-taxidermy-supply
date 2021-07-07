@@ -4,8 +4,29 @@ import { ArrowContainer, PopoverState } from 'react-tiny-popover';
 import styled from 'styled-components';
 import { lighten } from 'polished';
 
+import { useAuth } from 'components/AuthContext';
+
 export default function UserDropdown(props: PopoverState) {
   const { position, childRect, popoverRect } = props;
+  const { logout } = useAuth();
+
+  const userDashboardDropdownItems = [
+    {
+      title: 'Profile',
+      icon: faUser,
+      onClick: () => console.log('Clicked profile'),
+    },
+    {
+      title: 'Settings',
+      icon: faCog,
+      onClick: () => console.log('Clicked settings'),
+    },
+    {
+      title: 'Logout',
+      icon: faSignOutAlt,
+      onClick: logout,
+    },
+  ];
 
   return (
     <ArrowContainer
@@ -17,30 +38,15 @@ export default function UserDropdown(props: PopoverState) {
     >
       <DropdownContainer>
         {userDashboardDropdownItems.map((item, key) => (
-          <div key={key} className="dropdown-row">
+          <button key={key} className="dropdown-row" onClick={() => item.onClick()}>
             <FontAwesomeIcon icon={item.icon} style={{ fontSize: 20, marginRight: '1rem' }} />
             {item.title}
-          </div>
+          </button>
         ))}
       </DropdownContainer>
     </ArrowContainer>
   );
 }
-
-const userDashboardDropdownItems = [
-  {
-    title: 'Profile',
-    icon: faUser,
-  },
-  {
-    title: 'Settings',
-    icon: faCog,
-  },
-  {
-    title: 'Logout',
-    icon: faSignOutAlt,
-  },
-];
 
 export const DropdownContainer = styled.div`
   background: white;
@@ -52,8 +58,13 @@ export const DropdownContainer = styled.div`
 
   .dropdown-row {
     display: flex;
+    align-items: center;
     padding: 0.75rem 1rem;
     border-radius: 5px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-size: 0.9rem;
 
     &:hover {
       background: ${lighten(0.12, '#909cd8')};
