@@ -18,7 +18,11 @@ export default function Footer() {
       <MainContainer>
         <FooterTop>
           <div>
-            <h2>CastMeApp</h2>
+            <h2>
+              <span>Cast</span>
+              <span>Me</span>
+              <span>App</span>
+            </h2>
           </div>
           <div>
             <h3>Follow Us</h3>
@@ -90,6 +94,7 @@ const MainContainer = styled.div`
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
+  color: white;
 
   .contacts-list {
     > p {
@@ -114,10 +119,24 @@ const FooterTop = styled.div`
     flex: 1 1 0;
   }
 
+  h3 {
+    color: black;
+    font-size: 1.5rem;
+  }
+
   h2 {
     font-family: Shadows Into Light;
     font-size: 3.5rem;
     margin: 0;
+    color: white;
+
+    span:nth-child(1) {
+      color: ${(props) => props.theme.colors.teal};
+    }
+
+    span:nth-child(3) {
+      color: ${(props) => props.theme.colors.pink};
+    }
 
     @media (max-width: 800px) {
       font-size: 4.5rem;
@@ -220,6 +239,7 @@ const RowLinks = styled.div`
     margin-bottom: 0;
     text-transform: uppercase;
     font-size: 1.2rem;
+    color: ${(props) => props.theme.colors.pink};
   }
 
   ul {
