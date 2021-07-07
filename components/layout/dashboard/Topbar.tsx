@@ -4,13 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faBars } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { Popover, PopoverState } from 'react-tiny-popover';
 
 import MobileSidebar from 'components/layout/dashboard/MobileSidebar';
+import UserDropdown from 'components/layout/dashboard/UserDropdown';
 
 export default function Topbar() {
   const router = useRouter();
 
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   return (
     <TopbarContainer>
@@ -38,7 +41,18 @@ export default function Topbar() {
           John Stamos
           <p style={{ margin: '0 0 0 1px', fontSize: 11, color: '#fff' }}>Marketing Manager</p>
         </div>
-        <FontAwesomeIcon icon={faUserCircle} style={{ fontSize: 36, marginLeft: '1rem' }} />
+        <Popover
+          isOpen={isPopoverOpen}
+          positions={['bottom']}
+          content={(props: PopoverState) => <UserDropdown {...props} />}
+          align="end"
+          onClickOutside={() => setIsPopoverOpen(false)}
+          containerStyle={{ top: '-15px', zIndex: '100' }}
+        >
+          <button className="user-button" onClick={() => setIsPopoverOpen(!isPopoverOpen)}>
+            <FontAwesomeIcon icon={faUserCircle} style={{ fontSize: 36 }} />
+          </button>
+        </Popover>
       </div>
     </TopbarContainer>
   );
@@ -64,6 +78,13 @@ const TopbarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1.5rem;
+
+  .user-button {
+    margin-left: 0.5rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
 
   @media (max-width: 560px) {
     padding: 0.75rem;
