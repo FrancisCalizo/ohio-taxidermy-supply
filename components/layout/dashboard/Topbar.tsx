@@ -41,18 +41,23 @@ export default function Topbar() {
           John Stamos
           <p style={{ margin: '0 0 0 1px', fontSize: 11, color: '#fff' }}>Marketing Manager</p>
         </div>
-        <Popover
-          isOpen={isPopoverOpen}
-          positions={['bottom']}
-          content={(props: PopoverState) => <UserDropdown {...props} />}
-          align="end"
-          onClickOutside={() => setIsPopoverOpen(false)}
-          containerStyle={{ top: '-15px', zIndex: '100' }}
-        >
-          <button className="user-button" onClick={() => setIsPopoverOpen(!isPopoverOpen)}>
-            <FontAwesomeIcon icon={faUserCircle} style={{ fontSize: 36 }} />
-          </button>
-        </Popover>
+
+        {/* Currently, React-Tiny-Popover does not have SSR support. So we must 
+        check to see if the window exists before we render the component */}
+        {typeof window !== 'undefined' && (
+          <Popover
+            isOpen={isPopoverOpen}
+            positions={['bottom']}
+            content={(props: PopoverState) => <UserDropdown {...props} />}
+            align="end"
+            onClickOutside={() => setIsPopoverOpen(false)}
+            containerStyle={{ top: '-15px', zIndex: '100' }}
+          >
+            <button className="user-button" onClick={() => setIsPopoverOpen(!isPopoverOpen)}>
+              <FontAwesomeIcon icon={faUserCircle} style={{ fontSize: 36 }} />
+            </button>
+          </Popover>
+        )}
       </div>
     </TopbarContainer>
   );
