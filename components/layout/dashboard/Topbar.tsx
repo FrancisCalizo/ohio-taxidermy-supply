@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -12,8 +12,16 @@ import UserDropdown from 'components/layout/dashboard/UserDropdown';
 export default function Topbar() {
   const router = useRouter();
 
+  // Popover was displaying odd console error on render
+  // Using this eliminates the error
+  useEffect(() => {
+    setIsInitialLoad(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(false);
 
   return (
     <TopbarContainer>
@@ -42,9 +50,9 @@ export default function Topbar() {
           <p style={{ margin: '0 0 0 1px', fontSize: 11, color: '#fff' }}>Marketing Manager</p>
         </div>
 
-        {/* Currently, React-Tiny-Popover does not have SSR support. So we must 
+        {/* Currently, React-Tiny-Popover does not have SSR support. So we must
         check to see if the window exists before we render the component */}
-        {typeof window !== 'undefined' && (
+        {isInitialLoad && (
           <Popover
             isOpen={isPopoverOpen}
             positions={['bottom']}
