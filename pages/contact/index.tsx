@@ -48,6 +48,8 @@ const FlexContainer = styled.div`
   background: #f2869b;
   color: white;
   height: 100vh;
+  margin-bottom: -3rem;
+  padding-bottom: 2rem;
 
   & > div:nth-child(1) {
     margin-right: 1rem;
