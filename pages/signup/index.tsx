@@ -33,7 +33,14 @@ export default function Signup() {
       <LoginBlockContainer>
         <LogoContainer>
           <Image src={`/circle-gradient.png`} alt="logo" width={55} height={55} quality={50} />
-          <div className="title" style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+          <div
+            className="title"
+            style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}
+            onClick={() => router.push('/')}
+            role="button"
+            tabIndex={0}
+          >
             <span>Cast</span>
             <span>Me</span>
             <span>App</span>
@@ -67,6 +74,10 @@ export default function Signup() {
             <SignupButton type="submit" onClick={handleSubmit}>
               Signup
             </SignupButton>
+
+            <Link href="/">
+              <BackHome>Back to Home Page</BackHome>
+            </Link>
           </div>
           <VerticalLine />
           <InfoContainer>
@@ -321,5 +332,24 @@ const LogoContainer = styled.h3`
       top: 10px;
       font-size: 26px;
     }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+
+const BackHome = styled.a`
+  color: ${(props) => props.theme.colors.teal};
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  width: 100%;
+
+  &:hover {
+    color: ${(props) => darken(0.1, props.theme.colors.teal)} !important;
   }
 `;
