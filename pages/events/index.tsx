@@ -8,6 +8,8 @@ import SiteLayout from 'components/layout/SiteLayout';
 export default function Events() {
   return (
     <MainContainer>
+      <Title>Your Cast</Title>
+
       <GridContainer>
         {[...Array(18)].map((_, key) => (
           <EventCard key={key}>
@@ -53,6 +55,12 @@ export default function Events() {
 
 const MainContainer = styled.div`
   padding: 1rem;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+  padding-top: 3rem;
+  margin-bottom: 3rem;
 `;
 
 const GridContainer = styled.div`

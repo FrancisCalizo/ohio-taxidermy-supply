@@ -20,6 +20,8 @@ export default function Talent() {
 
   return (
     <MainContainer>
+      <Title>Talent</Title>
+
       <GridContainer>
         {randomProfilePictures.map((_, key) => (
           <TalentCard key={key}>
@@ -69,6 +71,12 @@ export default function Talent() {
 
 const MainContainer = styled.div`
   padding: 1rem;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+  padding-top: 3rem;
+  margin-bottom: 3rem;
 `;
 
 const GridContainer = styled.div`
