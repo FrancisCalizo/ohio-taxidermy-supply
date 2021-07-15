@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -59,7 +60,9 @@ export default function Talent() {
               </div>
             </CardContent>
             <CardFooter>
-              <ViewProfileButton>View Profile</ViewProfileButton>
+              <Link href={`/talent/${key}`}>
+                <ViewProfileButton>View Profile</ViewProfileButton>
+              </Link>
               <ContactButton>Contact</ContactButton>
             </CardFooter>
           </TalentCard>
