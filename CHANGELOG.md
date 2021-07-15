@@ -1,5 +1,13 @@
 ## Development Changelog
 
+### 7/08/2021
+
+- Create categories page. Add title to events and title page. Create route for Cast Page. Implement buttons to get back to home page for sign on and registration page
+
+### 7/07/2021
+
+- Implement main pages footer. Added links to footer, made responsive
+
 ### 7/06/2021
 
 - Create a user dropdown on main dashboard change.
