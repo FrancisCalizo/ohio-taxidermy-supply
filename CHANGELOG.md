@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 7/15/2021
+
+- Implement more features to single talent page: profile picture, profile banner, summary placeholder, and social media cards with social media handles
+
 ### 7/08/2021
 
 - Create categories page. Add title to events and title page. Create route for Cast Page. Implement buttons to get back to home page for sign on and registration page
