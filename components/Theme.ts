@@ -27,6 +27,7 @@ export const theme = {
     yellow: '#F6E9B5',
     green: '#C1DDCF',
     gray: '#7A7A7A',
+    darkGray: '#202020',
   },
   button: {
     boxShadow: `0px 4px 4px rgba(0, 0, 0, 0.4)`,
