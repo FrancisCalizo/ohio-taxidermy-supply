@@ -44,7 +44,9 @@ export default function SingleInfluencer() {
             </p>
           </div>
         </div>
-        <div className="banner-right"></div>
+        <div className="banner-right">
+          <h3>Total Reach: 1.3M</h3>
+        </div>
       </TopBanner>
 
       <MiddleContainer>
@@ -94,6 +96,68 @@ export default function SingleInfluencer() {
   );
 }
 
+const TopBanner = styled.div`
+  display: flex;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  padding: 2rem;
+
+  .banner-left {
+    display: flex;
+    padding: 0 1rem;
+    align-items: center;
+    width: 49%;
+
+    img {
+      border: 2px solid ${(props) => props.theme.colors.pink} !important;
+      border-radius: 200px;
+    }
+
+    > div {
+      margin-left: 2rem;
+
+      h3 {
+        font-size: 2rem;
+        margin-bottom: 0;
+        color: ${(props) => props.theme.colors.darkGray};
+      }
+
+      .headline {
+        font-style: italic;
+        margin: 0.75rem 0;
+        color: ${(props) => props.theme.colors.purple};
+      }
+
+      .categories {
+        margin: 0.75rem 0;
+      }
+
+      .location {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  .banner-right {
+    padding: 0 1rem;
+    width: 49%;
+    border-left: 1px solid lightgray;
+  }
+`;
+
+const MiddleContainer = styled.div`
+  padding: 2rem;
+
+  p {
+    color: ${(props) => props.theme.colors.gray};
+  }
+
+  .social-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+`;
+
 const SocialCard = styled.div`
   display: flex;
   align-items: center;
@@ -114,61 +178,6 @@ const SocialCard = styled.div`
       border: none;
       cursor: pointer;
     }
-  }
-`;
-
-const TopBanner = styled.div`
-  display: flex;
-  /* justify-content: center; */
-  border: 1px solid lightgray;
-  border-radius: 8px;
-  padding: 2rem;
-
-  .banner-left {
-    display: flex;
-    padding: 0 1rem;
-    align-items: center;
-
-    img {
-      border: 2px solid ${(props) => props.theme.colors.pink} !important;
-      border-radius: 200px;
-    }
-
-    > div {
-      margin-left: 2rem;
-
-      h3 {
-        font-size: 2rem;
-        margin-bottom: 0;
-        color: ${(props) => props.theme.colors.darkGray};
-      }
-
-      .headline {
-        font-style: italic;
-        margin: 0.75rem 0;
-      }
-
-      .categories {
-        margin: 0.75rem 0;
-      }
-
-      .location {
-        font-size: 1.25rem;
-      }
-    }
-  }
-`;
-
-const MiddleContainer = styled.div`
-  padding: 2rem;
-
-  p {
-    color: ${(props) => props.theme.colors.gray};
-  }
-
-  .social-container {
-    display: flex;
-    flex-wrap: wrap;
   }
 `;
 
