@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 7/16/2021
+
+- Single Talent View Page: Add more styles to social cards and external link button, add total reach section, create a "similar influencers" section
+
 ### 7/15/2021
 
 - Implement more features to single talent page: profile picture, profile banner, summary placeholder, and social media cards with social media handles
