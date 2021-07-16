@@ -21,7 +21,7 @@ import SiteLayout from 'components/layout/SiteLayout';
 
 export default function SingleInfluencer() {
   return (
-    <MainContainer>
+    <div>
       <TopBanner>
         <div className="banner-left">
           <Image
@@ -130,59 +130,9 @@ export default function SingleInfluencer() {
           ))}
         </div>
       </SimilarContainer>
-    </MainContainer>
+    </div>
   );
 }
-
-const SimilarContainer = styled.div`
-  border-top: 1px solid lightgray;
-  margin: 1rem 0;
-
-  .container-title {
-    display: inline-block;
-    margin: 0 auto;
-    background: white;
-    text-align: center;
-    transform: translateY(-13px);
-    padding: 0 2rem;
-    text-transform: uppercase;
-    color: ${(props) => props.theme.colors.gray};
-  }
-
-  .cards-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 1rem;
-  }
-`;
-
-const SimilarCard = styled.div`
-  display: flex;
-  border: 1px solid lightgray;
-  border-radius: 10px;
-  padding: 1rem;
-  width: 100%;
-  margin: 0 1rem;
-
-  img {
-    border-radius: 100px;
-    border: 2px solid ${(props) => props.theme.colors.teal} !important;
-  }
-
-  .card-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 1rem;
-    text-align: left;
-
-    .categories {
-      font-style: italic;
-      margin: 0.75rem 0;
-      color: ${(props) => props.theme.colors.purple};
-    }
-  }
-`;
 
 const TopBanner = styled.div`
   display: flex;
@@ -194,7 +144,7 @@ const TopBanner = styled.div`
     display: flex;
     padding: 0 1rem;
     align-items: center;
-    width: 49%;
+    width: 60%;
 
     img {
       border: 2px solid ${(props) => props.theme.colors.pink} !important;
@@ -224,12 +174,37 @@ const TopBanner = styled.div`
         font-size: 1.25rem;
       }
     }
+
+    @media (max-width: 1060px) {
+      flex-direction: column;
+    }
+
+    @media (max-width: 700px) {
+      flex-direction: row;
+      width: 100%;
+    }
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+    }
   }
 
   .banner-right {
-    padding: 0 1rem;
-    width: 49%;
+    padding: 0 1rem 0 2.5rem;
+    width: 40%;
     border-left: 1px solid lightgray;
+
+    @media (max-width: 700px) {
+      border-left: none;
+      border-top: 1px solid lightgray;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
   }
 `;
 
@@ -286,7 +261,55 @@ const SocialCard = styled.div`
   }
 `;
 
-const MainContainer = styled.div``;
+const SimilarContainer = styled.div`
+  border-top: 1px solid lightgray;
+  margin: 1rem 0;
+
+  .container-title {
+    display: inline-block;
+    margin: 0 auto;
+    background: white;
+    text-align: center;
+    transform: translateY(-13px);
+    padding: 0 2rem;
+    text-transform: uppercase;
+    color: ${(props) => props.theme.colors.gray};
+  }
+
+  .cards-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+  }
+`;
+
+const SimilarCard = styled.div`
+  display: flex;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 100%;
+  margin: 0 1rem;
+
+  img {
+    border-radius: 100px;
+    border: 2px solid ${(props) => props.theme.colors.teal} !important;
+  }
+
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1rem;
+    text-align: left;
+
+    .categories {
+      font-style: italic;
+      margin: 0.75rem 0;
+      color: ${(props) => props.theme.colors.purple};
+    }
+  }
+`;
 
 SingleInfluencer.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
 
