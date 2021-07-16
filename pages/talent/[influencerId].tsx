@@ -100,9 +100,31 @@ export default function SingleInfluencer() {
           ))}
         </div>
       </MiddleContainer>
+
+      <SimilarContainer>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <h3>Similar Influencers</h3>
+        </div>
+      </SimilarContainer>
     </MainContainer>
   );
 }
+
+const SimilarContainer = styled.div`
+  border-top: 1px solid lightgray;
+  margin: 1rem 0 0;
+
+  h3 {
+    display: inline-block;
+    margin: 0 auto;
+    background: white;
+    text-align: center;
+    transform: translateY(-13px);
+    padding: 0 2rem;
+    text-transform: uppercase;
+    color: ${(props) => props.theme.colors.gray};
+  }
+`;
 
 const TopBanner = styled.div`
   display: flex;
