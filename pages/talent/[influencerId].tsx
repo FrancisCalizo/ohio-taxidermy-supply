@@ -103,7 +103,31 @@ export default function SingleInfluencer() {
 
       <SimilarContainer>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <h3>Similar Influencers</h3>
+          <h3 className="container-title">Similar Influencers</h3>
+        </div>
+
+        <div className="cards-container">
+          {[...Array(3)].map((_, key) => (
+            <SimilarCard key={key}>
+              <Image
+                src={`/images/talent-profile.jpg`}
+                alt="similar-profile"
+                width={150}
+                height={150}
+                quality={90}
+              />
+
+              <div className="card-info">
+                <h3 className="name" style={{ marginBottom: 0 }}>
+                  Influencer Name
+                </h3>
+                <p className="categories">Fitness, DIY, Skits </p>
+                <p style={{ fontWeight: 700 }}>
+                  830K <span style={{ color: 'gray' }}>reach</span>
+                </p>
+              </div>
+            </SimilarCard>
+          ))}
         </div>
       </SimilarContainer>
     </MainContainer>
@@ -112,9 +136,9 @@ export default function SingleInfluencer() {
 
 const SimilarContainer = styled.div`
   border-top: 1px solid lightgray;
-  margin: 1rem 0 0;
+  margin: 1rem 0;
 
-  h3 {
+  .container-title {
     display: inline-block;
     margin: 0 auto;
     background: white;
@@ -123,6 +147,40 @@ const SimilarContainer = styled.div`
     padding: 0 2rem;
     text-transform: uppercase;
     color: ${(props) => props.theme.colors.gray};
+  }
+
+  .cards-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+  }
+`;
+
+const SimilarCard = styled.div`
+  display: flex;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 100%;
+  margin: 0 1rem;
+
+  img {
+    border-radius: 100px;
+    border: 2px solid ${(props) => props.theme.colors.teal} !important;
+  }
+
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1rem;
+    text-align: left;
+
+    .categories {
+      font-style: italic;
+      margin: 0.75rem 0;
+      color: ${(props) => props.theme.colors.purple};
+    }
   }
 `;
 
