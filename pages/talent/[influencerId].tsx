@@ -235,6 +235,10 @@ const MiddleContainer = styled.div`
   .social-container {
     display: flex;
     flex-wrap: wrap;
+
+    @media (max-width: 720px) {
+      justify-content: center;
+    }
   }
 `;
 
@@ -259,6 +263,10 @@ const SocialCard = styled.div`
       cursor: pointer;
     }
   }
+
+  @media (max-width: 720px) {
+    width: 100%;
+  }
 `;
 
 const SimilarContainer = styled.div`
@@ -280,6 +288,10 @@ const SimilarContainer = styled.div`
     display: flex;
     justify-content: space-around;
     margin-top: 1rem;
+
+    @media (max-width: 1200px) {
+      flex-wrap: wrap;
+    }
   }
 `;
 
@@ -289,7 +301,7 @@ const SimilarCard = styled.div`
   border-radius: 10px;
   padding: 1rem;
   width: 100%;
-  margin: 0 1rem;
+  margin: 0.5rem 1rem;
 
   img {
     border-radius: 100px;
@@ -308,6 +320,10 @@ const SimilarCard = styled.div`
       margin: 0.75rem 0;
       color: ${(props) => props.theme.colors.purple};
     }
+  }
+
+  @media (min-width: 820px) and (max-width: 1200px) {
+    width: 46%;
   }
 `;
 
