@@ -1,19 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
+
 import SiteLayout from 'components/layout/SiteLayout';
+import { PageTitle } from 'components/utils/styled';
 
 export default function Cast() {
   return (
     <div>
-      <Title>Your Cast</Title>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <PageTitle>Your Cast</PageTitle>
+      </div>
     </div>
   );
 }
-
-const Title = styled.h1`
-  text-align: center;
-  padding-top: 3rem;
-  margin-bottom: 3rem;
-`;
 
 Cast.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;

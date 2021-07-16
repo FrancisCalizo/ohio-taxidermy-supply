@@ -3,11 +3,14 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 import SiteLayout from 'components/layout/SiteLayout';
+import { PageTitle } from 'components/utils/styled';
 
 export default function index() {
   return (
     <div>
-      <Title>About Us</Title>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <PageTitle>About Us</PageTitle>
+      </div>
 
       <FlexContainer>
         <div>
@@ -51,12 +54,6 @@ export default function index() {
     </div>
   );
 }
-
-const Title = styled.h1`
-  text-align: center;
-  padding-top: 3rem;
-  margin-bottom: 3rem;
-`;
 
 const FlexContainer = styled.div`
   display: flex;

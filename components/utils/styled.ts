@@ -68,3 +68,14 @@ export const RowTitle = styled.h2`
     transform: skewX(20deg);
   }
 `;
+
+export const PageTitle = styled.h1`
+  text-align: center;
+  margin: 3rem 0;
+  font-size: 2.5rem;
+  color: ${(props) => props.theme.colors.purple};
+  padding: 0.5rem 3rem;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0px 1px 20px 1px ${(props) => props.theme.colors.pink};
+  display: inline-block;
+`;

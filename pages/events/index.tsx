@@ -4,11 +4,14 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 import SiteLayout from 'components/layout/SiteLayout';
+import { PageTitle } from 'components/utils/styled';
 
 export default function Events() {
   return (
     <MainContainer>
-      <Title>Your Cast</Title>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <PageTitle>Events</PageTitle>
+      </div>
 
       <GridContainer>
         {[...Array(18)].map((_, key) => (
@@ -54,12 +57,7 @@ export default function Events() {
 }
 
 const MainContainer = styled.div`
-  padding: 1rem;
-`;
-
-const Title = styled.h1`
-  text-align: center;
-  margin-bottom: 3rem;
+  padding: 0 1rem 1rem;
 `;
 
 const GridContainer = styled.div`

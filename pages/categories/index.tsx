@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import SiteLayout from 'components/layout/SiteLayout';
 import VerticalRows from 'components/page-index/VerticalRows';
@@ -7,11 +6,14 @@ import HorizontalRows from 'components/page-index/HorizontalRows';
 
 import { categories } from 'data/categoryList';
 import { profilesVertical, profilesHorizontal } from 'data/profiles';
+import { PageTitle } from 'components/utils/styled';
 
 export default function Categories() {
   return (
     <div style={{ background: '#f1f2f3' }}>
-      <Title>Categories</Title>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <PageTitle>Categories</PageTitle>
+      </div>
 
       {categories
         .filter((cat) => ['beautyCosmetics', 'comedy'].includes(cat.id))
@@ -29,9 +31,3 @@ export default function Categories() {
 }
 
 Categories.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
-
-const Title = styled.h1`
-  text-align: center;
-  padding-top: 3rem;
-  margin-bottom: 3rem;
-`;
