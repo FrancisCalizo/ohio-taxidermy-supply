@@ -16,6 +16,7 @@ import {
   faVine,
   faBitcoin,
 } from '@fortawesome/free-brands-svg-icons';
+import { darken } from 'polished';
 
 import SiteLayout from 'components/layout/SiteLayout';
 
@@ -42,6 +43,7 @@ export default function SingleInfluencer() {
               />
               Rome, Italy
             </p>
+            <ContactButton>Contact</ContactButton>
           </div>
         </div>
         <div className="banner-right">
@@ -325,6 +327,28 @@ const SimilarCard = styled.div`
   @media (min-width: 820px) and (max-width: 1200px) {
     width: 46%;
   }
+`;
+
+const ContactButton = styled.button`
+  display: block;
+  width: 100%;
+  background: ${(props) => props.theme.colors.paleBlue};
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border-radius: 50px;
+  margin: 0.75rem 0.5rem 0.25rem 0;
+  font-size: calc(10px + (18 - 10) * ((100vw - 900px) / (1800 - 900)));
+  cursor: pointer;
+  box-shadow: ${(props) => props.theme.button.boxShadow};
+  border: 1px solid ${(props) => darken(0.1, props.theme.colors.paleBlue)};
+
+  &:hover {
+    background: ${(props) => darken(0.1, props.theme.colors.paleBlue)};
+  }
+
+  ${(props) => props.theme.global.setFocus(props.theme.colors.paleBlue)};
 `;
 
 SingleInfluencer.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
