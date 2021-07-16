@@ -38,7 +38,7 @@ export default function SingleInfluencer() {
             <p className="location">
               <FontAwesomeIcon
                 icon={faMapMarkerAlt}
-                style={{ fontSize: 24, color: '#e74c3c', marginRight: '1rem' }}
+                style={{ fontSize: 24, color: '#e74c3c', marginRight: '.5rem' }}
               />
               Rome, Italy
             </p>
@@ -46,6 +46,14 @@ export default function SingleInfluencer() {
         </div>
         <div className="banner-right">
           <h3>Total Reach: 1.3M</h3>
+          <div className="reach-container">
+            {TEMP_SOCIAL_DATA.map((social, key) => (
+              <ReachIcon key={key} color={social.color}>
+                <FontAwesomeIcon icon={social.icon} style={{ fontSize: 24 }} />
+                <p>{social.reach}</p>
+              </ReachIcon>
+            ))}
+          </div>
         </div>
       </TopBanner>
 
@@ -145,6 +153,23 @@ const TopBanner = styled.div`
   }
 `;
 
+const ReachIcon = styled.div<{ color: string }>`
+  background: ${(props) => props.color};
+  width: 75px;
+  padding: 1rem;
+  border-radius: 50px;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  margin: 0 1rem 1rem 0;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+
+  p {
+    margin: 0.25rem 0 0;
+    font-size: 0.8rem;
+  }
+`;
+
 const MiddleContainer = styled.div`
   padding: 2rem;
 
@@ -190,55 +215,66 @@ const TEMP_SOCIAL_DATA = [
     icon: faFacebookSquare,
     color: '#1877f2',
     handle: 'Gwen Stacy',
+    reach: '12K',
   },
   {
     icon: faTwitter,
     color: '#1da1f2',
     handle: '@gwenstacy',
+    reach: '24K',
   },
   {
     icon: faYoutubeSquare,
     color: '#ff0000',
     handle: 'Gwen Films',
+    reach: '2.1m',
   },
   {
     icon: faInstagram,
     color: '#c32aa3',
     handle: '@theRealGwenStacy',
+    reach: '990K',
   },
   {
     icon: faPinterest,
     color: '#bd081c',
     handle: 'Gwen Stacy',
+    reach: '100',
   },
   {
     icon: faLinkedin,
     color: '#0a66c2',
     handle: 'Gwen Stacy',
+    reach: '333',
   },
   {
     icon: faGooglePlusSquare,
     color: '#db4437',
     handle: 'Gwen Stacy',
+    reach: '200',
   },
   {
     icon: faPiedPiperSquare,
     color: '#25d366',
     handle: 'Gwen Stacy',
+    reach: '0',
   },
   {
     icon: faTiktok,
     color: '#69c9d0',
     handle: '@GwenStacyTokz',
+    reach: '33K',
   },
   {
     icon: faVine,
     color: '#00b489',
     handle: '@GwenStacyTokz',
+    reach: '132K',
   },
   {
     icon: faBitcoin,
     color: '#fbbc05',
     handle: '@CryptoStacy',
+    reach: '2K',
   },
 ];
