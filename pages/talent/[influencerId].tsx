@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebookSquare,
   faTwitter,
@@ -56,15 +56,36 @@ export default function SingleInfluencer() {
           illum laboriosam quos veritatis voluptas fugiat a ex?
         </p>
 
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate dolorem eos
+          repellendus earum fugit distinctio at corporis est quae, saepe nostrum quos quis totam
+          veniam perferendis necessitatibus explicabo impedit illum quisquam pariatur velit? Saepe,
+          maiores. Officiis tempore, libero nesciunt autem perspiciatis officia, magnam aperiam eos
+          facere exercitationem corrupti similique odit. Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Facere placeat nesciunt delectus obcaecati eum porro, corrupti animi
+          corporis sit? Corrupti unde facilis ad amet explicabo voluptatibus voluptatem atque vitae
+          quo.
+        </p>
+
         <h2>Social</h2>
         <div className="social-container">
           {TEMP_SOCIAL_DATA.map((social, key) => (
             <SocialCard key={key}>
-              <FontAwesomeIcon
-                icon={social.icon}
-                style={{ fontSize: 36, color: social.color, marginRight: '1rem' }}
-              />
-              <p>{social.handle}</p>
+              <div>
+                <FontAwesomeIcon
+                  icon={social.icon}
+                  style={{ fontSize: 36, color: social.color, marginRight: '1rem' }}
+                />
+                <p>{social.handle}</p>
+              </div>
+              <div>
+                <button>
+                  <FontAwesomeIcon
+                    icon={faExternalLinkAlt}
+                    style={{ fontSize: 24, color: '#AEB5D8' }}
+                  />
+                </button>
+              </div>
             </SocialCard>
           ))}
         </div>
@@ -76,11 +97,24 @@ export default function SingleInfluencer() {
 const SocialCard = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 1rem;
   width: 300px;
   margin: 0 1rem 1rem 0;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+
+  div {
+    display: flex;
+    align-items: center;
+
+    button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  }
 `;
 
 const TopBanner = styled.div`
