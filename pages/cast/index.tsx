@@ -51,6 +51,37 @@ export default function Cast() {
           </div>
         </div>
       </BudgetContainer>
+
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <PageTitle>The Pool</PageTitle>
+      </div>
+
+      <PoolContainer>
+        {[...Array(4)].map((_, key) => (
+          <PoolCard key={key}>
+            <div className="hire-container">
+              <Image
+                src={`/images/talent-profile.jpg`}
+                alt="profile"
+                width={160}
+                height={160}
+                quality={90}
+              />
+
+              <HireButton>Hire Me!</HireButton>
+            </div>
+            <div>
+              <h3>Gwen Stacy</h3>
+              <p className="headline">Some Headline</p>
+              <p className="categories">Drama, Music, Travel</p>
+              <Link href={`/talent/${key}`}>
+                <ViewProfileButton>View Profile</ViewProfileButton>
+              </Link>
+              <ContactButton>Contact</ContactButton>
+            </div>
+          </PoolCard>
+        ))}
+      </PoolContainer>
     </div>
   );
 }
@@ -166,6 +197,41 @@ const ContactButton = styled(ViewProfileButton)`
   }
 
   ${(props) => props.theme.global.setFocus(props.theme.colors.paleBlue)};
+`;
+
+const PoolContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 1rem;
+
+  @media (max-width: 1660px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`;
+
+const PoolCard = styled(CastCard)`
+  width: auto;
+
+  .hire-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const HireButton = styled(ContactButton)`
+  background: ${(props) => props.theme.colors.green};
+  border: 1px solid ${(props) => darken(0.1, props.theme.colors.green)};
+  margin: 0.5rem 0 0 0;
+  padding: 0.25rem;
+  max-width: 100px;
+  text-transform: uppercase;
+
+  &:hover {
+    background: ${(props) => darken(0.1, props.theme.colors.green)};
+  }
+
+  ${(props) => props.theme.global.setFocus(props.theme.colors.green)};
 `;
 
 Cast.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
