@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 7/18/2021
+
+- WIP: Implement Cast Cards to the top of the "Your Cast" page. Add styling to the top of "Your Cast" page. Implement cast pool and cards.
+
 ### 7/16/2021
 
 - Single Talent View Page: Add more styles to social cards and external link button, add total reach section, create a "similar influencers" section
