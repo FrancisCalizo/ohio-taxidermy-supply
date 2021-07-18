@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
+import Link from 'next/link';
 import { darken } from 'polished';
 
 import SiteLayout from 'components/layout/SiteLayout';
@@ -40,7 +41,9 @@ export default function Cast() {
                   <h3>Gwen Stacy</h3>
                   <p className="headline">Some Headline</p>
                   <p className="categories">Drama, Music, Travel</p>
-                  <ViewProfileButton>View Profile</ViewProfileButton>
+                  <Link href={`/talent/${key}`}>
+                    <ViewProfileButton>View Profile</ViewProfileButton>
+                  </Link>
                   <ContactButton>Contact</ContactButton>
                 </div>
               </CastCard>
@@ -70,6 +73,8 @@ const BudgetContainer = styled.div`
 
     & > div {
       margin-bottom: 1.5rem;
+      border-bottom: 5px solid ${(props) => props.theme.colors.teal};
+      border-radius: 5px;
     }
 
     h2 {
