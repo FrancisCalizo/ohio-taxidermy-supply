@@ -26,8 +26,8 @@ export default function Cast() {
           </div>
         </div>
         <div className="your-cast">
-          <h4>Your Cast</h4>
           <div className="cast-card-container">
+            <h4>Your Cast</h4>
             {[...Array(4)].map((_, key) => (
               <CastCard key={key}>
                 <Image
@@ -100,18 +100,26 @@ const BudgetContainer = styled.div`
   }
 
   .budget {
-    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
 
     & > div {
+      width: fit-content;
       margin-bottom: 1.5rem;
       border-bottom: 5px solid ${(props) => props.theme.colors.teal};
       border-radius: 5px;
+      margin-right: 2rem;
     }
 
     h2 {
       color: ${(props) => props.theme.colors.darkGray};
       margin: 0;
       font-size: 3rem;
+    }
+
+    @media (max-width: 1320px) {
+      flex-direction: row;
+      flex-wrap: wrap;
     }
   }
 
@@ -122,7 +130,19 @@ const BudgetContainer = styled.div`
     .cast-card-container {
       display: flex;
       flex-wrap: wrap;
+
+      h4 {
+        width: 100%;
+      }
     }
+
+    @media (max-width: 1320px) {
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 1320px) {
+    flex-direction: column;
   }
 `;
 
@@ -163,6 +183,15 @@ const CastCard = styled.div`
     .categories {
       margin: 0.25rem 0;
     }
+
+    @media (max-width: 550px) {
+      margin-left: 0;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 550px) {
+    flex-direction: column;
   }
 `;
 
@@ -176,7 +205,7 @@ const ViewProfileButton = styled.button`
   border-radius: 4px;
   border-radius: 50px;
   margin: 0.75rem 0.5rem 0.25rem 0;
-  font-size: calc(10px + (18 - 10) * ((100vw - 900px) / (1800 - 900)));
+  font-size: 16px;
   cursor: pointer;
   box-shadow: ${(props) => props.theme.button.boxShadow};
   border: 1px solid ${(props) => darken(0.1, props.theme.colors.pink)};
@@ -200,28 +229,28 @@ const ContactButton = styled(ViewProfileButton)`
 `;
 
 const PoolContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 1rem;
-
-  @media (max-width: 1660px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
 `;
 
 const PoolCard = styled(CastCard)`
-  width: auto;
-
   .hire-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 550px) {
+      flex-direction: column-reverse;
+    }
   }
 `;
 
 const HireButton = styled(ContactButton)`
   background: ${(props) => props.theme.colors.green};
   border: 1px solid ${(props) => darken(0.1, props.theme.colors.green)};
+  font-size: 14px;
   margin: 0.5rem 0 0 0;
   padding: 0.25rem;
   max-width: 100px;
@@ -232,6 +261,10 @@ const HireButton = styled(ContactButton)`
   }
 
   ${(props) => props.theme.global.setFocus(props.theme.colors.green)};
+
+  @media (max-width: 550px) {
+    margin-bottom: 1rem;
+  }
 `;
 
 Cast.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
