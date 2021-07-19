@@ -2,6 +2,10 @@
 
 ### 7/18/2021
 
+- Finish Your Cast Page. Implement better styles. Make responsive to Mobile and Tablet view
+
+### 7/18/2021
+
 - WIP: Implement Cast Cards to the top of the "Your Cast" page. Add styling to the top of "Your Cast" page. Implement cast pool and cards.
 
 ### 7/16/2021
