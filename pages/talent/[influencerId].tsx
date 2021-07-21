@@ -114,19 +114,22 @@ export default function SingleInfluencer() {
               <Image
                 src={`/images/talent-profile.jpg`}
                 alt="similar-profile"
+                layout="fixed"
                 width={150}
                 height={150}
                 quality={90}
               />
 
               <div className="card-info">
-                <h3 className="name" style={{ marginBottom: 0 }}>
+                <h3 className="name" style={{ margin: 0 }}>
                   Influencer Name
                 </h3>
                 <p className="categories">Fitness, DIY, Skits </p>
-                <p style={{ fontWeight: 700 }}>
+                <p style={{ fontWeight: 700, margin: 0 }}>
                   830K <span style={{ color: 'gray' }}>reach</span>
                 </p>
+
+                <SimilarViewProfileButton>View Profile</SimilarViewProfileButton>
               </div>
             </SimilarCard>
           ))}
@@ -160,6 +163,10 @@ const TopBanner = styled.div`
         font-size: 2rem;
         margin-bottom: 0;
         color: ${(props) => props.theme.colors.darkGray};
+
+        @media (max-width: 1060px) {
+          margin-top: 0.75rem;
+        }
       }
 
       .headline {
@@ -175,15 +182,15 @@ const TopBanner = styled.div`
       .location {
         font-size: 1.25rem;
       }
+
+      @media (max-width: 1060px) {
+        margin-left: 0;
+      }
     }
 
     @media (max-width: 1060px) {
       flex-direction: column;
-    }
-
-    @media (max-width: 700px) {
-      flex-direction: row;
-      width: 100%;
+      margin: 0 auto;
     }
 
     @media (max-width: 640px) {
@@ -304,6 +311,7 @@ const SimilarCard = styled.div`
   padding: 1rem;
   width: 100%;
   margin: 0.5rem 1rem;
+  align-items: center;
 
   img {
     border-radius: 100px;
@@ -339,7 +347,7 @@ const ContactButton = styled.button`
   border-radius: 4px;
   border-radius: 50px;
   margin: 0.75rem 0.5rem 0.25rem 0;
-  font-size: calc(10px + (18 - 10) * ((100vw - 900px) / (1800 - 900)));
+  font-size: calc(16px + (18 - 16) * ((100vw - 400px) / (1800 - 400)));
   cursor: pointer;
   box-shadow: ${(props) => props.theme.button.boxShadow};
   border: 1px solid ${(props) => darken(0.1, props.theme.colors.paleBlue)};
@@ -349,6 +357,18 @@ const ContactButton = styled.button`
   }
 
   ${(props) => props.theme.global.setFocus(props.theme.colors.paleBlue)};
+`;
+
+const SimilarViewProfileButton = styled(ContactButton)`
+  background: ${(props) => props.theme.colors.pink};
+
+  border: 1px solid ${(props) => darken(0.1, props.theme.colors.pink)};
+
+  &:hover {
+    background: ${(props) => darken(0.1, props.theme.colors.pink)};
+  }
+
+  ${(props) => props.theme.global.setFocus(props.theme.colors.pink)};
 `;
 
 SingleInfluencer.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
