@@ -165,6 +165,10 @@ const InfoContainer = styled.div`
       }
     }
   }
+
+  @media (max-width: 630px) {
+    margin-top: 2rem;
+  }
 `;
 
 const MainContainer = styled.div`
@@ -239,6 +243,7 @@ const LoginBlockContainer = styled.div`
 
   @media (max-width: 630px) {
     padding: 1.5rem 1rem 1.5rem;
+    max-height: 800px;
   }
 `;
 
