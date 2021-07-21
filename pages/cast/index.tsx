@@ -115,6 +115,7 @@ const BudgetContainer = styled.div`
       color: ${(props) => props.theme.colors.darkGray};
       margin: 0;
       font-size: 3rem;
+      font-size: calc(38px + (48 - 38) * ((100vw - 400px) / (1800 - 400)));
     }
 
     @media (max-width: 1320px) {
