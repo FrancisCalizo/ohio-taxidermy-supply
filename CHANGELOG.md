@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 7/21/2021
+
+- Make influencer profile page mobile responsive. Add ViewProfile Button "Similar Influencers" cards. Make budget numbers on Your Cast page mobile responsive.
+
 ### 7/18/2021
 
 - Finish Your Cast Page. Implement better styles. Make responsive to Mobile and Tablet view
