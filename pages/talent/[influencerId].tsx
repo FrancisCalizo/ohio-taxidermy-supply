@@ -193,6 +193,10 @@ const TopBanner = styled.div`
       margin: 0 auto;
     }
 
+    @media (max-width: 700px) {
+      width: 100%;
+    }
+
     @media (max-width: 640px) {
       flex-direction: column;
     }
@@ -214,6 +218,7 @@ const TopBanner = styled.div`
 
   @media (max-width: 700px) {
     flex-direction: column;
+    padding: 0;
   }
 `;
 
