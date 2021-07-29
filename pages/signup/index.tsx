@@ -31,21 +31,22 @@ export default function Signup() {
   return (
     <MainContainer>
       <LoginBlockContainer>
-        <LogoContainer>
-          <Image src={`/circle-gradient.png`} alt="logo" width={55} height={55} quality={50} />
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-          <div
-            className="title"
-            style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}
-            onClick={() => router.push('/')}
-            role="button"
-            tabIndex={0}
-          >
-            <span>Cast</span>
-            <span>Me</span>
-            <span>App</span>
-          </div>
-        </LogoContainer>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <LogoContainer onClick={() => router.push('/')}>
+            <Image src={`/images/logo.png`} alt="logo" width={55} height={55} quality={50} />
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+            <div
+              className="title"
+              style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}
+              role="button"
+              tabIndex={0}
+            >
+              <span>Cast</span>
+              <span>Me</span>
+              <span>App</span>
+            </div>
+          </LogoContainer>
+        </div>
 
         <h1>
           Register as an <span style={{ textTransform: 'capitalize' }}>{signupType}</span>
@@ -308,39 +309,31 @@ const SignupButton = styled.button`
 
 const LogoContainer = styled.h3`
   text-align: center;
-  position: relative;
-  margin-bottom: -2rem;
-  display: flex;
-  align-items: center;
+  display: inline-block;
   transform: none;
   border-radius: 100px;
-  width: 100%;
-  display: block;
 
   & .title {
-    color: gray;
-    transform: translate(-5px, -55px);
+    margin-top: -1rem;
     font-size: 30px;
 
     & > span:nth-child(1) {
       color: ${(props) => props.theme.colors.teal};
     }
     & > span:nth-child(2) {
-      color: #fff;
+      color: ${(props) => props.theme.colors.yellow};
     }
     & > span:nth-child(3) {
       color: ${(props) => props.theme.colors.pink};
     }
 
     @media (max-width: 630px) {
-      left: -27px;
-      top: 10px;
       font-size: 26px;
     }
+  }
 
-    &:hover {
-      cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
   }
 `;
 
