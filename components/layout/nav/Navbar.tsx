@@ -21,7 +21,7 @@ export default function Navbar() {
       <Nav isHamburgerOpen={isHamburgerOpen}>
         <Container>
           <LogoContainer onClick={() => router.push('/')}>
-            <Image src={`/circle-gradient.png`} alt="logo" width={55} height={55} quality={50} />
+            <Image src={`/images/logo.png`} alt="logo" width={55} height={55} quality={50} />
             <div className="title" style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>
               <span>Cast</span>
               <span>Me</span>
@@ -265,35 +265,27 @@ const ContactButton = styled(LoginButton)`
 `;
 
 export const LogoContainer = styled.h3`
-  position: relative;
   margin: 0 0.85rem 0 2rem;
   display: flex;
   align-items: center;
-  border: 1px solid ${(props) => props.theme.colors.pink};
   transform: none;
   border-radius: 100px;
   cursor: pointer;
 
   & .title {
-    color: gray;
-    position: absolute;
-    left: -44px;
-    top: 5px;
     font-size: 30px;
 
     & > span:nth-child(1) {
       color: ${(props) => props.theme.colors.teal};
     }
     & > span:nth-child(2) {
-      color: #fff;
+      color: ${(props) => props.theme.colors.yellow};
     }
     & > span:nth-child(3) {
       color: ${(props) => props.theme.colors.pink};
     }
 
     @media (max-width: 600px) {
-      left: -27px;
-      top: 10px;
       font-size: 22px;
     }
   }
