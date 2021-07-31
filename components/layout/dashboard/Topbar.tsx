@@ -27,7 +27,7 @@ export default function Topbar() {
     <TopbarContainer>
       <div>
         <LogoContainer onClick={() => router.push('/')}>
-          <Image src={`/circle-gradient.png`} alt="logo" width={45} height={45} quality={50} />
+          <Image src={`/images/logo.png`} alt="logo" width={45} height={45} quality={50} />
           <div className="title" style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>
             <span>Cast</span>
             <span>Me</span>
@@ -111,27 +111,21 @@ const MenuContainer = styled.div`
 `;
 
 export const LogoContainer = styled.h3`
-  position: relative;
   margin: 0 0.85rem 0 2rem;
   display: flex;
   align-items: center;
-  border: 1px solid white;
   transform: none;
   border-radius: 100px;
   cursor: pointer;
 
   & .title {
-    color: gray;
-    position: absolute;
-    left: -48px;
-    top: 5px;
     font-size: 24px;
 
     & > span:nth-child(1) {
       color: ${(props) => props.theme.colors.teal};
     }
     & > span:nth-child(2) {
-      color: #fff;
+      color: ${(props) => props.theme.colors.yellow};
     }
     & > span:nth-child(3) {
       color: ${(props) => props.theme.colors.pink};
