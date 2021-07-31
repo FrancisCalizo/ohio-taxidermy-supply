@@ -140,7 +140,7 @@ const FooterTop = styled.div`
     }
 
     @media (max-width: 800px) {
-      font-size: 4.5rem;
+      font-size: 3.5rem;
       text-align: center;
     }
   }

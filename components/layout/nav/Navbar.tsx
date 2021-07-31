@@ -21,7 +21,14 @@ export default function Navbar() {
       <Nav isHamburgerOpen={isHamburgerOpen}>
         <Container>
           <LogoContainer onClick={() => router.push('/')}>
-            <Image src={`/images/logo.png`} alt="logo" width={55} height={55} quality={50} />
+            <Image
+              src={`/images/logo.png`}
+              alt="logo"
+              width={50}
+              height={50}
+              quality={50}
+              layout="fixed"
+            />
             <div className="title" style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>
               <span>Cast</span>
               <span>Me</span>
@@ -285,8 +292,8 @@ export const LogoContainer = styled.h3`
       color: ${(props) => props.theme.colors.pink};
     }
 
-    @media (max-width: 600px) {
-      font-size: 22px;
+    @media (max-width: 700px) {
+      display: none;
     }
   }
 `;
