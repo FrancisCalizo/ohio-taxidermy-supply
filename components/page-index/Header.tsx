@@ -12,7 +12,7 @@ import {
 
 export default function Header() {
   return (
-    <div>
+    <div style={{ padding: '0 2rem' }}>
       <ImageContainer>
         <Image
           src={'/images/header.png'}
@@ -65,7 +65,8 @@ const ImageContainer = styled.div`
 `;
 
 const MainText = styled.h1`
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
+  font-size: calc(18px + (24 - 18) * ((100vw - 400px) / (1800 - 400)));
   color: ${(props) => props.theme.colors.gray};
   padding: 2rem 0;
   text-align: center;
@@ -103,8 +104,8 @@ const IconsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-top: 2rem;
-  justify-content: space-between;
-  width: 600px;
+  justify-content: center;
+  max-width: 600px;
   margin: 2rem auto 0;
   padding-bottom: 1.5rem;
 `;
