@@ -53,7 +53,7 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
     },
     bmItem: {
       display: 'inline-block',
-      width: '100%',
+      width: '100% !important',
       textAlign: 'center',
     },
     bmCross: {
@@ -68,7 +68,7 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
       isOpen={isBurgerOpen}
     >
       <LogoContainer onClick={() => router.push('/')}>
-        <Image src={`/circle-gradient.png`} alt="logo" width={45} height={45} quality={50} />
+        <Image src={`/images/logo.png`} alt="logo" width={45} height={45} quality={50} />
         <div className="title" style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>
           <span>Cast</span>
           <span>Me</span>
@@ -115,29 +115,23 @@ const BurgerContainer = styled.div<{ isCurrent: boolean }>`
   }
 `;
 
-export const LogoContainer = styled.h3`
-  position: relative;
+export const LogoContainer = styled.div`
   margin: 3rem 0 !important;
   display: flex;
   align-items: center;
-  border: 1px solid ${(props) => props.theme.colors.pink};
   transform: none;
   border-radius: 100px;
   cursor: pointer;
   width: 55px !important;
 
   & .title {
-    color: gray;
-    position: absolute;
-    left: -45px;
-    top: 5px;
     font-size: 24px;
 
     & > span:nth-child(1) {
       color: ${(props) => props.theme.colors.teal};
     }
     & > span:nth-child(2) {
-      color: #fff;
+      color: ${(props) => props.theme.colors.yellow};
     }
     & > span:nth-child(3) {
       color: ${(props) => props.theme.colors.pink};
