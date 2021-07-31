@@ -1,5 +1,18 @@
 ## Development Changelog
 
+### 7/31/2021
+
+- Implement Icon buttons and header image on landing page, implement responsive landing page
+
+### 7/30/2021
+
+- Change logo on Dashboard (desktop/Mobile), remove banner, Make mobile resposive, start implenting new landing page
+
+### 7/29/2021
+
+- fix responsive bugs for layout and card picture. Add Voew Profile button on SimilarCard, Make budget numbers responsive, fix vertical scroll area on mobile
+- Planning,import and implement new logo on top Navbar, signup, login, restructure click to route to home page
+
 ### 7/21/2021
 
 - Make influencer profile page mobile responsive. Add ViewProfile Button "Similar Influencers" cards. Make budget numbers on Your Cast page mobile responsive.
