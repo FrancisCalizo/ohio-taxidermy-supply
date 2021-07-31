@@ -10,15 +10,13 @@ export default function Home() {
         <meta name="description" content="CastMeApp Mockup" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      {/* <Header /> */}
+      {/* <Banner /> */}
 
       {/* {categories
         .filter((cat) => ['beautyCosmetics', 'comedy'].includes(cat.id))
         .map((cat, key) => (
           <VerticalRows key={key} categoryTitle={cat.title} profiles={profilesVertical} />
         ))} */}
-
       {/* {categories
         .filter((cat) => !['beautyCosmetics', 'comedy'].includes(cat.id))
         .map((cat, key) => (
