@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -12,6 +13,17 @@ import {
 export default function Header() {
   return (
     <div>
+      <ImageContainer>
+        <Image
+          src={'/images/header.png'}
+          alt="header"
+          layout="fixed"
+          width={380}
+          height={200}
+          quality={95}
+        />
+      </ImageContainer>
+
       <MainText>
         We help brands engage and activate audiences worldwide through top influencers.
         <br />
@@ -46,6 +58,12 @@ export default function Header() {
   );
 }
 
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+`;
+
 const MainText = styled.h1`
   font-size: 1.5rem;
   color: ${(props) => props.theme.colors.gray};
@@ -64,6 +82,7 @@ const SubText = styled.div`
   .main {
     font-size: 2rem;
     margin-bottom: 0.5rem;
+    color: black;
   }
 
   .secondary {
@@ -86,7 +105,8 @@ const IconsContainer = styled.div`
   margin-top: 2rem;
   justify-content: space-between;
   width: 600px;
-  margin: 2rem auto;
+  margin: 2rem auto 0;
+  padding-bottom: 1.5rem;
 `;
 
 const Icon = styled.div`
