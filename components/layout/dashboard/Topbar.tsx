@@ -118,6 +118,11 @@ export const LogoContainer = styled.h3`
   border-radius: 100px;
   cursor: pointer;
 
+  img {
+    border-radius: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  }
+
   & .title {
     font-size: 24px;
 

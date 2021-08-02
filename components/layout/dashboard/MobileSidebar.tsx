@@ -124,6 +124,11 @@ export const LogoContainer = styled.div`
   cursor: pointer;
   width: 55px !important;
 
+  img {
+    border-radius: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  }
+
   & .title {
     font-size: 24px;
 

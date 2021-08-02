@@ -313,9 +313,14 @@ const LogoContainer = styled.h3`
   transform: none;
   border-radius: 100px;
 
+  img {
+    border-radius: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  }
+
   & .title {
-    margin-top: -1rem;
     font-size: 30px;
+    margin-top: -0.8rem;
 
     & > span:nth-child(1) {
       color: ${(props) => props.theme.colors.teal};

@@ -25,11 +25,19 @@ export default function Header() {
       </ImageContainer>
 
       <MainText>
-        We help brands engage and activate audiences worldwide through top influencers.
+        A place where Talent Creates, Clients hire, Consumers are entertained and all opportunities
+        can be Cast to the right match for the Experience and Vending opportunity for Brand
+        Awareness and Talent Platform monetization. CastMeApp is the world of opportunity, bridging
+        the gap between Talent and Client without wasted hours of false data or long contracts
+        commiting you to something that may not work out.
         <br />
         <br />
-        With our help, you can develop and execute creative influencer marketing strategies to
-        amplify your brand story at scale and reach millions of people.
+        With CastMeApp clients can track performance and Talent can be themselves, authentically
+        creating and landing in front of the right opportunity. Through CastMeApp we bring to
+        surface the ability to hire the right ambassadors for the job, we empower Talent to business
+        their platform as an advertising space to help share the brands they love with the world and
+        above all, we partner with companies, experiences and brands all over the world to raise
+        awareness the global market to our fingertips.
       </MainText>
 
       <Line />
@@ -65,7 +73,6 @@ const ImageContainer = styled.div`
 `;
 
 const MainText = styled.h1`
-  /* font-size: 1.5rem; */
   font-size: calc(18px + (24 - 18) * ((100vw - 400px) / (1800 - 400)));
   color: ${(props) => props.theme.colors.gray};
   padding: 2rem 0;

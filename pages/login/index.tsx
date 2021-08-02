@@ -182,15 +182,17 @@ const LoginButton = styled.button`
 const LogoContainer = styled.h3`
   text-align: center;
   display: inline-block;
-  /* display: flex; */
-  /* align-items: center; */
   transform: none;
   border-radius: 100px;
-  /* width: 100%; */
+
+  img {
+    border-radius: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  }
 
   & .title {
     font-size: 30px;
-    margin-top: -1rem;
+    margin-top: -0.8rem;
 
     & > span:nth-child(1) {
       color: ${(props) => props.theme.colors.teal};
