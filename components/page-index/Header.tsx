@@ -175,7 +175,7 @@ const ImageContainer = styled.div`
 `;
 
 const MainText = styled.h1`
-  font-size: calc(18px + (22 - 18) * ((100vw - 400px) / (1800 - 400)));
+  font-size: calc(14px + (20 - 14) * ((100vw - 400px) / (1800 - 400)));
   color: ${(props) => props.theme.colors.gray};
   text-align: center;
   max-width: 800px;
@@ -189,14 +189,15 @@ const MainText = styled.h1`
   }
 
   div:nth-child(1) {
-    padding: 2rem 1rem 0;
+    padding: 1rem 1rem 0;
   }
   div:nth-child(2) {
-    padding: 2rem 1rem 2rem;
+    padding: 1rem 1rem;
   }
 `;
 
 const SubText = styled.div`
+  position: relative;
   text-align: center;
   max-width: 700px;
   margin: 0 auto;
@@ -215,6 +216,7 @@ const SubText = styled.div`
 `;
 
 const Line = styled.div`
+  position: relative;
   height: 3px;
   background: ${(props) => props.theme.colors.pink};
   max-width: 700px;
@@ -223,6 +225,7 @@ const Line = styled.div`
 `;
 
 const IconsContainer = styled.div`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   margin-top: 2rem;
