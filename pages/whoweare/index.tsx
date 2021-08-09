@@ -25,29 +25,12 @@ export default function index() {
         </div>
         <div>
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis temporibus esse qui,
-            reprehenderit aliquid nesciunt ut. Doloremque porro, est dolor vero accusamus eligendi,
-            ipsam harum excepturi non dolorem reprehenderit qui?
-          </p>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis temporibus esse qui,
-            reprehenderit aliquid nesciunt ut. Doloremque porro, est dolor vero accusamus eligendi,
-            ipsam harum excepturi non dolorem reprehenderit qui?
-          </p>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis temporibus esse qui,
-            reprehenderit aliquid nesciunt ut. Doloremque porro, est dolor vero accusamus eligendi,
-            ipsam harum excepturi non dolorem reprehenderit qui?
-          </p>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis temporibus esse qui,
-            reprehenderit aliquid nesciunt ut. Doloremque porro, est dolor vero accusamus eligendi,
-            ipsam harum excepturi non dolorem reprehenderit qui?
-          </p>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis temporibus esse qui,
-            reprehenderit aliquid nesciunt ut. Doloremque porro, est dolor vero accusamus eligendi,
-            ipsam harum excepturi non dolorem reprehenderit qui?
+            CastMeApp.com is a living breathing platform to break the gap between industry need and
+            talent at hand. <br /> <br />
+            At CastMeApp.com we host a network of creative talent creating and sharing their
+            capabilities within the market. We then categorize and include external analytics to
+            match the cast and ensure brands, business, labels and casting directors/entertainment
+            houses get the talent they need to create the campaign.
           </p>
         </div>
       </FlexContainer>
@@ -60,12 +43,14 @@ const FlexContainer = styled.div`
   margin: 0 2rem;
   color: ${(props) => props.theme.colors.gray};
   line-height: 1.7;
+  max-width: 1100px;
+  margin: 0 auto;
 
   & > div {
     width: 50%;
 
     @media (max-width: 960px) {
-      width: 100%;
+      width: 95%;
     }
   }
 
@@ -75,11 +60,20 @@ const FlexContainer = styled.div`
 
   & > div:nth-child(2) {
     margin-left: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    p {
+      margin: 0;
+    }
   }
 
   @media (max-width: 960px) {
     flex-direction: column;
     margin-bottom: 4rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
   }
 `;
 
