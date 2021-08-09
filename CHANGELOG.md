@@ -1,5 +1,13 @@
 ## Development Changelog
 
+### 8/9/2021
+
+- Implement new wording on About, Mission, and Landing Page. Reszie all new wording to be repsonsive on all screens. Make edits to new animation that Holly approved.
+
+### 8/2/2021 - 8/8/2021
+
+- Plan all new changes, create and implement new logo. Change navbar links to match new headers. Create new SVG blobs and waves for background and implement on responsive screens. Resize fonts for landing page, create mockup for header animation that Holly requested. Edit gif to fit color scheme and Implement new header gif to sample for Holly
+
 ### 7/31/2021
 
 - Implement Icon buttons and header image on landing page, implement responsive landing page
