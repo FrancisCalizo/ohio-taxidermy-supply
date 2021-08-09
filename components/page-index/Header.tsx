@@ -126,19 +126,24 @@ export default function Header() {
 
       <MainText>
         <div>
-          A place where Talent Creates, Clients hire, Consumers are entertained and all
+          A place where Talent creates, Clients hire, Consumers are entertained and all
           opportunities can be Cast to the right match for the Experience and Vending opportunity
-          for Brand Awareness and Talent Platform monetization. CastMeApp is the world of
-          opportunity, bridging the gap between Talent and Client without wasted hours of false data
-          or long contracts commiting you to something that may not work out.
+          for Brand Awareness and Talent Platform monetization.
+        </div>
+        <div>
+          CastMeApp is the world of opportunity, bridging the gap between Talent and Client without
+          wasted hours of false data or long contracts commiting you to something that may not work
+          out.
         </div>
         <div>
           With CastMeApp clients can track performance and Talent can be themselves, authentically
-          creating and landing in front of the right opportunity. Through CastMeApp we bring to
-          surface the ability to hire the right ambassadors for the job, we empower Talent to
-          business their platform as an advertising space to help share the brands they love with
-          the world and above all, we partner with companies, experiences and brands all over the
-          world to raise awareness the global market to our fingertips.
+          creating and landing in front of the right opportunity.
+        </div>
+        <div>
+          Through CastMeApp we bring to surface the ability to hire the right ambassadors for the
+          job, we empower Talent to business their platform as an advertising space to help share
+          the brands they love with the world and above all, we partner with companies, experiences
+          and brands all over the world to bring the global market to our fingertips.
         </div>
       </MainText>
 
@@ -188,10 +193,12 @@ const MainText = styled.h1`
     background: rgba(255, 255, 255, 0.2);
   }
 
-  div:nth-child(1) {
+  div:nth-child(1),
+  div:nth-child(2),
+  div:nth-child(3) {
     padding: 1rem 1rem 0;
   }
-  div:nth-child(2) {
+  div:nth-child(4) {
     padding: 1rem 1rem;
   }
 `;
