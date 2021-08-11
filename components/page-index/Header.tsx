@@ -107,11 +107,8 @@ const MainText = styled.h1`
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-
-  div {
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1), 0 2px 6px 0 rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255);
-  }
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1), 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.6);
 
   div:nth-child(1),
   div:nth-child(2),

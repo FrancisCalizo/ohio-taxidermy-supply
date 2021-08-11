@@ -88,6 +88,7 @@ export default function Footer() {
 
 const BackgroundContainer = styled.div`
   background-color: ${(props) => props.theme.colors.purple};
+  border-top: 3px solid ${(props) => props.theme.colors.pink};
 `;
 
 const MainContainer = styled.div`
