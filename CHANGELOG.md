@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 8/11/2021
+
+- Create and implement new header gif on landing page
+
 ### 8/9/2021
 
 - Implement new wording on About, Mission, and Landing Page. Reszie all new wording to be repsonsive on all screens. Make edits to new animation that Holly approved.
