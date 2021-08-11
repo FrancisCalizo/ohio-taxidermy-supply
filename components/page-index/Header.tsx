@@ -115,7 +115,7 @@ export default function Header() {
 
       <ImageContainer>
         <Image
-          src={'/images/header-temp.gif'}
+          src={'/images/header.gif'}
           alt="header"
           layout="fixed"
           width={400}
