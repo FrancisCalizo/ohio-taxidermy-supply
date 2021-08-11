@@ -2,7 +2,7 @@
 
 ### 8/11/2021
 
-- Create and implement new header gif on landing page
+- Create and implement new header gif on and implement new gradient background on landing page
 
 ### 8/9/2021
 
