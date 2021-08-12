@@ -2,7 +2,7 @@ export const routes = [
   { title: 'Talent', path: '/talent' },
   { title: 'Clients', path: '/clients' },
   { title: 'Events', path: '/events' },
-  { title: 'Vendors', path: '/vendors' },
+  { title: 'Vending', path: '/vending' },
   { title: 'Travel', path: '/travel' },
 ];
 

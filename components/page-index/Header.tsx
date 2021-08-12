@@ -207,6 +207,6 @@ const ICONS = [
   { title: 'Talent', icon: faSearchDollar },
   { title: 'Clients', icon: faUserCircle },
   { title: 'Events', icon: faCalendarAlt },
-  { title: 'Vendors', icon: faBuilding },
+  { title: 'Vending', icon: faBuilding },
   { title: 'Travel', icon: faGlobeAmericas },
 ];
