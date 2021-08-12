@@ -24,6 +24,8 @@ export default function Header() {
         />
       </ImageContainer>
 
+      <LineOne />
+
       <MainText>
         <div>
           A place where Talent creates, Clients hire, Consumers are entertained and all
@@ -47,7 +49,7 @@ export default function Header() {
         </div>
       </MainText>
 
-      <Line />
+      <LineTwo />
 
       <SubText>
         <h2 className="main">Are you Ready?</h2>
@@ -95,7 +97,10 @@ const MainContainer = styled.div`
 const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 2rem;
+
+  @media (min-width: 800px) {
+    padding-top: 2rem;
+  }
 `;
 
 const MainText = styled.h1`
@@ -139,13 +144,17 @@ const SubText = styled.div`
   }
 `;
 
-const Line = styled.div`
+const LineTwo = styled.div`
   position: relative;
   height: 3px;
   background: ${(props) => props.theme.colors.pink};
   max-width: 700px;
   margin: 1rem auto 0;
   box-shadow: ${(props) => `0 3px 2px -1px ${props.theme.colors.purple}`};
+`;
+
+const LineOne = styled(LineTwo)`
+  margin: 0.25rem auto 1rem;
 `;
 
 const IconsContainer = styled.div`
