@@ -1,5 +1,10 @@
 ## Development Changelog
 
+### 8/12/2021 and 8/15/2021
+
+- Fix landing page styles. Gather client logos, research filter/sorting options for talent page
+- Start Creation of clients page, create client logo cards and featured clients section. Start featured campaign UI
+
 ### 8/11/2021
 
 - Create and implement new header gif on and implement new gradient background on landing page
