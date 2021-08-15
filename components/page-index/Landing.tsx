@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -11,6 +12,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
+  const router = useRouter();
+
   return (
     <MainContainer>
       <ImageContainer>
@@ -58,7 +61,7 @@ export default function Header() {
 
       <IconsContainer>
         {ICONS.map((icon, key) => (
-          <Icon key={key} role="button" tabIndex={0} onClick={() => console.log('On Click')}>
+          <Icon key={key} role="button" tabIndex={0} onClick={() => router.push(icon.route)}>
             <div>
               <FontAwesomeIcon
                 icon={icon.icon}
@@ -204,9 +207,9 @@ const Icon = styled.div`
 `;
 
 const ICONS = [
-  { title: 'Talent', icon: faSearchDollar },
-  { title: 'Clients', icon: faUserCircle },
-  { title: 'Events', icon: faCalendarAlt },
-  { title: 'Vending', icon: faBuilding },
-  { title: 'Travel', icon: faGlobeAmericas },
+  { title: 'Talent', icon: faSearchDollar, route: '/talent' },
+  { title: 'Clients', icon: faUserCircle, route: '/clients' },
+  { title: 'Events', icon: faCalendarAlt, route: '/events' },
+  { title: 'Vending', icon: faBuilding, route: '/vending' },
+  { title: 'Travel', icon: faGlobeAmericas, route: '/travel' },
 ];
