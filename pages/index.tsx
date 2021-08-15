@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 import SiteLayout from 'components/layout/SiteLayout';
-import Header from 'components/page-index/Header';
+import Landing from 'components/page-index/Landing';
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
         <meta name="description" content="CastMeApp Mockup" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      <Landing />
     </div>
   );
 }
