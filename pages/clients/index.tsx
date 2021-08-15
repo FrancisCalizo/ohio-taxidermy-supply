@@ -24,6 +24,7 @@ const Title = styled.h1`
   .title-check {
     text-transform: uppercase;
     font-size: 3.25rem;
+    letter-spacing: -0.05rem;
   }
 
   .title-client {

@@ -1,0 +1,101 @@
+import React from 'react';
+import styled from 'styled-components';
+import Image from 'next/image';
+import { darken } from 'polished';
+
+export default function FeaturedCampaign() {
+  return (
+    <MainContainer>
+      <h2 className="heading">Featured Campaign</h2>
+
+      <Campaign>
+        <div className="campaign-image-container">
+          <Image
+            src={`/images/clients/bang-campaign.jpeg`}
+            alt="logo"
+            quality={80}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        <div className="campaign-right">
+          <h2 className="campaign-title">Bang Energy | Fueling The Destiny</h2>
+
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero nesciunt qui eligendi
+            ducimus reprehenderit ea suscipit laboriosam est sit iste itaque impedit minima quam
+            quasi, in quas. Cum, corporis fugiat itaque animi minus omnis culpa ratione enim,
+            voluptates veritatis, nulla amet iste? Voluptatum vero amet explicabo reprehenderit
+            optio fugiat dolorem.
+          </p>
+
+          <ReadMoreButton>Read More</ReadMoreButton>
+        </div>
+      </Campaign>
+    </MainContainer>
+  );
+}
+
+const MainContainer = styled.div`
+  margin: 3rem 0;
+
+  .heading {
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: -0.1rem;
+  }
+`;
+
+const Campaign = styled.div`
+  display: flex;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+
+  .campaign-image-container {
+    position: relative;
+    height: 300px;
+    min-width: 300px;
+
+    & > div:first-child {
+      border-radius: 7px 0 0 7px;
+    }
+  }
+
+  .campaign-right {
+    padding: 1rem;
+
+    p {
+      color: ${({ theme }) => theme.colors.gray};
+    }
+  }
+
+  .campaign-title {
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: -0.1rem;
+    margin: 0;
+  }
+`;
+
+const ReadMoreButton = styled.button`
+  display: block;
+  width: 170px;
+  text-transform: uppercase;
+  background: ${(props) => props.theme.colors.pink};
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border-radius: 50px;
+  margin: 0.75rem 0.5rem 0.25rem 0;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: ${(props) => props.theme.button.boxShadow};
+  border: 1px solid ${(props) => darken(0.1, props.theme.colors.pink)};
+
+  &:hover {
+    background: ${(props) => darken(0.1, props.theme.colors.pink)};
+  }
+
+  ${(props) => props.theme.global.setFocus(props.theme.colors.pink)};
+`;

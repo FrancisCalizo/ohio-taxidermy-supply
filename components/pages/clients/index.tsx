@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
+import FeaturedCampaign from './FeaturedCampaign';
 
 const CLIENTS = [
   { name: 'Bang Energy', url: 'bang.jpeg', backgroundColor: '#fff' },
@@ -12,7 +13,7 @@ const CLIENTS = [
 
 export default function index() {
   return (
-    <div>
+    <MainContainer>
       <ClientsContainer>
         {CLIENTS.map((client, key) => (
           <ClientsCard key={key} client={client}>
@@ -29,9 +30,17 @@ export default function index() {
           </ClientsCard>
         ))}
       </ClientsContainer>
-    </div>
+
+      <FeaturedCampaign />
+    </MainContainer>
   );
 }
+
+const MainContainer = styled.div`
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 1300px;
+`;
 
 const ClientsContainer = styled.div`
   display: flex;
