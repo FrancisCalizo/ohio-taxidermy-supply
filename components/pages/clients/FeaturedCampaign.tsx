@@ -13,7 +13,7 @@ export default function FeaturedCampaign() {
           <Image
             src={`/images/clients/bang-campaign.jpeg`}
             alt="logo"
-            quality={80}
+            quality={100}
             layout="fill"
             objectFit="cover"
           />
@@ -56,6 +56,10 @@ const Campaign = styled.div`
   border-radius: 10px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 0 rgba(0, 0, 0, 0.19);
 
+  @media (max-width: 799px) {
+    flex-direction: column;
+  }
+
   .campaign-image-container {
     position: relative;
     height: 300px;
@@ -79,6 +83,10 @@ const Campaign = styled.div`
 
     p {
       color: ${({ theme }) => theme.colors.gray};
+
+      @media (max-width: 1100px) and (min-width: 800px) {
+        font-size: calc(12px + (16 - 12) * ((100vw - 400px) / (1100 - 400)));
+      }
     }
   }
 
@@ -87,6 +95,10 @@ const Campaign = styled.div`
     font-size: 2rem;
     letter-spacing: -0.1rem;
     margin: 0;
+
+    @media (max-width: 1100px) and (min-width: 800px) {
+      font-size: calc(12px + (32 - 12) * ((100vw - 400px) / (1100 - 400)));
+    }
   }
 `;
 
