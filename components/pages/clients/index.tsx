@@ -52,6 +52,7 @@ const ClientsCard = styled.div<{ client: any }>`
   margin: 0.5rem;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
+  transition: transform 1s ease-in-out;
 
   .client-image-container {
     position: relative;
@@ -60,6 +61,20 @@ const ClientsCard = styled.div<{ client: any }>`
     border: 1px solid rgba(0, 0, 0, 0.3);
     background-color: ${({ client }) => client.backgroundColor};
     border-radius: 10px 10px 0 0;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.8);
+      opacity: 0;
+      transition: all 0.5s;
+      -webkit-transition: all 0.5s;
+      border-radius: 10px 10px 0 0;
+    }
   }
 
   .card-bottom {
@@ -72,5 +87,15 @@ const ClientsCard = styled.div<{ client: any }>`
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-top: none;
     border-radius: 0 0 10px 10px;
+  }
+
+  &:hover {
+    transform: translateY(-30px);
+    transition: transform 0.5s ease-in-out;
+    cursor: pointer;
+
+    .client-image-container:after {
+      opacity: 1;
+    }
   }
 `;

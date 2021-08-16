@@ -27,7 +27,8 @@ export default function FeaturedCampaign() {
               ducimus reprehenderit ea suscipit laboriosam est sit iste itaque impedit minima quam
               quasi, in quas. Cum, corporis fugiat itaque animi minus omnis culpa ratione enim,
               voluptates veritatis, nulla amet iste? Voluptatum vero amet explicabo reprehenderit
-              optio fugiat dolorem.
+              optio fugiat dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+              repellat quasi tempora corrupti quo ratione odio sunt rem nemo porro.
             </p>
           </div>
 
