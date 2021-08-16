@@ -11,12 +11,18 @@ const CLIENTS = [
   { name: 'Andaz Maui', url: 'andaz.png', backgroundColor: '#fff' },
 ];
 
-export default function index() {
+interface ClientProps {
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function index(props: ClientProps) {
+  const { setIsModalOpen } = props;
+
   return (
     <MainContainer>
       <ClientsContainer>
         {CLIENTS.map((client, key) => (
-          <ClientsCard key={key} client={client}>
+          <ClientsCard key={key} client={client} onClick={() => setIsModalOpen(true)}>
             <div className="client-image-container">
               <Image
                 src={`/images/clients/${client.url}`}

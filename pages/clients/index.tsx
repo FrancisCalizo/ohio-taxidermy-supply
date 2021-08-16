@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Clients from 'components/pages/clients';
+import CampaignModal from 'components/pages/clients/CampaignModal';
 import SiteLayout from 'components/layout/SiteLayout';
 
 export default function Index() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div>
       <Title>
@@ -12,7 +15,8 @@ export default function Index() {
         <span className="title-client">Clients</span>
       </Title>
 
-      <Clients />
+      <Clients setIsModalOpen={setIsModalOpen} />
+      <CampaignModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </div>
   );
 }
