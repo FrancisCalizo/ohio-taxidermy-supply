@@ -4,6 +4,7 @@
 
 - Fix landing page styles. Gather client logos, research filter/sorting options for talent page
 - Start Creation of clients page, create client logo cards and featured clients section. Start featured campaign UI
+- Styling changes to Clients page: make responsive, style featured campaign, hover effects
 
 ### 8/11/2021
 
