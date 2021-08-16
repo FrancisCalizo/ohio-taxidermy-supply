@@ -1,27 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
-import FeaturedCampaign from './FeaturedCampaign';
 
-const CLIENTS = [
-  { name: 'Bang Energy', url: 'bang.jpeg', backgroundColor: '#fff' },
-  { name: 'Dolls Kill', url: 'dolls-kill.png', backgroundColor: '#fff' },
-  { name: 'Pretty Little Thing', url: 'pretty-little-thing.jpeg', backgroundColor: '#000' },
-  { name: 'White Bull Coffee', url: 'white-bull.png', backgroundColor: '#000' },
-  { name: 'Andaz Maui', url: 'andaz.png', backgroundColor: '#fff' },
-];
+import FeaturedCampaign from 'components/pages/clients/FeaturedCampaign';
+import { ClientContext } from 'pages/clients';
 
-interface ClientProps {
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function index(props: ClientProps) {
-  const { setIsModalOpen } = props;
+export default function Clients() {
+  const { clients, setIsModalOpen } = useContext(ClientContext);
 
   return (
     <MainContainer>
       <ClientsContainer>
-        {CLIENTS.map((client, key) => (
+        {clients.map((client: any, key: number) => (
           <ClientsCard key={key} client={client} onClick={() => setIsModalOpen(true)}>
             <div className="client-image-container">
               <Image

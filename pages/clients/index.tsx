@@ -1,23 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 import styled from 'styled-components';
 
 import Clients from 'components/pages/clients';
 import CampaignModal from 'components/pages/clients/CampaignModal';
 import SiteLayout from 'components/layout/SiteLayout';
 
+const CLIENTS = [
+  { name: 'Bang Energy', url: 'bang.jpeg', backgroundColor: '#fff' },
+  { name: 'Dolls Kill', url: 'dolls-kill.png', backgroundColor: '#fff' },
+  { name: 'Pretty Little Thing', url: 'pretty-little-thing.jpeg', backgroundColor: '#000' },
+  { name: 'White Bull Coffee', url: 'white-bull.png', backgroundColor: '#000' },
+  { name: 'Andaz Maui', url: 'andaz.png', backgroundColor: '#fff' },
+];
+
+export const ClientContext = createContext({} as any);
+
 export default function Index() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div>
+    <ClientContext.Provider value={{ isModalOpen, setIsModalOpen, clients: CLIENTS }}>
       <Title>
         <span className="title-check">Check Out Our</span>{' '}
         <span className="title-client">Clients</span>
       </Title>
 
-      <Clients setIsModalOpen={setIsModalOpen} />
-      <CampaignModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-    </div>
+      <Clients />
+      <CampaignModal />
+    </ClientContext.Provider>
   );
 }
 

@@ -1,17 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Image from 'next/image';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 
 import useWindowResize from 'components/hooks/useWindowResize';
+import { ClientContext } from 'pages/clients';
 
-interface CampaignModalProps {
-  isModalOpen: boolean;
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function CampaignModal(props: CampaignModalProps) {
-  const { isModalOpen, setIsModalOpen } = props;
+export default function CampaignModal() {
+  const { isModalOpen, setIsModalOpen } = useContext(ClientContext);
 
   const [windowWidth] = useWindowResize();
 
