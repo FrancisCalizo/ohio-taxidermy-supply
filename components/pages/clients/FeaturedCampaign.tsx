@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { darken } from 'polished';
 
+import { ClientContext } from 'pages/clients';
+
 export default function FeaturedCampaign() {
+  const { setIsModalOpen } = useContext(ClientContext);
+
   return (
     <MainContainer>
       <h2 className="heading">Featured Campaign</h2>
@@ -33,7 +37,7 @@ export default function FeaturedCampaign() {
           </div>
 
           <div className="campaign-right_footer">
-            <ReadMoreButton>Read More</ReadMoreButton>
+            <ReadMoreButton onClick={() => setIsModalOpen(true)}>Read More</ReadMoreButton>
           </div>
         </div>
       </Campaign>
