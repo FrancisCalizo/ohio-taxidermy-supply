@@ -19,20 +19,40 @@ export default function CampaignModal() {
         contentLabel="Influencer Modal"
         ariaHideApp={false}
         style={{
-          overlay: { zIndex: 1000 },
-          content: windowWidth > 600 ? regularModal : mobileModal,
+          overlay: { zIndex: 1000, backgroundColor: 'rgba(0,0,0,0.7)' },
+          content: { overflowY: 'hidden', ...(windowWidth > 600 ? regularModal : mobileModal) },
         }}
       >
-        <h1>Dis here a modal</h1>
+        <MainContainer>
+          <ClientImageContainer>
+            <Image
+              src={`/images/clients/campaign-modal.jpg`}
+              alt="logo"
+              quality={80}
+              layout="fill"
+              objectFit="cover"
+            />
+          </ClientImageContainer>
+        </MainContainer>
       </Modal>
     </div>
   );
 }
 
+const MainContainer = styled.div`
+  display: flex;
+`;
+
+const ClientImageContainer = styled.div`
+  position: relative;
+  height: 80vh;
+  width: 50%;
+`;
+
 const mobileModal = { top: 0, bottom: 0, left: 0, right: 0 };
 const regularModal = {
-  maxWidth: 400,
-  height: '90vh',
+  top: '10%',
+  maxWidth: '80%',
+  height: '80vh',
   margin: '0 auto',
-  padding: '0 0 0 35px',
 };
