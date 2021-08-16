@@ -19,17 +19,21 @@ export default function FeaturedCampaign() {
           />
         </div>
         <div className="campaign-right">
-          <h2 className="campaign-title">Bang Energy | Fueling The Destiny</h2>
+          <div className="campaign-right_header-body">
+            <h2 className="campaign-title">Bang Energy | Fueling The Destiny</h2>
 
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero nesciunt qui eligendi
-            ducimus reprehenderit ea suscipit laboriosam est sit iste itaque impedit minima quam
-            quasi, in quas. Cum, corporis fugiat itaque animi minus omnis culpa ratione enim,
-            voluptates veritatis, nulla amet iste? Voluptatum vero amet explicabo reprehenderit
-            optio fugiat dolorem.
-          </p>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero nesciunt qui eligendi
+              ducimus reprehenderit ea suscipit laboriosam est sit iste itaque impedit minima quam
+              quasi, in quas. Cum, corporis fugiat itaque animi minus omnis culpa ratione enim,
+              voluptates veritatis, nulla amet iste? Voluptatum vero amet explicabo reprehenderit
+              optio fugiat dolorem.
+            </p>
+          </div>
 
-          <ReadMoreButton>Read More</ReadMoreButton>
+          <div className="campaign-right_footer">
+            <ReadMoreButton>Read More</ReadMoreButton>
+          </div>
         </div>
       </Campaign>
     </MainContainer>
@@ -50,6 +54,7 @@ const Campaign = styled.div`
   display: flex;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 0 rgba(0, 0, 0, 0.19);
 
   .campaign-image-container {
     position: relative;
@@ -63,6 +68,14 @@ const Campaign = styled.div`
 
   .campaign-right {
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .campaign-right_footer {
+      display: flex;
+      justify-content: flex-end;
+    }
 
     p {
       color: ${({ theme }) => theme.colors.gray};

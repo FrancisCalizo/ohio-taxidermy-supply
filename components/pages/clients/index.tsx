@@ -50,6 +50,8 @@ const ClientsContainer = styled.div`
 
 const ClientsCard = styled.div<{ client: any }>`
   margin: 0.5rem;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 
   .client-image-container {
     position: relative;
