@@ -35,6 +35,15 @@ export default function CampaignModal() {
             />
           </ClientImageContainer>
           <ClientDescriptionContainer>
+            <CloseButton
+              onClick={(e) => {
+                e.preventDefault();
+                setIsModalOpen(false);
+              }}
+            >
+              X
+            </CloseButton>
+
             <h3 className="heading">Lorem ipsum dolor sit amet.</h3>
 
             <h3 className="sub-heading">Campaign Description</h3>
@@ -112,6 +121,24 @@ const ClientDescriptionContainer = styled.div`
     font-size: 0.85rem;
     line-height: 1.5rem;
   }
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  cursor: pointer;
+  padding: 0.5rem 0.7rem;
+  background: #ff0051;
+  color: white;
+  border: 1px solid ${({ theme }) => theme.colors.gray};
+  border-radius: 50px;
+
+  &:hover {
+    background: ${darken(0.1, '#e20046')};
+  }
+
+  ${(props) => props.theme.global.setFocus('#e20046')}
 `;
 
 const StartCampaignButton = styled.button`
