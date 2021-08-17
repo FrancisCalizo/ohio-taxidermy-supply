@@ -21,28 +21,41 @@ export default function CampaignModal() {
         ariaHideApp={false}
         style={{
           overlay: { zIndex: 1000, backgroundColor: 'rgba(0,0,0,0.7)' },
-          content: { overflowY: 'hidden', ...(windowWidth > 600 ? regularModal : mobileModal) },
+          // @ts-ignore
+          content: windowWidth > 900 ? regularModal : mobileModal,
         }}
       >
         <MainContainer>
           <ClientImageContainer>
+            {windowWidth <= 900 && (
+              <CloseButton
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsModalOpen(false);
+                }}
+              >
+                X
+              </CloseButton>
+            )}
             <Image
               src={`/images/clients/campaign-modal.jpg`}
               alt="logo"
-              quality={80}
+              quality={90}
               layout="fill"
               objectFit="cover"
             />
           </ClientImageContainer>
           <ClientDescriptionContainer>
-            <CloseButton
-              onClick={(e) => {
-                e.preventDefault();
-                setIsModalOpen(false);
-              }}
-            >
-              X
-            </CloseButton>
+            {windowWidth > 900 && (
+              <CloseButton
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsModalOpen(false);
+                }}
+              >
+                X
+              </CloseButton>
+            )}
 
             <h3 className="heading">Lorem ipsum dolor sit amet.</h3>
 
@@ -94,12 +107,21 @@ export default function CampaignModal() {
 
 const MainContainer = styled.div`
   display: flex;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 `;
 
 const ClientImageContainer = styled.div`
   position: relative;
   height: 80vh;
   width: 50%;
+
+  @media (max-width: 900px) {
+    width: 100%;
+    height: 40vh;
+  }
 `;
 
 const ClientDescriptionContainer = styled.div`
@@ -121,6 +143,13 @@ const ClientDescriptionContainer = styled.div`
     font-size: 0.85rem;
     line-height: 1.5rem;
   }
+
+  @media (max-width: 900px) {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+  }
 `;
 
 const CloseButton = styled.button`
@@ -139,6 +168,10 @@ const CloseButton = styled.button`
   }
 
   ${(props) => props.theme.global.setFocus('#e20046')}
+
+  @media (max-width: 900px) {
+    z-index: 999;
+  }
 `;
 
 const StartCampaignButton = styled.button`
@@ -160,6 +193,12 @@ const StartCampaignButton = styled.button`
   }
 
   ${(props) => props.theme.global.setFocus(props.theme.colors.pink)};
+
+  @media (max-width: 900px) {
+    position: fixed;
+    left: 0;
+    width: 100%;
+  }
 `;
 
 const mobileModal = { top: 0, bottom: 0, left: 0, right: 0 };
@@ -168,4 +207,5 @@ const regularModal = {
   maxWidth: '80%',
   height: '80vh',
   margin: '0 auto',
+  overflow: 'hidden',
 };
