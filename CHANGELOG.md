@@ -1,5 +1,13 @@
 ## Development Changelog
 
+### 8/17/2021
+
+- Create right side of campaign modal, campaign modal styling and buttons, make campaign modal responsive, find new images
+
+### 8/16/2021
+
+- Implement hover styling for client campaigns, implement click-to-view styling for clients, implement modal on campaign view, get image for campaign modal and implement into modal
+
 ### 8/12/2021 and 8/15/2021
 
 - Fix landing page styles. Gather client logos, research filter/sorting options for talent page
