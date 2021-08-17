@@ -61,6 +61,18 @@ export default function CampaignModal() {
             </p>
 
             <h3 className="sub-heading">The Cast</h3>
+
+            <p className="description-text">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod voluptatibus enim,
+              officiis beatae eveniet nihil quia alias, corrupti odio, sit vero quasi distinctio
+              animi a.
+            </p>
+
+            <p className="description-text">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod voluptatibus enim,
+              officiis beatae eveniet nihil quia alias, corrupti odio, sit vero quasi distinctio
+              animi a.
+            </p>
           </ClientDescriptionContainer>
         </MainContainer>
       </Modal>
@@ -81,6 +93,8 @@ const ClientImageContainer = styled.div`
 const ClientDescriptionContainer = styled.div`
   padding: 2rem;
   width: 50%;
+  overflow-y: scroll;
+  height: 80vh;
 
   h3 {
     text-transform: uppercase;
