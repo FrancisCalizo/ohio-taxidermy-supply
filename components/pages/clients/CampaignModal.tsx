@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import Image from 'next/image';
 import Modal from 'react-modal';
+import { darken } from 'polished';
 import styled from 'styled-components';
 
 import useWindowResize from 'components/hooks/useWindowResize';
@@ -73,6 +74,8 @@ export default function CampaignModal() {
               officiis beatae eveniet nihil quia alias, corrupti odio, sit vero quasi distinctio
               animi a.
             </p>
+
+            <StartCampaignButton>Start Your Campaign</StartCampaignButton>
           </ClientDescriptionContainer>
         </MainContainer>
       </Modal>
@@ -91,7 +94,7 @@ const ClientImageContainer = styled.div`
 `;
 
 const ClientDescriptionContainer = styled.div`
-  padding: 2rem;
+  padding: 2rem 2rem 5rem;
   width: 50%;
   overflow-y: scroll;
   height: 80vh;
@@ -109,6 +112,27 @@ const ClientDescriptionContainer = styled.div`
     font-size: 0.85rem;
     line-height: 1.5rem;
   }
+`;
+
+const StartCampaignButton = styled.button`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  background: ${(props) => props.theme.colors.pink};
+  color: #fff;
+  border: none;
+  padding: 1rem;
+  font-size: calc(16px + (18 - 16) * ((100vw - 400px) / (1800 - 400)));
+  cursor: pointer;
+  box-shadow: ${(props) => props.theme.button.boxShadow};
+  border: 1px solid ${(props) => darken(0.1, props.theme.colors.pink)};
+
+  &:hover {
+    background: ${(props) => darken(0.1, props.theme.colors.pink)};
+  }
+
+  ${(props) => props.theme.global.setFocus(props.theme.colors.pink)};
 `;
 
 const mobileModal = { top: 0, bottom: 0, left: 0, right: 0 };
