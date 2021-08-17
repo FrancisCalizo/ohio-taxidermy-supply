@@ -72,6 +72,10 @@ const Campaign = styled.div`
 
     & > div:first-child {
       border-radius: 7px 0 0 7px;
+
+      @media (max-width: 799px) {
+        border-radius: 7px 7px 0 0;
+      }
     }
   }
 
