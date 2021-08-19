@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 8/19/2021
+
+- Research downshift and filter/sort options, start implementing sort by on talent page, create better file structure for Talent Page, fix: change clients title to match others, create multiple dropdown filter
+
 ### 8/17/2021
 
 - Create right side of campaign modal, campaign modal styling and buttons, make campaign modal responsive, find new images
