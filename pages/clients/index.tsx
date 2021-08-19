@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Clients from 'components/pages/clients';
 import CampaignModal from 'components/pages/clients/CampaignModal';
 import SiteLayout from 'components/layout/SiteLayout';
+import { PageTitle } from 'components/utils/styled';
 
 const CLIENTS = [
   { name: 'Bang Energy', url: 'bang.jpeg', backgroundColor: '#fff' },
@@ -20,10 +21,9 @@ export default function Index() {
 
   return (
     <ClientContext.Provider value={{ isModalOpen, setIsModalOpen, clients: CLIENTS }}>
-      <Title>
-        <span className="title-check">Check Out Our</span>{' '}
-        <span className="title-client">Clients</span>
-      </Title>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <PageTitle>The Talent</PageTitle>
+      </div>
 
       <Clients />
       <CampaignModal />
