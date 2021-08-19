@@ -66,7 +66,8 @@ const Dropdown = styled.button`
 const DropdownMenu = styled.ul<{ isOpen: boolean }>`
   position: absolute;
   background: #fff;
-  transform: translateX(-3.5rem);
+  transform: translateX(-1.5rem);
+  right: 0;
   width: 175px;
 
   z-index: 999;
