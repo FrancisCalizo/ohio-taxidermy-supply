@@ -4,14 +4,13 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-const items = ['Florida', 'California', 'Texas'];
+const items = ['None', 'A-Z', 'Z-A', 'Followers (Asc)', 'Followers (Desc)'];
 
 export default function TalentSort() {
   const {
     isOpen,
     selectedItem,
     getToggleButtonProps,
-    getLabelProps,
     getMenuProps,
     highlightedIndex,
     getItemProps,
@@ -21,11 +20,16 @@ export default function TalentSort() {
     <div>
       <Dropdown {...getToggleButtonProps()}>
         <div className="dropdown-display">
-          <div>{selectedItem || 'Sort By'}</div>
-          <FontAwesomeIcon icon={faChevronDown} style={{ marginLeft: '1.5rem' }} />
+          <div>
+            {!selectedItem || selectedItem === 'None' ? 'Sort By' : `Sort By: ${selectedItem}`}
+          </div>
+          <FontAwesomeIcon
+            icon={isOpen ? faChevronUp : faChevronDown}
+            style={{ marginLeft: '1.5rem' }}
+          />
         </div>
       </Dropdown>
-      <ul {...getMenuProps()}>
+      <DropdownMenu {...getMenuProps()} isOpen={isOpen}>
         {isOpen &&
           items.map((item, index) => (
             <li
@@ -36,21 +40,39 @@ export default function TalentSort() {
               {item}
             </li>
           ))}
-      </ul>
+      </DropdownMenu>
     </div>
   );
 }
 
 const Dropdown = styled.button`
+  background: white;
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem 0.5rem 1rem;
   border-radius: 5px;
   margin: 1rem 0.5rem 1rem 0;
   font-size: 1rem;
   cursor: pointer;
+  border: 1px solid ${(props) => props.theme.colors.paleBlue};
 
   .dropdown-display {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+  }
+`;
+
+const DropdownMenu = styled.ul<{ isOpen: boolean }>`
+  position: absolute;
+  background: #fff;
+  z-index: 9999;
+  list-style-type: none;
+  padding: 0;
+  border: ${({ isOpen, theme }) => isOpen && `1px solid ${theme.colors.paleBlue}`};
+  border-radius: 5px;
+  margin-top: -0.75rem;
+
+  li {
+    padding: 0.5rem 1rem;
   }
 `;
