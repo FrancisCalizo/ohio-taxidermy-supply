@@ -47,15 +47,16 @@ export default function TalentSort() {
 
 const Dropdown = styled.button`
   background: white;
-  display: block;
   padding: 0.5rem 0.75rem 0.5rem 1rem;
   border-radius: 5px;
   margin: 1rem 0.5rem 1rem 0;
   font-size: 1rem;
   cursor: pointer;
   border: 1px solid ${(props) => props.theme.colors.paleBlue};
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
 
   .dropdown-display {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -65,7 +66,10 @@ const Dropdown = styled.button`
 const DropdownMenu = styled.ul<{ isOpen: boolean }>`
   position: absolute;
   background: #fff;
-  z-index: 9999;
+  transform: translateX(-3.5rem);
+  width: 175px;
+
+  z-index: 999;
   list-style-type: none;
   padding: 0;
   border: ${({ isOpen, theme }) => isOpen && `1px solid ${theme.colors.paleBlue}`};
