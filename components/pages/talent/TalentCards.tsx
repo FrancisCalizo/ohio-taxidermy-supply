@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import axios from 'axios';
 import styled from 'styled-components';
+import { useQuery } from 'react-query';
+
 import { darken } from 'polished';
 
 import { useContentful } from 'components/ContentfulContext';
@@ -18,16 +20,11 @@ export default function TalentCards() {
 
       setRandomProfilePictures(res.data.results.map((res: any) => res.picture.medium));
     })();
-
-    fetchTalent();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function fetchTalent() {
-    const res = await client.getEntries({ content_type: 'talent' });
-    console.log(res);
-  }
+  const query = useQuery('talent', async () => await client.getEntries({ content_type: 'talent' }));
+
+  console.log('query', query);
 
   return (
     <GridContainer>
