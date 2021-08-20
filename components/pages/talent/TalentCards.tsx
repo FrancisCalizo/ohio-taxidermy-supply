@@ -3,11 +3,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import axios from 'axios';
 import styled from 'styled-components';
-import { createClient } from 'contentful';
-
 import { darken } from 'polished';
 
+import { useContentful } from 'components/ContentfulContext';
+
 export default function TalentCards() {
+  const { client } = useContentful();
   const [randomProfilePictures, setRandomProfilePictures] = useState([]);
 
   // TODO: Remove Later. Temporary pictures loaded for profiles
@@ -19,15 +20,13 @@ export default function TalentCards() {
     })();
 
     fetchTalent();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function fetchTalent() {
-    const client = createClient({
-      space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID as string,
-      accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY as string,
-    });
-
     const res = await client.getEntries({ content_type: 'talent' });
+    console.log(res);
   }
 
   return (
