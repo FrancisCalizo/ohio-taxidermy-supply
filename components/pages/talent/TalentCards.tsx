@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import axios from 'axios';
 import styled from 'styled-components';
+import { createClient } from 'contentful';
 
 import { darken } from 'polished';
 
@@ -16,7 +17,18 @@ export default function TalentCards() {
 
       setRandomProfilePictures(res.data.results.map((res: any) => res.picture.medium));
     })();
+
+    fetchTalent();
   }, []);
+
+  async function fetchTalent() {
+    const client = createClient({
+      space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID as string,
+      accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY as string,
+    });
+
+    const res = await client.getEntries({ content_type: 'talent' });
+  }
 
   return (
     <GridContainer>
