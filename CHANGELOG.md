@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 8/20/2021
+
+- Start implementing Contentful, add sample Talent to contentful models
+
 ### 8/19/2021
 
 - Research downshift and filter/sort options, start implementing sort by on talent page, create better file structure for Talent Page, fix: change clients title to match others, create multiple dropdown filter
