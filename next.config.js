@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ['randomuser.me'],
+    domains: ['images.ctfassets.net'],
   },
 };

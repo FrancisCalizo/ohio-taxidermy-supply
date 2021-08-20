@@ -1,77 +1,63 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import axios from 'axios';
 import styled from 'styled-components';
 import { useQuery } from 'react-query';
-
 import { darken } from 'polished';
 
-import { useContentful } from 'components/ContentfulContext';
+import { getTalent } from 'components/api/talent';
 
 export default function TalentCards() {
-  const { client } = useContentful();
-  const [randomProfilePictures, setRandomProfilePictures] = useState([]);
+  const { data, isLoading } = useQuery('talent', getTalent);
 
-  // TODO: Remove Later. Temporary pictures loaded for profiles
-  useEffect(() => {
-    (async function fetchRandomImages() {
-      const res = await axios.get('https://randomuser.me/api/?inc=picture&results=52');
-
-      setRandomProfilePictures(res.data.results.map((res: any) => res.picture.medium));
-    })();
-  }, []);
-
-  const query = useQuery('talent', async () => await client.getEntries({ content_type: 'talent' }));
-
-  console.log('query', query);
-
+  console.log(data?.items);
   return (
-    <GridContainer>
-      {randomProfilePictures.map((_, key) => (
-        <TalentCard key={key}>
-          <CardHeader>
-            <Image
-              src={randomProfilePictures[key] || '/images/loading-still.png'}
-              alt="Influencer"
-              width={50}
-              height={50}
-              quality={50}
-            />
-            <h3 className="handle">@theGreatWon23</h3>
-          </CardHeader>
-          <CardContent>
-            <p className="description">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta iure rerum accusamus
-              adipisci et nesciunt voluptates, laudantium quam corrupti iste.
-            </p>
+    <>
+      {isLoading && <h1>Loading</h1>}
 
-            <div className="statistics">
-              <div>
-                <h3>220K</h3>
-                <p>Followers</p>
-              </div>
-              <div>
-                <h3>2.2%</h3>
-                <p>Engagement</p>
-              </div>
-            </div>
+      <GridContainer>
+        {data?.items.map((item: any, key: number) => (
+          <TalentCard key={key}>
+            <CardHeader>
+              <Image
+                src={`https:${item.fields.avatar.fields.file.url}`}
+                alt="Influencer"
+                width={50}
+                height={50}
+                quality={50}
+              />
+              <h3 className="handle">{item.fields.title}</h3>
+            </CardHeader>
+            <CardContent>
+              <p className="description">{item.fields.shortDescription}</p>
 
-            <div className="badges">
-              {['Comedy', 'Travel', 'Skits'].map((ind: string, key) => (
-                <Industrybadge key={key}>{ind}</Industrybadge>
-              ))}
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Link href={`/talent/${key}`}>
-              <ViewProfileButton>View Profile</ViewProfileButton>
-            </Link>
-            <ContactButton>Contact</ContactButton>
-          </CardFooter>
-        </TalentCard>
-      ))}
-    </GridContainer>
+              <div className="statistics">
+                <div>
+                  <h3>220K</h3>
+                  <p>Followers</p>
+                </div>
+                <div>
+                  <h3>2.2%</h3>
+                  <p>Engagement</p>
+                </div>
+              </div>
+
+              <div className="badges">
+                {item.fields.categories.map((ind: string, key: number) => (
+                  <Industrybadge key={key}>{ind}</Industrybadge>
+                ))}
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Link href={`/talent/${key}`}>
+                <ViewProfileButton>View Profile</ViewProfileButton>
+              </Link>
+              <ContactButton>Contact</ContactButton>
+            </CardFooter>
+          </TalentCard>
+        ))}
+      </GridContainer>
+    </>
   );
 }
 

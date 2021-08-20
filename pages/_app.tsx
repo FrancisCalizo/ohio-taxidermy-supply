@@ -2,6 +2,7 @@ import { ThemeProvider } from 'styled-components';
 import { AuthProvider } from 'components/AuthContext';
 import { ContentfulProvider } from 'components/ContentfulContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Hydrate } from 'react-query/hydration';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -18,14 +19,16 @@ function MyApp({ Component, pageProps }: any) {
   return (
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
-        <ContentfulProvider>
-          <AuthProvider>
-            {/* <ProtectRoute> */}
-            {getLayout(<Component {...pageProps} />)}
-            {/* </ProtectRoute> */}
-          </AuthProvider>
-        </ContentfulProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
+        <Hydrate state={pageProps.dehydratedState}>
+          <ContentfulProvider>
+            <AuthProvider>
+              {/* <ProtectRoute> */}
+              {getLayout(<Component {...pageProps} />)}
+              {/* </ProtectRoute> */}
+            </AuthProvider>
+          </ContentfulProvider>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </Hydrate>
       </QueryClientProvider>
     </ThemeProvider>
   );
