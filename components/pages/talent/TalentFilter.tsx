@@ -4,12 +4,12 @@ import { darken } from 'polished';
 
 import { categories } from 'data/categoryList';
 
-interface TalenFilterProps {
+interface TalentFilterProps {
   categoryFilters: any;
   setCategoryFilters: React.Dispatch<React.SetStateAction<any>>;
 }
 
-export default function TalentFilter(props: TalenFilterProps) {
+export default function TalentFilter(props: TalentFilterProps) {
   const { categoryFilters, setCategoryFilters } = props;
 
   return (
@@ -22,6 +22,7 @@ export default function TalentFilter(props: TalenFilterProps) {
       onChange={setCategoryFilters}
       styles={filterStyles}
       autosize={false}
+      instanceId="categories"
     />
   );
 }
