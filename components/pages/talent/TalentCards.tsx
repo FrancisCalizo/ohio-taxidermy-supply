@@ -17,36 +17,38 @@ export default function TalentCards() {
       <GridContainer>
         {data?.items.map((item: any, key: number) => (
           <TalentCard key={key}>
-            <CardHeader>
-              <Image
-                src={`https:${item.fields.avatar.fields.file.url}`}
-                alt="Influencer"
-                width={50}
-                height={50}
-                quality={50}
-              />
-              <h3 className="handle">{item.fields.title}</h3>
-            </CardHeader>
-            <CardContent>
-              <p className="description">{item.fields.shortDescription}</p>
+            <div className="header-content-container">
+              <CardHeader>
+                <Image
+                  src={`https:${item.fields.avatar.fields.file.url}`}
+                  alt="Influencer"
+                  width={50}
+                  height={50}
+                  quality={50}
+                />
+                <h3 className="handle">{item.fields.title}</h3>
+              </CardHeader>
+              <CardContent>
+                <p className="description">{item.fields.shortDescription}</p>
 
-              <div className="statistics">
-                <div>
-                  <h3>220K</h3>
-                  <p>Followers</p>
+                <div className="statistics">
+                  <div>
+                    <h3>220K</h3>
+                    <p>Followers</p>
+                  </div>
+                  <div>
+                    <h3>2.2%</h3>
+                    <p>Engagement</p>
+                  </div>
                 </div>
-                <div>
-                  <h3>2.2%</h3>
-                  <p>Engagement</p>
-                </div>
-              </div>
 
-              <div className="badges">
-                {item.fields.categories.map((ind: string, key: number) => (
-                  <Industrybadge key={key}>{ind}</Industrybadge>
-                ))}
-              </div>
-            </CardContent>
+                <div className="badges">
+                  {item.fields.categories.map((ind: string, key: number) => (
+                    <Industrybadge key={key}>{ind}</Industrybadge>
+                  ))}
+                </div>
+              </CardContent>
+            </div>
             <CardFooter>
               <Link href={`/talent/${key}`}>
                 <ViewProfileButton>View Profile</ViewProfileButton>
@@ -83,6 +85,10 @@ const TalentCard = styled.div`
   border: 1px solid lightgray;
   border-radius: 4px;
   padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const CardHeader = styled.div`
