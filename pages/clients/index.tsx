@@ -22,7 +22,7 @@ export default function Index() {
   return (
     <ClientContext.Provider value={{ isModalOpen, setIsModalOpen, clients: CLIENTS }}>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <PageTitle>The Talent</PageTitle>
+        <PageTitle>Clients</PageTitle>
       </div>
 
       <Clients />

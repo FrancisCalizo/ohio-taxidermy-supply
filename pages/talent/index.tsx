@@ -13,7 +13,7 @@ export default function Talent() {
   return (
     <MainContainer>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <PageTitle>The Talent</PageTitle>
+        <PageTitle>Talent</PageTitle>
       </div>
 
       <div className="filter-container">
