@@ -22,7 +22,9 @@ export default function Talent() {
       </div>
 
       <div className="sort-container">
-        <TalentSort sort={sort} setSort={setSort} />
+        <div>
+          <TalentSort sort={sort} setSort={setSort} />
+        </div>
       </div>
       <TalentCards />
     </MainContainer>
@@ -36,11 +38,23 @@ const MainContainer = styled.div`
     display: flex;
     justify-content: flex-end;
     margin: 1rem 0;
+
+    & > div:first-child {
+      width: 220px;
+
+      @media (max-width: 600px) {
+        width: 100%;
+      }
+    }
   }
 
   .filter-container {
     max-width: 300px;
     margin: 0 auto;
+
+    @media (max-width: 600px) {
+      max-width: none;
+    }
   }
 `;
 

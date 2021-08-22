@@ -30,7 +30,6 @@ export default function TalentFilter(props: TalentFilterProps) {
 const filterStyles = {
   control: (baseStyles: any) => ({
     ...baseStyles,
-    maxWidth: 300,
     border: '1px solid #CCD7EA',
     boxShadow: '0 2px 3px 0 rgba(0, 0, 0, 0.2)',
     '&:hover': {
