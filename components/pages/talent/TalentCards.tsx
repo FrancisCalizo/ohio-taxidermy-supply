@@ -10,7 +10,6 @@ import { getTalent } from 'components/api/talent';
 export default function TalentCards() {
   const { data, isLoading } = useQuery('talent', getTalent);
 
-  console.log(data?.items);
   return (
     <>
       {isLoading && <h1>Loading</h1>}
