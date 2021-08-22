@@ -1,83 +1,60 @@
 import React from 'react';
-import { useSelect } from 'downshift';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import Select from 'react-select';
 
-const items = ['None', 'A-Z', 'Z-A', 'Followers (Asc)', 'Followers (Desc)'];
+const SORT_ITEMS = [
+  { value: 'NONE', label: 'None' },
+  { value: 'AZ', label: 'A-Z' },
+  { value: 'ZA', label: 'Z-A' },
+  { value: 'FOLLOWERS_ASC', label: 'Followers (Asc)' },
+  { value: 'FOLLOWERS_DESC', label: 'Followers (Desc)' },
+];
 
-export default function TalentSort() {
-  const {
-    isOpen,
-    selectedItem,
-    getToggleButtonProps,
-    getMenuProps,
-    highlightedIndex,
-    getItemProps,
-  } = useSelect({ items });
+interface TalentSortProps {
+  sort: any;
+  setSort: React.Dispatch<React.SetStateAction<any>>;
+}
+
+export default function TalentSort(props: TalentSortProps) {
+  const { sort, setSort } = props;
+
+  const sortFunction = (option: any, contextObject: any) => {
+    const { context } = contextObject;
+
+    if (context === 'value') {
+      if (option.label === 'None') {
+        return `Sort By`;
+      }
+      return `Sort: ${option.label}`;
+    }
+    return option.label;
+  };
 
   return (
-    <div>
-      <Dropdown {...getToggleButtonProps()}>
-        <div className="dropdown-display">
-          <div>
-            {!selectedItem || selectedItem === 'None' ? 'Sort By' : `Sort By: ${selectedItem}`}
-          </div>
-          <FontAwesomeIcon
-            icon={isOpen ? faChevronUp : faChevronDown}
-            style={{ marginLeft: '1.5rem' }}
-          />
-        </div>
-      </Dropdown>
-      <DropdownMenu {...getMenuProps()} isOpen={isOpen}>
-        {isOpen &&
-          items.map((item, index) => (
-            <li
-              style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
-              key={`${item}${index}`}
-              {...getItemProps({ item, index })}
-            >
-              {item}
-            </li>
-          ))}
-      </DropdownMenu>
-    </div>
+    <Select
+      placeholder="Sort By"
+      options={SORT_ITEMS}
+      isSearchable={false}
+      value={sort}
+      onChange={setSort}
+      styles={filterStyles}
+      instanceId="sort"
+      formatOptionLabel={sortFunction}
+    />
   );
 }
 
-const Dropdown = styled.button`
-  background: white;
-  padding: 0.5rem 0.75rem 0.5rem 1rem;
-  border-radius: 5px;
-  margin: 1rem 0.5rem 1rem 0;
-  font-size: 1rem;
-  cursor: pointer;
-  border: 1px solid ${(props) => props.theme.colors.paleBlue};
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
-
-  .dropdown-display {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-`;
-
-const DropdownMenu = styled.ul<{ isOpen: boolean }>`
-  position: absolute;
-  background: #fff;
-  transform: translateX(-1.5rem);
-  right: 0;
-  width: 175px;
-
-  z-index: 999;
-  list-style-type: none;
-  padding: 0;
-  border: ${({ isOpen, theme }) => isOpen && `1px solid ${theme.colors.paleBlue}`};
-  border-radius: 5px;
-  margin-top: -0.75rem;
-
-  li {
-    padding: 0.5rem 1rem;
-  }
-`;
+const filterStyles = {
+  control: (baseStyles: any) => ({
+    ...baseStyles,
+    width: 200,
+    border: '1px solid #CCD7EA',
+    boxShadow: '0 2px 3px 0 rgba(0, 0, 0, 0.2)',
+    '&:hover': {
+      border: '1px solid #CCD7EA',
+    },
+  }),
+  placeholder: (baseStyles: any) => ({
+    ...baseStyles,
+    color: '#000',
+  }),
+};

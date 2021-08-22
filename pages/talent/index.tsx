@@ -9,6 +9,7 @@ import TalentFilter from 'components/pages/talent/TalentFilter';
 
 export default function Talent() {
   const [categoryFilters, setCategoryFilters] = useState<any>([]);
+  const [sort, setSort] = useState<any>('NONE');
 
   return (
     <MainContainer>
@@ -21,7 +22,7 @@ export default function Talent() {
       </div>
 
       <div className="sort-container">
-        <TalentSort />
+        <TalentSort sort={sort} setSort={setSort} />
       </div>
       <TalentCards />
     </MainContainer>
@@ -34,6 +35,7 @@ const MainContainer = styled.div`
   .sort-container {
     display: flex;
     justify-content: flex-end;
+    margin: 1rem 0;
   }
 
   .filter-container {
