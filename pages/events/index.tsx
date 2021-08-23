@@ -1,58 +1,61 @@
 import React from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { useQuery } from 'react-query';
 import { darken } from 'polished';
 
 import SiteLayout from 'components/layout/SiteLayout';
 import { PageTitle } from 'components/utils/styled';
+import { getEvents } from 'components/api/events';
 
 export default function Events() {
+  const { data, isLoading } = useQuery('talent', getEvents);
+
   return (
-    <MainContainer>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <PageTitle>Events</PageTitle>
-      </div>
+    <>
+      {isLoading && <h1>Loading</h1>}
 
-      <GridContainer>
-        {[...Array(18)].map((_, key) => (
-          <EventCard key={key}>
-            <Image
-              src={`/images/events/${
-                key % 3 === 0 ? 'pool-party' : key % 3 === 1 ? 'concert-confetti' : 'party-hands-up'
-              }.jpg`}
-              alt="events"
-              width={300}
-              height={200}
-              quality={70}
-              layout="responsive"
-            />
-            <CardPaddedArea>
-              <CardHeader>
-                <h3 className="event-name">Summer Splash at The Vanguard</h3>
-                <h4 className="location"> The Vanguard Theatre</h4>
-                <h4 className="location"> 3283 West Elm Ave, Orlando, CA</h4>
-              </CardHeader>
-              <CardContent>
-                <p className="description">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta iure rerum
-                  accusamus adipisci et nesciunt voluptates, laudantium quam corrupti iste.
-                </p>
+      <MainContainer>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <PageTitle>Events</PageTitle>
+        </div>
 
-                <div className="badges">
-                  {['Comedy', 'Travel', 'Skits'].map((ind: string, key) => (
-                    <Industrybadge key={key}>{ind}</Industrybadge>
-                  ))}
-                </div>
-              </CardContent>
-              <CardFooter>
-                <ViewEventButton>View Event</ViewEventButton>
-                <BookEventButton>Book Now</BookEventButton>
-              </CardFooter>
-            </CardPaddedArea>
-          </EventCard>
-        ))}
-      </GridContainer>
-    </MainContainer>
+        <GridContainer>
+          {data?.items.map((item: any, key) => (
+            <EventCard key={key}>
+              <Image
+                src={`https:${item.fields.images[0].fields.file.url}`}
+                alt="events"
+                width={300}
+                height={200}
+                quality={70}
+                layout="responsive"
+              />
+              <CardPaddedArea>
+                <CardHeader>
+                  <h3 className="event-name">{item.fields.title}</h3>
+                  <h4 className="location">{item.fields.venue}</h4>
+                  <h4 className="location"> [Insert Geocoder here]</h4>
+                </CardHeader>
+                <CardContent>
+                  <p className="description">{item.fields.shortDescription}</p>
+
+                  <div className="badges">
+                    {item.fields.categories.map((ind: string, key: number) => (
+                      <Industrybadge key={key}>{ind}</Industrybadge>
+                    ))}
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <ViewEventButton>View Event</ViewEventButton>
+                  <BookEventButton>Book Now</BookEventButton>
+                </CardFooter>
+              </CardPaddedArea>
+            </EventCard>
+          ))}
+        </GridContainer>
+      </MainContainer>
+    </>
   );
 }
 
@@ -78,10 +81,16 @@ const EventCard = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border: 1px solid lightgray;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const CardPaddedArea = styled.div`
   padding: 0.75rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 `;
 
 const CardHeader = styled.div`
