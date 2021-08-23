@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
 import Link from 'next/link';
@@ -12,9 +12,17 @@ export default function Signup() {
   const { user, TEMP_LOGIN } = useAuth();
   const router = useRouter();
 
+  type SignupType = 'influencer' | 'client';
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [signupType, setSignupType] = useState<'influencer' | 'client'>('influencer');
+  const [signupType, setSignupType] = useState<SignupType>(
+    (router.query.signupType as SignupType) || 'influencer'
+  );
+
+  useEffect(() => {
+    setSignupType(router.query.signupType as SignupType);
+  }, [router.query.signupType]);
 
   const handleSubmit = () => {
     // TODO: Use AuthContext to handle user auth
@@ -91,7 +99,9 @@ export default function Signup() {
             <h3>Are you {signupType === 'influencer' ? 'a Client/Sponser' : 'an Influencer'}?</h3>
             <button
               onClick={() =>
-                setSignupType((type) => (type === 'influencer' ? 'client' : 'influencer'))
+                router.push(
+                  `/signup?signupType=${signupType === 'influencer' ? 'client' : 'influencer'}`
+                )
               }
             >
               Register here
@@ -150,7 +160,8 @@ const InfoContainer = styled.div`
   & > p {
     margin: 2rem 0 !important;
     color: rgba(0, 0, 0, 0.7) !important;
-    font-size: 18px !important;
+    font-size: 20px !important;
+    font-weight: 600;
 
     & > a {
       display: block;
