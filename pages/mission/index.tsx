@@ -48,7 +48,7 @@ const Container = styled.div`
 
   p {
     color: ${(props) => props.theme.colors.gray};
-    font-size: calc(16px + (22 - 16) * ((100vw - 400px) / (1800 - 400)));
+    font-size: calc(16px + (20 - 16) * ((100vw - 400px) / (1800 - 400)));
   }
 `;
 
