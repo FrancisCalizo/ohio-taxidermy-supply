@@ -8,7 +8,7 @@ export default function Travel() {
   return (
     <MainContainer>
       <div className="title-container">
-        <PageTitle>Vending</PageTitle>
+        <PageTitle>Travel</PageTitle>
       </div>
     </MainContainer>
   );

@@ -41,7 +41,9 @@ export default function Talent() {
 }
 
 const MainContainer = styled.div`
-  padding: 0 1rem 1rem;
+  padding: 0 2rem 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
 
   .sub-heading {
     text-align: center;

@@ -159,7 +159,7 @@ const ViewProfileButton = styled.button`
   border-radius: 4px;
   border-radius: 50px;
   margin: 0.75rem 0.5rem 0.25rem 0;
-  font-size: calc(10px + (18 - 10) * ((100vw - 900px) / (1800 - 900)));
+  font-size: calc(9px + (16 - 9) * ((100vw - 900px) / (1800 - 900)));
   cursor: pointer;
   box-shadow: ${(props) => props.theme.button.boxShadow};
   border: 1px solid ${(props) => darken(0.1, props.theme.colors.pink)};

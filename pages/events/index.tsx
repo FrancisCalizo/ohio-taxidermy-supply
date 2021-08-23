@@ -60,7 +60,9 @@ export default function Events() {
 }
 
 const MainContainer = styled.div`
-  padding: 0 1rem 1rem;
+  padding: 0 2rem 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
 `;
 
 const GridContainer = styled.div`
@@ -147,7 +149,7 @@ const ViewEventButton = styled.button`
   border-radius: 4px;
   border-radius: 50px;
   margin: 0.75rem 0.5rem 0.25rem 0;
-  font-size: calc(14px + (20 - 14) * ((100vw - 900px) / (1800 - 900)));
+  font-size: calc(14px + (18 - 14) * ((100vw - 900px) / (1800 - 900)));
   cursor: pointer;
   box-shadow: ${(props) => props.theme.button.boxShadow};
   border: 1px solid ${(props) => darken(0.1, props.theme.colors.green)};
