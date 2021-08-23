@@ -1,12 +1,12 @@
 ## Development Changelog
 
-### 8/20/2021
+### 8/21/2021
 
-- Start implementing Contentful, add sample Talent to contentful models
+- Small title fixes, move Sort on Talent page to react-select, add more talent content, fix talent cards, make sort/filter reponsive, implement query string params and register talent button
 
 ### 8/19/2021
 
-- Research downshift and filter/sort options, start implementing sort by on talent page, create better file structure for Talent Page, fix: change clients title to match others, create multiple dropdown filter
+- Research downshift and filter/sort options, start implementing sort by on talent page, create better file structure for Talent Page, fix: change clients title to match others, create multiple dropdown filter. Start implementing Contentful, add sample Talent to contentful models, implement contentful provider, react-query with SSR, implement Talent from Contentful
 
 ### 8/17/2021
 
