@@ -9,7 +9,7 @@ import { PageTitle } from 'components/utils/styled';
 import { getEvents } from 'components/api/events';
 
 export default function Events() {
-  const { data, isLoading } = useQuery('talent', getEvents);
+  const { data, isLoading } = useQuery('events', getEvents);
 
   return (
     <>
