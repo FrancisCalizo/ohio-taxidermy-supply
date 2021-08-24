@@ -27,9 +27,10 @@ export default function Talent() {
           <TalentSort sort={sort} setSort={setSort} />
         </div>
       </div>
+
       <TalentCards />
 
-      <div className="sub-heading">
+      <div className="join-now">
         <h4>Interested in joining the talent pool?</h4>
         <Link href="/signup?signupType=influencer">
           <JoinNowButton>Sign Up</JoinNowButton>
@@ -44,7 +45,7 @@ const MainContainer = styled.div`
   max-width: 1400px;
   margin: 0 auto;
 
-  .sub-heading {
+  .join-now {
     text-align: center;
     margin: 2.5rem 0 1rem;
 
