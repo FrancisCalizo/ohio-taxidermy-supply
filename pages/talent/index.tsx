@@ -19,12 +19,11 @@ export default function Talent() {
         <PageTitle>Talent</PageTitle>
       </div>
 
-      <div className="filter-container">
-        <TalentFilter categoryFilters={categoryFilters} setCategoryFilters={setCategoryFilters} />
-      </div>
-
-      <div className="sort-container">
-        <div>
+      <div className="sort-filter-container">
+        <div className="filter">
+          <TalentFilter categoryFilters={categoryFilters} setCategoryFilters={setCategoryFilters} />
+        </div>
+        <div className="sort">
           <TalentSort sort={sort} setSort={setSort} />
         </div>
       </div>
@@ -57,17 +56,31 @@ const MainContainer = styled.div`
     }
   }
 
-  .sort-container {
+  .sort-filter-container {
     display: flex;
-    justify-content: flex-end;
-    margin: 1rem 0;
+    justify-content: space-between;
+    margin: 0 0 1rem;
 
-    & > div:first-child {
-      width: 220px;
+    & .sort {
+      width: 215px;
+      margin: 0.5rem 0;
+    }
 
-      @media (max-width: 600px) {
+    & .filter {
+      width: 400px;
+      margin: 0.5rem 0;
+    }
+
+    & .filter,
+    & .sort {
+      @media (max-width: 800px) {
         width: 100%;
       }
+    }
+
+    @media (max-width: 800px) {
+      flex-direction: column;
+      width: 100%;
     }
   }
 
@@ -81,8 +94,6 @@ const MainContainer = styled.div`
   }
 `;
 
-Talent.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
-
 const JoinNowButton = styled.button`
   display: block;
   width: 120px;
@@ -90,7 +101,6 @@ const JoinNowButton = styled.button`
   color: white;
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
   border-radius: 50px;
   margin: 0 auto 2rem;
   font-size: calc(10px + (18 - 10) * ((100vw - 900px) / (1800 - 900)));
@@ -116,3 +126,5 @@ const JoinNowButton = styled.button`
     font-size: 1rem;
   }
 `;
+
+Talent.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
