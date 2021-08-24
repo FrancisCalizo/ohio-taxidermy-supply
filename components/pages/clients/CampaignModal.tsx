@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import Image from 'next/image';
 import Modal from 'react-modal';
 import { darken } from 'polished';
@@ -8,15 +8,21 @@ import useWindowResize from 'components/hooks/useWindowResize';
 import { ClientContext } from 'pages/clients';
 
 export default function CampaignModal() {
-  const { isModalOpen, setIsModalOpen } = useContext(ClientContext);
+  const { isModalOpen, setIsModalOpen, selectedCampaign, setSelectedCampaign } =
+    useContext(ClientContext);
 
   const [windowWidth] = useWindowResize();
+
+  console.log(selectedCampaign);
 
   return (
     <div style={{ position: 'relative' }}>
       <Modal
         isOpen={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
+        onRequestClose={() => {
+          setSelectedCampaign(null);
+          setIsModalOpen(false);
+        }}
         contentLabel="Influencer Modal"
         ariaHideApp={false}
         style={{
@@ -31,19 +37,22 @@ export default function CampaignModal() {
               <CloseButton
                 onClick={(e) => {
                   e.preventDefault();
+                  setSelectedCampaign(null);
                   setIsModalOpen(false);
                 }}
               >
                 X
               </CloseButton>
             )}
-            <Image
-              src={`/images/clients/campaign-modal.jpg`}
-              alt="logo"
-              quality={90}
-              layout="fill"
-              objectFit="cover"
-            />
+            {selectedCampaign && (
+              <Image
+                src={`https:${selectedCampaign?.fields.campaignImage.fields.file.url}`}
+                alt="logo"
+                quality={90}
+                layout="fill"
+                objectFit="cover"
+              />
+            )}
           </ClientImageContainer>
           <ClientDescriptionContainer>
             {windowWidth > 900 && (
@@ -57,7 +66,7 @@ export default function CampaignModal() {
               </CloseButton>
             )}
 
-            <h3 className="heading">Lorem ipsum dolor sit amet.</h3>
+            <h3 className="heading">{`${selectedCampaign?.fields.client.fields.title} | ${selectedCampaign?.fields.title}`}</h3>
 
             <h3 className="sub-heading">Campaign Description</h3>
 

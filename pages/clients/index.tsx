@@ -1,25 +1,32 @@
 import React, { useState, createContext } from 'react';
+import { useQuery } from 'react-query';
 
 import Clients from 'components/pages/clients';
 import CampaignModal from 'components/pages/clients/CampaignModal';
 import SiteLayout from 'components/layout/SiteLayout';
 import { PageTitle } from 'components/utils/styled';
-
-const CLIENTS = [
-  { name: 'Bang Energy', url: 'bang.jpeg', backgroundColor: '#fff' },
-  { name: 'Dolls Kill', url: 'dolls-kill.png', backgroundColor: '#fff' },
-  { name: 'Pretty Little Thing', url: 'pretty-little-thing.jpeg', backgroundColor: '#000' },
-  { name: 'White Bull Coffee', url: 'white-bull.png', backgroundColor: '#000' },
-  { name: 'Andaz Maui', url: 'andaz.png', backgroundColor: '#fff' },
-];
+import { getCampaigns } from 'components/api/clients';
 
 export const ClientContext = createContext({} as any);
 
 export default function Index() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCampaign, setSelectedCampaign] = useState(null);
+
+  const { data, isLoading } = useQuery('campaigns', getCampaigns);
+
+  if (isLoading) <h1>Loading</h1>;
 
   return (
-    <ClientContext.Provider value={{ isModalOpen, setIsModalOpen, clients: CLIENTS }}>
+    <ClientContext.Provider
+      value={{
+        isModalOpen,
+        setIsModalOpen,
+        campaigns: data?.items,
+        selectedCampaign,
+        setSelectedCampaign,
+      }}
+    >
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <PageTitle>Clients</PageTitle>
       </div>

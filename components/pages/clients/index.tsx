@@ -6,16 +6,23 @@ import FeaturedCampaign from 'components/pages/clients/FeaturedCampaign';
 import { ClientContext } from 'pages/clients';
 
 export default function Clients() {
-  const { clients, setIsModalOpen } = useContext(ClientContext);
+  const { campaigns, setIsModalOpen, setSelectedCampaign } = useContext(ClientContext);
 
   return (
     <MainContainer>
       <ClientsContainer>
-        {clients.map((client: any, key: number) => (
-          <ClientsCard key={key} client={client} onClick={() => setIsModalOpen(true)}>
+        {campaigns?.map((campaign: any, key: number) => (
+          <ClientsCard
+            key={key}
+            campaign={campaign}
+            onClick={() => {
+              setSelectedCampaign(campaign);
+              setIsModalOpen(true);
+            }}
+          >
             <div className="client-image-container">
               <Image
-                src={`/images/clients/${client.url}`}
+                src={`https:${campaign.fields.client.fields.logo.fields.file.url}`}
                 alt="logo"
                 quality={80}
                 layout="fill"
@@ -25,7 +32,7 @@ export default function Clients() {
                 <div className="client-image-title">Click to View Campaign</div>
               </ClientImageOverlay>
             </div>
-            <div className="card-bottom">{client.name}</div>
+            <div className="card-bottom">{campaign.fields.client.fields.title}</div>
           </ClientsCard>
         ))}
       </ClientsContainer>
@@ -65,7 +72,7 @@ const ClientImageOverlay = styled.div`
   border-radius: 10px 10px 0 0;
 `;
 
-const ClientsCard = styled.div<{ client: any }>`
+const ClientsCard = styled.div<{ campaign: any }>`
   margin: 0.5rem;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
@@ -76,7 +83,7 @@ const ClientsCard = styled.div<{ client: any }>`
     height: 250px;
     width: 300px;
     border: 1px solid rgba(0, 0, 0, 0.3);
-    background-color: ${({ client }) => client.backgroundColor};
+    background-color: ${({ campaign }) => campaign.fields.client.fields.logoBackgroundColor};
     border-radius: 10px 10px 0 0;
 
     .client-image-title {
