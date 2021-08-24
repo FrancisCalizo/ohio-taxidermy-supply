@@ -7,13 +7,15 @@ import { PageTitle } from 'components/utils/styled';
 import TravelSort from 'components/pages/travel/TravelSort';
 import TravelFilter from 'components/pages/travel/TravelFilter';
 import TravelCards from 'components/pages/travel/TravelCards';
-import { getEvents } from 'components/api/events';
+import { getTravelCoupons } from 'components/api/travel';
 
 export default function Travel() {
   const [categoryFilters, setCategoryFilters] = useState<any>([]);
   const [sort, setSort] = useState<any>('NONE');
 
-  const { data, isLoading } = useQuery('events', getEvents);
+  const { data, isLoading } = useQuery('travelCoupons', getTravelCoupons);
+
+  console.log(data);
 
   if (isLoading) <h1>Loading</h1>;
 

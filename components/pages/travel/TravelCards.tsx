@@ -15,7 +15,7 @@ export default function TravelCards(props: TravelCardProps) {
       {data?.items.map((item: any, key: number) => (
         <EventCard key={key}>
           <Image
-            src={`https:${item.fields.images[0].fields.file.url}`}
+            src={`https:${item.fields.image.fields.file.url}`}
             alt="events"
             width={300}
             height={200}
@@ -29,12 +29,12 @@ export default function TravelCards(props: TravelCardProps) {
               <h4 className="location"> [Insert Geocoder here]</h4>
             </CardHeader>
             <CardContent>
-              <p className="description">{item.fields.shortDescription}</p>
+              <p className="description">{item.fields.description}</p>
 
               <div className="badges">
-                {item.fields.categories.map((ind: string, key: number) => (
+                {/* {item.fields.categories.map((ind: string, key: number) => (
                   <Industrybadge key={key}>{ind}</Industrybadge>
-                ))}
+                ))} */}
               </div>
             </CardContent>
             <CardFooter>
@@ -66,6 +66,7 @@ const CardPaddedArea = styled.div`
 
 const CardHeader = styled.div`
   margin-bottom: 0.75rem;
+  text-align: center;
 
   img {
     border-radius: 50px;
@@ -98,7 +99,7 @@ const Industrybadge = styled.div`
 const CardContent = styled.div`
   .description {
     font-size: 0.75rem;
-    margin: 0;
+    margin: 1rem 0 0;
   }
 
   .badges {
