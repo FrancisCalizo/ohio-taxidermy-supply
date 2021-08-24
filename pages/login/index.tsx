@@ -122,7 +122,7 @@ const LoginBlockContainer = styled.div`
   border-radius: 5px;
   max-height: 600px;
   padding: 3rem 2rem 5rem;
-  margin: 0 1rem;
+  margin: 0 2rem;
 
   h1 {
     text-align: center;

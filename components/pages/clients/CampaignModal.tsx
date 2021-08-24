@@ -127,7 +127,7 @@ const ClientImageContainer = styled.div`
 const ClientDescriptionContainer = styled.div`
   padding: 2rem 2rem 5rem;
   width: 50%;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 80vh;
 
   h3 {
