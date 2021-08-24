@@ -13,8 +13,6 @@ export default function CampaignModal() {
 
   const [windowWidth] = useWindowResize();
 
-  console.log(selectedCampaign);
-
   return (
     <div style={{ position: 'relative' }}>
       <Modal

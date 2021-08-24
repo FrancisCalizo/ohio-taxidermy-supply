@@ -6,7 +6,7 @@ import { darken } from 'polished';
 import { ClientContext } from 'pages/clients';
 
 export default function FeaturedCampaign() {
-  const { setIsModalOpen } = useContext(ClientContext);
+  const { setIsModalOpen, setSelectedCampaign, featuredCampaign } = useContext(ClientContext);
 
   return (
     <MainContainer>
@@ -14,13 +14,15 @@ export default function FeaturedCampaign() {
 
       <Campaign>
         <div className="campaign-image-container">
-          <Image
-            src={`/images/clients/bang-campaign.jpeg`}
-            alt="logo"
-            quality={100}
-            layout="fill"
-            objectFit="cover"
-          />
+          {featuredCampaign && (
+            <Image
+              src={`https:${featuredCampaign?.fields.campaignImageThumbnail.fields.file.url}`}
+              alt="logo"
+              quality={100}
+              layout="fill"
+              objectFit="cover"
+            />
+          )}
         </div>
         <div className="campaign-right">
           <div className="campaign-right_header-body">
@@ -37,7 +39,14 @@ export default function FeaturedCampaign() {
           </div>
 
           <div className="campaign-right_footer">
-            <ReadMoreButton onClick={() => setIsModalOpen(true)}>Read More</ReadMoreButton>
+            <ReadMoreButton
+              onClick={() => {
+                setSelectedCampaign(featuredCampaign);
+                setIsModalOpen(true);
+              }}
+            >
+              Read More
+            </ReadMoreButton>
           </div>
         </div>
       </Campaign>
