@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { darken } from 'polished';
+import { useQuery } from 'react-query';
 
 import SiteLayout from 'components/layout/SiteLayout';
 import { PageTitle } from 'components/utils/styled';
 import TravelSort from 'components/pages/travel/TravelSort';
 import TravelFilter from 'components/pages/travel/TravelFilter';
+import TravelCards from 'components/pages/travel/TravelCards';
+import { getEvents } from 'components/api/events';
 
 export default function Travel() {
   const [categoryFilters, setCategoryFilters] = useState<any>([]);
   const [sort, setSort] = useState<any>('NONE');
+
+  const { data, isLoading } = useQuery('events', getEvents);
+
+  if (isLoading) <h1>Loading</h1>;
 
   return (
     <MainContainer>
@@ -25,6 +31,10 @@ export default function Travel() {
           <TravelSort sort={sort} setSort={setSort} />
         </div>
       </div>
+
+      <GridContainer>
+        <TravelCards data={data} />
+      </GridContainer>
     </MainContainer>
   );
 }
@@ -63,6 +73,20 @@ const MainContainer = styled.div`
       flex-direction: column;
       width: 100%;
     }
+  }
+`;
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem 1rem;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 760px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 
