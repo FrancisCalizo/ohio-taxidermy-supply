@@ -1,8 +1,12 @@
 ## Development Changelog
 
-### 8/21/2021
+### 8/24/2021
 
-- Small title fixes, move Sort on Talent page to react-select, add more talent content, fix talent cards, make sort/filter reponsive, implement query string params and register talent button
+- Implement client/campagin data into contentful. implement contentful client data for clients page, campaigns, campaign modals, and featured campaigns, remove static images
+
+### 8/23/2021
+
+- Implement Event models, implement models into app. Remove dead code, add travel/vending pages
 
 ### 8/19/2021
 
