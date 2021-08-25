@@ -1,8 +1,12 @@
 ## Development Changelog
 
+### 8/25/2021
+
+- Fix/style travel moda, implement categories, implement contentful data to optIn card
+
 ### 8/24/2021
 
-- Implement client/campagin data into contentful. implement contentful client data for clients page, campaigns, campaign modals, and featured campaigns, remove static images
+- Implement client/campagin data into contentful. implement contentful client data for clients page, campaigns, campaign modals, and featured campaigns, remove static images, add filter/sort to Travel Page, implement travelCards component, move EventCards, map/wireframe Travel Page, implement travelCoupons into contentful and into app. Implement travel context, opt-in functionality, optin modal, and new filtering cateogories
 
 ### 8/23/2021
 
