@@ -105,7 +105,7 @@ export default function CampaignModal() {
               animi a.
             </p>
 
-            <StartCampaignButton>Start Your Campaign</StartCampaignButton>
+            <ConfirmOptInButton>Confirm Opt In</ConfirmOptInButton>
           </ClientDescriptionContainer>
         </MainContainer>
       </Modal>
@@ -115,6 +115,7 @@ export default function CampaignModal() {
 
 const MainContainer = styled.div`
   display: flex;
+  flex-direction: column;
 
   @media (max-width: 900px) {
     flex-direction: column;
@@ -123,8 +124,9 @@ const MainContainer = styled.div`
 
 const ClientImageContainer = styled.div`
   position: relative;
-  height: 80vh;
-  width: 50%;
+  background-color: black;
+  height: 300px;
+  width: 100%;
 
   @media (max-width: 900px) {
     width: 100%;
@@ -134,9 +136,8 @@ const ClientImageContainer = styled.div`
 
 const ClientDescriptionContainer = styled.div`
   padding: 2rem 2rem 5rem;
-  width: 50%;
   overflow-y: auto;
-  height: 80vh;
+  height: calc(80vh - 300px);
 
   h3 {
     text-transform: uppercase;
@@ -182,11 +183,11 @@ const CloseButton = styled.button`
   }
 `;
 
-const StartCampaignButton = styled.button`
+const ConfirmOptInButton = styled.button`
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 50%;
+  width: 100%;
   background: ${(props) => props.theme.colors.pink};
   color: #fff;
   border: none;
@@ -212,7 +213,7 @@ const StartCampaignButton = styled.button`
 const mobileModal = { top: 0, bottom: 0, left: 0, right: 0 };
 const regularModal = {
   top: '10%',
-  maxWidth: '80%',
+  maxWidth: '800px',
   height: '80vh',
   margin: '0 auto',
   overflow: 'hidden',
