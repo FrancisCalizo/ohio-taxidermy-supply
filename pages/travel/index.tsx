@@ -42,6 +42,8 @@ export default function Travel() {
 }
 
 const MainContainer = styled.div`
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 0 2rem 1rem;
 
   & > .title-container {

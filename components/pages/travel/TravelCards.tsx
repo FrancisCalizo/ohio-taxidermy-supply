@@ -38,8 +38,7 @@ export default function TravelCards(props: TravelCardProps) {
               </div>
             </CardContent>
             <CardFooter>
-              <ViewEventButton>View Event</ViewEventButton>
-              <BookEventButton>Book Now</BookEventButton>
+              <OptInButton>Opt In</OptInButton>
             </CardFooter>
           </CardPaddedArea>
         </EventCard>
@@ -109,40 +108,27 @@ const CardContent = styled.div`
 
 const CardFooter = styled.div``;
 
-const ViewEventButton = styled.button`
+const OptInButton = styled.button`
   display: block;
   width: 100%;
-  background: ${(props) => props.theme.colors.green};
-  color: ${(props) => darken(0.6, props.theme.colors.green)};
+  background: ${(props) => props.theme.colors.teal};
+  color: #fff;
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
   border-radius: 50px;
   margin: 0.75rem 0.5rem 0.25rem 0;
   font-size: calc(14px + (18 - 14) * ((100vw - 900px) / (1800 - 900)));
   cursor: pointer;
   box-shadow: ${(props) => props.theme.button.boxShadow};
-  border: 1px solid ${(props) => darken(0.1, props.theme.colors.green)};
+  border: 1px solid ${(props) => darken(0.2, props.theme.colors.teal)};
 
   &:hover {
-    background: ${(props) => darken(0.1, props.theme.colors.green)};
+    background: ${(props) => darken(0.1, props.theme.colors.teal)};
   }
 
-  ${(props) => props.theme.global.setFocus(props.theme.colors.green)};
+  ${(props) => props.theme.global.setFocus(props.theme.colors.gray)};
 
   @media (max-width: 900px) {
     font-size: 1rem;
   }
-`;
-
-const BookEventButton = styled(ViewEventButton)`
-  background: #fff;
-  color: ${(props) => props.theme.colors.gray};
-  border: 1px solid ${(props) => props.theme.colors.gray};
-
-  &:hover {
-    background: ${darken(0.1, '#fff')};
-  }
-
-  ${(props) => props.theme.global.setFocus(props.theme.colors.gray)};
 `;
