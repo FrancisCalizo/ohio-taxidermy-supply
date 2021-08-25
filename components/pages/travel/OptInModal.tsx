@@ -65,7 +65,7 @@ export default function CampaignModal() {
             )}
 
             <h3 className="heading">{`${selectedCoupon?.fields.title}`}</h3>
-            <h3 className="client">{`${selectedCoupon?.fields.title}`}</h3>
+            <h3 className="client">{`${selectedCoupon?.fields.client.fields.title}`}</h3>
 
             <h3 className="sub-heading"> Description</h3>
 

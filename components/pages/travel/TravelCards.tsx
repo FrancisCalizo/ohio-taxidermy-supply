@@ -23,6 +23,7 @@ export default function TravelCards() {
           <CardPaddedArea>
             <CardHeader>
               <h3 className="event-name">{item.fields.title}</h3>
+              <h4 className="host-name">Hosted By {item.fields.client.fields.title}</h4>
               <h4 className="location">{item.fields.venue}</h4>
               <h4 className="location"> [Insert Geocoder here]</h4>
             </CardHeader>
@@ -79,6 +80,16 @@ const CardHeader = styled.div`
   .event-name {
     font-size: 16px;
     margin: 0.5rem 0;
+  }
+
+  .host-name {
+    display: inline-block;
+    background: ${(props) => props.theme.colors.pink};
+    padding: 0.5rem 1rem;
+    margin: 0 0 0.5rem;
+    font-size: 16px;
+    color: ${(props) => darken(0.6, props.theme.colors.pink)};
+    border-radius: 5px;
   }
 
   .location {
