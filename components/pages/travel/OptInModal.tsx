@@ -13,7 +13,6 @@ export default function CampaignModal() {
 
   const [windowWidth] = useWindowResize();
 
-  console.log(isModalOpen);
   return (
     <div style={{ position: 'relative' }}>
       <Modal
@@ -124,7 +123,6 @@ const MainContainer = styled.div`
 
 const ClientImageContainer = styled.div`
   position: relative;
-  background-color: black;
   height: 300px;
   width: 100%;
 

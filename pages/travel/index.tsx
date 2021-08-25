@@ -20,8 +20,6 @@ export default function Travel() {
 
   const { data, isLoading } = useQuery('travelCoupons', getTravelCoupons);
 
-  console.log(data);
-
   if (isLoading) <h1>Loading</h1>;
 
   return (
