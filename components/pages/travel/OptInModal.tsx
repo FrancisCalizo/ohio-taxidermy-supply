@@ -44,7 +44,7 @@ export default function CampaignModal() {
             )}
             {selectedCoupon && (
               <Image
-                src={`https:${selectedCoupon?.fields.campaignImage.fields.file.url}`}
+                src={`https:${selectedCoupon?.fields.image.fields.file.url}`}
                 alt="logo"
                 quality={90}
                 layout="fill"
@@ -64,45 +64,20 @@ export default function CampaignModal() {
               </CloseButton>
             )}
 
-            <h3 className="heading">{`${selectedCoupon?.fields.client.fields.title} | ${selectedCoupon?.fields.title}`}</h3>
+            <h3 className="heading">{`${selectedCoupon?.fields.title}`}</h3>
+            <h3 className="client">{`${selectedCoupon?.fields.title}`}</h3>
 
-            <h3 className="sub-heading">Campaign Description</h3>
+            <h3 className="sub-heading"> Description</h3>
 
-            <p className="description-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptas eveniet
-              labore porro laborum non? Alias incidunt doloremque vero, deleniti illo,
-              exercitationem molestias, commodi delectus voluptas veniam aspernatur quae nihil quis
-              mollitia. Commodi nihil culpa voluptatem odit praesentium debitis facilis dolore eum
-              sequi cupiditate voluptatum excepturi, ab pariatur. Aperiam, ipsam!
-            </p>
+            <p className="description-text">{selectedCoupon?.fields.description}</p>
 
-            <h3 className="sub-heading">The Demographics</h3>
+            <h3 className="sub-heading">The Deliverables</h3>
 
-            <p className="description-text">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod voluptatibus enim,
-              officiis beatae eveniet nihil quia alias, corrupti odio, sit vero quasi distinctio
-              animi a.
-            </p>
+            <p className="description-text">{selectedCoupon?.fields.deliverables}</p>
 
-            <p className="description-text">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod voluptatibus enim,
-              officiis beatae eveniet nihil quia alias, corrupti odio, sit vero quasi distinctio
-              animi a.
-            </p>
+            <h3 className="sub-heading">Terms and Agreements</h3>
 
-            <h3 className="sub-heading">The Cast</h3>
-
-            <p className="description-text">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod voluptatibus enim,
-              officiis beatae eveniet nihil quia alias, corrupti odio, sit vero quasi distinctio
-              animi a.
-            </p>
-
-            <p className="description-text">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod voluptatibus enim,
-              officiis beatae eveniet nihil quia alias, corrupti odio, sit vero quasi distinctio
-              animi a.
-            </p>
+            <p className="description-text">{selectedCoupon?.fields.termsAndConditions}</p>
 
             <ConfirmOptInButton>Confirm Opt In</ConfirmOptInButton>
           </ClientDescriptionContainer>
@@ -139,6 +114,16 @@ const ClientDescriptionContainer = styled.div`
 
   h3 {
     text-transform: uppercase;
+  }
+
+  h3.heading {
+    margin-bottom: 0;
+  }
+
+  h3.client {
+    font-size: 1.1rem;
+    margin: 0.5rem 0 1.75rem;
+    color: ${({ theme }) => theme.colors.gray};
   }
 
   h3.sub-heading {
