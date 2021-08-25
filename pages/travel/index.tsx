@@ -4,7 +4,6 @@ import { useQuery } from 'react-query';
 
 import SiteLayout from 'components/layout/SiteLayout';
 import OptInModal from 'components/pages/travel/OptInModal';
-import TravelSort from 'components/pages/travel/TravelSort';
 import TravelFilter from 'components/pages/travel/TravelFilter';
 import TravelCards from 'components/pages/travel/TravelCards';
 import { PageTitle } from 'components/utils/styled';
