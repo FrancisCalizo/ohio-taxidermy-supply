@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Select from 'react-select';
 import { darken } from 'polished';
 
-import { categories } from 'data/categoryList';
+import { travelCategories } from 'data/categoryList';
 import { TravelContext } from 'pages/travel';
 
 export default function TravelFilter() {
@@ -11,7 +11,7 @@ export default function TravelFilter() {
   return (
     <Select
       isMulti
-      options={categories.map((c) => ({ value: c.id, label: c.title }))}
+      options={travelCategories.map((c) => ({ value: c.id, label: c.title }))}
       isSearchable={false}
       placeholder="Categories"
       value={categoryFilters}

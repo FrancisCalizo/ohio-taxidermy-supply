@@ -60,3 +60,30 @@ export const categories = [
     type: 'horizontal',
   },
 ];
+
+export const travelCategories = [
+  {
+    id: 'food',
+    title: 'Food',
+  },
+  {
+    id: 'accomondation',
+    title: 'Accomondation',
+  },
+  {
+    id: 'entertainment',
+    title: 'Entertainment',
+  },
+  {
+    id: 'spaServices',
+    title: 'Spa Services',
+  },
+  {
+    id: 'beautyTreaments',
+    title: 'Beauty Treaments',
+  },
+  {
+    id: 'fitness',
+    title: 'Fitness',
+  },
+];
