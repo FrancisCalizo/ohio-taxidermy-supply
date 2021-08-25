@@ -3,16 +3,18 @@ import styled from 'styled-components';
 import { useQuery } from 'react-query';
 
 import SiteLayout from 'components/layout/SiteLayout';
-import { PageTitle } from 'components/utils/styled';
+import OptInModal from 'components/pages/travel/OptInModal';
 import TravelSort from 'components/pages/travel/TravelSort';
 import TravelFilter from 'components/pages/travel/TravelFilter';
 import TravelCards from 'components/pages/travel/TravelCards';
+import { PageTitle } from 'components/utils/styled';
 import { getTravelCoupons } from 'components/api/travel';
 
 export const TravelContext = createContext({} as any);
 
 export default function Travel() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCoupon, setSelectedCoupon] = useState(null);
   const [categoryFilters, setCategoryFilters] = useState<any>([]);
   const [sort, setSort] = useState<any>('NONE');
 
@@ -32,6 +34,8 @@ export default function Travel() {
         setCategoryFilters,
         sort,
         setSort,
+        selectedCoupon,
+        setSelectedCoupon,
       }}
     >
       <MainContainer>
@@ -52,6 +56,8 @@ export default function Travel() {
           <TravelCards />
         </GridContainer>
       </MainContainer>
+
+      <OptInModal />
     </TravelContext.Provider>
   );
 }

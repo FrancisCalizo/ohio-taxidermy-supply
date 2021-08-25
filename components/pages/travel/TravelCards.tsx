@@ -6,7 +6,7 @@ import { darken } from 'polished';
 import { TravelContext } from 'pages/travel';
 
 export default function TravelCards() {
-  const { data } = useContext(TravelContext);
+  const { data, setIsModalOpen } = useContext(TravelContext);
 
   return (
     <>
@@ -36,7 +36,7 @@ export default function TravelCards() {
               </div>
             </CardContent>
             <CardFooter>
-              <OptInButton>Opt In</OptInButton>
+              <OptInButton onClick={() => setIsModalOpen(true)}>Opt In</OptInButton>
             </CardFooter>
           </CardPaddedArea>
         </EventCard>
