@@ -27,13 +27,13 @@ export default function TravelCards() {
               <h4 className="location"> [Insert Geocoder here]</h4>
             </CardHeader>
             <CardContent>
-              <p className="description">{item.fields.description}</p>
-
               <div className="badges">
-                {/* {item.fields.categories.map((ind: string, key: number) => (
-                  <Industrybadge key={key}>{ind}</Industrybadge>
-                ))} */}
+                {item.fields.categories.map((ind: string, key: number) => (
+                  <CategoryBadge key={key}>{ind}</CategoryBadge>
+                ))}
               </div>
+
+              <p className="description">{item.fields.description}</p>
             </CardContent>
             <CardFooter>
               <OptInButton onClick={() => setIsModalOpen(true)}>Opt In</OptInButton>
@@ -81,7 +81,7 @@ const CardHeader = styled.div`
   }
 `;
 
-const Industrybadge = styled.div`
+const CategoryBadge = styled.div`
   background: ${(props) => props.theme.colors.paleBlue};
   display: inline-block;
   color: ${(props) => darken(0.6, props.theme.colors.paleBlue)};
