@@ -9,7 +9,7 @@ export default function Clients() {
   const { campaigns, setIsModalOpen, setSelectedCampaign } = useContext(ClientContext);
 
   return (
-    <MainContainer>
+    <>
       <ClientsContainer>
         {campaigns?.map((campaign: any, key: number) => (
           <ClientsCard
@@ -38,15 +38,9 @@ export default function Clients() {
       </ClientsContainer>
 
       <FeaturedCampaign />
-    </MainContainer>
+    </>
   );
 }
-
-const MainContainer = styled.div`
-  margin: 0 auto;
-  padding: 0 2rem;
-  max-width: 1300px;
-`;
 
 const ClientsContainer = styled.div`
   display: flex;
