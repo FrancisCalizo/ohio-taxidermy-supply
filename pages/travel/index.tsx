@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 import styled from 'styled-components';
 import { useQuery } from 'react-query';
 
@@ -9,7 +9,10 @@ import TravelFilter from 'components/pages/travel/TravelFilter';
 import TravelCards from 'components/pages/travel/TravelCards';
 import { getTravelCoupons } from 'components/api/travel';
 
+export const TravelContext = createContext({} as any);
+
 export default function Travel() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [categoryFilters, setCategoryFilters] = useState<any>([]);
   const [sort, setSort] = useState<any>('NONE');
 
@@ -20,24 +23,36 @@ export default function Travel() {
   if (isLoading) <h1>Loading</h1>;
 
   return (
-    <MainContainer>
-      <div className="title-container">
-        <PageTitle>Travel</PageTitle>
-      </div>
-
-      <div className="sort-filter-container">
-        <div className="filter">
-          <TravelFilter categoryFilters={categoryFilters} setCategoryFilters={setCategoryFilters} />
+    <TravelContext.Provider
+      value={{
+        isModalOpen,
+        setIsModalOpen,
+        data,
+        categoryFilters,
+        setCategoryFilters,
+        sort,
+        setSort,
+      }}
+    >
+      <MainContainer>
+        <div className="title-container">
+          <PageTitle>Travel</PageTitle>
         </div>
-        <div className="sort">
-          <TravelSort sort={sort} setSort={setSort} />
-        </div>
-      </div>
 
-      <GridContainer>
-        <TravelCards data={data} />
-      </GridContainer>
-    </MainContainer>
+        <div className="sort-filter-container">
+          <div className="filter">
+            <TravelFilter />
+          </div>
+          <div className="sort">
+            <TravelSort />
+          </div>
+        </div>
+
+        <GridContainer>
+          <TravelCards />
+        </GridContainer>
+      </MainContainer>
+    </TravelContext.Provider>
   );
 }
 

@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { darken } from 'polished';
 
-interface TravelCardProps {
-  data: any;
-}
+import { TravelContext } from 'pages/travel';
 
-export default function TravelCards(props: TravelCardProps) {
-  const { data } = props;
+export default function TravelCards() {
+  const { data } = useContext(TravelContext);
 
   return (
     <>

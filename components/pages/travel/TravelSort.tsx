@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Select from 'react-select';
+
+import { TravelContext } from 'pages/travel';
 
 const SORT_ITEMS = [
   { value: 'NONE', label: 'None' },
@@ -9,13 +11,8 @@ const SORT_ITEMS = [
   { value: 'FOLLOWERS_DESC', label: 'Followers (Desc)' },
 ];
 
-interface TravelSortProps {
-  sort: any;
-  setSort: React.Dispatch<React.SetStateAction<any>>;
-}
-
-export default function TravelSort(props: TravelSortProps) {
-  const { sort, setSort } = props;
+export default function TravelSort() {
+  const { sort, setSort } = useContext(TravelContext);
 
   const sortFunction = (option: any, contextObject: any) => {
     const { context } = contextObject;

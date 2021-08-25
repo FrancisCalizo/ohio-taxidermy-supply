@@ -1,16 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Select from 'react-select';
 import { darken } from 'polished';
 
 import { categories } from 'data/categoryList';
+import { TravelContext } from 'pages/travel';
 
-interface TravelFilterProps {
-  categoryFilters: any;
-  setCategoryFilters: React.Dispatch<React.SetStateAction<any>>;
-}
-
-export default function TravelFilter(props: TravelFilterProps) {
-  const { categoryFilters, setCategoryFilters } = props;
+export default function TravelFilter() {
+  const { categoryFilters, setCategoryFilters } = useContext(TravelContext);
 
   return (
     <Select
