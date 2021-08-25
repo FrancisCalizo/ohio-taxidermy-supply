@@ -41,12 +41,9 @@ export default function Travel() {
           <PageTitle>Travel</PageTitle>
         </div>
 
-        <div className="sort-filter-container">
+        <div className="filter-container">
           <div className="filter">
             <TravelFilter />
-          </div>
-          <div className="sort">
-            <TravelSort />
           </div>
         </div>
 
@@ -70,23 +67,17 @@ const MainContainer = styled.div`
     justify-content: center;
   }
 
-  .sort-filter-container {
+  .filter-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin: 0 0 1rem;
-
-    & .sort {
-      width: 215px;
-      margin: 0.5rem 0;
-    }
 
     & .filter {
       width: 400px;
       margin: 0.5rem 0;
     }
 
-    & .filter,
-    & .sort {
+    & .filter {
       @media (max-width: 800px) {
         width: 100%;
       }
