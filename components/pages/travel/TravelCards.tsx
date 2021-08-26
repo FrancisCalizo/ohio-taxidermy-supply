@@ -25,7 +25,6 @@ export default function TravelCards() {
               <h3 className="event-name">{item.fields.title}</h3>
               <h4 className="host-name">Hosted By {item.fields.client.fields.title}</h4>
               <h4 className="location">{item.fields.venue}</h4>
-              <h4 className="location"> [Insert Geocoder here]</h4>
             </CardHeader>
             <CardContent>
               <div className="badges">

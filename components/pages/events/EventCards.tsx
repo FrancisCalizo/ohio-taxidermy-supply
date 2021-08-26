@@ -26,7 +26,6 @@ export default function EventCards(props: EventCardProps) {
             <CardHeader>
               <h3 className="event-name">{item.fields.title}</h3>
               <h4 className="location">{item.fields.venue}</h4>
-              <h4 className="location"> [Insert Geocoder here]</h4>
             </CardHeader>
             <CardContent>
               <p className="description">{item.fields.shortDescription}</p>
