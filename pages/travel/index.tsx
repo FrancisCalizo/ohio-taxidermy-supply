@@ -64,6 +64,7 @@ const MainContainer = styled.div`
   & > .title-container {
     display: flex;
     justify-content: center;
+    margin-bottom: -2rem;
   }
 
   .filter-container {

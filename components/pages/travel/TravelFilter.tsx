@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import styled from 'styled-components';
 import Select from 'react-select';
 import { darken } from 'polished';
 
@@ -9,19 +10,32 @@ export default function TravelFilter() {
   const { categoryFilters, setCategoryFilters } = useContext(TravelContext);
 
   return (
-    <Select
-      isMulti
-      options={travelCategories.map((c) => ({ value: c.id, label: c.title }))}
-      isSearchable={false}
-      placeholder="Categories"
-      value={categoryFilters}
-      onChange={setCategoryFilters}
-      styles={filterStyles}
-      autosize={false}
-      instanceId="categories"
-    />
+    <FilterContainer>
+      <h3 className="label">Filter By Category</h3>
+      <Select
+        isMulti
+        options={travelCategories.map((c) => ({ value: c.id, label: c.title }))}
+        isSearchable={false}
+        placeholder="Categories"
+        value={categoryFilters}
+        onChange={setCategoryFilters}
+        styles={filterStyles}
+        autosize={false}
+        instanceId="categories"
+      />
+    </FilterContainer>
   );
 }
+
+const FilterContainer = styled.div`
+  .label {
+    font-size: 1rem;
+    letter-spacing: -0.25px;
+    text-align: center;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.colors.gray};
+  }
+`;
 
 const filterStyles = {
   control: (baseStyles: any) => ({
