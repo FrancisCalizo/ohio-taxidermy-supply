@@ -15,14 +15,15 @@ export default function Talent() {
 
   return (
     <MainContainer>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div className="title-container">
         <PageTitle>Talent</PageTitle>
       </div>
 
-      <div className="sort-filter-container">
-        <div className="filter">
-          <TalentFilter categoryFilters={categoryFilters} setCategoryFilters={setCategoryFilters} />
-        </div>
+      <div className="filter">
+        <TalentFilter categoryFilters={categoryFilters} setCategoryFilters={setCategoryFilters} />
+      </div>
+
+      <div className="sort-container">
         <div className="sort">
           <TalentSort sort={sort} setSort={setSort} />
         </div>
@@ -45,6 +46,12 @@ const MainContainer = styled.div`
   max-width: 1400px;
   margin: 0 auto;
 
+  & > .title-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: -2rem;
+  }
+
   .join-now {
     text-align: center;
     margin: 2.5rem 0 1rem;
@@ -57,32 +64,31 @@ const MainContainer = styled.div`
     }
   }
 
-  .sort-filter-container {
+  & .sort-container {
     display: flex;
-    justify-content: space-between;
-    margin: 0 0 1rem;
+    justify-content: flex-end;
+  }
 
-    & .sort {
-      width: 215px;
-      margin: 0.5rem 0;
-    }
+  & .sort {
+    width: 215px;
+    margin: 1rem 0;
+  }
 
-    & .filter {
-      width: 400px;
-      margin: 0.5rem 0;
-    }
+  & .filter {
+    width: 400px;
+    margin: 0.5rem auto;
+  }
 
-    & .filter,
-    & .sort {
-      @media (max-width: 800px) {
-        width: 100%;
-      }
-    }
-
+  & .filter,
+  & .sort {
     @media (max-width: 800px) {
-      flex-direction: column;
       width: 100%;
     }
+  }
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    width: 100%;
   }
 
   .filter-container {

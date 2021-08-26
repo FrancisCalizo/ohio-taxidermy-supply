@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import styled from 'styled-components';
 import { darken } from 'polished';
 
 import { categories } from 'data/categoryList';
@@ -13,19 +14,32 @@ export default function TalentFilter(props: TalentFilterProps) {
   const { categoryFilters, setCategoryFilters } = props;
 
   return (
-    <Select
-      isMulti
-      options={categories.map((c) => ({ value: c.id, label: c.title }))}
-      isSearchable={false}
-      placeholder="Categories"
-      value={categoryFilters}
-      onChange={setCategoryFilters}
-      styles={filterStyles}
-      autosize={false}
-      instanceId="categories"
-    />
+    <FilterContainer>
+      <h3 className="label">Filter By Category</h3>
+      <Select
+        isMulti
+        options={categories.map((c) => ({ value: c.id, label: c.title }))}
+        isSearchable={false}
+        placeholder="Categories"
+        value={categoryFilters}
+        onChange={setCategoryFilters}
+        styles={filterStyles}
+        autosize={false}
+        instanceId="categories"
+      />
+    </FilterContainer>
   );
 }
+
+const FilterContainer = styled.div`
+  .label {
+    font-size: 1rem;
+    letter-spacing: -0.25px;
+    text-align: center;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.colors.gray};
+  }
+`;
 
 const filterStyles = {
   control: (baseStyles: any) => ({
