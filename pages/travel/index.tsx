@@ -74,9 +74,7 @@ const MainContainer = styled.div`
     & .filter {
       width: 400px;
       margin: 0.5rem 0;
-    }
 
-    & .filter {
       @media (max-width: 800px) {
         width: 100%;
       }
