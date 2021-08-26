@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 8/26/2021
+
+- Remove geocode locations, start vending page with filters, fix all filters on Travel/Vending/Travel
+
 ### 8/25/2021
 
 - Fix/style travel moda, implement categories, implement contentful data to optIn card
