@@ -4,6 +4,7 @@ export const routes = [
   { title: 'Events', path: '/events' },
   { title: 'Vending', path: '/vending' },
   { title: 'Travel', path: '/travel' },
+  { title: 'Login', path: '/login' },
 ];
 
 export const middleRoutes = [
