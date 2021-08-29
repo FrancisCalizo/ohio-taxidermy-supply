@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 8/29/2021
+
+- Implement Login Page for client/talent. Implement Contentful-Management API with Contentful-Delivery API
+
 ### 8/26/2021
 
 - Remove geocode locations, start vending page with filters, fix all filters on Travel/Vending/Travel
