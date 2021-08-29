@@ -14,7 +14,7 @@ export default function Signup() {
 
   type SignupType = 'influencer' | 'client';
 
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [signupType, setSignupType] = useState<SignupType>(
     (router.query.signupType as SignupType) || 'influencer'
@@ -26,7 +26,7 @@ export default function Signup() {
 
   const handleSubmit = () => {
     // TODO: Use AuthContext to handle user auth
-    // login(username, password);
+    // login(email, password);
     TEMP_LOGIN();
     router.push('/dashboard');
   };
@@ -64,11 +64,11 @@ export default function Signup() {
           <div>
             <Input
               type="text"
-              id="username"
-              name="username"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              id="email"
+              name="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <Input

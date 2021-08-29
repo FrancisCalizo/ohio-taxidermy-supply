@@ -10,12 +10,12 @@ export default function Login() {
   const { user, TEMP_LOGIN } = useAuth();
   const router = useRouter();
 
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
     // TODO: Use AuthContext to handle user auth
-    // login(username, password);
+    // login(email, password);
     TEMP_LOGIN();
     router.push('/dashboard');
   };
@@ -59,9 +59,9 @@ export default function Login() {
           type="text"
           id="login"
           name="login"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <Input
