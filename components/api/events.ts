@@ -1,3 +1,3 @@
-import { client } from './contentful';
+import { clientContent } from './contentful';
 
-export const getEvents = async () => await client.getEntries({ content_type: 'events' });
+export const getEvents = async () => await clientContent.getEntries({ content_type: 'events' });

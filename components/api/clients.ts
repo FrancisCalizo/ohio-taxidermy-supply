@@ -1,5 +1,6 @@
-import { client } from './contentful';
+import { clientContent } from './contentful';
 
-export const getClients = async () => await client.getEntries({ content_type: 'clients' });
+export const getClients = async () => await clientContent.getEntries({ content_type: 'clients' });
 
-export const getCampaigns = async () => await client.getEntries({ content_type: 'campaigns' });
+export const getCampaigns = async () =>
+  await clientContent.getEntries({ content_type: 'campaigns' });

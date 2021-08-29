@@ -1,4 +1,4 @@
-import { client } from './contentful';
+import { clientContent } from './contentful';
 
 export const getTravelCoupons = async () =>
-  await client.getEntries({ content_type: 'travelCoupon' });
+  await clientContent.getEntries({ content_type: 'travelCoupon' });
