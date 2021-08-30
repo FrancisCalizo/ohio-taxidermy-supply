@@ -52,6 +52,8 @@ export default function Header() {
           width={400}
           height={200}
           quality={95}
+          placeholder="blur"
+          blurDataURL={'/images/header-placeholder.png'}
         />
       </ImageContainer>
 
