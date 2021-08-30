@@ -34,7 +34,7 @@ export default function Header() {
       } else if (posX - rect.x <= 240 * (rect.width / 400)) {
         router.push('/events');
       } else if (posX - rect.x <= 310 * (rect.width / 400)) {
-        router.push('/vendors');
+        router.push('/vending');
       } else {
         router.push('/travel');
       }
