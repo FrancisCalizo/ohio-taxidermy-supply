@@ -2,7 +2,7 @@
 
 ### 8/29/2021
 
-- Implement Login Page for client/talent. Implement Contentful-Management API with Contentful-Delivery API
+- Implement Login Page for client/talent. Implement Contentful-Management API with Contentful-Delivery API, add avatar click through, lazyLoad placeholder. Add contentful Management API Key
 
 ### 8/26/2021
 
