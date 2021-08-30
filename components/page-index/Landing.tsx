@@ -14,10 +14,38 @@ import {
 export default function Header() {
   const router = useRouter();
 
+  // Route the user to a specific page dependent
+  // on where they click on in the avatar
+  const handleAvatarClick = (e: any) => {
+    // First, make sure the avatar is clicked
+    if (e.target.id === 'avatar') {
+      // Retrieve the coordinates of the avatar
+      const rect = e.target.getBoundingClientRect();
+      // Retrieve the coordinated of the click
+      const posX = e.clientX;
+
+      // Using both coordinates above, decide where to route
+      // the user. The avatar width is variable, so use percentage
+      // of width to max-size to determine boundaries.
+      if (posX - rect.x <= 100 * (rect.width / 400)) {
+        router.push('/talent');
+      } else if (posX - rect.x <= 190 * (rect.width / 400)) {
+        router.push('/clients');
+      } else if (posX - rect.x <= 240 * (rect.width / 400)) {
+        router.push('/events');
+      } else if (posX - rect.x <= 310 * (rect.width / 400)) {
+        router.push('/vendors');
+      } else {
+        router.push('/travel');
+      }
+    }
+  };
+
   return (
     <MainContainer>
-      <ImageContainer>
+      <ImageContainer onClick={handleAvatarClick}>
         <Image
+          id="avatar"
           src={'/images/header.gif'}
           alt="header"
           layout="fixed"
@@ -103,6 +131,15 @@ const ImageContainer = styled.div`
 
   @media (min-width: 800px) {
     padding-top: 2rem;
+  }
+
+  & img {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  & img:hover {
+    transform: scale(1.05);
   }
 `;
 
