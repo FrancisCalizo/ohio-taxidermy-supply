@@ -6,7 +6,9 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie, faPortrait } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
+
 import { useAuth } from 'components/AuthContext';
+import { isValidEmail } from 'components/utils';
 
 export default function Signup() {
   const { user, TEMP_LOGIN } = useAuth();
@@ -16,6 +18,7 @@ export default function Signup() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [signUpStep, setSignUpStep] = useState<'none' | 'step1' | 'step2'>('none');
   const [signupType, setSignupType] = useState<SignupType>(
     (router.query.signupType as SignupType) || 'influencer'
   );
@@ -25,10 +28,10 @@ export default function Signup() {
   }, [router.query.signupType]);
 
   const handleSubmit = () => {
-    // TODO: Use AuthContext to handle user auth
-    // login(email, password);
-    TEMP_LOGIN();
-    router.push('/dashboard');
+    // Verify email is a valid email
+    const isValid = isValidEmail(email);
+
+    // TODO: Check to see if email used is already signed up
   };
 
   // If user, bypass this login page
@@ -215,6 +218,8 @@ const MainContainer = styled.div`
 
 const LoginBlockContainer = styled.div`
   background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 1000px;
   border-radius: 5px;
