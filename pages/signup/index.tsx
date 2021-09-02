@@ -2,23 +2,25 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
 import Link from 'next/link';
-import Image from 'next/image';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie, faPortrait } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
 
+import AuthLayout from 'components/layout/AuthLayout';
 import { useAuth } from 'components/AuthContext';
 import { isValidEmail } from 'components/utils';
 
 export default function Signup() {
-  const { user, TEMP_LOGIN } = useAuth();
+  const { user } = useAuth();
   const router = useRouter();
 
   type SignupType = 'influencer' | 'client';
+  type SignupStep = 'none' | 'step1' | 'step2';
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [signUpStep, setSignUpStep] = useState<'none' | 'step1' | 'step2'>('none');
+  const [signupStep, setSignupStep] = useState<SignupStep>('none');
   const [signupType, setSignupType] = useState<SignupType>(
     (router.query.signupType as SignupType) || 'influencer'
   );
@@ -27,11 +29,22 @@ export default function Signup() {
     setSignupType(router.query.signupType as SignupType);
   }, [router.query.signupType]);
 
+  useEffect(() => {
+    setSignupStep(router.query.signupStep as SignupStep);
+  }, [router.query.signupStep]);
+
   const handleSubmit = () => {
     // Verify email is a valid email
     const isValid = isValidEmail(email);
 
     // TODO: Check to see if email used is already signed up
+
+    // If email is valid and not used, move on to next step in process
+    if (!isValid) {
+      alert('Please enter a valid email');
+    } else {
+      router.push('/signup/step1');
+    }
   };
 
   // If user, bypass this login page
@@ -41,84 +54,82 @@ export default function Signup() {
 
   return (
     <MainContainer>
-      <LoginBlockContainer>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <LogoContainer onClick={() => router.push('/')}>
-            <Image src={`/images/logo.png`} alt="logo" width={55} height={55} quality={50} />
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-            <div
-              className="title"
-              style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}
-              role="button"
-              tabIndex={0}
-            >
-              <span>Cast</span>
-              <span>Me</span>
-              <span>App</span>
-            </div>
-          </LogoContainer>
+      <h1 className="register-title">
+        Register as an <span style={{ textTransform: 'capitalize' }}>{signupType}</span>
+      </h1>
+
+      <FlexContainer>
+        <div>
+          <Input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <Input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <SignupButton type="submit" onClick={handleSubmit}>
+            Signup
+          </SignupButton>
+
+          <Link href="/">
+            <BackHome>Back to Home Page</BackHome>
+          </Link>
         </div>
-
-        <h1>
-          Register as an <span style={{ textTransform: 'capitalize' }}>{signupType}</span>
-        </h1>
-
-        <FlexContainer>
-          <div>
-            <Input
-              type="text"
-              id="email"
-              name="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+        <VerticalLine />
+        <InfoContainer>
+          <IconCircle>
+            <FontAwesomeIcon
+              icon={signupType === 'influencer' ? faUserTie : faPortrait}
+              style={{ fontSize: 24 }}
             />
-
-            <Input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-
-            <SignupButton type="submit" onClick={handleSubmit}>
-              Signup
-            </SignupButton>
-
-            <Link href="/">
-              <BackHome>Back to Home Page</BackHome>
-            </Link>
-          </div>
-          <VerticalLine />
-          <InfoContainer>
-            <IconCircle>
-              <FontAwesomeIcon
-                icon={signupType === 'influencer' ? faUserTie : faPortrait}
-                style={{ fontSize: 24 }}
-              />
-            </IconCircle>
-            <h3>Are you {signupType === 'influencer' ? 'a Client/Sponser' : 'an Influencer'}?</h3>
-            <button
-              onClick={() =>
-                router.push(
-                  `/signup?signupType=${signupType === 'influencer' ? 'client' : 'influencer'}`
-                )
-              }
-            >
-              Register here
-            </button>
-            <p style={{ marginTop: '1.5rem !important' }}>
-              {/* eslint-disable-next-line react/no-unescaped-entities */}
-              Already have an account? <Link href="/signup">Login Here</Link>
-            </p>
-          </InfoContainer>
-        </FlexContainer>
-      </LoginBlockContainer>
+          </IconCircle>
+          <h3>Are you {signupType === 'influencer' ? 'a Client/Sponser' : 'an Influencer'}?</h3>
+          <button
+            onClick={() =>
+              router.push(
+                `/signup?signupType=${signupType === 'influencer' ? 'client' : 'influencer'}`
+              )
+            }
+          >
+            Register here
+          </button>
+          <p style={{ marginTop: '1.5rem !important' }}>
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
+            Already have an account? <Link href="/signup">Login Here</Link>
+          </p>
+        </InfoContainer>
+      </FlexContainer>
     </MainContainer>
   );
 }
+
+Signup.getLayout = (page: any) => <AuthLayout>{page}</AuthLayout>;
+
+const MainContainer = styled.div`
+  & .register-title {
+    text-align: center;
+    margin: 0 0 2rem;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 30px;
+    font-weight: 600;
+
+    @media (max-width: 630px) {
+      font-size: 24px;
+      margin-bottom: 0.5rem;
+    }
+  }
+`;
 
 const VerticalLine = styled.div`
   height: 200px;
@@ -186,84 +197,6 @@ const InfoContainer = styled.div`
   }
 `;
 
-const MainContainer = styled.div`
-  height: 100vh;
-  background: hsla(193, 80%, 76%, 1);
-
-  background: linear-gradient(
-    315deg,
-    hsla(193, 80%, 76%, 1) 0%,
-    hsla(230, 35%, 76%, 1) 49%,
-    hsla(341, 57%, 84%, 1) 100%
-  );
-
-  background: -moz-linear-gradient(
-    315deg,
-    hsla(193, 80%, 76%, 1) 0%,
-    hsla(230, 35%, 76%, 1) 49%,
-    hsla(341, 57%, 84%, 1) 100%
-  );
-
-  background: -webkit-linear-gradient(
-    315deg,
-    hsla(193, 80%, 76%, 1) 0%,
-    hsla(230, 35%, 76%, 1) 49%,
-    hsla(341, 57%, 84%, 1) 100%
-  );
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const LoginBlockContainer = styled.div`
-  background-color: #fff;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  width: 100%;
-  max-width: 1000px;
-  border-radius: 5px;
-  max-height: 600px;
-  padding: 3rem 2rem 5rem;
-  margin: 0 3rem;
-  overflow-y: auto;
-
-  h1 {
-    text-align: center;
-    margin: 0 0 2rem;
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 30px;
-    font-weight: 600;
-
-    @media (max-width: 630px) {
-      font-size: 24px;
-      margin-bottom: 0.5rem;
-    }
-  }
-
-  p {
-    font-size: 14px;
-    text-align: center;
-    margin: 0.7rem 0 3rem 0;
-    color: rgba(0, 0, 0, 0.4);
-
-    & > a {
-      text-decoration: underline;
-      font-size: 15px;
-      font-weight: bold;
-
-      &:hover {
-        color: rgba(0, 0, 0, 0.7);
-      }
-    }
-  }
-
-  @media (max-width: 630px) {
-    padding: 1.5rem 1rem 1.5rem;
-    max-height: 800px;
-  }
-`;
-
 const FlexContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -321,41 +254,6 @@ const SignupButton = styled.button`
   }
 
   ${(props) => props.theme.global.setFocus(props.theme.colors.pink)}
-`;
-
-const LogoContainer = styled.h3`
-  text-align: center;
-  display: inline-block;
-  transform: none;
-  border-radius: 100px;
-
-  img {
-    border-radius: 50px;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  }
-
-  & .title {
-    font-size: 30px;
-    margin-top: -0.8rem;
-
-    & > span:nth-child(1) {
-      color: ${(props) => props.theme.colors.teal};
-    }
-    & > span:nth-child(2) {
-      color: ${(props) => props.theme.colors.yellow};
-    }
-    & > span:nth-child(3) {
-      color: ${(props) => props.theme.colors.pink};
-    }
-
-    @media (max-width: 630px) {
-      font-size: 26px;
-    }
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 const BackHome = styled.a`
