@@ -32,7 +32,7 @@ export default function AuthLayout({ children }: any) {
 }
 
 const MainContainer = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   background: hsla(193, 80%, 76%, 1);
 
   background: linear-gradient(
@@ -92,7 +92,8 @@ const LoginBlockContainer = styled.div`
 
   @media (max-width: 630px) {
     padding: 1.5rem 2rem 1.5rem;
-    max-height: 800px;
+    max-height: none;
+    margin: 2rem;
   }
 `;
 
@@ -119,10 +120,6 @@ const LogoContainer = styled.h3`
     }
     & > span:nth-child(3) {
       color: ${(props) => props.theme.colors.pink};
-    }
-
-    @media (max-width: 630px) {
-      font-size: 26px;
     }
   }
 

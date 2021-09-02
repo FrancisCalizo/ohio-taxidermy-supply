@@ -196,7 +196,7 @@ const BodyContainer = styled.div`
 
 const Input = styled.input`
   display: block;
-  font-size: ${(props) => props.theme.input.fontSize};
+  font-size: calc(14px + (16 - 14) * ((100vw - 400px) / (1800 - 400)));
   padding: ${(props) => props.theme.input.padding};
   margin: 0.5rem 0;
   width: 100%;
