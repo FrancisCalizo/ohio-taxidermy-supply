@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import AuthLayout from 'components/layout/AuthLayout';
 import { useAuth } from 'components/AuthContext';
 import { theme } from 'components/Theme';
+import { US_STATES } from 'components/utils';
 
 export default function Step1() {
   const { user } = useAuth();
@@ -131,13 +132,14 @@ export default function Step1() {
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
             />
-            <Input
-              type="text"
-              id="state"
-              name="state"
+            <Select
               placeholder="State"
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
+              options={US_STATES}
+              isSearchable={false}
+              // value={sort}
+              // onChange={setSort}
+              styles={selectStyles}
+              instanceId="state"
             />
             <Input
               type="text"
@@ -275,5 +277,9 @@ const selectStyles = {
     ...baseStyles,
     height: '40px',
     overflow: 'auto',
+  }),
+  menuList: (baseStyles: any) => ({
+    ...baseStyles,
+    maxHeight: '180px',
   }),
 };
