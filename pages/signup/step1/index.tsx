@@ -14,7 +14,8 @@ export default function Step1() {
   const router = useRouter();
 
   const handleSubmit = () => {
-    console.log('blah');
+    // Form validated successfully
+    router.push('/signup/step2');
   };
 
   // If user, bypass this login page
@@ -72,7 +73,7 @@ export default function Step1() {
           <div className="target-row">
             <Select
               isMulti
-              placeholder="Target Demographic (Optional)"
+              placeholder="Demographic (Optional)"
               options={[
                 { value: 'a', label: 'Demographic A' },
                 { value: 'b', label: 'Demographic B' },
@@ -147,7 +148,7 @@ export default function Step1() {
             />
           </div>
 
-          <ContinueButton>Continue</ContinueButton>
+          <ContinueButton onClick={handleSubmit}>Continue</ContinueButton>
         </div>
       </BodyContainer>
     </MainContainer>
