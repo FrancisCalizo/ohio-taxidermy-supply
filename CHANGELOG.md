@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 9/1/2021 and 9/2/2021
+
+- Planning and reassesment of signup process for talent. Implementation of Step 2 of registration, implement styling and auth layout for multiple step process, implement step 3 layout for social handles. Make registration page fully repsonsive, stying fixes
+
 ### 8/29/2021
 
 - Implement Login Page for client/talent. Implement Contentful-Management API with Contentful-Delivery API, add avatar click through, lazyLoad placeholder. Add contentful Management API Key
