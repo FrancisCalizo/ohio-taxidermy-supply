@@ -67,27 +67,41 @@ export default function Step1() {
               isSearchable={false}
               // value={sort}
               // onChange={setSort}
-              styles={genderStyles}
+              styles={selectStyles}
               instanceId="gender"
               // formatOptionLabel={sortFunction}
             />
           </div>
           <div className="target-row">
-            <Input
-              type="text"
-              id="target-demographic"
-              name="target-demographic"
-              placeholder="Target Demographic"
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
+            <Select
+              isMulti
+              placeholder="Target Demographic (Optional)"
+              options={[
+                { value: 'a', label: 'Demographic A' },
+                { value: 'b', label: 'Demographic B' },
+                { value: 'c', label: 'Demographic C' },
+              ]}
+              isSearchable={false}
+              // value={sort}
+              // onChange={setSort}
+              styles={selectStyles}
+              instanceId="demographic"
+              // formatOptionLabel={sortFunction}
             />
-            <Input
-              type="text"
-              id="target-media"
-              name="target-media"
-              placeholder="Target Media"
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
+            <Select
+              isMulti
+              placeholder="Target Media (Optional)"
+              options={[
+                { value: 'photo', label: 'Photo' },
+                { value: 'video', label: 'Video' },
+                { value: 'actor', label: 'Actor' },
+              ]}
+              isSearchable={false}
+              // value={sort}
+              // onChange={setSort}
+              styles={selectStyles}
+              instanceId="media"
+              // formatOptionLabel={sortFunction}
             />
           </div>
           <div className="first-address-row">
@@ -244,10 +258,10 @@ const ContinueButton = styled.button`
   ${(props) => props.theme.global.setFocus(props.theme.colors.pink)}
 `;
 
-const genderStyles = {
+const selectStyles = {
   container: (baseStyles: any) => ({
     ...baseStyles,
-    margin: 'auto 0',
+    margin: '.5rem 0',
   }),
   control: (baseStyles: any) => ({
     ...baseStyles,
@@ -259,7 +273,7 @@ const genderStyles = {
   }),
   valueContainer: (baseStyles: any) => ({
     ...baseStyles,
-    paddingTop: '.75rem',
-    paddingBottom: '.75rem',
+    height: '40px',
+    overflow: 'auto',
   }),
 };
