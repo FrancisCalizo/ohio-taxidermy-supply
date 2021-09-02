@@ -97,6 +97,34 @@ export default function Step1() {
               // onChange={(e) => setEmail(e.target.value)}
             />
           </div>
+          <div className="second-address-row">
+            <Input
+              type="text"
+              id="city"
+              name="city"
+              placeholder="City"
+              // value={email}
+              // onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              type="text"
+              id="state"
+              name="state"
+              placeholder="State"
+              // value={email}
+              // onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              type="text"
+              id="zip"
+              name="zip"
+              placeholder="Zip"
+              // value={email}
+              // onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <ContinueButton>Continue</ContinueButton>
         </div>
       </BodyContainer>
     </MainContainer>
@@ -117,26 +145,51 @@ const BodyContainer = styled.div`
   & h5 {
     text-align: center;
     margin: 1rem 0 2rem;
-    /* color: ${(props) => props.theme.colors.gray}; */
   }
 
   .form-container {
+    max-width: 800px;
+    margin: 0 auto;
+
     .name-row {
       display: grid;
       grid-template-columns: 4fr 4fr 2fr;
       column-gap: 1rem;
+
+      @media (max-width: 630px) {
+        grid-template-columns: 1fr;
+      }
     }
 
     .target-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       column-gap: 1rem;
+      margin-bottom: 2rem;
+
+      @media (max-width: 630px) {
+        grid-template-columns: 1fr;
+      }
     }
 
     .first-address-row {
       display: grid;
       grid-template-columns: 2fr 1fr;
       column-gap: 1rem;
+
+      @media (max-width: 630px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .second-address-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      column-gap: 1rem;
+
+      @media (max-width: 630px) {
+        grid-template-columns: 1fr;
+      }
     }
   }
 `;
@@ -157,7 +210,7 @@ const Input = styled.input`
   ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.pink))}
 `;
 
-const SignupButton = styled.button`
+const ContinueButton = styled.button`
   display: block;
   font-size: 18px;
   padding: 0.5rem;

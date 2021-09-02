@@ -68,8 +68,8 @@ const LoginBlockContainer = styled.div`
   width: 100%;
   max-width: 1000px;
   border-radius: 5px;
-  max-height: 600px;
-  padding: 3rem 2rem 5rem;
+  max-height: 700px;
+  padding: 1rem 2rem 4rem;
   margin: 0 3rem;
   overflow-y: auto;
 
@@ -91,7 +91,7 @@ const LoginBlockContainer = styled.div`
   }
 
   @media (max-width: 630px) {
-    padding: 1.5rem 1rem 1.5rem;
+    padding: 1.5rem 2rem 1.5rem;
     max-height: 800px;
   }
 `;
