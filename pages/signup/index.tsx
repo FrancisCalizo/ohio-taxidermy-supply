@@ -16,11 +16,9 @@ export default function Signup() {
   const router = useRouter();
 
   type SignupType = 'influencer' | 'client';
-  type SignupStep = 'none' | 'step1' | 'step2';
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [signupStep, setSignupStep] = useState<SignupStep>('none');
   const [signupType, setSignupType] = useState<SignupType>(
     (router.query.signupType as SignupType) || 'influencer'
   );
@@ -28,10 +26,6 @@ export default function Signup() {
   useEffect(() => {
     setSignupType(router.query.signupType as SignupType);
   }, [router.query.signupType]);
-
-  useEffect(() => {
-    setSignupStep(router.query.signupStep as SignupStep);
-  }, [router.query.signupStep]);
 
   const handleSubmit = () => {
     // Verify email is a valid email

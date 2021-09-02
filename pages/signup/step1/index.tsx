@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Select from 'react-select';
 import { darken } from 'polished';
@@ -12,10 +12,6 @@ import { US_STATES } from 'components/utils';
 export default function Step1() {
   const { user } = useAuth();
   const router = useRouter();
-
-  type SignupStep = 'none' | 'step1' | 'step2';
-
-  const [signupStep, setSignupStep] = useState<SignupStep>('none');
 
   const handleSubmit = () => {
     console.log('blah');
