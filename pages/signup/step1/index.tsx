@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Select from 'react-select';
 import { darken } from 'polished';
-import Link from 'next/link';
-import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserTie, faPortrait } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
 
 import AuthLayout from 'components/layout/AuthLayout';
 import { useAuth } from 'components/AuthContext';
+import { theme } from 'components/Theme';
 
 export default function Step1() {
-  const { user, TEMP_LOGIN } = useAuth();
+  const { user } = useAuth();
   const router = useRouter();
 
   type SignupStep = 'none' | 'step1' | 'step2';
@@ -52,13 +50,26 @@ export default function Step1() {
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
             />
-            <Input
+            {/* <Input
               type="text"
               id="gender"
               name="gender"
               placeholder="Gender"
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
+            /> */}
+            <Select
+              placeholder="Gender"
+              options={[
+                { value: 'male', label: 'Male' },
+                { value: 'female', label: 'Female' },
+              ]}
+              isSearchable={false}
+              // value={sort}
+              // onChange={setSort}
+              styles={genderStyles}
+              instanceId="gender"
+              // formatOptionLabel={sortFunction}
             />
           </div>
           <div className="target-row">
@@ -232,3 +243,23 @@ const ContinueButton = styled.button`
 
   ${(props) => props.theme.global.setFocus(props.theme.colors.pink)}
 `;
+
+const genderStyles = {
+  container: (baseStyles: any) => ({
+    ...baseStyles,
+    margin: 'auto 0',
+  }),
+  control: (baseStyles: any) => ({
+    ...baseStyles,
+    fontSize: 'calc(14px + (16 - 14) * ((100vw - 400px) / (1800 - 400)))',
+    border: '1px solid lightgray',
+    boxShadow: 'none',
+    '&:hover': { border: '1px solid #CCD7EA' },
+    '&:active': { border: `1px solid ${darken(0.03, theme.colors.pink)}` },
+  }),
+  valueContainer: (baseStyles: any) => ({
+    ...baseStyles,
+    paddingTop: '.75rem',
+    paddingBottom: '.75rem',
+  }),
+};
