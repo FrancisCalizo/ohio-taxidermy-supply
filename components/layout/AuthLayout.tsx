@@ -69,7 +69,7 @@ const LoginBlockContainer = styled.div`
   max-width: 1000px;
   border-radius: 5px;
   max-height: 700px;
-  padding: 1rem 2rem 4rem;
+  padding: 1rem 2rem 2.5rem;
   margin: 0 3rem;
   overflow-y: auto;
 
