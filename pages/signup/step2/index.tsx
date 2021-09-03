@@ -142,7 +142,7 @@ const InputContainer = styled.div`
 
   .input-group {
     border: 1px solid black;
-    height: 42px;
+    height: 43px;
     border-radius: 4px 0 0 4px;
     border-right: none;
     border-color: lightgray;
