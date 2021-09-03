@@ -53,106 +53,146 @@ export default function Step1() {
         <div className="form-container">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="name-row">
-              <Input
-                type="text"
-                id="firstName"
-                placeholder="First Name"
-                {...register('firstName', { required: 'This field is required' })}
-              />
-
-              <Input
-                type="text"
-                id="lastName"
-                placeholder="Last Name"
-                {...register('lastName', { required: 'This field is required' })}
-              />
-
-              <Controller
-                name="gender"
-                render={({ field }: any) => (
-                  <Select
-                    {...field}
-                    options={[
-                      { value: 'male', label: 'Male' },
-                      { value: 'female', label: 'Female' },
-                    ]}
-                    instanceId="gender"
-                    placeholder="Gender"
-                    isSearchable={false}
-                    styles={selectStyles}
-                  />
+              <div>
+                <Input
+                  type="text"
+                  id="firstName"
+                  placeholder="First Name"
+                  {...register('firstName', { required: 'This field is required' })}
+                />
+                {errors.firstName && (
+                  <InputErrorMessage>{errors.firstName.message}</InputErrorMessage>
                 )}
-                control={control}
-                defaultValue=""
-              />
+              </div>
+
+              <div>
+                <Input
+                  type="text"
+                  id="lastName"
+                  placeholder="Last Name"
+                  {...register('lastName', { required: 'This field is required' })}
+                />
+                {errors.lastName && (
+                  <InputErrorMessage>{errors.lastName.message}</InputErrorMessage>
+                )}
+              </div>
+
+              <div>
+                <Controller
+                  name="gender"
+                  render={({ field }: any) => (
+                    <Select
+                      {...field}
+                      options={[
+                        { value: 'male', label: 'Male' },
+                        { value: 'female', label: 'Female' },
+                      ]}
+                      instanceId="gender"
+                      placeholder="Gender"
+                      isSearchable={false}
+                      styles={selectStyles}
+                    />
+                  )}
+                  control={control}
+                  defaultValue=""
+                />
+                {/* {errors.gender && <InputErrorMessage>{errors.gender.message}</InputErrorMessage>} */}
+              </div>
             </div>
             <div className="target-row">
-              <Controller
-                name="targetMedia"
-                render={({ field }: any) => (
-                  <Select
-                    {...field}
-                    isMulti
-                    options={[
-                      { value: 'photo', label: 'Photo' },
-                      { value: 'video', label: 'Video' },
-                      { value: 'actor', label: 'Actor' },
-                    ]}
-                    instanceId="targetMedia"
-                    placeholder="Target Media (Optional)"
-                    isSearchable={false}
-                    styles={selectStyles}
-                  />
-                )}
-                control={control}
-                defaultValue={[]}
-              />
+              <div>
+                <Controller
+                  name="targetMedia"
+                  render={({ field }: any) => (
+                    <Select
+                      {...field}
+                      isMulti
+                      options={[
+                        { value: 'photo', label: 'Photo' },
+                        { value: 'video', label: 'Video' },
+                        { value: 'actor', label: 'Actor' },
+                      ]}
+                      instanceId="targetMedia"
+                      placeholder="Target Media (Optional)"
+                      isSearchable={false}
+                      styles={selectStyles}
+                    />
+                  )}
+                  control={control}
+                  defaultValue={[]}
+                />
+                {/* {errors.lastName && (
+                  <InputErrorMessage>{errors.lastName.message}</InputErrorMessage>
+                )} */}
+              </div>
             </div>
-            <div className="first-address-row">
-              <Input
-                type="text"
-                id="addressOne"
-                placeholder="Address"
-                {...register('addressOne', { required: 'This field is required' })}
-              />
 
-              <Input
-                type="text"
-                id="addressTwo"
-                placeholder="Address #2 (Optional)"
-                {...register('addressTwo', { required: 'This field is required' })}
-              />
+            <div className="first-address-row">
+              <div>
+                <Input
+                  type="text"
+                  id="addressOne"
+                  placeholder="Address"
+                  {...register('addressOne', { required: 'This field is required' })}
+                />
+                {errors.addressOne && (
+                  <InputErrorMessage>{errors.addressOne.message}</InputErrorMessage>
+                )}
+              </div>
+
+              <div>
+                <Input
+                  type="text"
+                  id="addressTwo"
+                  placeholder="Address #2 (Optional)"
+                  {...register('addressTwo')}
+                />
+                {errors.addressTwo && (
+                  <InputErrorMessage>{errors.addressTwo.message}</InputErrorMessage>
+                )}
+              </div>
             </div>
             <div className="second-address-row">
-              <Input
-                type="text"
-                id="city"
-                placeholder="City"
-                {...register('city', { required: 'This field is required' })}
-              />
+              <div>
+                <Input
+                  type="text"
+                  id="city"
+                  placeholder="City"
+                  {...register('city', { required: 'This field is required' })}
+                />
+                {errors.city && <InputErrorMessage>{errors.city.message}</InputErrorMessage>}
+              </div>
 
-              <Controller
-                name="targetMedia"
-                render={({ field }: any) => (
-                  <Select
-                    {...field}
-                    options={US_STATES}
-                    placeholder="State"
-                    isSearchable={false}
-                    styles={selectStyles}
-                    instanceId="state"
-                  />
-                )}
-                control={control}
-                defaultValue={[]}
-              />
+              <div>
+                <Controller
+                  name="targetMedia"
+                  render={({ field }: any) => (
+                    <Select
+                      {...field}
+                      options={US_STATES}
+                      placeholder="State"
+                      isSearchable={false}
+                      styles={selectStyles}
+                      instanceId="state"
+                    />
+                  )}
+                  control={control}
+                  defaultValue={[]}
+                />
+                {/* {errors.lastName && (
+                  <InputErrorMessage>{errors.lastName.message}</InputErrorMessage>
+                )} */}
+              </div>
 
-              <Input
-                type="text"
-                id="zip"
-                placeholder="Zip"
-                {...register('zip', { required: 'This field is required' })}
-              />
+              <div>
+                <Input
+                  type="number"
+                  id="zip"
+                  placeholder="Zip"
+                  {...register('zip', { required: 'This field is required' })}
+                />
+                {errors.zip && <InputErrorMessage>{errors.zip.message}</InputErrorMessage>}
+              </div>
             </div>
 
             <ContinueButton>Continue</ContinueButton>
@@ -166,6 +206,13 @@ export default function Step1() {
 Step1.getLayout = (page: any) => <AuthLayout>{page}</AuthLayout>;
 
 const MainContainer = styled.div``;
+
+const InputErrorMessage = styled.p`
+  color: ${(props) => props.theme.colors.danger};
+  font-size: 12px;
+  width: 100%;
+  margin: 0 auto 0.5rem;
+`;
 
 const BodyContainer = styled.div`
   & h2 {
@@ -240,6 +287,16 @@ const Input = styled.input`
   }
 
   ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.pink))}
+
+  // Hides number arrows
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 
 const ContinueButton = styled.button`
