@@ -73,21 +73,6 @@ export default function Step1() {
           <div className="target-row">
             <Select
               isMulti
-              placeholder="Demographic (Optional)"
-              options={[
-                { value: 'a', label: 'Demographic A' },
-                { value: 'b', label: 'Demographic B' },
-                { value: 'c', label: 'Demographic C' },
-              ]}
-              isSearchable={false}
-              // value={sort}
-              // onChange={setSort}
-              styles={selectStyles}
-              instanceId="demographic"
-              // formatOptionLabel={sortFunction}
-            />
-            <Select
-              isMulti
               placeholder="Target Media (Optional)"
               options={[
                 { value: 'photo', label: 'Photo' },
@@ -187,7 +172,7 @@ const BodyContainer = styled.div`
 
     .target-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       column-gap: 1rem;
       margin-bottom: 2rem;
 
