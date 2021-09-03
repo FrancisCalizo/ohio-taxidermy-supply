@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 9/3/2021
+
+- Requested changes from Holly, create talent db outline for talent, create fields in the contentful models, start implementing form state and validation with react-hook-form, implement validation and form submission for first signup page, implement a signup context, implement validation and form on step 2
+
 ### 9/1/2021 and 9/2/2021
 
 - Planning and reassesment of signup process for talent. Implementation of Step 2 of registration, implement styling and auth layout for multiple step process, implement step 3 layout for social handles. Make registration page fully repsonsive, stying fixes
