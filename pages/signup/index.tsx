@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { darken } from 'polished';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import { darken } from 'polished';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie, faPortrait } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
