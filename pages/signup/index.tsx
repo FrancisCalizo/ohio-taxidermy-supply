@@ -19,12 +19,10 @@ export default function Signup() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [signupType, setSignupType] = useState<SignupType>(
-    (router.query.signupType as SignupType) || 'influencer'
-  );
+  const [signupType, setSignupType] = useState<SignupType>(router.query.signupType as SignupType);
 
   useEffect(() => {
-    setSignupType(router.query.signupType as SignupType);
+    setSignupType((router.query.signupType as SignupType) || 'influencer');
   }, [router.query.signupType]);
 
   const handleSubmit = () => {
