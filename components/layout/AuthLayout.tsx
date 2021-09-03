@@ -73,23 +73,6 @@ const LoginBlockContainer = styled.div`
   margin: 0 3rem;
   overflow-y: auto;
 
-  p {
-    font-size: 14px;
-    text-align: center;
-    margin: 0.7rem 0 3rem 0;
-    color: rgba(0, 0, 0, 0.4);
-
-    & > a {
-      text-decoration: underline;
-      font-size: 15px;
-      font-weight: bold;
-
-      &:hover {
-        color: rgba(0, 0, 0, 0.7);
-      }
-    }
-  }
-
   @media (max-width: 630px) {
     padding: 1.5rem 2rem 1.5rem;
     max-height: none;
