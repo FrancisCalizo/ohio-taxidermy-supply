@@ -8,7 +8,7 @@ import {
   faTwitter,
   faInstagram,
   faTiktok,
-  faVine,
+  faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 
 import AuthLayout from 'components/layout/AuthLayout';
@@ -94,12 +94,12 @@ export default function Step1() {
 
           <InputContainer>
             <div className="input-group">
-              <FontAwesomeIcon icon={faVine} style={{ fontSize: 30, color: 'gray' }} />
+              <FontAwesomeIcon icon={faYoutube} style={{ fontSize: 24, color: 'gray' }} />
             </div>
             <Input
               type="text"
-              id="vine"
-              name="vine"
+              id="youtube"
+              name="youtube"
               placeholder="@"
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
