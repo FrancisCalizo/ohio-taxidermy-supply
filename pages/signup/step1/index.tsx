@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Select from 'react-select';
+import { useForm, Controller } from 'react-hook-form';
 import { darken } from 'polished';
 import { useRouter } from 'next/router';
 
@@ -9,19 +10,38 @@ import { useAuth } from 'components/AuthContext';
 import { theme } from 'components/Theme';
 import { US_STATES } from 'components/utils';
 
+type FormValues = {
+  firstName: string;
+  lastName: string;
+  gender: string;
+  targetMedia: string[];
+  addressOne: string;
+  addressTwo: string;
+  city: string;
+  state: string;
+  zip: string;
+};
+
 export default function Step1() {
   const { user } = useAuth();
   const router = useRouter();
-
-  const handleSubmit = () => {
-    // Form validated successfully
-    router.push('/signup/step2');
-  };
 
   // If user, bypass this login page
   if (user) {
     router.push('/dashboard');
   }
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm<FormValues>();
+
+  const onSubmit = (data: FormValues) => {
+    console.log(data);
+    // router.push('/signup/step1');
+  };
 
   return (
     <MainContainer>
@@ -31,109 +51,112 @@ export default function Step1() {
         <h5>Please provide the following information</h5>
 
         <div className="form-container">
-          <div className="name-row">
-            <Input
-              type="text"
-              id="first-name"
-              name="first-name"
-              placeholder="First Name"
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-              type="text"
-              id="last-name"
-              name="last-name"
-              placeholder="Last Name"
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
-            />
-            {/* <Input
-              type="text"
-              id="gender"
-              name="gender"
-              placeholder="Gender"
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
-            /> */}
-            <Select
-              placeholder="Gender"
-              options={[
-                { value: 'male', label: 'Male' },
-                { value: 'female', label: 'Female' },
-              ]}
-              isSearchable={false}
-              // value={sort}
-              // onChange={setSort}
-              styles={selectStyles}
-              instanceId="gender"
-              // formatOptionLabel={sortFunction}
-            />
-          </div>
-          <div className="target-row">
-            <Select
-              isMulti
-              placeholder="Target Media (Optional)"
-              options={[
-                { value: 'photo', label: 'Photo' },
-                { value: 'video', label: 'Video' },
-                { value: 'actor', label: 'Actor' },
-              ]}
-              isSearchable={false}
-              // value={sort}
-              // onChange={setSort}
-              styles={selectStyles}
-              instanceId="media"
-              // formatOptionLabel={sortFunction}
-            />
-          </div>
-          <div className="first-address-row">
-            <Input
-              type="text"
-              id="address-one"
-              name="address-one"
-              placeholder="Address"
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-              type="text"
-              id="address-two"
-              name="address-two"
-              placeholder="Address #2 (Optional)"
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="second-address-row">
-            <Input
-              type="text"
-              id="city"
-              name="city"
-              placeholder="City"
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
-            />
-            <Select
-              placeholder="State"
-              options={US_STATES}
-              isSearchable={false}
-              // value={sort}
-              // onChange={setSort}
-              styles={selectStyles}
-              instanceId="state"
-            />
-            <Input
-              type="text"
-              id="zip"
-              name="zip"
-              placeholder="Zip"
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="name-row">
+              <Input
+                type="text"
+                id="firstName"
+                placeholder="First Name"
+                {...register('firstName', { required: 'This field is required' })}
+              />
 
-          <ContinueButton onClick={handleSubmit}>Continue</ContinueButton>
+              <Input
+                type="text"
+                id="lastName"
+                placeholder="Last Name"
+                {...register('lastName', { required: 'This field is required' })}
+              />
+
+              <Controller
+                name="gender"
+                render={({ field }: any) => (
+                  <Select
+                    {...field}
+                    options={[
+                      { value: 'male', label: 'Male' },
+                      { value: 'female', label: 'Female' },
+                    ]}
+                    instanceId="gender"
+                    placeholder="Gender"
+                    isSearchable={false}
+                    styles={selectStyles}
+                  />
+                )}
+                control={control}
+                defaultValue=""
+              />
+            </div>
+            <div className="target-row">
+              <Controller
+                name="targetMedia"
+                render={({ field }: any) => (
+                  <Select
+                    {...field}
+                    isMulti
+                    options={[
+                      { value: 'photo', label: 'Photo' },
+                      { value: 'video', label: 'Video' },
+                      { value: 'actor', label: 'Actor' },
+                    ]}
+                    instanceId="targetMedia"
+                    placeholder="Target Media (Optional)"
+                    isSearchable={false}
+                    styles={selectStyles}
+                  />
+                )}
+                control={control}
+                defaultValue={[]}
+              />
+            </div>
+            <div className="first-address-row">
+              <Input
+                type="text"
+                id="addressOne"
+                placeholder="Address"
+                {...register('addressOne', { required: 'This field is required' })}
+              />
+
+              <Input
+                type="text"
+                id="addressTwo"
+                placeholder="Address #2 (Optional)"
+                {...register('addressTwo', { required: 'This field is required' })}
+              />
+            </div>
+            <div className="second-address-row">
+              <Input
+                type="text"
+                id="city"
+                placeholder="City"
+                {...register('city', { required: 'This field is required' })}
+              />
+
+              <Controller
+                name="targetMedia"
+                render={({ field }: any) => (
+                  <Select
+                    {...field}
+                    options={US_STATES}
+                    placeholder="State"
+                    isSearchable={false}
+                    styles={selectStyles}
+                    instanceId="state"
+                  />
+                )}
+                control={control}
+                defaultValue={[]}
+              />
+
+              <Input
+                type="text"
+                id="zip"
+                placeholder="Zip"
+                {...register('zip', { required: 'This field is required' })}
+              />
+            </div>
+
+            <ContinueButton>Continue</ContinueButton>
+          </form>
         </div>
       </BodyContainer>
     </MainContainer>
