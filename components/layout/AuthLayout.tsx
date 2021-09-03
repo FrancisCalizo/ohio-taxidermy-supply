@@ -9,11 +9,11 @@ export const useSignupContext: any = () => useContext(SignupContext);
 export default function AuthLayout({ children }: any) {
   const router = useRouter();
 
-  const [email] = useState('');
-  const [password] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
-    <SignupContext.Provider value={{ email, password }}>
+    <SignupContext.Provider value={{ email, setEmail, password, setPassword }}>
       <MainContainer>
         <LoginBlockContainer>
           <div style={{ display: 'flex', justifyContent: 'center' }}>

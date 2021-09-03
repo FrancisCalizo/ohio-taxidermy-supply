@@ -1,42 +1,49 @@
 import React, { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { darken } from 'polished';
 import Link from 'next/link';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie, faPortrait } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
 
 import AuthLayout from 'components/layout/AuthLayout';
 import { useAuth } from 'components/AuthContext';
-import { isValidEmail } from 'components/utils';
+import { useSignupContext } from 'components/layout/AuthLayout';
+
+type FormValues = {
+  email: string;
+  password: string;
+};
 
 export default function Signup() {
   const { user } = useAuth();
   const router = useRouter();
+  const { setEmail, setPassword } = useSignupContext();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
 
   type SignupType = 'influencer' | 'client';
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [signupType, setSignupType] = useState<SignupType>(router.query.signupType as SignupType);
 
   useEffect(() => {
     setSignupType((router.query.signupType as SignupType) || 'influencer');
   }, [router.query.signupType]);
 
-  const handleSubmit = () => {
-    // Verify email is a valid email
-    const isValid = isValidEmail(email);
-
+  const onSubmit = (data: FormValues) => {
     // TODO: Check to see if email used is already signed up
 
+    // TODO: Hash password
+
     // If email is valid and not used, move on to next step in process
-    if (!isValid) {
-      alert('Please enter a valid email');
-    } else {
-      router.push('/signup/step1');
-    }
+    setEmail(data.email);
+    setPassword(data.password);
+    router.push('/signup/step1');
   };
 
   // If user, bypass this login page
@@ -52,27 +59,31 @@ export default function Signup() {
 
       <FlexContainer>
         <div>
-          <Input
-            type="text"
-            id="email"
-            name="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Input
+              type="email"
+              id="email"
+              placeholder="Email"
+              {...register('email', {
+                required: 'This field is required',
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: 'Entered value does not match email format',
+                },
+              })}
+            />
+            {errors.email && <InputErrorMessage>{errors.email.message}</InputErrorMessage>}
 
-          <Input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+            <Input
+              type="password"
+              id="password"
+              placeholder="Password"
+              {...register('password', { required: 'This field is required' })}
+            />
+            {errors.password && <InputErrorMessage>{errors.password.message}</InputErrorMessage>}
 
-          <SignupButton type="submit" onClick={handleSubmit}>
-            Signup
-          </SignupButton>
+            <SignupButton type="submit">Signup</SignupButton>
+          </form>
 
           <Link href="/">
             <BackHome>Back to Home Page</BackHome>
@@ -107,6 +118,14 @@ export default function Signup() {
 }
 
 Signup.getLayout = (page: any) => <AuthLayout>{page}</AuthLayout>;
+
+const InputErrorMessage = styled.p`
+  color: ${(props) => props.theme.colors.danger};
+  font-size: 12px;
+  width: 100%;
+  max-width: 300px;
+  margin: -0.75rem auto 0;
+`;
 
 const MainContainer = styled.div`
   & .register-title {
