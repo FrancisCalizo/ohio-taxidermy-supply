@@ -9,11 +9,22 @@ export const useSignupContext: any = () => useContext(SignupContext);
 export default function AuthLayout({ children }: any) {
   const router = useRouter();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [signupForm, setSignupForm] = useState({
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    gender: '',
+    targetMedia: [],
+    addressOne: '',
+    addressTwo: '',
+    city: '',
+    state: '',
+    zip: '',
+  });
 
   return (
-    <SignupContext.Provider value={{ email, setEmail, password, setPassword }}>
+    <SignupContext.Provider value={{ signupForm, setSignupForm }}>
       <MainContainer>
         <LoginBlockContainer>
           <div style={{ display: 'flex', justifyContent: 'center' }}>

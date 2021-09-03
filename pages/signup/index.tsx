@@ -19,7 +19,7 @@ type FormValues = {
 export default function Signup() {
   const { user } = useAuth();
   const router = useRouter();
-  const { setEmail, setPassword } = useSignupContext();
+  const { setSignupForm } = useSignupContext();
 
   const {
     register,
@@ -36,13 +36,13 @@ export default function Signup() {
   }, [router.query.signupType]);
 
   const onSubmit = (data: FormValues) => {
+    const { email, password } = data;
     // TODO: Check to see if email used is already signed up
 
     // TODO: Hash password
 
     // If email is valid and not used, move on to next step in process
-    setEmail(data.email);
-    setPassword(data.password);
+    setSignupForm((old: any) => ({ ...old, email, password }));
     router.push('/signup/step1');
   };
 
