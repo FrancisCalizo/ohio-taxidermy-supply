@@ -1,33 +1,41 @@
-import React from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
+const SignupContext = createContext({});
+export const useSignupContext: any = () => useContext(SignupContext);
+
 export default function AuthLayout({ children }: any) {
   const router = useRouter();
 
+  const [email] = useState('');
+  const [password] = useState('');
+
   return (
-    <MainContainer>
-      <LoginBlockContainer>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <LogoContainer onClick={() => router.push('/')}>
-            <Image src={`/images/logo.png`} alt="logo" width={55} height={55} quality={50} />
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-            <div
-              className="title"
-              style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}
-              role="button"
-              tabIndex={0}
-            >
-              <span>Cast</span>
-              <span>Me</span>
-              <span>App</span>
-            </div>
-          </LogoContainer>
-        </div>
-        {children}
-      </LoginBlockContainer>
-    </MainContainer>
+    <SignupContext.Provider value={{ email, password }}>
+      <MainContainer>
+        <LoginBlockContainer>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <LogoContainer onClick={() => router.push('/')}>
+              <Image src={`/images/logo.png`} alt="logo" width={55} height={55} quality={50} />
+              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+              <div
+                className="title"
+                style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}
+                role="button"
+                tabIndex={0}
+              >
+                <span>Cast</span>
+                <span>Me</span>
+                <span>App</span>
+              </div>
+            </LogoContainer>
+          </div>
+          {children}
+        </LoginBlockContainer>
+      </MainContainer>
+    </SignupContext.Provider>
   );
 }
 
