@@ -80,6 +80,7 @@ export default function Step1() {
               <div>
                 <Controller
                   name="gender"
+                  rules={{ required: 'This field is required' }}
                   render={({ field }: any) => (
                     <Select
                       {...field}
@@ -96,7 +97,7 @@ export default function Step1() {
                   control={control}
                   defaultValue=""
                 />
-                {/* {errors.gender && <InputErrorMessage>{errors.gender.message}</InputErrorMessage>} */}
+                {errors.gender && <InputErrorMessage>{errors.gender.message}</InputErrorMessage>}
               </div>
             </div>
             <div className="target-row">
@@ -121,9 +122,6 @@ export default function Step1() {
                   control={control}
                   defaultValue={[]}
                 />
-                {/* {errors.lastName && (
-                  <InputErrorMessage>{errors.lastName.message}</InputErrorMessage>
-                )} */}
               </div>
             </div>
 
@@ -165,7 +163,8 @@ export default function Step1() {
 
               <div>
                 <Controller
-                  name="targetMedia"
+                  name="state"
+                  rules={{ required: 'This field is required' }}
                   render={({ field }: any) => (
                     <Select
                       {...field}
@@ -177,11 +176,9 @@ export default function Step1() {
                     />
                   )}
                   control={control}
-                  defaultValue={[]}
+                  defaultValue={''}
                 />
-                {/* {errors.lastName && (
-                  <InputErrorMessage>{errors.lastName.message}</InputErrorMessage>
-                )} */}
+                {errors.state && <InputErrorMessage>{errors.state.message}</InputErrorMessage>}
               </div>
 
               <div>
