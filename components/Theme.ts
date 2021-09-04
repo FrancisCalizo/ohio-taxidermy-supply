@@ -18,6 +18,14 @@ export const theme = {
         }
       `;
     },
+    setFocusAndFocusWithin: (color: string) => {
+      return css`
+        &:focus-within {
+          outline: none;
+          border-color: ${color};
+        }
+      `;
+    },
   },
   colors: {
     purple: '#AEB5D8',

@@ -13,10 +13,14 @@ import {
 
 import AuthLayout from 'components/layout/AuthLayout';
 import { useAuth } from 'components/AuthContext';
+import { useSignupContext } from 'components/layout/AuthLayout';
 
 export default function Step1() {
   const { user } = useAuth();
   const router = useRouter();
+  const { signupForm, setSignupForm } = useSignupContext();
+
+  console.log(signupForm);
 
   const handleSubmit = () => {
     console.log('blah');
@@ -40,11 +44,11 @@ export default function Step1() {
             <div className="input-group">
               <FontAwesomeIcon icon={faTwitter} style={{ fontSize: 30, color: 'gray' }} />
             </div>
+            <InputPlaceholder type="text" disabled placeholder="@" width={25} />
             <Input
               type="text"
               id="twitter"
               name="twitter"
-              placeholder="@"
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
             />
@@ -54,11 +58,11 @@ export default function Step1() {
             <div className="input-group">
               <FontAwesomeIcon icon={faFacebookSquare} style={{ fontSize: 30, color: 'gray' }} />
             </div>
+            <InputPlaceholder type="text" disabled placeholder="facebook.com/" width={100} />
             <Input
               type="text"
               id="facebook"
               name="facebook"
-              placeholder="www.facebook.com/"
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
             />
@@ -68,11 +72,11 @@ export default function Step1() {
             <div className="input-group">
               <FontAwesomeIcon icon={faInstagram} style={{ fontSize: 30, color: 'gray' }} />
             </div>
+            <InputPlaceholder type="text" disabled placeholder="@" width={25} />
             <Input
               type="text"
               id="instagram"
               name="instagram"
-              placeholder="@"
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
             />
@@ -82,11 +86,11 @@ export default function Step1() {
             <div className="input-group">
               <FontAwesomeIcon icon={faTiktok} style={{ fontSize: 30, color: 'gray' }} />
             </div>
+            <InputPlaceholder type="text" disabled placeholder="@" width={25} />
             <Input
               type="text"
               id="tik-tok"
               name="tik-tok"
-              placeholder="@"
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
             />
@@ -96,11 +100,11 @@ export default function Step1() {
             <div className="input-group">
               <FontAwesomeIcon icon={faYoutube} style={{ fontSize: 24, color: 'gray' }} />
             </div>
+            <InputPlaceholder type="text" disabled placeholder="@" width={25} />
             <Input
               type="text"
               id="youtube"
               name="youtube"
-              placeholder="@"
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
             />
@@ -139,10 +143,15 @@ const BodyContainer = styled.div`
 const InputContainer = styled.div`
   display: flex;
   align-items: center;
+  border: 1px solid lightgray;
+  border-radius: 0 4px 4px 0;
+  margin: 0.5rem 0;
+
+  ${(props) => props.theme.global.setFocusAndFocusWithin(darken(0.1, props.theme.colors.pink))}
 
   .input-group {
-    border: 1px solid black;
-    height: 43px;
+    border: none;
+    height: 42px;
     border-radius: 4px 0 0 4px;
     border-right: none;
     border-color: lightgray;
@@ -155,11 +164,24 @@ const InputContainer = styled.div`
 const Input = styled.input`
   display: block;
   font-size: calc(14px + (16 - 14) * ((100vw - 400px) / (1800 - 400)));
-  padding: ${(props) => props.theme.input.padding};
-  margin: 0.5rem 0;
+  padding: 0.75rem 0;
   width: 100%;
+  border: none;
+
+  @media (max-width: 630px) {
+    max-width: none !important;
+  }
+
+  ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.pink))}
+`;
+
+const InputPlaceholder = styled.input<{ width: number }>`
+  display: block;
+  font-size: calc(14px + (16 - 14) * ((100vw - 400px) / (1800 - 400)));
+  padding: 0.75rem 0.25rem;
+  width: ${({ width }) => `${width}px`};
   border: 1px solid lightgray;
-  border-radius: 0 4px 4px 0;
+  border: none;
 
   @media (max-width: 630px) {
     max-width: none !important;
