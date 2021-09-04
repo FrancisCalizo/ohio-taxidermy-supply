@@ -80,7 +80,7 @@ const MobileMiddleNavLinksSmall = styled.div`
     display: none;
   }
 
-  @media (min-width: 501px) {
+  @media (min-width: 650px) {
     display: none;
   }
 `;
@@ -100,7 +100,7 @@ const MiddleLinks = styled.div<{ isMiddleSelectionOpen: boolean; ref: any }>`
   color: black;
   z-index: 20;
 
-  @media (min-width: 501px) {
+  @media (min-width: 650px) {
     display: none;
   }
 `;

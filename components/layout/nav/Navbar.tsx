@@ -47,7 +47,7 @@ export default function Navbar() {
                 )}
 
                 {route.title === 'Login' && (
-                  <LoginButton key={key} onClick={() => router.push(route.path)}>
+                  <LoginButton isMobile={false} key={key} onClick={() => router.push(route.path)}>
                     {route.title}
                   </LoginButton>
                 )}
@@ -76,19 +76,24 @@ export default function Navbar() {
             setIsMiddleSelectionOpen={setIsMiddleSelectionOpen}
           />
 
-          <Hamburger>
-            <div
-              className="burger-line"
-              role="button"
-              tabIndex={0}
-              onKeyDown={() => setIsHamburgerOpen(!isHamburgerOpen)}
-              onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}
-            >
-              <BurgerLine className="burger-line" isHamburgerOpen={isHamburgerOpen} />
-              <BurgerLine className="burger-line" isHamburgerOpen={isHamburgerOpen} />
-              <BurgerLine className="burger-line" isHamburgerOpen={isHamburgerOpen} />
-            </div>
-          </Hamburger>
+          <div className="right-container">
+            {/* Login button that is displayed outside of hamburger on mobile */}
+            <LoginButton onClick={() => router.push('/login')}>Login</LoginButton>
+
+            <Hamburger>
+              <div
+                className="burger-line"
+                role="button"
+                tabIndex={0}
+                onKeyDown={() => setIsHamburgerOpen(!isHamburgerOpen)}
+                onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}
+              >
+                <BurgerLine className="burger-line" isHamburgerOpen={isHamburgerOpen} />
+                <BurgerLine className="burger-line" isHamburgerOpen={isHamburgerOpen} />
+                <BurgerLine className="burger-line" isHamburgerOpen={isHamburgerOpen} />
+              </div>
+            </Hamburger>
+          </div>
         </Container>
       </Nav>
 
@@ -131,7 +136,17 @@ const Container = styled.div`
   }
 
   @media ${device.maxMd} {
-    margin: auto 1.2rem;
+    margin: auto 0.75rem;
+  }
+
+  & .right-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: 1200px) {
+      display: none !important;
+    }
   }
 `;
 
@@ -170,7 +185,6 @@ const BurgerLine = styled.div<{ isHamburgerOpen: boolean }>`
 const Hamburger = styled.div`
   border-radius: 10px;
   padding: 0.4rem 0.7rem;
-  width: 90px;
   display: flex;
   justify-content: flex-end;
 
@@ -234,14 +248,14 @@ export const MobileLinks = styled(NavLinks)`
     display: none;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 649px) {
     display: none;
   }
 `;
 
-const LoginButton = styled.button`
+const LoginButton = styled.button<{ isMobile?: any }>`
   margin: 1rem 0.6rem;
-  padding: 0.1rem 1.25rem;
+  padding: 0.85rem 1.25rem;
   text-transform: uppercase;
   font-size: 0.9rem;
   font-weight: 500;
@@ -253,6 +267,7 @@ const LoginButton = styled.button`
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: color 250ms linear, background 250ms linear;
+  display: ${({ isMobile }) => (isMobile ? 'none' : 'block')};
 
   &:hover {
     background: ${(props) => lighten(0.03, props.theme.colors.pink)};
@@ -260,6 +275,11 @@ const LoginButton = styled.button`
   }
 
   ${(props) => props.theme.global.setFocus(props.theme.colors.pink)}
+
+  @media (max-width: 700px) {
+    padding: 0.85rem 1rem;
+    font-size: 0.8rem;
+  }
 `;
 
 const ContactButton = styled(LoginButton)`
@@ -296,9 +316,12 @@ export const LogoContainer = styled.h3`
     & > span:nth-child(3) {
       color: ${(props) => props.theme.colors.pink};
     }
-
-    @media (max-width: 700px) {
+    @media (max-width: 530px) {
       display: none;
     }
+  }
+
+  @media (max-width: 700px) {
+    margin: 0 0.85rem 0 0;
   }
 `;
