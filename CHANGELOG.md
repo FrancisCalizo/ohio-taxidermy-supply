@@ -2,7 +2,7 @@
 
 ### 9/4/2021
 
-- Login visible on homepage on mobile without having to click hambuger
+- Login visible on homepage on mobile without having to click hambuger, implement setting data on step 0,1,2. Implement placeholders and focus inputs on social media step 3
 
 ### 9/3/2021
 
