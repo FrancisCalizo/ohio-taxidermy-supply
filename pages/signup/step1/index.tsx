@@ -60,7 +60,7 @@ export default function Step1() {
       firstName,
       lastName,
       gender: gender.value,
-      targetMedia,
+      targetMedia: targetMedia.map((media: any) => media.value),
       addressOne,
       addressTwo,
       city,
