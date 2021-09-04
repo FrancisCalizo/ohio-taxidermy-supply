@@ -9,22 +9,24 @@ import AuthLayout from 'components/layout/AuthLayout';
 import { useAuth } from 'components/AuthContext';
 import { theme } from 'components/Theme';
 import { US_STATES } from 'components/utils';
+import { useSignupContext } from 'components/layout/AuthLayout';
 
 type FormValues = {
   firstName: string;
   lastName: string;
-  gender: string;
+  gender: any;
   targetMedia: string[];
   addressOne: string;
   addressTwo: string;
   city: string;
-  state: string;
+  state: any;
   zip: string;
 };
 
 export default function Step1() {
   const { user } = useAuth();
   const router = useRouter();
+  const { setSignupForm } = useSignupContext();
 
   // If user, bypass this login page
   if (user) {
@@ -40,7 +42,33 @@ export default function Step1() {
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
-    // router.push('/signup/step1');
+    // prettier-ignore
+    const { 
+      firstName, 
+      lastName, 
+      gender, 
+      targetMedia, 
+      addressOne, 
+      addressTwo, 
+      city, 
+      state, 
+      zip 
+    } = data;
+
+    setSignupForm((old: any) => ({
+      ...old,
+      firstName,
+      lastName,
+      gender: gender.value,
+      targetMedia,
+      addressOne,
+      addressTwo,
+      city,
+      state: state.value,
+      zip,
+    }));
+
+    router.push('/signup/step2');
   };
 
   return (
