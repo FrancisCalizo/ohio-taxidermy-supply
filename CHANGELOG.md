@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 9/4/2021
+
+- Login visible on homepage on mobile without having to click hambuger
+
 ### 9/3/2021
 
 - Requested changes from Holly, create talent db outline for talent, create fields in the contentful models, start implementing form state and validation with react-hook-form, implement validation and form submission for first signup page, implement a signup context, implement validation and form on step 2
