@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
 import { useRouter } from 'next/router';
+import { useForm } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebookSquare,
@@ -15,22 +16,60 @@ import AuthLayout from 'components/layout/AuthLayout';
 import { useAuth } from 'components/AuthContext';
 import { useSignupContext } from 'components/layout/AuthLayout';
 
+type FormValues = {
+  twitterHandle: string;
+  facebookHandle: string;
+  instagramHandle: string;
+  tikTokHandle: string;
+  youtubeHandle: string;
+};
+
 export default function Step1() {
   const { user } = useAuth();
   const router = useRouter();
   const { signupForm, setSignupForm } = useSignupContext();
 
-  // Input Refs
-  const twitterRef = useRef<HTMLInputElement>(null);
-  const facebookRef = useRef<HTMLInputElement>(null);
-  const instagramRef = useRef<HTMLInputElement>(null);
-  const tikTokRef = useRef<HTMLInputElement>(null);
-  const youtubeRef = useRef<HTMLInputElement>(null);
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm<FormValues>();
 
-  console.log(signupForm);
+  // Input Refs & shared ref usge with React-Hook-Form
+  // Read more here: https://react-hook-form.com/faqs
+  const twitterRef = useRef<HTMLInputElement | null>(null);
+  const facebookRef = useRef<HTMLInputElement | null>(null);
+  const instagramRef = useRef<HTMLInputElement | null>(null);
+  const tikTokRef = useRef<HTMLInputElement | null>(null);
+  const youtubeRef = useRef<HTMLInputElement | null>(null);
+  const { ref: sharedTwitterRef, ...twitterRest } = register('twitterHandle');
+  const { ref: sharedFacebookRef, ...facebookRest } = register('facebookHandle');
+  const { ref: sharedInstagramRef, ...instagramRest } = register('instagramHandle');
+  const { ref: sharedTikTokRef, ...tikTokRest } = register('tikTokHandle');
+  const { ref: sharedYoutubeRef, ...youtubeRest } = register('youtubeHandle');
 
-  const handleSubmit = () => {
-    console.log('blah');
+  const onSubmit = (data: FormValues) => {
+    const { twitterHandle, facebookHandle, instagramHandle, tikTokHandle, youtubeHandle } = data;
+
+    const isAtleastOneValue = [
+      twitterHandle,
+      facebookHandle,
+      instagramHandle,
+      tikTokHandle,
+      youtubeHandle,
+    ].some((handle) => !!handle);
+
+    // Check that atleast one social account is provided
+    if (!isAtleastOneValue) {
+      return setError('twitterHandle', {
+        type: 'manual',
+        message: 'Atleast one social account is required.',
+      });
+    }
+
+    console.log(data);
+    // router.push('/signup/step2');
   };
 
   // If user, bypass this login page
@@ -46,83 +85,94 @@ export default function Step1() {
         {/* eslint-disable-next-line react/no-unescaped-entities */}
         <h5>Please provide the account handles of all social media platforms you'd like to use</h5>
 
+        {errors.twitterHandle && (
+          <InputErrorMessage>{errors.twitterHandle.message}</InputErrorMessage>
+        )}
+
         <div className="form-container">
-          <InputContainer onClick={() => twitterRef.current && twitterRef.current.focus()}>
-            <div className="input-group">
-              <FontAwesomeIcon icon={faTwitter} style={{ fontSize: 30, color: 'gray' }} />
-            </div>
-            <InputPlaceholder type="text" disabled placeholder="@" width={25} />
-            <Input
-              type="text"
-              id="twitter"
-              name="twitter"
-              ref={twitterRef}
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
-            />
-          </InputContainer>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <InputContainer onClick={() => twitterRef.current && twitterRef.current.focus()}>
+              <div className="input-group">
+                <FontAwesomeIcon icon={faTwitter} style={{ fontSize: 30, color: 'gray' }} />
+              </div>
+              <InputPlaceholder type="text" disabled placeholder="@" width={25} />
+              <Input
+                type="text"
+                id="twitterHandle"
+                ref={(e) => {
+                  sharedTwitterRef(e);
+                  twitterRef.current = e;
+                }}
+                {...twitterRest}
+              />
+            </InputContainer>
 
-          <InputContainer onClick={() => facebookRef.current && facebookRef.current.focus()}>
-            <div className="input-group">
-              <FontAwesomeIcon icon={faFacebookSquare} style={{ fontSize: 30, color: 'gray' }} />
-            </div>
-            <InputPlaceholder type="text" disabled placeholder="facebook.com/" width={100} />
-            <Input
-              type="text"
-              id="facebook"
-              name="facebook"
-              ref={facebookRef}
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
-            />
-          </InputContainer>
+            <InputContainer onClick={() => facebookRef.current && facebookRef.current.focus()}>
+              <div className="input-group">
+                <FontAwesomeIcon icon={faFacebookSquare} style={{ fontSize: 30, color: 'gray' }} />
+              </div>
+              <InputPlaceholder type="text" disabled placeholder="facebook.com/" width={100} />
+              <Input
+                type="text"
+                id="facebookHandle"
+                ref={(e) => {
+                  sharedFacebookRef(e);
+                  facebookRef.current = e;
+                }}
+                {...facebookRest}
+              />
+            </InputContainer>
 
-          <InputContainer onClick={() => instagramRef.current && instagramRef.current.focus()}>
-            <div className="input-group">
-              <FontAwesomeIcon icon={faInstagram} style={{ fontSize: 30, color: 'gray' }} />
-            </div>
-            <InputPlaceholder type="text" disabled placeholder="@" width={25} />
-            <Input
-              type="text"
-              id="instagram"
-              name="instagram"
-              ref={instagramRef}
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
-            />
-          </InputContainer>
+            <InputContainer onClick={() => instagramRef.current && instagramRef.current.focus()}>
+              <div className="input-group">
+                <FontAwesomeIcon icon={faInstagram} style={{ fontSize: 30, color: 'gray' }} />
+              </div>
+              <InputPlaceholder type="text" disabled placeholder="@" width={25} />
+              <Input
+                type="text"
+                id="instagramHandle"
+                ref={(e) => {
+                  sharedInstagramRef(e);
+                  instagramRef.current = e;
+                }}
+                {...instagramRest}
+              />
+            </InputContainer>
 
-          <InputContainer onClick={() => tikTokRef.current && tikTokRef.current.focus()}>
-            <div className="input-group">
-              <FontAwesomeIcon icon={faTiktok} style={{ fontSize: 30, color: 'gray' }} />
-            </div>
-            <InputPlaceholder type="text" disabled placeholder="@" width={25} />
-            <Input
-              type="text"
-              id="tik-tok"
-              name="tik-tok"
-              ref={tikTokRef}
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
-            />
-          </InputContainer>
+            <InputContainer onClick={() => tikTokRef.current && tikTokRef.current.focus()}>
+              <div className="input-group">
+                <FontAwesomeIcon icon={faTiktok} style={{ fontSize: 30, color: 'gray' }} />
+              </div>
+              <InputPlaceholder type="text" disabled placeholder="@" width={25} />
+              <Input
+                type="text"
+                id="tikTokHandle"
+                ref={(e) => {
+                  sharedTikTokRef(e);
+                  tikTokRef.current = e;
+                }}
+                {...tikTokRest}
+              />
+            </InputContainer>
 
-          <InputContainer onClick={() => youtubeRef.current && youtubeRef.current.focus()}>
-            <div className="input-group">
-              <FontAwesomeIcon icon={faYoutube} style={{ fontSize: 24, color: 'gray' }} />
-            </div>
-            <InputPlaceholder type="text" disabled placeholder="@" width={25} />
-            <Input
-              type="text"
-              id="youtube"
-              name="youtube"
-              ref={youtubeRef}
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
-            />
-          </InputContainer>
+            <InputContainer onClick={() => youtubeRef.current && youtubeRef.current.focus()}>
+              <div className="input-group">
+                <FontAwesomeIcon icon={faYoutube} style={{ fontSize: 24, color: 'gray' }} />
+              </div>
+              <InputPlaceholder type="text" disabled placeholder="@" width={25} />
+              <Input
+                type="text"
+                id="youtubeHandle"
+                ref={(e) => {
+                  sharedYoutubeRef(e);
+                  youtubeRef.current = e;
+                }}
+                {...youtubeRest}
+              />
+            </InputContainer>
 
-          <RegisterButton>Register</RegisterButton>
+            <RegisterButton>Register</RegisterButton>
+          </form>
         </div>
       </BodyContainer>
     </MainContainer>
@@ -133,6 +183,14 @@ Step1.getLayout = (page: any) => <AuthLayout>{page}</AuthLayout>;
 
 const MainContainer = styled.div``;
 
+const InputErrorMessage = styled.p`
+  color: ${(props) => props.theme.colors.danger};
+  font-size: 12px;
+  width: 100%;
+  margin: 0 auto 1rem;
+  text-align: center;
+`;
+
 const BodyContainer = styled.div`
   & h2 {
     text-align: center;
@@ -142,7 +200,7 @@ const BodyContainer = styled.div`
 
   & h5 {
     text-align: center;
-    margin: 1rem auto 2rem;
+    margin: 1rem auto;
     max-width: 420px;
   }
 
