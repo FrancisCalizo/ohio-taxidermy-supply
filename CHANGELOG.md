@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 9/6/2021
+
+- implement refs for onClick focus, implement ref usage, validation, and react-hook-form to page2 of register
+
 ### 9/4/2021
 
 - Login visible on homepage on mobile without having to click hambuger, implement setting data on step 0,1,2. Implement placeholders and focus inputs on social media step 3
