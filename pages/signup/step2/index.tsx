@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { darken } from 'polished';
 import { useRouter } from 'next/router';
@@ -20,6 +20,13 @@ export default function Step1() {
   const router = useRouter();
   const { signupForm, setSignupForm } = useSignupContext();
 
+  // Input Refs
+  const twitterRef = useRef<HTMLInputElement>(null);
+  const facebookRef = useRef<HTMLInputElement>(null);
+  const instagramRef = useRef<HTMLInputElement>(null);
+  const tikTokRef = useRef<HTMLInputElement>(null);
+  const youtubeRef = useRef<HTMLInputElement>(null);
+
   console.log(signupForm);
 
   const handleSubmit = () => {
@@ -40,7 +47,7 @@ export default function Step1() {
         <h5>Please provide the account handles of all social media platforms you'd like to use</h5>
 
         <div className="form-container">
-          <InputContainer>
+          <InputContainer onClick={() => twitterRef.current && twitterRef.current.focus()}>
             <div className="input-group">
               <FontAwesomeIcon icon={faTwitter} style={{ fontSize: 30, color: 'gray' }} />
             </div>
@@ -49,12 +56,13 @@ export default function Step1() {
               type="text"
               id="twitter"
               name="twitter"
+              ref={twitterRef}
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
             />
           </InputContainer>
 
-          <InputContainer>
+          <InputContainer onClick={() => facebookRef.current && facebookRef.current.focus()}>
             <div className="input-group">
               <FontAwesomeIcon icon={faFacebookSquare} style={{ fontSize: 30, color: 'gray' }} />
             </div>
@@ -63,12 +71,13 @@ export default function Step1() {
               type="text"
               id="facebook"
               name="facebook"
+              ref={facebookRef}
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
             />
           </InputContainer>
 
-          <InputContainer>
+          <InputContainer onClick={() => instagramRef.current && instagramRef.current.focus()}>
             <div className="input-group">
               <FontAwesomeIcon icon={faInstagram} style={{ fontSize: 30, color: 'gray' }} />
             </div>
@@ -77,12 +86,13 @@ export default function Step1() {
               type="text"
               id="instagram"
               name="instagram"
+              ref={instagramRef}
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
             />
           </InputContainer>
 
-          <InputContainer>
+          <InputContainer onClick={() => tikTokRef.current && tikTokRef.current.focus()}>
             <div className="input-group">
               <FontAwesomeIcon icon={faTiktok} style={{ fontSize: 30, color: 'gray' }} />
             </div>
@@ -91,12 +101,13 @@ export default function Step1() {
               type="text"
               id="tik-tok"
               name="tik-tok"
+              ref={tikTokRef}
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
             />
           </InputContainer>
 
-          <InputContainer>
+          <InputContainer onClick={() => youtubeRef.current && youtubeRef.current.focus()}>
             <div className="input-group">
               <FontAwesomeIcon icon={faYoutube} style={{ fontSize: 24, color: 'gray' }} />
             </div>
@@ -105,6 +116,7 @@ export default function Step1() {
               type="text"
               id="youtube"
               name="youtube"
+              ref={youtubeRef}
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
             />
