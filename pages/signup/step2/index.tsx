@@ -79,7 +79,7 @@ export default function Step1() {
       const env = await space.getEnvironment('master');
 
       // Create talent draft in Contentful
-      const res = await env.createEntryWithId('talent', entryId, {
+      await env.createEntryWithId('talent', entryId, {
         fields: {
           title: { 'en-US': `${signupForm.firstName} ${signupForm.lastName}` },
           firstName: { 'en-US': signupForm.firstName },
@@ -114,10 +114,8 @@ export default function Step1() {
       });
 
       // Publish talent draft in contentful
-      const talentDraft = await env.getEntry(entryId);
-      await talentDraft.publish();
-
-      console.log(res);
+      // const talentDraft = await env.getEntry(entryId);
+      // await talentDraft.publish();
     } catch (err) {
       console.log(err);
     }
