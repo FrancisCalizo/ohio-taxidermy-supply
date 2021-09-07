@@ -15,6 +15,7 @@ import {
 import AuthLayout from 'components/layout/AuthLayout';
 import { useAuth } from 'components/AuthContext';
 import { useSignupContext } from 'components/layout/AuthLayout';
+import { useContentful } from 'components/ContentfulContext';
 
 type FormValues = {
   twitterHandle: string;
@@ -28,6 +29,7 @@ export default function Step1() {
   const { user } = useAuth();
   const router = useRouter();
   const { signupForm, setSignupForm } = useSignupContext();
+  const { clientManagement } = useContentful();
 
   const {
     register,
@@ -49,7 +51,7 @@ export default function Step1() {
   const { ref: sharedTikTokRef, ...tikTokRest } = register('tikTokHandle');
   const { ref: sharedYoutubeRef, ...youtubeRest } = register('youtubeHandle');
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = async (data: FormValues) => {
     const { twitterHandle, facebookHandle, instagramHandle, tikTokHandle, youtubeHandle } = data;
 
     const isAtleastOneValue = [
@@ -68,7 +70,26 @@ export default function Step1() {
       });
     }
 
-    console.log(data);
+    // console.log('data', data);
+    // console.log('signupForm', signupForm);
+
+    try {
+      const space = await clientManagement.getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
+      const env = await space.getEnvironment('master');
+
+      const res = await env.createEntryWithId('talent', 'Hkdf832Jjs4239', {
+        fields: {
+          title: {
+            'en-US': 'Blah test',
+          },
+        },
+      });
+
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+
     // router.push('/signup/step2');
   };
 
