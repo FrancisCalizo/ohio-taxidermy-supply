@@ -41,7 +41,6 @@ export default function Step1() {
   } = useForm<FormValues>();
 
   const onSubmit = (data: FormValues) => {
-    console.log(data);
     // prettier-ignore
     const { 
       firstName, 

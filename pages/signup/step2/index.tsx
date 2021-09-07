@@ -16,6 +16,7 @@ import AuthLayout from 'components/layout/AuthLayout';
 import { useAuth } from 'components/AuthContext';
 import { useSignupContext } from 'components/layout/AuthLayout';
 import { useContentful } from 'components/ContentfulContext';
+import { generateKey } from 'components/utils';
 
 type FormValues = {
   twitterHandle: string;
@@ -70,20 +71,51 @@ export default function Step1() {
       });
     }
 
-    // console.log('data', data);
-    // console.log('signupForm', signupForm);
+    // Generate a unique Talent Id
+    const entryId = generateKey(22);
 
     try {
       const space = await clientManagement.getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
       const env = await space.getEnvironment('master');
 
-      const res = await env.createEntryWithId('talent', 'Hkdf832Jjs4239', {
+      // Create talent draft in Contentful
+      const res = await env.createEntryWithId('talent', entryId, {
         fields: {
-          title: {
-            'en-US': 'Blah test',
+          title: { 'en-US': `${signupForm.firstName} ${signupForm.lastName}` },
+          firstName: { 'en-US': signupForm.firstName },
+          lastName: { 'en-US': signupForm.lastName },
+          gender: { 'en-US': signupForm.gender },
+          targetMedia: { 'en-US': signupForm.targetMedia },
+          address: {
+            'en-US': {
+              addressOne: signupForm.addressOne,
+              addressTwo: signupForm.addressTwo,
+              city: signupForm.city,
+              state: signupForm.state,
+              zip: signupForm.zip,
+            },
+          },
+          twitter: {
+            'en-US': { isActive: !!data.twitterHandle, handle: data.twitterHandle },
+          },
+          facebook: {
+            'en-US': { isActive: !!data.facebookHandle, handle: data.facebookHandle },
+          },
+          instagram: {
+            'en-US': { isActive: !!data.instagramHandle, handle: data.instagramHandle },
+          },
+          tikTok: {
+            'en-US': { isActive: !!data.tikTokHandle, handle: data.tikTokHandle },
+          },
+          youtube: {
+            'en-US': { isActive: !!data.youtubeHandle, handle: data.youtubeHandle },
           },
         },
       });
+
+      // Publish talent draft in contentful
+      const talentDraft = await env.getEntry(entryId);
+      await talentDraft.publish();
 
       console.log(res);
     } catch (err) {
