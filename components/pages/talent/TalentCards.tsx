@@ -20,7 +20,11 @@ export default function TalentCards() {
             <div className="header-content-container">
               <CardHeader>
                 <Image
-                  src={`https:${item.fields.avatar.fields.file.url}`}
+                  src={
+                    item.fields.avatar
+                      ? `https:${item.fields.avatar.fields.file.url}`
+                      : '/images/default-avatar.png'
+                  }
                   alt="Influencer"
                   width={50}
                   height={50}
@@ -43,7 +47,7 @@ export default function TalentCards() {
                 </div>
 
                 <div className="badges">
-                  {item.fields.categories.map((ind: string, key: number) => (
+                  {item.fields.categories?.map((ind: string, key: number) => (
                     <Industrybadge key={key}>{ind}</Industrybadge>
                   ))}
                 </div>
