@@ -366,6 +366,6 @@ const selectStyles = {
   }),
   menuList: (baseStyles: any) => ({
     ...baseStyles,
-    maxHeight: '180px',
+    maxHeight: '150px',
   }),
 };
