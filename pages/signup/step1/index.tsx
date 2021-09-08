@@ -36,7 +36,7 @@ export default function Step1() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     control,
   } = useForm<FormValues>();
 
@@ -219,7 +219,9 @@ export default function Step1() {
               </div>
             </div>
 
-            <ContinueButton>Continue</ContinueButton>
+            <ContinueButton disabled={isSubmitting} isSubmitting={isSubmitting}>
+              Continue
+            </ContinueButton>
           </form>
         </div>
       </BodyContainer>
@@ -323,7 +325,7 @@ const Input = styled.input`
   }
 `;
 
-const ContinueButton = styled.button`
+const ContinueButton = styled.button<{ isSubmitting?: boolean }>`
   display: block;
   font-size: 18px;
   padding: 0.5rem;
@@ -331,16 +333,17 @@ const ContinueButton = styled.button`
   width: 100%;
   max-width: 300px;
   color: #fff;
-  background: ${(props) => props.theme.colors.pink};
+  background: ${(props) => (props.isSubmitting ? 'lightgray' : props.theme.colors.pink)};
   border: 1px solid rgba(180, 180, 180, 0.8);
   box-shadow: ${(props) => props.theme.button.boxShadow};
   text-transform: uppercase;
   font-weight: 700;
   border-radius: 50px;
-  cursor: pointer;
+  cursor: ${(props) => (props.isSubmitting ? 'not-allowed' : 'pointer')};
 
   &:hover {
-    background: ${(props) => darken(0.03, props.theme.colors.pink)};
+    background: ${(props) =>
+      props.isSubmitting ? 'lightgray' : darken(0.03, props.theme.colors.pink)};
   }
 
   ${(props) => props.theme.global.setFocus(props.theme.colors.pink)}

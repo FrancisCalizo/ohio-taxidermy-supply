@@ -24,7 +24,7 @@ export default function Signup() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<FormValues>();
 
   type SignupType = 'influencer' | 'client';
@@ -82,7 +82,9 @@ export default function Signup() {
             />
             {errors.password && <InputErrorMessage>{errors.password.message}</InputErrorMessage>}
 
-            <SignupButton type="submit">Signup</SignupButton>
+            <SignupButton type="submit" disabled={isSubmitting} isSubmitting={isSubmitting}>
+              Signup
+            </SignupButton>
           </form>
 
           <Link href="/">
@@ -244,7 +246,7 @@ const Input = styled.input`
   ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.pink))}
 `;
 
-const SignupButton = styled.button`
+const SignupButton = styled.button<{ isSubmitting?: boolean }>`
   display: block;
   font-size: 18px;
   padding: 0.5rem;
@@ -252,16 +254,17 @@ const SignupButton = styled.button`
   width: 100%;
   max-width: 300px;
   color: #fff;
-  background: ${(props) => props.theme.colors.pink};
+  background: ${(props) => (props.isSubmitting ? 'lightgray' : props.theme.colors.pink)};
   border: 1px solid rgba(180, 180, 180, 0.8);
   box-shadow: ${(props) => props.theme.button.boxShadow};
   text-transform: uppercase;
   font-weight: 700;
   border-radius: 50px;
-  cursor: pointer;
+  cursor: ${(props) => (props.isSubmitting ? 'not-allowed' : 'pointer')};
 
   &:hover {
-    background: ${(props) => darken(0.03, props.theme.colors.pink)};
+    background: ${(props) =>
+      props.isSubmitting ? 'lightgray' : darken(0.03, props.theme.colors.pink)};
   }
 
   ${(props) => props.theme.global.setFocus(props.theme.colors.pink)}

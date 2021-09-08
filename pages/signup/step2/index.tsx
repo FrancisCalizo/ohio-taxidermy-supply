@@ -36,7 +36,7 @@ export default function Step2() {
     register,
     handleSubmit,
     setError,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<FormValues>();
 
   // Input Refs & shared ref usge with React-Hook-Form
@@ -248,7 +248,9 @@ export default function Step2() {
               />
             </InputContainer>
 
-            <RegisterButton>Register</RegisterButton>
+            <RegisterButton disabled={isSubmitting} isSubmitting={isSubmitting}>
+              Register
+            </RegisterButton>
           </form>
         </div>
       </BodyContainer>
@@ -337,7 +339,7 @@ const InputPlaceholder = styled.input<{ width: number }>`
   ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.pink))}
 `;
 
-const RegisterButton = styled.button`
+const RegisterButton = styled.button<{ isSubmitting?: boolean }>`
   display: block;
   font-size: 18px;
   padding: 0.5rem;
@@ -345,16 +347,17 @@ const RegisterButton = styled.button`
   width: 100%;
   max-width: 300px;
   color: #fff;
-  background: ${(props) => props.theme.colors.pink};
+  background: ${(props) => (props.isSubmitting ? 'lightgray' : props.theme.colors.pink)};
   border: 1px solid rgba(180, 180, 180, 0.8);
   box-shadow: ${(props) => props.theme.button.boxShadow};
   text-transform: uppercase;
   font-weight: 700;
   border-radius: 50px;
-  cursor: pointer;
+  cursor: ${(props) => (props.isSubmitting ? 'not-allowed' : 'pointer')};
 
   &:hover {
-    background: ${(props) => darken(0.03, props.theme.colors.pink)};
+    background: ${(props) =>
+      props.isSubmitting ? 'lightgray' : darken(0.03, props.theme.colors.pink)};
   }
 
   ${(props) => props.theme.global.setFocus(props.theme.colors.pink)}
