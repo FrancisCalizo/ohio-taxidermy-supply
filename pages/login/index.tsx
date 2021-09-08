@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { useAuth } from 'components/AuthContext';
 
 export default function Login() {
-  const { user, TEMP_LOGIN } = useAuth();
+  const { isShowSuccessfulReg, setIsShowSuccessfulReg, user, TEMP_LOGIN } = useAuth();
   const router = useRouter();
 
   const [email, setEmail] = useState('');
@@ -16,12 +16,14 @@ export default function Login() {
   const handleSubmit = () => {
     // TODO: Use AuthContext to handle user auth
     // login(email, password);
+    setIsShowSuccessfulReg(false);
     TEMP_LOGIN();
     router.push('/dashboard');
   };
 
   // If user, bypass this login page
   if (user) {
+    setIsShowSuccessfulReg(false);
     router.push('/dashboard');
   }
 
@@ -35,7 +37,10 @@ export default function Login() {
             <div
               className="title"
               style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}
-              onClick={() => router.push('/')}
+              onClick={() => {
+                setIsShowSuccessfulReg(false);
+                router.push('/');
+              }}
               role="button"
               tabIndex={0}
             >
@@ -54,6 +59,10 @@ export default function Login() {
             <Signup>Sign Up</Signup>
           </Link>
         </p>
+
+        {isShowSuccessfulReg && (
+          <p className="success">Registration Successful. Please login to continue</p>
+        )}
 
         <Input
           type="text"
@@ -77,8 +86,8 @@ export default function Login() {
           Login
         </LoginButton>
 
-        <Link href="/">
-          <BackHome>Back to Home Page</BackHome>
+        <Link href="/" passHref>
+          <BackHome onClick={() => setIsShowSuccessfulReg(false)}>Back to Home Page</BackHome>
         </Link>
       </LoginBlockContainer>
     </MainContainer>
@@ -144,6 +153,14 @@ const LoginBlockContainer = styled.div`
       &:hover {
         color: rgba(0, 0, 0, 0.7);
       }
+    }
+
+    &.success {
+      max-width: 350px;
+      margin: -1.5rem auto 1.5rem;
+      background: ${({ theme }) => theme.colors.green};
+      padding: 0.75rem 0;
+      border-radius: 4px;
     }
   }
 `;

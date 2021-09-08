@@ -26,8 +26,8 @@ type FormValues = {
   youtubeHandle: string;
 };
 
-export default function Step1() {
-  const { user } = useAuth();
+export default function Step2() {
+  const { user, setIsShowSuccessfulReg } = useAuth();
   const router = useRouter();
   const { signupForm } = useSignupContext();
   const { clientManagement } = useContentful();
@@ -140,11 +140,13 @@ export default function Step1() {
       // await talentDraft.publish();
       // const userDraft = await env.getEntry(userEntryId);
       // await userDraft.publish();
+
+      // Reroute to login with success message
+      setIsShowSuccessfulReg(true);
+      router.push('/login');
     } catch (err) {
       console.log(err);
     }
-
-    // router.push('/signup/step2');
   };
 
   // If user, bypass this login page
@@ -254,7 +256,7 @@ export default function Step1() {
   );
 }
 
-Step1.getLayout = (page: any) => <AuthLayout>{page}</AuthLayout>;
+Step2.getLayout = (page: any) => <AuthLayout>{page}</AuthLayout>;
 
 const MainContainer = styled.div``;
 

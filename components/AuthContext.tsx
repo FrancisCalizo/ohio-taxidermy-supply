@@ -20,6 +20,7 @@ interface ProviderProps {
 export const AuthProvider = ({ children }: ProviderProps) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isShowSuccessfulReg, setIsShowSuccessfulReg] = useState(false);
 
   // Check if user is logged in on load
   useEffect(() => {
@@ -96,7 +97,17 @@ export const AuthProvider = ({ children }: ProviderProps) => {
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated: !!user, user, setUser, login, loading, logout, TEMP_LOGIN }}
+      value={{
+        isShowSuccessfulReg,
+        setIsShowSuccessfulReg,
+        isAuthenticated: !!user,
+        user,
+        setUser,
+        login,
+        loading,
+        logout,
+        TEMP_LOGIN,
+      }}
     >
       {children}
     </AuthContext.Provider>
