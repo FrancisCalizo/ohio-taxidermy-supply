@@ -73,7 +73,11 @@ export default function Navbar() {
           {/* Mobile Display */}
           <MobileLinks>
             {middleRoutes.map((route, key) => (
-              <NavLink key={key} onClick={() => router.push(route.path)}>
+              <NavLink
+                key={key}
+                isCurrentPath={currentPathname === route.path}
+                onClick={() => router.push(route.path)}
+              >
                 {route.title}
               </NavLink>
             ))}
