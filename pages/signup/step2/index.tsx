@@ -29,7 +29,7 @@ type FormValues = {
 export default function Step1() {
   const { user } = useAuth();
   const router = useRouter();
-  const { signupForm, setSignupForm } = useSignupContext();
+  const { signupForm } = useSignupContext();
   const { clientManagement } = useContentful();
 
   const {
@@ -72,14 +72,23 @@ export default function Step1() {
     }
 
     // Generate a unique Talent Id
-    const entryId = generateKey(22);
+    const talentEntryId = generateKey(22);
+    const userEntryId = generateKey(22);
 
     try {
       const space = await clientManagement.getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
       const env = await space.getEnvironment('master');
 
-      // Create talent draft in Contentful
-      await env.createEntryWithId('talent', entryId, {
+      // Create user draft in Contentful
+      await env.createEntryWithId('user', userEntryId, {
+        fields: {
+          email: { 'en-US': signupForm.email },
+          password: { 'en-US': signupForm.password },
+        },
+      });
+
+      // Create talent draft in Contentful & link to user above
+      await env.createEntryWithId('talent', talentEntryId, {
         fields: {
           title: { 'en-US': `${signupForm.firstName} ${signupForm.lastName}` },
           firstName: { 'en-US': signupForm.firstName },
@@ -110,12 +119,27 @@ export default function Step1() {
           youtube: {
             'en-US': { isActive: !!data.youtubeHandle, handle: data.youtubeHandle },
           },
+          // Reference to an existing entry: https://github.com/contentful/contentful-management.js/issues/57#issuecomment-232899940
+          user: {
+            'en-US': [{ sys: { type: 'Link', linkType: 'Entry', id: userEntryId } }],
+          },
         },
       });
 
-      // Publish talent draft in contentful
-      // const talentDraft = await env.getEntry(entryId);
+      // Update the user with related talent entry
+      // Update an entry: https://www.youtube.com/watch?v=v98waYVjQtk&t=655s
+      const updatedUser = await env.getEntry(userEntryId);
+      updatedUser.fields.talent = {};
+      updatedUser.fields.talent['en-US'] = {
+        sys: { type: 'Link', linkType: 'Entry', id: talentEntryId },
+      };
+      await updatedUser.update();
+
+      // Publish talent & user draft in contentful
+      // const talentDraft = await env.getEntry(talentEntryId);
       // await talentDraft.publish();
+      // const userDraft = await env.getEntry(userEntryId);
+      // await userDraft.publish();
     } catch (err) {
       console.log(err);
     }
@@ -162,7 +186,7 @@ export default function Step1() {
               <div className="input-group">
                 <FontAwesomeIcon icon={faFacebookSquare} style={{ fontSize: 30, color: 'gray' }} />
               </div>
-              <InputPlaceholder type="text" disabled placeholder="facebook.com/" width={100} />
+              <InputPlaceholder type="text" disabled placeholder="facebook.com/" width={105} />
               <Input
                 type="text"
                 id="facebookHandle"
