@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 9/7/2021
+
+- implement ability to create and publish talent through registration portal, fix new Talent bugs upon registration, create new user and reference to talent and vice versa
+
 ### 9/6/2021
 
 - implement refs for onClick focus, implement ref usage, validation, and react-hook-form to page2 of register
