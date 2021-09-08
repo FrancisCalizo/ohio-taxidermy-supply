@@ -1,7 +1,7 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { darken, lighten } from 'polished';
 
 import { device } from 'components/utils/mediaQueries';
@@ -15,6 +15,11 @@ export default function Navbar() {
   const router = useRouter();
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isMiddleSelectionOpen, setIsMiddleSelectionOpen] = useState(false);
+  const [currentPathname, setCurrentPathname] = useState('');
+
+  useEffect(() => {
+    setCurrentPathname(router.pathname);
+  }, [router.pathname]);
 
   return (
     <Fragment>
@@ -41,7 +46,11 @@ export default function Navbar() {
             {[...middleRoutes, ...routes].map((route, key) => (
               <React.Fragment key={key}>
                 {!['Login', 'Contact'].includes(route.title) && (
-                  <NavLink key={key} onClick={() => router.push(route.path)}>
+                  <NavLink
+                    key={key}
+                    isCurrentPath={currentPathname === route.path}
+                    onClick={() => router.push(route.path)}
+                  >
                     {route.title}
                   </NavLink>
                 )}
@@ -203,7 +212,7 @@ const Hamburger = styled.div`
   }
 `;
 
-export const NavLink = styled.button`
+export const NavLink = styled.button<{ isCurrentPath?: boolean }>`
   margin: 1rem 0.6rem;
   text-transform: uppercase;
   font-size: 0.9rem;
@@ -239,6 +248,13 @@ export const NavLink = styled.button`
   }
 
   ${(props) => props.theme.global.setFocus(props.theme.colors.purple)}
+
+  ${({ isCurrentPath, theme }) =>
+    isCurrentPath &&
+    css`
+      outline: none;
+      box-shadow: 0 0 8px 3px ${theme.colors.purple};
+    `}
 `;
 
 export const MobileLinks = styled(NavLinks)`
