@@ -5,64 +5,63 @@ import styled from 'styled-components';
 import { useQuery } from 'react-query';
 import { darken } from 'polished';
 
+import LoadingSpinner from 'components/layout/LoadingSpinner';
 import { getTalent } from 'components/api/talent';
 
 export default function TalentCards() {
   const { data, isLoading } = useQuery('talent', getTalent);
 
+  if (isLoading) <LoadingSpinner />;
+
   return (
-    <>
-      {isLoading && <h1>Loading</h1>}
+    <GridContainer>
+      {data?.items.map((item: any, key: number) => (
+        <TalentCard key={key}>
+          <div className="header-content-container">
+            <CardHeader>
+              <Image
+                src={
+                  item.fields.avatar
+                    ? `https:${item.fields.avatar.fields.file.url}`
+                    : '/images/default-avatar.png'
+                }
+                alt="Influencer"
+                width={50}
+                height={50}
+                quality={50}
+              />
+              <h3 className="handle">{item.fields.title}</h3>
+            </CardHeader>
+            <CardContent>
+              <p className="description">{item.fields.shortDescription}</p>
 
-      <GridContainer>
-        {data?.items.map((item: any, key: number) => (
-          <TalentCard key={key}>
-            <div className="header-content-container">
-              <CardHeader>
-                <Image
-                  src={
-                    item.fields.avatar
-                      ? `https:${item.fields.avatar.fields.file.url}`
-                      : '/images/default-avatar.png'
-                  }
-                  alt="Influencer"
-                  width={50}
-                  height={50}
-                  quality={50}
-                />
-                <h3 className="handle">{item.fields.title}</h3>
-              </CardHeader>
-              <CardContent>
-                <p className="description">{item.fields.shortDescription}</p>
-
-                <div className="statistics">
-                  <div>
-                    <h3>220K</h3>
-                    <p>Followers</p>
-                  </div>
-                  <div>
-                    <h3>2.2%</h3>
-                    <p>Engagement</p>
-                  </div>
+              <div className="statistics">
+                <div>
+                  <h3>220K</h3>
+                  <p>Followers</p>
                 </div>
-
-                <div className="badges">
-                  {item.fields.categories?.map((ind: string, key: number) => (
-                    <Industrybadge key={key}>{ind}</Industrybadge>
-                  ))}
+                <div>
+                  <h3>2.2%</h3>
+                  <p>Engagement</p>
                 </div>
-              </CardContent>
-            </div>
-            <CardFooter>
-              <Link href={`/talent/${key}`}>
-                <ViewProfileButton>View Profile</ViewProfileButton>
-              </Link>
-              <ContactButton>Contact</ContactButton>
-            </CardFooter>
-          </TalentCard>
-        ))}
-      </GridContainer>
-    </>
+              </div>
+
+              <div className="badges">
+                {item.fields.categories?.map((ind: string, key: number) => (
+                  <Industrybadge key={key}>{ind}</Industrybadge>
+                ))}
+              </div>
+            </CardContent>
+          </div>
+          <CardFooter>
+            <Link href={`/talent/${key}`}>
+              <ViewProfileButton>View Profile</ViewProfileButton>
+            </Link>
+            <ContactButton>Contact</ContactButton>
+          </CardFooter>
+        </TalentCard>
+      ))}
+    </GridContainer>
   );
 }
 

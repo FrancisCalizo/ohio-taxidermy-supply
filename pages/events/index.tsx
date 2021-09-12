@@ -3,17 +3,18 @@ import styled from 'styled-components';
 import { useQuery } from 'react-query';
 
 import SiteLayout from 'components/layout/SiteLayout';
-import { PageTitle } from 'components/utils/styled';
 import EventCards from 'components/pages/events/EventCards';
+import LoadingSpinner from 'components/layout/LoadingSpinner';
+import { PageTitle } from 'components/utils/styled';
 import { getEvents } from 'components/api/events';
 
 export default function Events() {
   const { data, isLoading } = useQuery('events', getEvents);
 
+  if (isLoading) <LoadingSpinner />;
+
   return (
     <>
-      {isLoading && <h1>Loading</h1>}
-
       <MainContainer>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <PageTitle>Events</PageTitle>

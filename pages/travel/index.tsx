@@ -6,6 +6,7 @@ import SiteLayout from 'components/layout/SiteLayout';
 import OptInModal from 'components/pages/travel/OptInModal';
 import TravelFilter from 'components/pages/travel/TravelFilter';
 import TravelCards from 'components/pages/travel/TravelCards';
+import LoadingSpinner from 'components/layout/LoadingSpinner';
 import { PageTitle } from 'components/utils/styled';
 import { getTravelCoupons } from 'components/api/travel';
 
@@ -19,7 +20,7 @@ export default function Travel() {
 
   const { data, isLoading } = useQuery('travelCoupons', getTravelCoupons);
 
-  if (isLoading) <h1>Loading</h1>;
+  if (isLoading) <LoadingSpinner />;
 
   return (
     <TravelContext.Provider

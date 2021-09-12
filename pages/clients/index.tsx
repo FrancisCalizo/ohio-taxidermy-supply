@@ -5,6 +5,7 @@ import { darken } from 'polished';
 import { useQuery } from 'react-query';
 
 import Clients from 'components/pages/clients';
+import LoadingSpinner from 'components/layout/LoadingSpinner';
 import CampaignModal from 'components/pages/clients/CampaignModal';
 import SiteLayout from 'components/layout/SiteLayout';
 import { PageTitle } from 'components/utils/styled';
@@ -26,7 +27,7 @@ export default function Index() {
     setFeaturedCampaign(featured as any);
   }, [data]);
 
-  if (isLoading) <h1>Loading</h1>;
+  if (isLoading) <LoadingSpinner />;
 
   return (
     <ClientContext.Provider
