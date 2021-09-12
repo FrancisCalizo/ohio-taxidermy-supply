@@ -2,6 +2,10 @@
 
 ### 9/7/2021
 
+- add page redirect after successful registration back to login page, disable button on submission when registering, fix navbar links for current route (desktop/mobile), implement full page loading
+
+### 9/7/2021
+
 - implement ability to create and publish talent through registration portal, fix new Talent bugs upon registration, create new user and reference to talent and vice versa
 
 ### 9/6/2021
