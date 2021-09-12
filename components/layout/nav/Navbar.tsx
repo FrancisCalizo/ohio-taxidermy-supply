@@ -115,12 +115,14 @@ export default function Navbar() {
         isHamburgerOpen={isHamburgerOpen}
         setIsHamburgerOpen={setIsHamburgerOpen}
         isMiddleSelectionOpen={isMiddleSelectionOpen}
+        currentPathname={currentPathname}
       />
 
       <MobileNavMiddleLinks
         isMiddleSelectionOpen={isMiddleSelectionOpen}
         setIsMiddleSelectionOpen={setIsMiddleSelectionOpen}
         isHamburgerOpen={isHamburgerOpen}
+        currentPathname={currentPathname}
       />
     </Fragment>
   );
