@@ -1,15 +1,6 @@
 export const routes = [
-  { title: 'Talent', path: '/talent' },
-  { title: 'Clients', path: '/clients' },
-  { title: 'Events', path: '/events' },
-  { title: 'Vending', path: '/vending' },
-  { title: 'Travel', path: '/travel' },
-  { title: 'Login', path: '/login' },
-];
-
-export const middleRoutes = [
-  { title: 'Who We Are', path: '/whoweare' },
-  { title: 'Our Mission', path: '/mission' },
+  { title: 'taxidermist', path: '/taxidermist' },
+  { title: 'hunter', path: '/hunter' },
 ];
 
 export const footerHeaders = ['About', 'Privacy', 'What We Do', 'Resources'];
