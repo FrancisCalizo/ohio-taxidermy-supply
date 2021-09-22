@@ -44,9 +44,9 @@ export default function Footer() {
         </FooterTop>
 
         <div className="contacts-list">
-          <p>General: contact@castmeapp.com</p>
-          <p>Jobs: job@castmeapp.com</p>
-          <p>Press: press@castmeapp.com</p>
+          <p>General: contact@Ohio Taxidermy Supply.com</p>
+          <p>Jobs: job@Ohio Taxidermy Supply.com</p>
+          <p>Press: press@Ohio Taxidermy Supply.com</p>
         </div>
 
         <SubscribeContainer>
@@ -79,7 +79,7 @@ export default function Footer() {
 
         <FooterFooter>
           <hr />
-          <p>@CastMeApp 2021 - All rights Reserved.</p>
+          <p>@Ohio Taxidermy Supply 2021 - All rights Reserved.</p>
         </FooterFooter>
       </MainContainer>
     </BackgroundContainer>

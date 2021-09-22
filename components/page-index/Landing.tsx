@@ -66,19 +66,20 @@ export default function Header() {
           for Brand Awareness and Talent Platform monetization.
         </div>
         <div>
-          CastMeApp is the world of opportunity, bridging the gap between Talent and Client without
-          wasted hours of false data or long contracts commiting you to something that may not work
-          out.
+          Ohio Taxidermy Supply is the world of opportunity, bridging the gap between Talent and
+          Client without wasted hours of false data or long contracts commiting you to something
+          that may not work out.
         </div>
         <div>
-          With CastMeApp clients can track performance and Talent can be themselves, authentically
-          creating and landing in front of the right opportunity.
+          With Ohio Taxidermy Supply clients can track performance and Talent can be themselves,
+          authentically creating and landing in front of the right opportunity.
         </div>
         <div>
-          Through CastMeApp we bring to surface the ability to hire the right ambassadors for the
-          job, we empower Talent to business their platform as an advertising space to help share
-          the brands they love with the world and above all, we partner with companies, experiences
-          and brands all over the world to bring the global market to our fingertips.
+          Through Ohio Taxidermy Supply we bring to surface the ability to hire the right
+          ambassadors for the job, we empower Talent to business their platform as an advertising
+          space to help share the brands they love with the world and above all, we partner with
+          companies, experiences and brands all over the world to bring the global market to our
+          fingertips.
         </div>
       </MainText>
 

@@ -25,12 +25,12 @@ export default function index() {
         </div>
         <div>
           <p>
-            CastMeApp.com is a living breathing platform to break the gap between industry need and
-            talent at hand. <br /> <br />
-            At CastMeApp.com we host a network of creative talent creating and sharing their
-            capabilities within the market. We then categorize and include external analytics to
-            match the cast and ensure brands, business, labels and casting directors/entertainment
-            houses get the talent they need to create the campaign.
+            Ohio Taxidermy Supply.com is a living breathing platform to break the gap between
+            industry need and talent at hand. <br /> <br />
+            At Ohio Taxidermy Supply.com we host a network of creative talent creating and sharing
+            their capabilities within the market. We then categorize and include external analytics
+            to match the cast and ensure brands, business, labels and casting
+            directors/entertainment houses get the talent they need to create the campaign.
           </p>
         </div>
       </FlexContainer>

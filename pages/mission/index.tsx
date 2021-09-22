@@ -12,13 +12,13 @@ export default function index() {
       <Container>
         <h2>Mission Statement</h2>
         <p>
-          The purpose of CastMeApp.com is to provide a platform where Talent can create, Clients can
-          hire, Consumers can be entertained and all opportunities can be Cast to the right match
-          for the experience to be fruitful for all parties. CastMeApp.com is a medium. A stress
-          free connection platform to provide opportunities and to bridge the gap between Talent,
-          Client, Travel and Opportunity without wasted hours or false data. With CastMeApp.com,
-          clients can track performance and Talent can be themselves, authentically creating and
-          landing in front of the right opportunity.
+          The purpose of Ohio Taxidermy Supply.com is to provide a platform where Talent can create,
+          Clients can hire, Consumers can be entertained and all opportunities can be Cast to the
+          right match for the experience to be fruitful for all parties. Ohio Taxidermy Supply.com
+          is a medium. A stress free connection platform to provide opportunities and to bridge the
+          gap between Talent, Client, Travel and Opportunity without wasted hours or false data.
+          With Ohio Taxidermy Supply.com, clients can track performance and Talent can be
+          themselves, authentically creating and landing in front of the right opportunity.
         </p>
       </Container>
     </div>
