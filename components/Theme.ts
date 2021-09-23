@@ -37,6 +37,7 @@ export const theme = {
     danger: '#eb4d4b',
 
     gray: '#7A7A7A',
+    light: '#EDEDED',
     dark: '#241F21',
     green: '#3D4907',
     gold: '#CCB86B',

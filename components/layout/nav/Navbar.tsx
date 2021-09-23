@@ -14,22 +14,22 @@ export default function Navbar() {
       <div className="image-container">
         <Image src={`/images/logo.png`} alt="logo" width={216} height={145} quality={90} />
       </div>
-      <div className="button-container">
+      {/* <div className="button-container">
         <Button variant="taxidermist">Taxidermist</Button>
         <Button variant="hunter">Hunter</Button>
-      </div>
+      </div> */}
     </Nav>
   );
 }
 
 const Nav = styled.div`
-  background: ${({ theme }) => theme.colors.dark};
+  background: ${({ theme }) => theme.colors.light};
   border-bottom: 2px solid ${({ theme }) => theme.colors.orange};
   box-shadow: ${({ theme }) => theme.colors.brown} 0px 0px 0px 4px;
   margin-bottom: 4px;
 
   .image-container {
-    padding: 1rem 0 0;
+    padding: 1.25rem 0;
     text-align: center;
   }
 
