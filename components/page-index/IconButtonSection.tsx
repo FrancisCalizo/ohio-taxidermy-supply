@@ -1,15 +1,8 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import styled, { css } from 'styled-components';
-import { darken, lighten } from 'polished';
+import React from 'react';
+import styled from 'styled-components';
+import { darken } from 'polished';
 import { useRouter } from 'next/router';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faSearchDollar } from '@fortawesome/free-solid-svg-icons';
-
-const ICONS = [
-  { title: 'Taxidermist', icon: faSearchDollar, route: '/taxidermist' },
-  { title: 'Hunter', icon: faUserCircle, route: '/hunter' },
-];
+import Image from 'next/image';
 
 export default function IconButtonSection() {
   const router = useRouter();
@@ -26,9 +19,12 @@ export default function IconButtonSection() {
             onClick={() => router.push(icon.route)}
           >
             <div>
-              <FontAwesomeIcon
-                icon={icon.icon}
-                style={{ fontSize: 36, color: 'rgb(52, 52, 52)' }}
+              <Image
+                src={`/images/${icon.icon}`}
+                layout="fixed"
+                width={70}
+                height={70}
+                quality={80}
               />
             </div>
             <div>
@@ -73,12 +69,11 @@ const Icon = styled.div<{ variant: 'Taxidermist' | 'Hunter' }>`
   & > div:nth-child(1) {
     background: white;
     margin: 0.5rem;
-    padding: 2.1rem;
     border-radius: 100px;
     border: 1px solid ${(props) => props.theme.colors.dark};
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 0 rgba(0, 0, 0, 0.19);
     transition: all 300ms ease-in-out;
-    height: 105px;
+    padding: 1rem 1rem 0.85rem 0.9rem;
   }
 
   & div:nth-child(2) {
@@ -100,3 +95,8 @@ const Icon = styled.div<{ variant: 'Taxidermist' | 'Hunter' }>`
     }
   }
 `;
+
+const ICONS = [
+  { title: 'Taxidermist', icon: 'taxidermy-icon.jpg', route: '/taxidermist' },
+  { title: 'Hunter', icon: 'hunter-icon.jpg', route: '/hunter' },
+];
