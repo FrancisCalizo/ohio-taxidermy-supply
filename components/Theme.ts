@@ -33,14 +33,15 @@ export const theme = {
     pink: '#EDBECD',
     teal: '#93DFF3',
     yellow: '#F6E9B5',
-    gray: '#7A7A7A',
     darkGray: '#202020',
     danger: '#eb4d4b',
 
+    gray: '#7A7A7A',
     dark: '#241F21',
     green: '#3D4907',
     gold: '#CCB86B',
     brown: '#5B3F0C',
+    orange: '#FF7221',
   },
   button: {
     boxShadow: `0px 4px 4px rgba(0, 0, 0, 0.4)`,
