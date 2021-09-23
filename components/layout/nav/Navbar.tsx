@@ -24,9 +24,9 @@ export default function Navbar() {
 
 const Nav = styled.div`
   background: ${({ theme }) => theme.colors.dark};
-  border-bottom: 2px solid ${({ theme }) => theme.colors.gold};
-  box-shadow: ${({ theme }) => theme.colors.brown} 0px 0px 0px 3px;
-  margin-bottom: 3px;
+  border-bottom: 2px solid ${({ theme }) => theme.colors.orange};
+  box-shadow: ${({ theme }) => theme.colors.brown} 0px 0px 0px 4px;
+  margin-bottom: 4px;
 
   .image-container {
     padding: 1rem 0 0;
@@ -44,7 +44,7 @@ const Button = styled.button<{ variant: 'taxidermist' | 'hunter' }>`
   display: block;
   width: 100%;
   background: ${({ theme, variant }) =>
-    variant === 'taxidermist' ? theme.colors.green : theme.colors.gold};
+    variant === 'taxidermist' ? theme.colors.orange : theme.colors.brown};
   color: white;
   border: 0.5px solid white;
   padding: 0.75rem 1rem;
@@ -58,10 +58,10 @@ const Button = styled.button<{ variant: 'taxidermist' | 'hunter' }>`
   &:hover {
     background: ${({ theme, variant }) =>
       variant === 'taxidermist'
-        ? darken(0.05, theme.colors.green)
-        : darken(0.1, theme.colors.gold)};
+        ? darken(0.05, theme.colors.orange)
+        : darken(0.05, theme.colors.brown)};
     transform: scale(1.02);
   }
 
-  ${(props) => props.theme.global.setFocus(props.theme.colors.brown)}
+  ${(props) => props.theme.global.setFocus('#fff')}
 `;
