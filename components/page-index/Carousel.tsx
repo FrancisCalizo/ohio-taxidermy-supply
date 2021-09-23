@@ -29,10 +29,15 @@ export default function Header() {
   );
 }
 
-const carouselImages = ['hunting-scope.jpg', 'taxidermist-at-work.jpg'];
+const carouselImages = [
+  'hunting-scope.jpg',
+  'taxidermist-at-work.jpg',
+  'hunter-bow.jpg',
+  'blood-trail.jpg',
+];
 
 const Banner = styled.div<{ url: any }>`
-  height: calc(100vh - 244px);
+  height: calc(100vh - 350px);
   background-image: ${({ url }) => `url(/images/carousel/${url})`};
   background-size: cover;
   background-repeat: no-repeat;
