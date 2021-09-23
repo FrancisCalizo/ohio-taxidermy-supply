@@ -26,6 +26,7 @@ const Nav = styled.div`
   background: ${({ theme }) => theme.colors.dark};
   border-bottom: 2px solid ${({ theme }) => theme.colors.gold};
   box-shadow: ${({ theme }) => theme.colors.brown} 0px 0px 0px 3px;
+  margin-bottom: 3px;
 
   .image-container {
     padding: 1rem 0 0;
