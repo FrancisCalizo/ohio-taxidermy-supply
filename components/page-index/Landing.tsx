@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
 import Carousel from 'components/page-index/Carousel';
+import IconButtonSection from 'components/page-index/IconButtonSection';
 
 export default function Header() {
   const router = useRouter();
@@ -10,6 +11,7 @@ export default function Header() {
   return (
     <MainContainer>
       <Carousel />
+      <IconButtonSection />
     </MainContainer>
   );
 }
