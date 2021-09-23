@@ -62,21 +62,6 @@ export default function Footer() {
           </div>
         </SubscribeContainer>
 
-        <RowLinks>
-          {footerRoutes.map((column, key) => (
-            <div key={key}>
-              <h4>{footerHeaders[key]}</h4>
-              <ul>
-                {column.map((route, idx) => (
-                  <li key={idx}>
-                    <Link href={route.path}>{route.title}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </RowLinks>
-
         <FooterFooter>
           <hr />
           <p>@ Mount Tracker 2021 - All rights Reserved.</p>
@@ -87,8 +72,8 @@ export default function Footer() {
 }
 
 const BackgroundContainer = styled.div`
-  background-color: ${(props) => props.theme.colors.purple};
-  border-top: 3px solid ${(props) => props.theme.colors.pink};
+  background-color: ${(props) => props.theme.colors.dark};
+  border-top: 3px solid ${(props) => props.theme.colors.orange};
 `;
 
 const MainContainer = styled.div`
@@ -228,40 +213,6 @@ const SubscribeButton = styled.button`
     width: 100%;
     padding: 0.75rem 1rem;
     font-size: 1.25rem;
-  }
-`;
-
-const RowLinks = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  padding: 0 0.5rem;
-
-  h4 {
-    margin-bottom: 0;
-    text-transform: uppercase;
-    font-size: 1.2rem;
-    color: ${(props) => props.theme.colors.pink};
-  }
-
-  ul {
-    display: block;
-    padding: 0;
-    margin: 0;
-  }
-
-  li {
-    list-style-type: none;
-    margin: 0.5rem 0;
-    font-size: 0.9rem;
-  }
-
-  @media (max-width: 800px) {
-    grid-template-columns: repeat(2, 1fr);
-
-    & > div {
-      justify-self: center;
-      text-align: center;
-    }
   }
 `;
 

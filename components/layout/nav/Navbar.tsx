@@ -1,14 +1,9 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import styled, { css } from 'styled-components';
-import { darken, lighten } from 'polished';
-
-import { device } from 'components/utils/mediaQueries';
+import styled from 'styled-components';
 
 export default function Navbar() {
-  const router = useRouter();
-
   return (
     <Nav>
       <div className="image-container">

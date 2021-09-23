@@ -7,7 +7,7 @@ export default function SiteLayout({ children }: any) {
     <div>
       <Navbar />
       <div>{children}</div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

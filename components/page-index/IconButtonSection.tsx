@@ -45,6 +45,7 @@ export default function IconButtonSection() {
 const MainContainer = styled.div`
   background: ${({ theme }) => theme.colors.dark};
   margin-top: -5px;
+  padding: 1rem 0;
 `;
 
 const Underline = styled.hr`
