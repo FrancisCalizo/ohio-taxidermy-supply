@@ -8,7 +8,12 @@ export default function IconButtonSection() {
   const router = useRouter();
 
   return (
-    <div>
+    <MainContainer>
+      {/* eslint-disable-next-line react/no-unescaped-entities */}
+      <SectionTitle>Get Started</SectionTitle>
+
+      <Underline />
+
       <IconsContainer>
         {ICONS.map((icon, key) => (
           <Icon
@@ -33,9 +38,35 @@ export default function IconButtonSection() {
           </Icon>
         ))}
       </IconsContainer>
-    </div>
+    </MainContainer>
   );
 }
+
+const MainContainer = styled.div`
+  background: ${({ theme }) => theme.colors.dark};
+  margin-top: -5px;
+`;
+
+const Underline = styled.hr`
+  width: 220px;
+  height: 5px;
+  background: white;
+  margin: 0 auto 1rem;
+  border: 1px solid ${({ theme }) => theme.colors.orange};
+`;
+
+const SectionTitle = styled.h2`
+  font-family: Arial, Helvetica, sans-serif;
+  color: ${({ theme }) => theme.colors.orange};
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: -2px;
+  padding: 2rem 0 0.5rem;
+  margin: 0;
+`;
 
 const IconsContainer = styled.div`
   position: relative;
@@ -44,7 +75,7 @@ const IconsContainer = styled.div`
   margin-top: 2rem;
   justify-content: center;
   max-width: 600px;
-  margin: 2rem auto 0;
+  margin: 0 auto;
   padding-bottom: 1.5rem;
 `;
 
