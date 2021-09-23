@@ -14,10 +14,6 @@ export default function Navbar() {
       <div className="image-container">
         <Image src={`/images/logo.png`} alt="logo" width={216} height={145} quality={90} />
       </div>
-      {/* <div className="button-container">
-        <Button variant="taxidermist">Taxidermist</Button>
-        <Button variant="hunter">Hunter</Button>
-      </div> */}
     </Nav>
   );
 }
@@ -32,36 +28,4 @@ const Nav = styled.div`
     padding: 1.25rem 0;
     text-align: center;
   }
-
-  .button-container {
-    display: flex;
-    max-width: 280px;
-    margin: 0 auto;
-  }
-`;
-
-const Button = styled.button<{ variant: 'taxidermist' | 'hunter' }>`
-  display: block;
-  width: 100%;
-  background: ${({ theme, variant }) =>
-    variant === 'taxidermist' ? theme.colors.orange : theme.colors.brown};
-  color: white;
-  border: 0.5px solid white;
-  padding: 0.75rem 1rem;
-  border-radius: 6px;
-  margin: ${({ variant }) => (variant === 'taxidermist' ? '1rem 1rem 1rem 0' : '1rem 0 1rem 1rem')};
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: ${(props) => props.theme.button.boxShadow};
-  transition: background 300ms ease-in-out, transform 150ms ease-in-out;
-
-  &:hover {
-    background: ${({ theme, variant }) =>
-      variant === 'taxidermist'
-        ? darken(0.05, theme.colors.orange)
-        : darken(0.05, theme.colors.brown)};
-    transform: scale(1.02);
-  }
-
-  ${(props) => props.theme.global.setFocus('#fff')}
 `;
