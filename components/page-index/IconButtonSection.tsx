@@ -15,7 +15,7 @@ export default function IconButtonSection() {
       <Underline />
 
       <IconsContainer>
-        {ICONS.map((icon, key) => (
+        {BUTTONS.map((icon, key) => (
           <Icon
             key={key}
             variant={icon.title as any}
@@ -44,8 +44,10 @@ export default function IconButtonSection() {
 
 const MainContainer = styled.div`
   background: ${({ theme }) => theme.colors.dark};
-  margin-top: -5px;
+  margin-top: -3px;
   padding: 1rem 0;
+  border-top: 2px solid ${({ theme }) => theme.colors.orange};
+  border-bottom: 3px solid ${({ theme }) => theme.colors.orange};
 `;
 
 const Underline = styled.hr`
@@ -128,7 +130,7 @@ const Icon = styled.div<{ variant: 'Taxidermist' | 'Hunter' }>`
   }
 `;
 
-const ICONS = [
+const BUTTONS = [
   { title: 'Taxidermist', icon: 'taxidermy-icon.jpg', route: '/taxidermist' },
   { title: 'Hunter', icon: 'hunter-icon.jpg', route: '/hunter' },
 ];
