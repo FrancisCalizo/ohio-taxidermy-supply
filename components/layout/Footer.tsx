@@ -10,7 +10,9 @@ export default function Footer() {
   return (
     <BackgroundContainer>
       <MainContainer>
-        <Image src={`/images/logo.png`} alt="logo" width={163} height={110} quality={90} />
+        <Link href="/">
+          <Image src={`/images/logo.png`} alt="logo" width={163} height={110} quality={90} />
+        </Link>
 
         <ButtonContainer>
           {footerRoutes.map((route, key) => (
@@ -47,6 +49,10 @@ const MainContainer = styled.div`
     margin: 1rem 0 0;
     text-align: center;
     font-size: 0.75rem;
+  }
+
+  & img:hover {
+    cursor: pointer;
   }
 `;
 

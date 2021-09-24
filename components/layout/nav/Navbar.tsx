@@ -1,12 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export default function Navbar() {
   return (
     <Nav>
       <div className="image-container">
-        <Image src={`/images/logo.png`} alt="logo" width={216} height={145} quality={90} />
+        <Link href="/">
+          <Image src={`/images/logo.png`} alt="logo" width={216} height={145} quality={90} />
+        </Link>
       </div>
     </Nav>
   );
@@ -21,5 +24,9 @@ const Nav = styled.div`
   .image-container {
     padding: 1.25rem 0;
     text-align: center;
+
+    & img:hover {
+      cursor: pointer;
+    }
   }
 `;
