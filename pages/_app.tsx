@@ -1,6 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 import { AuthProvider } from 'components/AuthContext';
-import { ContentfulProvider } from 'components/ContentfulContext';
+// import { ContentfulProvider } from 'components/ContentfulContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Hydrate } from 'react-query/hydration';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -20,13 +20,13 @@ function MyApp({ Component, pageProps }: any) {
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-          <ContentfulProvider>
-            <AuthProvider>
-              {/* <ProtectRoute> */}
-              {getLayout(<Component {...pageProps} />)}
-              {/* </ProtectRoute> */}
-            </AuthProvider>
-          </ContentfulProvider>
+          {/* <ContentfulProvider> */}
+          <AuthProvider>
+            {/* <ProtectRoute> */}
+            {getLayout(<Component {...pageProps} />)}
+            {/* </ProtectRoute> */}
+          </AuthProvider>
+          {/* </ContentfulProvider> */}
           <ReactQueryDevtools initialIsOpen={false} />
         </Hydrate>
       </QueryClientProvider>

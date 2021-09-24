@@ -15,7 +15,7 @@ import {
 import AuthLayout from 'components/layout/AuthLayout';
 import { useAuth } from 'components/AuthContext';
 import { useSignupContext } from 'components/layout/AuthLayout';
-import { useContentful } from 'components/ContentfulContext';
+// import { useContentful } from 'components/ContentfulContext';
 import { generateKey } from 'components/utils';
 
 type FormValues = {
@@ -30,7 +30,7 @@ export default function Step2() {
   const { user, setIsShowSuccessfulReg } = useAuth();
   const router = useRouter();
   const { signupForm } = useSignupContext();
-  const { clientManagement } = useContentful();
+  // const { clientManagement } = useContentful();
 
   const {
     register,
@@ -76,64 +76,64 @@ export default function Step2() {
     const userEntryId = generateKey(22);
 
     try {
-      const space = await clientManagement.getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
-      const env = await space.getEnvironment('master');
+      // const space = await clientManagement.getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
+      // const env = await space.getEnvironment('master');
 
       // Create user draft in Contentful
-      await env.createEntryWithId('user', userEntryId, {
-        fields: {
-          email: { 'en-US': signupForm.email },
-          password: { 'en-US': signupForm.password },
-        },
-      });
+      // await env.createEntryWithId('user', userEntryId, {
+      //   fields: {
+      //     email: { 'en-US': signupForm.email },
+      //     password: { 'en-US': signupForm.password },
+      //   },
+      // });
 
       // Create talent draft in Contentful & link to user above
-      await env.createEntryWithId('talent', talentEntryId, {
-        fields: {
-          title: { 'en-US': `${signupForm.firstName} ${signupForm.lastName}` },
-          firstName: { 'en-US': signupForm.firstName },
-          lastName: { 'en-US': signupForm.lastName },
-          gender: { 'en-US': signupForm.gender },
-          targetMedia: { 'en-US': signupForm.targetMedia },
-          address: {
-            'en-US': {
-              addressOne: signupForm.addressOne,
-              addressTwo: signupForm.addressTwo,
-              city: signupForm.city,
-              state: signupForm.state,
-              zip: signupForm.zip,
-            },
-          },
-          twitter: {
-            'en-US': { isActive: !!data.twitterHandle, handle: data.twitterHandle },
-          },
-          facebook: {
-            'en-US': { isActive: !!data.facebookHandle, handle: data.facebookHandle },
-          },
-          instagram: {
-            'en-US': { isActive: !!data.instagramHandle, handle: data.instagramHandle },
-          },
-          tikTok: {
-            'en-US': { isActive: !!data.tikTokHandle, handle: data.tikTokHandle },
-          },
-          youtube: {
-            'en-US': { isActive: !!data.youtubeHandle, handle: data.youtubeHandle },
-          },
-          // Reference to an existing entry: https://github.com/contentful/contentful-management.js/issues/57#issuecomment-232899940
-          user: {
-            'en-US': [{ sys: { type: 'Link', linkType: 'Entry', id: userEntryId } }],
-          },
-        },
-      });
+      // await env.createEntryWithId('talent', talentEntryId, {
+      //   fields: {
+      //     title: { 'en-US': `${signupForm.firstName} ${signupForm.lastName}` },
+      //     firstName: { 'en-US': signupForm.firstName },
+      //     lastName: { 'en-US': signupForm.lastName },
+      //     gender: { 'en-US': signupForm.gender },
+      //     targetMedia: { 'en-US': signupForm.targetMedia },
+      //     address: {
+      //       'en-US': {
+      //         addressOne: signupForm.addressOne,
+      //         addressTwo: signupForm.addressTwo,
+      //         city: signupForm.city,
+      //         state: signupForm.state,
+      //         zip: signupForm.zip,
+      //       },
+      //     },
+      //     twitter: {
+      //       'en-US': { isActive: !!data.twitterHandle, handle: data.twitterHandle },
+      //     },
+      //     facebook: {
+      //       'en-US': { isActive: !!data.facebookHandle, handle: data.facebookHandle },
+      //     },
+      //     instagram: {
+      //       'en-US': { isActive: !!data.instagramHandle, handle: data.instagramHandle },
+      //     },
+      //     tikTok: {
+      //       'en-US': { isActive: !!data.tikTokHandle, handle: data.tikTokHandle },
+      //     },
+      //     youtube: {
+      //       'en-US': { isActive: !!data.youtubeHandle, handle: data.youtubeHandle },
+      //     },
+      //     // Reference to an existing entry: https://github.com/contentful/contentful-management.js/issues/57#issuecomment-232899940
+      //     user: {
+      //       'en-US': [{ sys: { type: 'Link', linkType: 'Entry', id: userEntryId } }],
+      //     },
+      //   },
+      // });
 
       // Update the user with related talent entry
       // Update an entry: https://www.youtube.com/watch?v=v98waYVjQtk&t=655s
-      const updatedUser = await env.getEntry(userEntryId);
-      updatedUser.fields.talent = {};
-      updatedUser.fields.talent['en-US'] = {
-        sys: { type: 'Link', linkType: 'Entry', id: talentEntryId },
-      };
-      await updatedUser.update();
+      // const updatedUser = await env.getEntry(userEntryId);
+      // updatedUser.fields.talent = {};
+      // updatedUser.fields.talent['en-US'] = {
+      //   sys: { type: 'Link', linkType: 'Entry', id: talentEntryId },
+      // };
+      // await updatedUser.update();
 
       // Publish talent & user draft in contentful
       // const talentDraft = await env.getEntry(talentEntryId);
