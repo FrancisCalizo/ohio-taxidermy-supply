@@ -1,71 +1,25 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faFacebookSquare,
-  faTwitter,
-  faInstagram,
-  faLinkedin,
-} from '@fortawesome/free-brands-svg-icons';
 
-import { footerHeaders, footerRoutes } from 'components/utils/routes';
+import { footerRoutes } from 'components/utils/routes';
 
 export default function Footer() {
   return (
     <BackgroundContainer>
       <MainContainer>
-        <FooterTop>
-          <div>
-            <h2>
-              <span>Cast</span>
-              <span>Me</span>
-              <span>App</span>
-            </h2>
-          </div>
-          <div>
-            <h3>Follow Us</h3>
-            <div className="social">
-              <button>
-                <FontAwesomeIcon icon={faFacebookSquare} style={{ fontSize: 30 }} />
-              </button>
-              <button>
-                <FontAwesomeIcon icon={faTwitter} style={{ fontSize: 30 }} />
-              </button>
-              <button>
-                <FontAwesomeIcon icon={faInstagram} style={{ fontSize: 30 }} />
-              </button>
-              <button>
-                <FontAwesomeIcon icon={faLinkedin} style={{ fontSize: 30 }} />
-              </button>
-            </div>
-          </div>
-        </FooterTop>
+        <Image src={`/images/logo.png`} alt="logo" width={163} height={110} quality={90} />
 
-        <div className="contacts-list">
-          <p>General: contact@mounttracker.com</p>
-          <p>Jobs: job@mounttracker.com</p>
-          <p>Press: press@mounttracker.com</p>
-        </div>
-
-        <SubscribeContainer>
-          <p>
-            Want marketing updates straight to your inbox? Subscribe to our weekly newsletter.
-            You&apos;ll also be the first to know about our latest events!
-          </p>
-
-          <div className="form-row">
-            <input type="text" placeholder="Full Name" />
-            <input type="email" placeholder="Email Address" />
-            <SubscribeButton>Subscribe</SubscribeButton>
-          </div>
-        </SubscribeContainer>
-
-        <FooterFooter>
-          <hr />
-          <p>@ Mount Tracker 2021 - All rights Reserved.</p>
-        </FooterFooter>
+        <ButtonContainer>
+          {footerRoutes.map((route, key) => (
+            <Link key={key} href={route.path}>
+              <Button variant={route.title}>{route.title}</Button>
+            </Link>
+          ))}
+        </ButtonContainer>
+        <p>@ Mount Tracker 2021 - All rights Reserved.</p>
       </MainContainer>
     </BackgroundContainer>
   );
@@ -82,148 +36,48 @@ const MainContainer = styled.div`
   padding: 2rem;
   color: white;
 
-  .contacts-list {
-    > p {
-      margin: 0;
+  text-align: center;
 
-      @media (max-width: 800px) {
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 800px) {
-      margin-top: 2rem;
-    }
-  }
-`;
-
-const FooterTop = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  > div {
-    flex: 1 1 0;
-  }
-
-  h3 {
-    color: black;
-    font-size: 1.5rem;
-  }
-
-  h2 {
-    font-family: Shadows Into Light;
-    font-size: 3.5rem;
-    margin: 0;
-    color: white;
-
-    span:nth-child(1) {
-      color: ${(props) => props.theme.colors.teal};
-    }
-
-    span:nth-child(3) {
-      color: ${(props) => props.theme.colors.pink};
-    }
-
-    @media (max-width: 800px) {
-      font-size: 3.5rem;
-      text-align: center;
-    }
-  }
-
-  .social {
-    display: flex;
-    justify-content: space-between;
-    max-width: 200px;
-
-    > button {
-      border: none;
-      background: transparent;
-      padding: 0;
-      cursor: pointer;
-    }
-
-    @media (max-width: 800px) {
-      margin: 0 auto;
-    }
-  }
-
-  @media (max-width: 800px) {
-    flex-direction: column;
-    text-align: center;
-  }
-`;
-
-const SubscribeContainer = styled.div`
-  p {
-    margin: 2rem 0 0;
-    font-size: 0.9rem;
-
-    @media (max-width: 800px) {
-      text-align: center;
-    }
-  }
-
-  .form-row {
-    display: flex;
-    justify-content: space-between;
-
-    > input {
-      display: block;
-      font-size: ${(props) => props.theme.input.fontSize};
-      padding: ${(props) => props.theme.input.padding};
-      margin: 1rem 2rem 1rem 0;
-      width: 100%;
-      border: 1px solid lightgray;
-      border-radius: 4px;
-
-      ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.pink))}
-
-      @media (max-width: 800px) {
-        margin: 0.5rem 0;
-      }
-    }
-
-    @media (max-width: 800px) {
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-  }
-`;
-
-const SubscribeButton = styled.button`
-  display: block;
-  background: ${(props) => props.theme.colors.teal};
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  margin: 1rem 0.5rem 1rem 0;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: ${(props) => props.theme.button.boxShadow};
-  width: 300px;
-
-  &:hover {
-    background: ${(props) => darken(0.1, props.theme.colors.teal)};
-  }
-
-  ${(props) => props.theme.global.setFocus(props.theme.colors.teal)}
-
-  @media (max-width: 800px) {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 1.25rem;
-  }
-`;
-
-const FooterFooter = styled.div`
   hr {
     margin: 1.5rem 0;
+    border: 1px solid ${({ theme }) => theme.colors.orange};
   }
 
   p {
-    margin: 0;
+    margin: 1rem 0 0;
     text-align: center;
     font-size: 0.75rem;
   }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  max-width: 280px;
+  margin: 1rem auto;
+`;
+
+const Button = styled.button<{ variant: any }>`
+  display: block;
+  width: 100%;
+  background: ${({ theme, variant }) =>
+    variant === 'About Us' ? theme.colors.orange : theme.colors.brown};
+  color: white;
+  border: 0.5px solid white;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin: ${({ variant }) => (variant === 'About Us' ? '1rem 1rem 1rem 0' : '1rem 0 1rem 1rem')};
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: ${(props) => props.theme.button.boxShadow};
+  transition: background 300ms ease-in-out, transform 150ms ease-in-out;
+
+  &:hover {
+    background: ${({ theme, variant }) =>
+      variant === 'About Us'
+        ? darken(0.05, theme.colors.orange)
+        : darken(0.05, theme.colors.brown)};
+    transform: scale(1.02);
+  }
+
+  ${(props) => props.theme.global.setFocus('#fff')}
 `;
