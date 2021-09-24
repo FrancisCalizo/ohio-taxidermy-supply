@@ -7,18 +7,30 @@ export default function index() {
   return (
     <div>
       <Banner>
-        <h1>Our Mission</h1>
+        <h1>About Us</h1>
       </Banner>
+
       <Container>
-        <h2>Mission Statement</h2>
         <p>
-          The purpose of Ohio Taxidermy Supply.com is to provide a platform where Talent can create,
-          Clients can hire, Consumers can be entertained and all opportunities can be Cast to the
-          right match for the experience to be fruitful for all parties. Ohio Taxidermy Supply.com
-          is a medium. A stress free connection platform to provide opportunities and to bridge the
-          gap between Talent, Client, Travel and Opportunity without wasted hours or false data.
-          With Ohio Taxidermy Supply.com, clients can track performance and Talent can be
-          themselves, authentically creating and landing in front of the right opportunity.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta accusamus exercitationem
+          esse neque beatae harum ipsam expedita cum numquam consequatur sapiente dolore, modi
+          explicabo tempora magnam officia, voluptatibus, cumque optio ut nam. Ad non porro
+          molestias exercitationem tempora perferendis esse. Temporibus, perferendis reprehenderit
+          molestias veritatis laboriosam iusto aperiam sed sapiente.
+        </p>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque dolores perspiciatis qui
+          molestias nobis sequi, eos rerum. Aspernatur sed excepturi dolore laudantium, debitis
+          asperiores totam exercitationem iusto rem. Minus consectetur suscipit labore incidunt
+          consequuntur deleniti quas itaque molestiae assumenda perspiciatis?
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Error id accusamus ducimus quod
+          quia beatae culpa cumque in dolorem accusantium sequi non, voluptatum dignissimos iste!
+          Voluptatum atque quod, repudiandae numquam voluptates aliquid natus, illum eum alias error
+          quidem fugiat. Minus repellendus dolores, sint alias mollitia dicta quis perspiciatis
+          consequuntur, nobis rem dignissimos itaque magnam in maxime aspernatur exercitationem
+          reprehenderit aliquam.
         </p>
       </Container>
     </div>
@@ -27,17 +39,31 @@ export default function index() {
 
 const Banner = styled.div`
   height: 40vh;
-  background-image: url('/images/friends.png');
+  background-image: url('/images/about-us-banner.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 30%;
+  border-bottom: 2px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0.6;
+  }
 
   h1 {
     color: white;
     font-size: calc(32px + (54 - 32) * ((100vw) / (1200 - 300)));
+    z-index: 1;
   }
 `;
 
@@ -47,7 +73,6 @@ const Container = styled.div`
   margin: 0 auto;
 
   p {
-    color: ${(props) => props.theme.colors.gray};
     font-size: calc(16px + (20 - 16) * ((100vw - 400px) / (1800 - 400)));
   }
 `;
