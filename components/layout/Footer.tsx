@@ -11,7 +11,13 @@ export default function Footer() {
     <BackgroundContainer>
       <MainContainer>
         <Link href="/">
-          <Image src={`/images/logo.png`} alt="logo" width={163} height={110} quality={90} />
+          <Image
+            src={`/images/logo-4-white.png`}
+            alt="logo"
+            width={163}
+            height={110}
+            quality={90}
+          />
         </Link>
 
         <ButtonContainer>
