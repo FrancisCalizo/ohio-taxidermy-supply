@@ -8,7 +8,7 @@ export default function Navbar() {
     <Nav>
       <div className="image-container">
         <Link href="/">
-          <Image src={`/images/logo.png`} alt="logo" width={216} height={145} quality={90} />
+          <Image src={`/images/logo-4.png`} alt="logo" width={162} height={110} quality={90} />
         </Link>
       </div>
     </Nav>
@@ -17,6 +17,7 @@ export default function Navbar() {
 
 const Nav = styled.div`
   background: ${({ theme }) => theme.colors.light};
+  /* background: #fff; */
   border-bottom: 2px solid ${({ theme }) => theme.colors.orange};
   box-shadow: ${({ theme }) => theme.colors.brown} 0px 0px 0px 4px;
   margin-bottom: 4px;
