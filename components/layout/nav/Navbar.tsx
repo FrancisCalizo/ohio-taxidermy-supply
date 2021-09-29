@@ -16,8 +16,7 @@ export default function Navbar() {
 }
 
 const Nav = styled.div`
-  background: ${({ theme }) => theme.colors.light};
-  /* background: #fff; */
+  background: #fff;
   border-bottom: 2px solid ${({ theme }) => theme.colors.orange};
   box-shadow: ${({ theme }) => theme.colors.brown} 0px 0px 0px 4px;
   margin-bottom: 4px;

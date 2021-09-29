@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useForm } from 'react-hook-form';
+import { darken } from 'polished';
 
 import SiteLayout from 'components/layout/SiteLayout';
 
@@ -11,27 +13,18 @@ export default function index() {
       </Banner>
 
       <Container>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta accusamus exercitationem
-          esse neque beatae harum ipsam expedita cum numquam consequatur sapiente dolore, modi
-          explicabo tempora magnam officia, voluptatibus, cumque optio ut nam. Ad non porro
-          molestias exercitationem tempora perferendis esse. Temporibus, perferendis reprehenderit
-          molestias veritatis laboriosam iusto aperiam sed sapiente.
-        </p>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque dolores perspiciatis qui
-          molestias nobis sequi, eos rerum. Aspernatur sed excepturi dolore laudantium, debitis
-          asperiores totam exercitationem iusto rem. Minus consectetur suscipit labore incidunt
-          consequuntur deleniti quas itaque molestiae assumenda perspiciatis?
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Error id accusamus ducimus quod
-          quia beatae culpa cumque in dolorem accusantium sequi non, voluptatum dignissimos iste!
-          Voluptatum atque quod, repudiandae numquam voluptates aliquid natus, illum eum alias error
-          quidem fugiat. Minus repellendus dolores, sint alias mollitia dicta quis perspiciatis
-          consequuntur, nobis rem dignissimos itaque magnam in maxime aspernatur exercitationem
-          reprehenderit aliquam.
-        </p>
+        <h2 className="section-title">How Can We Help?</h2>
+        <p className="desc">Any questions or remarks? Just write us a message!</p>
+
+        <FormContainer>
+          <div className="grid-container">
+            <Input type="text" id="firstName" placeholder="First Name" />
+            <Input type="text" id="lastName" placeholder="Last Name" />
+            <Input type="email" id="email" placeholder="Email" />
+            <TextArea placeholder="Message*" rows={5} />
+            <Button id="submit-button">Send Message</Button>
+          </div>
+        </FormContainer>
       </Container>
     </div>
   );
@@ -75,6 +68,88 @@ const Container = styled.div`
   p {
     font-size: calc(16px + (20 - 16) * ((100vw - 400px) / (1800 - 400)));
   }
+
+  .section-title {
+    font-family: Arial, Helvetica, sans-serif;
+    color: ${({ theme }) => theme.colors.orange};
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: -2px;
+    margin: 0;
+  }
+
+  .desc {
+    text-align: center;
+    margin: 0 0 1rem;
+    font-size: 16px;
+    color: ${({ theme }) => theme.colors.gray};
+  }
+`;
+
+const FormContainer = styled.div`
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 2rem 1rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  & .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+    row-gap: 0.75rem;
+  }
+
+  & input[type='email'],
+  #submit-button,
+  textarea {
+    grid-column: 1/-1;
+  }
+`;
+
+const Input = styled.input`
+  display: block;
+  width: 100%;
+  font-size: calc(14px + (16 - 14) * ((100vw - 400px) / (1800 - 400)));
+  padding: ${(props) => props.theme.input.padding};
+  margin: 0.5rem 0;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+
+  ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.orange))}
+`;
+
+const TextArea = styled.textarea<{ rows: number }>`
+  width: 100%;
+  display: block;
+  font-size: ${(props) => props.theme.input.fontSize};
+  padding: ${(props) => props.theme.input.padding};
+  margin: 0.5rem 0;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  resize: none;
+
+  ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.orange))}
+`;
+
+const Button = styled.button`
+  display: block;
+  width: 100%;
+  background: ${({ theme }) => theme.colors.brown};
+  color: white;
+  border: 0.5px solid white;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: ${(props) => props.theme.button.boxShadow};
+  transition: background 300ms ease-in-out, transform 150ms ease-in-out;
+
+  &:hover {
+    background: ${({ theme }) => darken(0.05, theme.colors.brown)};
+    transform: scale(1.02);
+  }
+
+  ${(props) => props.theme.global.setFocus('#fff')}
 `;
 
 index.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
