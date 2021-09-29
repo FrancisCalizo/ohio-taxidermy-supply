@@ -8,7 +8,9 @@ export default function Navbar() {
     <Nav>
       <div className="image-container">
         <Link href="/">
-          <Image src={`/images/logo-4.png`} alt="logo" width={162} height={110} quality={90} />
+          <a>
+            <Image src={`/images/logo-4.png`} alt="logo" width={162} height={110} quality={90} />
+          </a>
         </Link>
       </div>
     </Nav>

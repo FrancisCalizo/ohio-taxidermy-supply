@@ -56,7 +56,9 @@ export default function Login() {
           {/* eslint-disable-next-line react/no-unescaped-entities */}
           Don't have an account?{' '}
           <Link href="/signup?signupType=influencer">
-            <Signup>Sign Up</Signup>
+            <a>
+              <Signup>Sign Up</Signup>
+            </a>
           </Link>
         </p>
 

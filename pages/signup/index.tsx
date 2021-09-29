@@ -88,7 +88,9 @@ export default function Signup() {
           </form>
 
           <Link href="/">
-            <BackHome>Back to Home Page</BackHome>
+            <a>
+              <BackHome>Back to Home Page</BackHome>
+            </a>
           </Link>
         </div>
         <VerticalLine />
