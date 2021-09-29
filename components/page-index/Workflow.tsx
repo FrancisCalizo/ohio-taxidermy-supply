@@ -28,7 +28,7 @@ const MainContainer = styled.div`
 const SectionTitle = styled.h2`
   font-family: Arial, Helvetica, sans-serif;
   color: black;
-  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: ${({ theme }) => theme.colors.orange};
   text-transform: uppercase;
   text-align: center;
