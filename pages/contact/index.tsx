@@ -5,7 +5,24 @@ import { darken } from 'polished';
 
 import SiteLayout from 'components/layout/SiteLayout';
 
-export default function index() {
+type FormValues = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  message: string;
+};
+
+export default function Contact() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<FormValues>();
+
+  const onSubmit = (data: FormValues) => {
+    console.log('data', data);
+  };
+
   return (
     <div>
       <Banner>
@@ -17,13 +34,41 @@ export default function index() {
         <p className="desc">Any questions or remarks? Just write us a message!</p>
 
         <FormContainer>
-          <div className="grid-container">
-            <Input type="text" id="firstName" placeholder="First Name" />
-            <Input type="text" id="lastName" placeholder="Last Name" />
-            <Input type="email" id="email" placeholder="Email" />
-            <TextArea placeholder="Message*" rows={5} />
-            <Button id="submit-button">Send Message</Button>
-          </div>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="grid-container">
+              <Input
+                type="text"
+                id="firstName"
+                placeholder="First Name"
+                {...register('firstName', { required: 'This field is required' })}
+              />
+              <Input
+                type="text"
+                id="lastName"
+                placeholder="Last Name"
+                {...register('lastName', { required: 'This field is required' })}
+              />
+              <Input
+                type="email"
+                id="email"
+                placeholder="Email"
+                {...register('email', {
+                  required: 'This field is required',
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: 'Entered value does not match email format',
+                  },
+                })}
+              />
+              <TextArea
+                id="message"
+                placeholder="Message"
+                rows={5}
+                {...register('message', { required: 'This field is required' })}
+              />
+              <Button id="submit-button">Send Message</Button>
+            </div>
+          </form>
         </FormContainer>
       </Container>
     </div>
@@ -152,4 +197,4 @@ const Button = styled.button`
   ${(props) => props.theme.global.setFocus('#fff')}
 `;
 
-index.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
+Contact.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
