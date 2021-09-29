@@ -1,5 +1,13 @@
 ## Development Changelog
 
+### 9/28/2021
+
+- Start implementing form layout from contact page implement react-hook form for contact form
+
+### 9/27/2021
+
+- Implement new logo options, start implementing contact us page, adding text stroke and white logo (temp)
+
 ### 9/24/2021
 
 - Start implementing footer. Add workflow section to landing page, add border to IconButtonSection, remove dead code, Implement about us and contact us button on footer, implement About Us Page, add About Us and Contact Page Indexes
