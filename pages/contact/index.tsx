@@ -85,7 +85,9 @@ export default function Contact() {
                 />
                 {errors.message && <InputErrorMessage>{errors.message.message}</InputErrorMessage>}
               </div>
-              <Button id="submit-button">Send Message</Button>
+              <Button id="submit-button" disabled={isSubmitting} isSubmitting={isSubmitting}>
+                Send Message
+              </Button>
             </div>
           </form>
         </FormContainer>
@@ -206,21 +208,22 @@ const TextArea = styled.textarea<{ rows: number }>`
   ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.orange))}
 `;
 
-const Button = styled.button`
+const Button = styled.button<{ isSubmitting?: boolean }>`
   display: block;
   width: 100%;
-  background: ${({ theme }) => theme.colors.brown};
+  background: ${({ theme, isSubmitting }) => (isSubmitting ? 'lightgray' : theme.colors.brown)};
   color: white;
   border: 0.5px solid white;
   padding: 0.75rem 1rem;
   border-radius: 6px;
   font-size: 1rem;
-  cursor: pointer;
+  cursor: ${({ isSubmitting }) => (isSubmitting ? 'not-allowed' : 'pointer')};
   box-shadow: ${(props) => props.theme.button.boxShadow};
   transition: background 300ms ease-in-out, transform 150ms ease-in-out;
 
   &:hover {
-    background: ${({ theme }) => darken(0.05, theme.colors.brown)};
+    background: ${(props) =>
+      props.isSubmitting ? 'lightgray' : darken(0.05, props.theme.colors.brown)};
   }
 
   &:hover:not(#submit-button) {
