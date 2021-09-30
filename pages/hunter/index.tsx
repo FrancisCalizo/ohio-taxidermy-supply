@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 import SiteLayout from 'components/layout/SiteLayout';
+import HunterOptionCard from 'components/hunter/HunterOptionCard';
 
 export default function Hunter() {
   return (
@@ -24,6 +25,11 @@ export default function Hunter() {
           Now that youve successfully completed your hunt, now its time to start scouting for a
           Taxidermist
         </h2>
+
+        <div className="card-options">
+          <HunterOptionCard />
+          <HunterOptionCard />
+        </div>
       </Container>
     </div>
   );
@@ -84,13 +90,25 @@ const Container = styled.div`
     text-align: center;
     font-size: 2rem;
     letter-spacing: -2px;
-    margin: 3rem auto 1rem;
+    margin: 3rem auto 0.5rem;
   }
 
   .section-description {
     text-align: center;
     font-size: calc(14px + (18 - 14) * ((100vw - 400px) / (1800 - 400)));
     color: ${({ theme }) => theme.colors.gray};
+    margin: 0 auto 3rem;
+  }
+
+  .card-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2rem;
+
+    @media (max-width: 700px) {
+      grid-template-columns: repeat(1, 1fr);
+      grid-column-gap: 2rem;
+    }
   }
 `;
 
