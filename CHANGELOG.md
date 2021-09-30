@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 9/30/2021
+
+- Implement form error messages, repsonsiveness, and submit state to contact page, start creating Hunter Page, add hunter card pictures and dummy data for hunter cards
+
 ### 9/28/2021
 
 - Start implementing form layout from contact page implement react-hook form for contact form
