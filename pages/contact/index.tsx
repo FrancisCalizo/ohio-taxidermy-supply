@@ -168,6 +168,10 @@ const FormContainer = styled.div`
     grid-template-columns: repeat(2, 1fr);
     column-gap: 1rem;
     row-gap: 0.75rem;
+
+    @media (max-width: 630px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 
   .email-container,
