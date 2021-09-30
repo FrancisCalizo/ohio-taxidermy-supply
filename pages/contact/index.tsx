@@ -36,36 +36,55 @@ export default function Contact() {
         <FormContainer>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid-container">
-              <Input
-                type="text"
-                id="firstName"
-                placeholder="First Name"
-                {...register('firstName', { required: 'This field is required' })}
-              />
-              <Input
-                type="text"
-                id="lastName"
-                placeholder="Last Name"
-                {...register('lastName', { required: 'This field is required' })}
-              />
-              <Input
-                type="email"
-                id="email"
-                placeholder="Email"
-                {...register('email', {
-                  required: 'This field is required',
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: 'Entered value does not match email format',
-                  },
-                })}
-              />
-              <TextArea
-                id="message"
-                placeholder="Message"
-                rows={5}
-                {...register('message', { required: 'This field is required' })}
-              />
+              <div className="first-name-container">
+                <Input
+                  type="text"
+                  id="firstName"
+                  placeholder="First Name"
+                  {...register('firstName', { required: 'This field is required' })}
+                />
+                {errors.firstName && (
+                  <InputErrorMessage>{errors.firstName.message}</InputErrorMessage>
+                )}
+              </div>
+
+              <div className="last-name-container">
+                <Input
+                  type="text"
+                  id="lastName"
+                  placeholder="Last Name"
+                  {...register('lastName', { required: 'This field is required' })}
+                />
+                {errors.lastName && (
+                  <InputErrorMessage>{errors.lastName.message}</InputErrorMessage>
+                )}
+              </div>
+
+              <div className="email-container">
+                <Input
+                  type="email"
+                  id="email"
+                  placeholder="Email"
+                  {...register('email', {
+                    required: 'This field is required',
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: 'Entered value does not match email format',
+                    },
+                  })}
+                />
+                {errors.email && <InputErrorMessage>{errors.email.message}</InputErrorMessage>}
+              </div>
+
+              <div className="message-container">
+                <TextArea
+                  id="message"
+                  placeholder="Message"
+                  rows={5}
+                  {...register('message', { required: 'This field is required' })}
+                />
+                {errors.message && <InputErrorMessage>{errors.message.message}</InputErrorMessage>}
+              </div>
               <Button id="submit-button">Send Message</Button>
             </div>
           </form>
@@ -103,6 +122,13 @@ const Banner = styled.div`
     font-size: calc(32px + (54 - 32) * ((100vw) / (1200 - 300)));
     z-index: 1;
   }
+`;
+
+const InputErrorMessage = styled.p`
+  color: ${(props) => props.theme.colors.danger};
+  font-size: 12px !important;
+  width: 100%;
+  margin: 0 2px 0;
 `;
 
 const Container = styled.div`
@@ -144,9 +170,9 @@ const FormContainer = styled.div`
     row-gap: 0.75rem;
   }
 
-  & input[type='email'],
-  #submit-button,
-  textarea {
+  .email-container,
+  .message-container,
+  #submit-button {
     grid-column: 1/-1;
   }
 `;
@@ -191,6 +217,9 @@ const Button = styled.button`
 
   &:hover {
     background: ${({ theme }) => darken(0.05, theme.colors.brown)};
+  }
+
+  &:hover:not(#submit-button) {
     transform: scale(1.02);
   }
 
