@@ -3,41 +3,58 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { darken } from 'polished';
 
+const CARD_OPTIONS = [
+  {
+    title: 'Build A Deer',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum error a temporibus voluptatibus quisquam vitae, natus dignissimos exercitationem unde aliquam perferendis sint quia asperiores reiciendis officiis rerum enim voluptatem possimus quas doloribus eligendi veniam excepturi nulla maiores? Ducimus id necessitatibus corrupti? Distinctio nostrum amet repudiandae omnis ratione illum ipsa aperiam.',
+    pictureUrl: '/images/build-a-deer.jpg',
+    buttonText: 'View Build Options',
+    route: null,
+  },
+  {
+    title: 'Scout For Taxidermist',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum error a temporibus voluptatibus quisquam vitae, natus dignissimos exercitationem unde aliquam perferendis sint quia asperiores reiciendis officiis rerum enim voluptatem possimus quas doloribus eligendi veniam excepturi nulla maiores? Ducimus id necessitatibus corrupti? Distinctio nostrum amet repudiandae omnis ratione illum ipsa aperiam.',
+    pictureUrl: '/images/scout-taxidermist.jpg',
+    buttonText: 'View Scout Options',
+    route: null,
+  },
+];
+
 export default function HunterOptionCards() {
   return (
     <>
-      {/* {data?.items.map((item: any, key: number) => ( */}
-      {/* <HunterOptionCard key={key}> */}
-      <HunterOptionCard>
-        <Image
-          src={`/images/hunter.jpg`}
-          alt="events"
-          width={300}
-          height={170}
-          quality={70}
-          layout="responsive"
-        />
-        <CardPaddedArea>
-          <CardHeader>
-            {/* <h3 className="event-name">{item.fields.title}</h3> */}
-            <h3 className="event-name">Sampel Title</h3>
-          </CardHeader>
-          <CardContent>
-            {/* <p className="description">{item.fields.shortDescription}</p> */}
-            <p className="description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil consequuntur porro
-              ullam optio similique explicabo pariatur facere illum perferendis aliquam sequi odio
-              voluptates, nobis mollitia? Velit corrupti aliquam, autem ad, consequuntur harum
-              sapiente qui, exercitationem incidunt vel itaque culpa veniam ut dolorem architecto
-              quaerat dolore neque possimus! Inventore, laborum natus?
-            </p>
-          </CardContent>
-          <CardFooter>
-            <ViewHunterOptionButton>View HunterOption</ViewHunterOptionButton>
-          </CardFooter>
-        </CardPaddedArea>
-      </HunterOptionCard>
-      {/* ))} */}
+      {CARD_OPTIONS.map((opt: any, key: number) => (
+        <HunterOptionCard key={key}>
+          <Image
+            src={opt.pictureUrl}
+            alt="option"
+            width={300}
+            height={170}
+            quality={70}
+            layout="responsive"
+          />
+          <CardPaddedArea>
+            <CardHeader>
+              <h3 className="card-title">{opt.title}</h3>
+            </CardHeader>
+            <CardContent>
+              <p className="description">{opt.description}</p>
+              <p className="description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil consequuntur porro
+                ullam optio similique explicabo pariatur facere illum perferendis aliquam sequi odio
+                voluptates, nobis mollitia? Velit corrupti aliquam, autem ad, consequuntur harum
+                sapiente qui, exercitationem incidunt vel itaque culpa veniam ut dolorem architecto
+                quaerat dolore neque possimus! Inventore, laborum natus?
+              </p>
+            </CardContent>
+            <CardFooter>
+              <Button onClick={() => console.log('clicked')}>{opt.buttonText}</Button>
+            </CardFooter>
+          </CardPaddedArea>
+        </HunterOptionCard>
+      ))}
     </>
   );
 }
@@ -64,14 +81,17 @@ const CardPaddedArea = styled.div`
 
 const CardHeader = styled.div`
   margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: center;
 
-  img {
-    border-radius: 50px;
-  }
-
-  .HunterOption-name {
-    font-size: 16px;
-    margin: 0.5rem 0;
+  .card-title {
+    display: inline-block;
+    text-align: center;
+    font-size: calc(16px + (22 - 16) * ((100vw) / (1200 - 300)));
+    margin: 0.5rem auto;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 2px solid ${({ theme }) => theme.colors.brown};
   }
 `;
 
@@ -84,7 +104,7 @@ const CardContent = styled.div`
 
 const CardFooter = styled.div``;
 
-const ViewHunterOptionButton = styled.button`
+const Button = styled.button`
   display: block;
   width: 100%;
   background: ${({ theme }) => theme.colors.brown};
@@ -94,7 +114,7 @@ const ViewHunterOptionButton = styled.button`
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 0;
   box-shadow: ${(props) => props.theme.button.boxShadow};
   transition: background 300ms ease-in-out, transform 150ms ease-in-out;
 

@@ -28,7 +28,6 @@ export default function Hunter() {
 
         <div className="card-options">
           <HunterOptionCard />
-          <HunterOptionCard />
         </div>
       </Container>
     </div>
