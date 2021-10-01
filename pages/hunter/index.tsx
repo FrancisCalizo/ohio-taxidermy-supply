@@ -4,6 +4,7 @@ import { darken } from 'polished';
 
 import SiteLayout from 'components/layout/SiteLayout';
 import HunterOptionCard from 'components/hunter/HunterOptionCard';
+import { HUNTER_CARD_OPTIONS } from 'components/utils/data';
 
 export default function Hunter() {
   return (
@@ -29,7 +30,9 @@ export default function Hunter() {
         </h2>
 
         <div className="card-options">
-          <HunterOptionCard />
+          {HUNTER_CARD_OPTIONS.map((cardInfo, key) => (
+            <HunterOptionCard key={key} cardInfo={cardInfo} />
+          ))}
         </div>
       </Container>
     </div>

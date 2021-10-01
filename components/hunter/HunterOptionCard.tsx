@@ -1,61 +1,53 @@
 import React from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { darken } from 'polished';
 
-const CARD_OPTIONS = [
-  {
-    title: 'Build A Deer',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum error a temporibus voluptatibus quisquam vitae, natus dignissimos exercitationem unde aliquam perferendis sint quia asperiores reiciendis officiis rerum enim voluptatem possimus quas doloribus eligendi veniam excepturi nulla maiores? Ducimus id necessitatibus corrupti? Distinctio nostrum amet repudiandae omnis ratione illum ipsa aperiam.',
-    pictureUrl: '/images/build-a-deer.jpg',
-    buttonText: 'View Build Options',
-    route: null,
-  },
-  {
-    title: 'Scout For Taxidermist',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum error a temporibus voluptatibus quisquam vitae, natus dignissimos exercitationem unde aliquam perferendis sint quia asperiores reiciendis officiis rerum enim voluptatem possimus quas doloribus eligendi veniam excepturi nulla maiores? Ducimus id necessitatibus corrupti? Distinctio nostrum amet repudiandae omnis ratione illum ipsa aperiam.',
-    pictureUrl: '/images/scout-taxidermist.jpg',
-    buttonText: 'View Scout Options',
-    route: null,
-  },
-];
+interface HunterOptionCardProps {
+  cardInfo: {
+    title: string;
+    description: string;
+    pictureUrl: string;
+    buttonText: string;
+    route: string;
+  };
+}
 
-export default function HunterOptionCards() {
+export default function HunterOptionCards(props: HunterOptionCardProps) {
+  const { cardInfo } = props;
+
   return (
-    <>
-      {CARD_OPTIONS.map((opt: any, key: number) => (
-        <HunterOptionCard key={key}>
-          <Image
-            src={opt.pictureUrl}
-            alt="option"
-            width={300}
-            height={170}
-            quality={70}
-            layout="responsive"
-          />
-          <CardPaddedArea>
-            <CardHeader>
-              <h3 className="card-title">{opt.title}</h3>
-            </CardHeader>
-            <CardContent>
-              <p className="description">{opt.description}</p>
-              <p className="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil consequuntur porro
-                ullam optio similique explicabo pariatur facere illum perferendis aliquam sequi odio
-                voluptates, nobis mollitia? Velit corrupti aliquam, autem ad, consequuntur harum
-                sapiente qui, exercitationem incidunt vel itaque culpa veniam ut dolorem architecto
-                quaerat dolore neque possimus! Inventore, laborum natus?
-              </p>
-            </CardContent>
-            <CardFooter>
-              <Button onClick={() => console.log('clicked')}>{opt.buttonText}</Button>
-            </CardFooter>
-          </CardPaddedArea>
-        </HunterOptionCard>
-      ))}
-    </>
+    <HunterOptionCard>
+      <Image
+        src={cardInfo.pictureUrl}
+        alt="option"
+        width={300}
+        height={170}
+        quality={70}
+        layout="responsive"
+      />
+      <CardPaddedArea>
+        <CardHeader>
+          <h3 className="card-title">{cardInfo.title}</h3>
+        </CardHeader>
+        <CardContent>
+          <p className="description">{cardInfo.description}</p>
+          <p className="description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil consequuntur porro ullam
+            optio similique explicabo pariatur facere illum perferendis aliquam sequi odio
+            voluptates, nobis mollitia? Velit corrupti aliquam, autem ad, consequuntur harum
+            sapiente qui, exercitationem incidunt vel itaque culpa veniam ut dolorem architecto
+            quaerat dolore neque possimus! Inventore, laborum natus?
+          </p>
+        </CardContent>
+        <CardFooter>
+          <Link href={cardInfo.route}>
+            <Button>{cardInfo.buttonText}</Button>
+          </Link>
+        </CardFooter>
+      </CardPaddedArea>
+    </HunterOptionCard>
   );
 }
 
