@@ -20,6 +20,8 @@ export default function Hunter() {
           </div>
         </div>
 
+        <Hr />
+
         <h2 className="section-title">Your Hunt Is Not Over</h2>
         <h2 className="section-description">
           Now that youve successfully completed your hunt, now its time to start scouting for a
@@ -89,7 +91,7 @@ const Container = styled.div`
     text-align: center;
     font-size: 2rem;
     letter-spacing: -2px;
-    margin: 3rem auto 0.5rem;
+    margin: 0 auto 0.5rem;
   }
 
   .section-description {
@@ -109,6 +111,13 @@ const Container = styled.div`
       grid-column-gap: 2rem;
     }
   }
+`;
+
+const Hr = styled.hr`
+  max-width: 500px;
+  margin: 2rem auto;
+  height: 5px;
+  background: ${({ theme }) => theme.colors.brown};
 `;
 
 const Button = styled.button<{ isSubmitting?: boolean }>`
