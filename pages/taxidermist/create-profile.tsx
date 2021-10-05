@@ -1,21 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useForm } from 'react-hook-form';
+import Select from 'react-select';
+import { useForm, Controller } from 'react-hook-form';
 import { darken } from 'polished';
 
 import SiteLayout from 'components/layout/SiteLayout';
+import { US_STATES, MOUNTS_PER_YEAR_OPTIONS } from 'components/utils';
+import { theme } from 'components/Theme';
 
 type FormValues = {
+  company: string;
   firstName: string;
   lastName: string;
   email: string;
-  message: string;
+  website: string;
+  addressOne: string;
+  addressTwo: string;
+  city: string;
+  state: any;
+  zip: string;
+  mountsPerYear: string;
+  yearsInBusiness: string;
 };
 
 export default function CreateProfile() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>();
 
@@ -32,6 +44,16 @@ export default function CreateProfile() {
         <FormContainer>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid-container">
+              <div className="company-container">
+                <Input
+                  type="text"
+                  id="company"
+                  placeholder="Company Name"
+                  {...register('company', { required: 'This field is required' })}
+                />
+                {errors.company && <InputErrorMessage>{errors.company.message}</InputErrorMessage>}
+              </div>
+
               <div className="first-name-container">
                 <Input
                   type="text"
@@ -72,17 +94,105 @@ export default function CreateProfile() {
                 {errors.email && <InputErrorMessage>{errors.email.message}</InputErrorMessage>}
               </div>
 
-              <div className="message-container">
-                <TextArea
-                  id="message"
-                  placeholder="Message"
-                  rows={5}
-                  {...register('message', { required: 'This field is required' })}
-                />
-                {errors.message && <InputErrorMessage>{errors.message.message}</InputErrorMessage>}
+              <div className="website-container">
+                <Input type="text" id="website" placeholder="Website (optional)" />
+                {errors.email && <InputErrorMessage>{errors.email.message}</InputErrorMessage>}
               </div>
+
+              <Input
+                type="text"
+                id="addressOne"
+                placeholder="Address"
+                {...register('addressOne', { required: 'This field is required' })}
+              />
+              {errors.addressOne && (
+                <InputErrorMessage>{errors.addressOne.message}</InputErrorMessage>
+              )}
+
+              <Input
+                type="text"
+                id="addressTwo"
+                placeholder="Address #2 (Optional)"
+                {...register('addressTwo')}
+              />
+              {errors.addressTwo && (
+                <InputErrorMessage>{errors.addressTwo.message}</InputErrorMessage>
+              )}
+
+              <div className="second-address-row">
+                <div>
+                  <Input
+                    type="text"
+                    id="city"
+                    placeholder="City"
+                    {...register('city', { required: 'This field is required' })}
+                  />
+                  {errors.city && <InputErrorMessage>{errors.city.message}</InputErrorMessage>}
+                </div>
+
+                <div>
+                  <Controller
+                    name="state"
+                    rules={{ required: 'This field is required' }}
+                    render={({ field }: any) => (
+                      <Select
+                        {...field}
+                        options={US_STATES}
+                        placeholder="State"
+                        isSearchable={false}
+                        styles={selectStyles}
+                        instanceId="state"
+                      />
+                    )}
+                    control={control}
+                    defaultValue={''}
+                  />
+                  {errors.state && <InputErrorMessage>{errors.state.message}</InputErrorMessage>}
+                </div>
+
+                <div>
+                  <Input
+                    type="number"
+                    id="zip"
+                    placeholder="Zip"
+                    {...register('zip', { required: 'This field is required' })}
+                  />
+                  {errors.zip && <InputErrorMessage>{errors.zip.message}</InputErrorMessage>}
+                </div>
+              </div>
+
+              <Input
+                type="number"
+                id="yearsInBusiness"
+                placeholder="Years In Business"
+                {...register('yearsInBusiness', { required: 'This field is required' })}
+              />
+              {errors.yearsInBusiness && (
+                <InputErrorMessage>{errors.yearsInBusiness.message}</InputErrorMessage>
+              )}
+
+              <Controller
+                name="mountsPerYear"
+                rules={{ required: 'This field is required' }}
+                render={({ field }: any) => (
+                  <Select
+                    {...field}
+                    options={MOUNTS_PER_YEAR_OPTIONS}
+                    placeholder="Mounts Per Year"
+                    isSearchable={false}
+                    styles={selectStyles}
+                    instanceId="mountsPerYear"
+                  />
+                )}
+                control={control}
+                defaultValue={''}
+              />
+              {errors.mountsPerYear && (
+                <InputErrorMessage>{errors.mountsPerYear.message}</InputErrorMessage>
+              )}
+
               <Button id="submit-button" disabled={isSubmitting} isSubmitting={isSubmitting}>
-                Send Message
+                Create Account
               </Button>
             </div>
           </form>
@@ -142,10 +252,16 @@ const FormContainer = styled.div`
     }
   }
 
-  .email-container,
-  .message-container,
+  .company-container,
   #submit-button {
     grid-column: 1/-1;
+  }
+
+  .second-address-row {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1rem;
   }
 `;
 
@@ -159,19 +275,16 @@ const Input = styled.input`
   border-radius: 4px;
 
   ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.orange))}
-`;
 
-const TextArea = styled.textarea<{ rows: number }>`
-  width: 100%;
-  display: block;
-  font-size: ${(props) => props.theme.input.fontSize};
-  padding: ${(props) => props.theme.input.padding};
-  margin: 0.5rem 0;
-  border: 1px solid lightgray;
-  border-radius: 4px;
-  resize: none;
-
-  ${(props) => props.theme.global.setInputFocus(darken(0.1, props.theme.colors.orange))}
+  // Hides number arrows
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 
 const Button = styled.button<{ isSubmitting?: boolean }>`
@@ -198,5 +311,29 @@ const Button = styled.button<{ isSubmitting?: boolean }>`
 
   ${(props) => props.theme.global.setFocus('#fff')}
 `;
+
+const selectStyles = {
+  container: (baseStyles: any) => ({
+    ...baseStyles,
+    margin: '.5rem 0',
+  }),
+  control: (baseStyles: any) => ({
+    ...baseStyles,
+    fontSize: 'calc(14px + (16 - 14) * ((100vw - 400px) / (1800 - 400)))',
+    border: '1px solid lightgray',
+    boxShadow: 'none',
+    '&:hover': { border: '1px solid #CCD7EA' },
+    '&:active': { border: `1px solid ${darken(0.03, theme.colors.orange)}` },
+  }),
+  valueContainer: (baseStyles: any) => ({
+    ...baseStyles,
+    height: '40px',
+    overflow: 'auto',
+  }),
+  menuList: (baseStyles: any) => ({
+    ...baseStyles,
+    maxHeight: '150px',
+  }),
+};
 
 CreateProfile.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
