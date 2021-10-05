@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 10/05/2021
+
+- add signup button to Hunter page, Create outline for Taxidermist page, start creating Taxidermist Account creation page, implement working form for Create Taxidermist Account
+
 ### 9/30/2021
 
 - Implement form error messages, repsonsiveness, and submit state to contact page, start creating Hunter Page, add hunter card pictures and dummy data for hunter cards, hr styles to hunter page, refactor hunter card options data for easier use later. Add routes for hunter/taxidermist pages, Add plaecholder pages for build-a-deer and scout-taxidermist
