@@ -34,6 +34,13 @@ export default function Hunter() {
             <HunterOptionCard key={key} cardInfo={cardInfo} />
           ))}
         </div>
+
+        <div className="login-container">
+          <h2 className="section-ready">Ready to sign up?</h2>
+          <div className="login-button-container">
+            <Button variant="outline">Sign Up Now</Button>
+          </div>
+        </div>
       </Container>
     </div>
   );
@@ -114,6 +121,15 @@ const Container = styled.div`
       grid-column-gap: 2rem;
     }
   }
+
+  .section-ready {
+    font-family: Arial, Helvetica, sans-serif;
+    color: ${({ theme }) => theme.colors.dark};
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: -2px;
+    margin: 3rem auto 1rem;
+  }
 `;
 
 const Hr = styled.hr`
@@ -123,22 +139,23 @@ const Hr = styled.hr`
   background: ${({ theme }) => theme.colors.brown};
 `;
 
-const Button = styled.button<{ isSubmitting?: boolean }>`
+const Button = styled.button<{ variant?: 'outline' }>`
   display: block;
   width: 100%;
-  background: ${({ theme, isSubmitting }) => (isSubmitting ? 'lightgray' : theme.colors.orange)};
-  color: white;
-  border: 0.5px solid white;
+  background: ${({ theme, variant }) => (variant === 'outline' ? '#fff' : theme.colors.orange)};
+  color: ${({ theme, variant }) => (variant === 'outline' ? theme.colors.orange : '#fff')};
+  border: 0.5px solid
+    ${({ theme, variant }) => (variant === 'outline' ? theme.colors.orange : '#fff')};
   padding: 0.75rem 1rem;
   border-radius: 6px;
   font-size: 1rem;
-  cursor: ${({ isSubmitting }) => (isSubmitting ? 'not-allowed' : 'pointer')};
+  cursor: pointer;
   box-shadow: ${(props) => props.theme.button.boxShadow};
   transition: background 300ms ease-in-out, transform 150ms ease-in-out;
 
   &:hover {
-    background: ${(props) =>
-      props.isSubmitting ? 'lightgray' : darken(0.05, props.theme.colors.brown)};
+    background: ${({ theme }) => darken(0.05, theme.colors.orange)};
+    color: ${({ variant }) => variant === 'outline' && '#fff'};
   }
 
   &:hover:not(#submit-button) {
