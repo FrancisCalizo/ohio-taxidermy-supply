@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { darken } from 'polished';
 
@@ -24,9 +25,11 @@ export default function Taxidermist() {
         <Hr />
 
         <div className="login-container">
-          <h2 className="section-ready">Ready to sign up?</h2>
+          <h2 className="section-ready">Ready to create a Taxidermist profile?</h2>
           <div className="login-button-container">
-            <Button variant="outline">Sign Up Now</Button>
+            <Link href="/taxidermist/create-profile">
+              <Button variant="outline">Create Profile</Button>
+            </Link>
           </div>
         </div>
       </Container>
@@ -79,7 +82,7 @@ const Container = styled.div`
 
     .login-button-container {
       margin: 0 auto;
-      width: 130px;
+      width: 150px;
     }
   }
 
