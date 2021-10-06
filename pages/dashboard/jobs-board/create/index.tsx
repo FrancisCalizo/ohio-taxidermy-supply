@@ -1,33 +1,23 @@
 import React from 'react';
-
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import DashboardLayout from 'components/layout/dashboard/DashboardLayout';
 
-export default function JobTickets() {
+export default function Create() {
   return (
     <DashboardLayout>
-      <TopContainer>
-        <div className="button-container">
-          <Button>
-            <FontAwesomeIcon icon={faPlus} style={{ marginRight: '.5rem' }} />
-            Create Ticket
-          </Button>
+      <MainContainer>
+        <div className="top-container">
+          <h1>Create New Job</h1>
         </div>
-      </TopContainer>
+      </MainContainer>
     </DashboardLayout>
   );
 }
 
-const TopContainer = styled.div`
-  display: flex;
-  justify-content: end;
-
-  .button-container {
-    width: 165px;
+const MainContainer = styled.div`
+  .top-container {
   }
 `;
 

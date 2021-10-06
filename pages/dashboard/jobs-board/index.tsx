@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Link from 'next/link';
 import styled from 'styled-components';
 import { darken } from 'polished';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,15 +7,17 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import DashboardLayout from 'components/layout/dashboard/DashboardLayout';
 
-export default function JobTickets() {
+export default function JobsBoard() {
   return (
     <DashboardLayout>
       <TopContainer>
         <div className="button-container">
-          <Button>
-            <FontAwesomeIcon icon={faPlus} style={{ marginRight: '.5rem' }} />
-            Create Ticket
-          </Button>
+          <Link href="/dashboard/jobs-board/create">
+            <Button>
+              <FontAwesomeIcon icon={faPlus} style={{ marginRight: '.5rem' }} />
+              Create Job
+            </Button>
+          </Link>
         </div>
       </TopContainer>
     </DashboardLayout>
