@@ -15,7 +15,7 @@ import {
 
 import { getPathName } from 'components/utils';
 
-export const LINKS = ['Overview', 'Discover', 'Proposals', 'Conversions', 'Payments', 'Reporting'];
+export const LINKS = ['Job Tickets', 'Closed Jobs', 'Leads', 'Job Boards'];
 const ICONS = [
   faWindowMaximize,
   faGlobeAmericas,
@@ -92,7 +92,7 @@ const Li = styled.li<{ isCurrent: boolean }>`
   transition: all 0.1s ease-out;
   display: flex;
   align-items: center;
-  background: ${(props) => (props.isCurrent ? props.theme.colors.teal : 'transparent')};
+  background: ${(props) => (props.isCurrent ? props.theme.colors.orange : 'transparent')};
   color: ${(props) => (props.isCurrent ? '#fff' : 'inherit')};
 
   & svg {
@@ -101,7 +101,7 @@ const Li = styled.li<{ isCurrent: boolean }>`
   }
 
   &:hover {
-    background: ${(props) => lighten(0.075, props.theme.colors.teal)};
+    background: ${(props) => lighten(0.075, props.theme.colors.orange)};
     cursor: pointer;
     color: #fff;
 
