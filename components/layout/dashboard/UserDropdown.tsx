@@ -67,7 +67,7 @@ export const DropdownContainer = styled.div`
     font-size: 0.9rem;
 
     &:hover {
-      background: ${lighten(0.12, '#909cd8')};
+      background: ${({ theme }) => lighten(0.12, theme.colors.orange)};
       color: white;
     }
   }
