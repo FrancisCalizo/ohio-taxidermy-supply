@@ -13,26 +13,18 @@ export default function Content({ children }: any) {
     setTitle(getPathName(router.pathname, 'dashboard/'));
   }, [router.pathname]);
 
-  return (
-    <MainContainer>
-      <DashboardTitle>{title}</DashboardTitle>
-      {children}
-    </MainContainer>
-  );
+  return <MainContainer>{children}</MainContainer>;
 }
 
 const MainContainer = styled.div`
   background: #f1f2f6;
   padding: 1rem;
   margin-top: 61px;
+  min-height: calc(100vh - 61px);
 
   @media (min-width: 769px) {
     margin-left: 260px;
     margin-top: 72px;
+    min-height: calc(100vh - 72px);
   }
-`;
-
-const DashboardTitle = styled.h2`
-  text-transform: capitalize;
-  margin-top: 0;
 `;
