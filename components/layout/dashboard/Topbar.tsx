@@ -19,6 +19,7 @@ export default function Topbar() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const [userRole, setUserRole] = useState<'hunter' | 'taxidermist' | null>('hunter');
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(false);
@@ -27,12 +28,7 @@ export default function Topbar() {
     <TopbarContainer>
       <div>
         <LogoContainer onClick={() => router.push('/')}>
-          <Image src={`/images/logo.png`} alt="logo" width={45} height={45} quality={50} />
-          <div className="title" style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>
-            <span>Cast</span>
-            <span>Me</span>
-            <span>App</span>
-          </div>
+          <Image src={`/images/logo-4-white.png`} alt="logo" width={95} height={45} quality={50} />
         </LogoContainer>
 
         <MenuContainer>
@@ -44,10 +40,13 @@ export default function Topbar() {
         </MenuContainer>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div className="right-section">
         <div>
-          John Stamos
-          <p style={{ margin: '0 0 0 1px', fontSize: 11, color: '#fff' }}>Marketing Manager</p>
+          <span className="user-name">John Stamos</span>
+          <p className="user-title">
+            {userRole === 'hunter' && <>Hunter</>}
+            {userRole === 'taxidermist' && <>Taxidermist</>}
+          </p>
         </div>
 
         {/* Currently, React-Tiny-Popover does not have SSR support. So we must
@@ -62,7 +61,7 @@ export default function Topbar() {
             containerStyle={{ top: '-15px', zIndex: '100' }}
           >
             <button className="user-button" onClick={() => setIsPopoverOpen(!isPopoverOpen)}>
-              <FontAwesomeIcon icon={faUserCircle} style={{ fontSize: 36 }} />
+              <FontAwesomeIcon icon={faUserCircle} style={{ fontSize: 36, color: '#fff' }} />
             </button>
           </Popover>
         )}
@@ -80,12 +79,12 @@ const TopbarContainer = styled.div`
   font-size: 1.2rem;
   background: linear-gradient(
     0deg,
-    rgba(125, 140, 222, 1) 0%,
-    rgba(149, 160, 214, 1) 48%,
-    rgba(156, 166, 215, 1) 100%
+    rgba(36, 31, 33, 1) 0%,
+    rgba(41, 35, 37, 1) 48%,
+    rgba(55, 47, 50, 1) 100%
   );
 
-  border-bottom: 2px solid ${(props) => props.theme.colors.pink};
+  border-bottom: 2px solid ${(props) => props.theme.colors.orange};
   transition: all 500ms ease-in-out;
   display: flex;
   justify-content: space-between;
@@ -97,6 +96,20 @@ const TopbarContainer = styled.div`
     border: none;
     background: transparent;
     cursor: pointer;
+  }
+
+  & .right-section {
+    display: flex;
+    align-items: center;
+
+    & .user-name {
+      color: #fff;
+    }
+    & .user-title {
+      margin: 0 0 0 1px;
+      font-size: 11px;
+      color: ${({ theme }) => theme.colors.orange};
+    }
   }
 
   @media (max-width: 560px) {
@@ -125,16 +138,9 @@ export const LogoContainer = styled.h3`
 
   & .title {
     font-size: 24px;
-
-    & > span:nth-child(1) {
-      color: ${(props) => props.theme.colors.teal};
-    }
-    & > span:nth-child(2) {
-      color: ${(props) => props.theme.colors.yellow};
-    }
-    & > span:nth-child(3) {
-      color: ${(props) => props.theme.colors.pink};
-    }
+    font-weight: 500;
+    margin-left: 10px;
+    color: #fff;
   }
 
   @media (max-width: 768px) {
