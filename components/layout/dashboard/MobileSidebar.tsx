@@ -76,20 +76,20 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
         </div>
       </LogoContainer>
 
-      {LINKS.map((link: string, key: number) => (
+      {LINKS.map((link: { title: string; url: string }, key: number) => (
         <BurgerContainer
           key={key}
           isCurrent={
-            currentRoute === undefined && link === LINKS[0]
+            currentRoute === undefined && link.url === LINKS[0].url
               ? true
-              : currentRoute === link.toLowerCase()
+              : currentRoute === link.url.toLowerCase()
           }
         >
           <BurgerLink
             className="menu-item"
-            href={key === 0 ? '/dashboard' : `/dashboard/${link.toLowerCase()}`}
+            href={key === 0 ? '/dashboard' : `/dashboard/${link.url.toLowerCase()}`}
           >
-            {link}
+            {link.title}
           </BurgerLink>
         </BurgerContainer>
       ))}

@@ -15,7 +15,7 @@ export default function Content({ children }: any) {
 
   return (
     <MainContainer>
-      <DashboardTitle>{title || 'Overview'}</DashboardTitle>
+      <DashboardTitle>{title}</DashboardTitle>
       {children}
     </MainContainer>
   );

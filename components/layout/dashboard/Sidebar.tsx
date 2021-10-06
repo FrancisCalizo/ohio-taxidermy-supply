@@ -9,21 +9,17 @@ import {
   faWindowMaximize,
   faEdit,
   faFileInvoice,
-  faMoneyCheckAlt,
-  faChartBar,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { getPathName } from 'components/utils';
 
-export const LINKS = ['Job Tickets', 'Closed Jobs', 'Leads', 'Job Boards'];
-const ICONS = [
-  faWindowMaximize,
-  faGlobeAmericas,
-  faEdit,
-  faFileInvoice,
-  faMoneyCheckAlt,
-  faChartBar,
+export const LINKS = [
+  { title: 'Job Tickets', url: 'job-tickets' },
+  { title: 'Closed Jobs', url: 'closed-tickets' },
+  { title: 'Leads', url: 'leads' },
+  { title: 'Jobs Board', url: 'jobs-board' },
 ];
+const ICONS = [faWindowMaximize, faGlobeAmericas, faEdit, faFileInvoice];
 
 export default function Sidebar() {
   const router = useRouter();
@@ -37,20 +33,20 @@ export default function Sidebar() {
   return (
     <SidebarContainer>
       <SidebarLinks>
-        {LINKS.map((link: string, key: number) => (
-          <GLink key={key} href={key === 0 ? '/dashboard' : `/dashboard/${link.toLowerCase()}`}>
+        {LINKS.map((link: { title: string; url: string }, key: number) => (
+          <GLink key={key} href={key === 0 ? '/dashboard' : `/dashboard/${link.url.toLowerCase()}`}>
             <Li
               isCurrent={
-                currentRoute === undefined && link === LINKS[0]
+                currentRoute === undefined && link.url === LINKS[0].url
                   ? true
-                  : currentRoute === link.toLowerCase()
+                  : currentRoute === link.title.toLowerCase()
               }
             >
               <FontAwesomeIcon
                 icon={ICONS[key]}
                 style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
               />
-              <div style={{ textTransform: 'capitalize' }}>{link}</div>
+              <div style={{ textTransform: 'capitalize' }}>{link.title}</div>
             </Li>
           </GLink>
         ))}
