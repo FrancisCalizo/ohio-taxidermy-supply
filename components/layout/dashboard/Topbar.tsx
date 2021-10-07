@@ -19,7 +19,7 @@ export default function Topbar() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [userRole, setUserRole] = useState<'hunter' | 'taxidermist' | null>('hunter');
+  const [userRole, setUserRole] = useState<'hunter' | 'taxidermist' | null>('taxidermist');
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(false);
