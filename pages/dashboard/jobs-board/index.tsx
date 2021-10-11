@@ -25,15 +25,15 @@ const JobCardsContainer = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem 1.5rem;
 
-  @media (max-width: 1050px) {
+  @media (max-width: 1350px) {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (max-width: 810px) {
+  @media (max-width: 1100px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
     grid-template-columns: repeat(1, 1fr);
   }
 `;
@@ -41,7 +41,7 @@ const JobCardsContainer = styled.div`
 const FAKE_JOBS = [
   {
     title: 'Ryan Johnson',
-    hunterName: 'Rotated Half Aggressive Moose',
+    hunterName: 'Rotated Half Aggressive Moose Blah Blah',
     avatar: '/images/default-avatar.png',
     description:
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti?',
@@ -51,7 +51,7 @@ const FAKE_JOBS = [
     hunterName: 'Rotated Half Aggressive Goat',
     avatar: '/images/default-avatar.png',
     description:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti?',
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti? quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti.',
   },
   {
     title: 'Richie Richards',

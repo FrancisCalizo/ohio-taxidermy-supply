@@ -34,6 +34,7 @@ const Card = styled.div`
   border-radius: 4px;
   padding: 1rem;
   background: #fff;
+  height: 100%;
 
   & .card-header {
     display: flex;
