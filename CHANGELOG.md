@@ -1,5 +1,13 @@
 ## Development Changelog
 
+### 10/10/2021
+
+- Implement closed jobs page functionality, change topbar theme styles, fix route names, implement proper mapping of job cards on taxidermist dashbaord, Job board styling and mobile sidebar dashboard theme changes
+
+### 10/06/2021
+
+- theme changes to dashboard topbar, user dropdown theme changes, change sidebar links and implement proper routing, Planning, start creation of hunter pages
+
 ### 10/05/2021
 
 - add signup button to Hunter page, Create outline for Taxidermist page, start creating Taxidermist Account creation page, implement working form for Create Taxidermist Account
