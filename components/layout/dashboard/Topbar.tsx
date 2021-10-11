@@ -33,7 +33,7 @@ export default function Topbar() {
 
         <MenuContainer>
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <FontAwesomeIcon icon={faBars} style={{ fontSize: 30 }} />
+            <FontAwesomeIcon icon={faBars} style={{ fontSize: 30, color: '#fff' }} />
           </div>
 
           <MobileSidebar setIsBurgerOpen={setIsBurgerOpen} isBurgerOpen={isBurgerOpen} />

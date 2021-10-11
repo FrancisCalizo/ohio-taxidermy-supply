@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import DashboardLayout from 'components/layout/dashboard/DashboardLayout';
 
-export default function JobTickets() {
+export default function ClosedJobs() {
   return (
     <DashboardLayout>
       <TopContainer>

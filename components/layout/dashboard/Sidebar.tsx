@@ -15,7 +15,7 @@ import { getPathName } from 'components/utils';
 
 export const LINKS = [
   { title: 'Job Tickets', url: 'job-tickets' },
-  { title: 'Closed Jobs', url: 'closed-tickets' },
+  { title: 'Closed Jobs', url: 'closed-jobs' },
   { title: 'Leads', url: 'leads' },
   { title: 'Jobs Board', url: 'jobs-board' },
 ];
@@ -39,7 +39,7 @@ export default function Sidebar() {
               isCurrent={
                 currentRoute === undefined && link.url === LINKS[0].url
                   ? true
-                  : currentRoute === link.title.toLowerCase()
+                  : currentRoute === link.url.toLowerCase()
               }
             >
               <FontAwesomeIcon
