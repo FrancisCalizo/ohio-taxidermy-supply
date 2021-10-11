@@ -53,11 +53,11 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
     },
     bmItem: {
       display: 'inline-block',
-      width: '100% !important',
+      width: '100%',
       textAlign: 'center',
     },
     bmCross: {
-      background: '#EDBECD',
+      background: '#000',
     },
   };
 
@@ -68,12 +68,7 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
       isOpen={isBurgerOpen}
     >
       <LogoContainer onClick={() => router.push('/')}>
-        <Image src={`/images/logo.png`} alt="logo" width={45} height={45} quality={50} />
-        <div className="title" style={{ marginLeft: 10, fontFamily: 'Shadows Into Light' }}>
-          <span>Cast</span>
-          <span>Me</span>
-          <span>App</span>
-        </div>
+        <Image src={`/images/logo-4.png`} alt="logo" width={135} height={60} quality={50} />
       </LogoContainer>
 
       {LINKS.map((link: { title: string; url: string }, key: number) => (
@@ -101,11 +96,11 @@ const BurgerLink = styled(Link)<{ className: string; href: string }>``;
 
 const BurgerContainer = styled.div<{ isCurrent: boolean }>`
   background: ${(props) =>
-    props.isCurrent ? `${props.theme.colors.teal} !important` : 'transparent !important'};
+    props.isCurrent ? `${props.theme.colors.orange} !important` : 'transparent !important'};
   color: ${(props) => (props.isCurrent ? '#fff !important' : 'inherit !important')};
 
   &:hover {
-    background: ${(props) => lighten(0.075, props.theme.colors.teal)} !important;
+    background: ${(props) => lighten(0.075, props.theme.colors.orange)} !important;
     color: #fff !important;
   }
 
@@ -122,26 +117,6 @@ export const LogoContainer = styled.div`
   transform: none;
   border-radius: 100px;
   cursor: pointer;
-  width: 55px !important;
-
-  img {
-    border-radius: 50px;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  }
-
-  & .title {
-    font-size: 24px;
-
-    & > span:nth-child(1) {
-      color: ${(props) => props.theme.colors.teal};
-    }
-    & > span:nth-child(2) {
-      color: ${(props) => props.theme.colors.yellow};
-    }
-    & > span:nth-child(3) {
-      color: ${(props) => props.theme.colors.pink};
-    }
-  }
 
   @media (max-width: 768px) {
     display: none;
