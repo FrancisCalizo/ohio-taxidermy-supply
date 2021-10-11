@@ -2,31 +2,27 @@ import React from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
 
-export default function JobCard() {
+interface JobCardProps {
+  job: any;
+}
+
+export default function JobCard({ job }: JobCardProps) {
+  const { title, hunterName, avatar, description } = job;
+
   return (
     <div>
       <Card>
         <div className="card-header">
-          <Image
-            src="/images/default-avatar.png"
-            alt="Influencer"
-            width={50}
-            height={50}
-            quality={50}
-          />
+          <Image src={avatar} alt="Influencer" width={50} height={50} quality={50} />
           <hr className="header-hr" />
         </div>
 
         <div className="title-area">
-          <h4>Ryan Johnson</h4>
-          <h3>Rotated Half Aggressive Moose </h3>
+          <h4>{hunterName}</h4>
+          <h3>{title}</h3>
         </div>
 
-        <p className="description">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius
-          quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod
-          architecto sed corrupti?
-        </p>
+        <p className="description">{description}</p>
       </Card>
     </div>
   );
