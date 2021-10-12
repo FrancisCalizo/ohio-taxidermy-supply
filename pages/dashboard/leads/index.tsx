@@ -11,7 +11,7 @@ export default function Leads() {
     <DashboardLayout>
       <TopContainer>
         <div className="button-container">
-          <Button>
+          <Button onClick={() => console.log('Coming soon')}>
             <FontAwesomeIcon icon={faPlus} style={{ marginRight: '.5rem' }} />
             Create Lead
           </Button>
