@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import DashboardLayout from 'components/layout/dashboard/DashboardLayout';
-import JobCard from 'components/pages/dashboard/JobCard';
+import JobsBoardCard from 'components/pages/dashboard/JobsBoardCard';
 
 export default function JobsBoard() {
   return (
@@ -10,7 +10,7 @@ export default function JobsBoard() {
       <TopContainer>
         <JobCardsContainer>
           {FAKE_JOBS.map((job, key) => (
-            <JobCard job={job} key={key} />
+            <JobsBoardCard job={job} key={key} />
           ))}
         </JobCardsContainer>
       </TopContainer>
