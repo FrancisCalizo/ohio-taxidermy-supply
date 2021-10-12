@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { darken, lighten } from 'polished';
 
 interface JobCardProps {
   job: any;
@@ -12,23 +13,37 @@ export default function JobCard({ job }: JobCardProps) {
   return (
     <div>
       <Card>
-        <div className="card-header">
-          <Image src={avatar} alt="Influencer" width={50} height={50} quality={50} />
-          <hr className="header-hr" />
+        <div className="card-main">
+          <div className="card-header">
+            <Image src={avatar} alt="Influencer" width={50} height={50} quality={50} />
+            <hr className="card-header-hr" />
+          </div>
+
+          <div className="card-title-area">
+            <h4>{hunterName}</h4>
+            <h3>{title}</h3>
+          </div>
+
+          <p className="card-description">{description}</p>
         </div>
 
-        <div className="title-area">
-          <h4>{hunterName}</h4>
-          <h3>{title}</h3>
+        <div className="card-footer">
+          <Button variant="white" placement="left">
+            View Job
+          </Button>
+          <Button variant="black" placement="right">
+            Pick up Job
+          </Button>
         </div>
-
-        <p className="description">{description}</p>
       </Card>
     </div>
   );
 }
 
 const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border: 1px solid lightgray;
   border-radius: 4px;
@@ -40,7 +55,7 @@ const Card = styled.div`
     display: flex;
     align-items: center;
 
-    & .header-hr {
+    & .card-header-hr {
       border-color: rgba(155, 155, 155, 0.1);
       height: 1px;
       width: 100%;
@@ -52,7 +67,7 @@ const Card = styled.div`
     }
   }
 
-  & .title-area {
+  & .card-title-area {
     & h4 {
       color: ${({ theme }) => theme.colors.gray};
       margin-bottom: 0;
@@ -63,7 +78,48 @@ const Card = styled.div`
     }
   }
 
-  .description {
+  .card-description {
     font-size: 0.9rem;
+  }
+
+  .card-footer {
+    display: flex;
+
+    @media (max-width: 1500px) and (min-width: 1350px),
+      (max-width: 1150px) and (min-width: 1100px),
+      (max-width: 930px) and (min-width: 800px) {
+      flex-wrap: wrap;
+    }
+  }
+`;
+
+const Button = styled.button<{ variant: 'black' | 'white'; placement: 'left' | 'right' }>`
+  display: block;
+  width: 100%;
+  background: ${({ theme, variant }) => (variant === 'black' ? theme.colors.dark : '#fff')};
+  color: ${({ theme, variant }) => (variant === 'black' ? '#fff' : theme.colors.dark)};
+  border: 0.5px solid
+    ${({ theme, variant }) => (variant === 'black' ? '#fff' : lighten(0.5, theme.colors.dark))};
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin: 0.5rem 0 0;
+  margin: ${({ placement }) => (placement === 'left' ? '0.5rem 5px 0 0' : '0.5rem 0 0 5px')};
+  box-shadow: ${({ theme }) => theme.button.boxShadow};
+  transition: background 300ms ease-in-out, transform 150ms ease-in-out;
+
+  &:hover {
+    background: ${({ theme, variant }) =>
+      variant === 'black' ? lighten(0.1, theme.colors.dark) : darken(0.15, '#fff')};
+  }
+
+  ${(props) => props.theme.global.setFocus('#fff')}
+
+  @media (max-width: 1500px) and (min-width: 1350px),
+  (max-width: 1150px) and (min-width: 1100px),
+  (max-width: 930px) and (min-width: 800px) {
+    margin-left: 0;
+    margin-right: 0;
   }
 `;
