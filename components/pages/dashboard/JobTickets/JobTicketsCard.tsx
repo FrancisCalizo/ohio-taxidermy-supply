@@ -3,11 +3,11 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { darken, lighten } from 'polished';
 
-interface JobsBoardCardProps {
+interface JobTicketsCardProps {
   job: any;
 }
 
-export default function JobsBoardCard({ job }: JobsBoardCardProps) {
+export default function JobTicketsCard({ job }: JobTicketsCardProps) {
   const { title, hunterName, avatar, description } = job;
 
   return (
