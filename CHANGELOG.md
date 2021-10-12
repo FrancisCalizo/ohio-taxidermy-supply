@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 10/12/2021
+
+- Add more to job board card functionality, implement new sidebar icons. Implement faux login functionality for taxidermist. start implementing Job Tickets section of Taxidermist dashboard
+
 ### 10/10/2021
 
 - Implement closed jobs page functionality, change topbar theme styles, fix route names, implement proper mapping of job cards on taxidermist dashbaord, Job board styling and mobile sidebar dashboard theme changes
