@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { darken } from 'polished';
@@ -6,6 +7,12 @@ import { darken } from 'polished';
 import SiteLayout from 'components/layout/SiteLayout';
 
 export default function Taxidermist() {
+  const router = useRouter();
+
+  const handleLogin = () => {
+    router.push('/dashboard');
+  };
+
   return (
     <div>
       <Banner>
@@ -18,7 +25,7 @@ export default function Taxidermist() {
         <div className="login-container">
           <p className="small-text">Already have a Taxidermist account with us?</p>
           <div className="login-button-container">
-            <Button>Login</Button>
+            <Button onClick={handleLogin}>Login</Button>
           </div>
         </div>
 
