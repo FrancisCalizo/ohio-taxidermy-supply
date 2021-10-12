@@ -5,21 +5,20 @@ import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { lighten } from 'polished';
 import {
-  faGlobeAmericas,
-  faWindowMaximize,
-  faEdit,
-  faFileInvoice,
+  faClipboardList,
+  faCheckDouble,
+  faNetworkWired,
+  faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { getPathName } from 'components/utils';
 
 export const LINKS = [
-  { title: 'Job Tickets', url: 'job-tickets' },
-  { title: 'Closed Jobs', url: 'closed-jobs' },
-  { title: 'Leads', url: 'leads' },
-  { title: 'Jobs Board', url: 'jobs-board' },
+  { title: 'Job Tickets', url: 'job-tickets', icon: faClipboardList },
+  { title: 'Closed Jobs', url: 'closed-jobs', icon: faCheckDouble },
+  { title: 'Leads', url: 'leads', icon: faUsers },
+  { title: 'Jobs Board', url: 'jobs-board', icon: faNetworkWired },
 ];
-const ICONS = [faWindowMaximize, faGlobeAmericas, faEdit, faFileInvoice];
 
 export default function Sidebar() {
   const router = useRouter();
@@ -33,7 +32,7 @@ export default function Sidebar() {
   return (
     <SidebarContainer>
       <SidebarLinks>
-        {LINKS.map((link: { title: string; url: string }, key: number) => (
+        {LINKS.map((link: { title: string; url: string; icon: any }, key: number) => (
           <GLink key={key} href={key === 0 ? '/dashboard' : `/dashboard/${link.url.toLowerCase()}`}>
             <Li
               isCurrent={
@@ -43,7 +42,7 @@ export default function Sidebar() {
               }
             >
               <FontAwesomeIcon
-                icon={ICONS[key]}
+                icon={link.icon}
                 style={{ fontSize: 24, marginRight: '0.5rem', color: 'gray' }}
               />
               <div style={{ textTransform: 'capitalize' }}>{link.title}</div>
