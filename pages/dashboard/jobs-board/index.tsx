@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import DashboardLayout from 'components/layout/dashboard/DashboardLayout';
-import JobsBoardCard from 'components/pages/dashboard/JobsBoardCard';
+import JobsBoardCard from 'components/pages/dashboard/JobsBoard/JobsBoardCard';
 
 export default function JobsBoard() {
   return (
