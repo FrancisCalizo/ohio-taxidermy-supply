@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 import { darken, lighten } from 'polished';
 
 interface JobTicketsCardProps {
@@ -8,6 +9,7 @@ interface JobTicketsCardProps {
 }
 
 export default function JobTicketsCard({ job }: JobTicketsCardProps) {
+  const router = useRouter();
   const { title, hunterName, avatar, description } = job;
 
   return (
@@ -28,11 +30,15 @@ export default function JobTicketsCard({ job }: JobTicketsCardProps) {
         </div>
 
         <div className="card-footer">
-          <Button variant="white" placement="left">
+          <Button
+            onClick={() => router.push('/dashboard/job-tickets/1')}
+            variant="white"
+            placement="left"
+          >
             View Job
           </Button>
-          <Button variant="black" placement="right">
-            Pick up Job
+          <Button onClick={() => alert('Coming Soon')} variant="black" placement="right">
+            Contact Hunter
           </Button>
         </div>
       </Card>
@@ -114,7 +120,7 @@ const Button = styled.button<{ variant: 'black' | 'white'; placement: 'left' | '
       variant === 'black' ? lighten(0.1, theme.colors.dark) : darken(0.15, '#fff')};
   }
 
-  ${(props) => props.theme.global.setFocus('#fff')}
+  ${({ theme }) => theme.global.setFocus(theme.global.dark)}
 
   @media (max-width: 1500px) and (min-width: 1350px),
   (max-width: 1150px) and (min-width: 1100px),

@@ -112,11 +112,4 @@ const FAKE_JOBS = [
     description:
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti?',
   },
-  {
-    title: 'Mark Smithers',
-    hunterName: 'Prancing Quarter Aggressive Ram',
-    avatar: '/images/default-avatar.png',
-    description:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti?',
-  },
 ];
