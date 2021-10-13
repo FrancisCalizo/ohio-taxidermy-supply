@@ -67,4 +67,60 @@ const FAKE_JOBS = [
     description:
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti?',
   },
+  {
+    title: 'Megan Stevens',
+    hunterName: 'Rotated Half Aggressive Goat',
+    avatar: '/images/default-avatar.png',
+    description:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti? quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti.',
+  },
+  {
+    title: 'Ryan Johnson',
+    hunterName: 'Rotated Half Aggressive Moose Blah Blah',
+    avatar: '/images/default-avatar.png',
+    description:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti?',
+  },
+  {
+    title: 'Mark Smithers',
+    hunterName: 'Prancing Quarter Aggressive Ram',
+    avatar: '/images/default-avatar.png',
+    description:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti?',
+  },
+  {
+    title: 'Richie Richards',
+    hunterName: 'Rotated Full Stallion',
+    avatar: '/images/default-avatar.png',
+    description:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti?',
+  },
+  {
+    title: 'Richie Richards',
+    hunterName: 'Rotated Full Stallion',
+    avatar: '/images/default-avatar.png',
+    description:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti?',
+  },
+  {
+    title: 'Megan Stevens',
+    hunterName: 'Rotated Half Aggressive Goat',
+    avatar: '/images/default-avatar.png',
+    description:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti? quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti.',
+  },
+  {
+    title: 'Mark Smithers',
+    hunterName: 'Prancing Quarter Aggressive Ram',
+    avatar: '/images/default-avatar.png',
+    description:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti?',
+  },
+  {
+    title: 'Ryan Johnson',
+    hunterName: 'Rotated Half Aggressive Moose Blah Blah',
+    avatar: '/images/default-avatar.png',
+    description:
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, natus molestias! Eius quia culpa tenetur explicabo doloribus hic harum quisquam dolorum, mollitia aut quod architecto sed corrupti?',
+  },
 ];
