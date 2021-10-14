@@ -10,10 +10,11 @@ export default function JobTicketSingleView() {
     <MainContainer>
       <div className="title">
         <h1>Deer Aggressive Facing </h1>
+        <h3>Ticket ID: #132</h3>
       </div>
 
       <div className="form-container">
-        <div className="ticket-status-row">
+        <div className="grid-3">
           <div>
             <Label>Ticket Status</Label>
             <Select
@@ -29,7 +30,11 @@ export default function JobTicketSingleView() {
           </div>
         </div>
 
-        <div className="name-row">
+        <div className="header">
+          <h2>Contact Info</h2>
+        </div>
+
+        <div className="grid-2">
           <div>
             <Label>First Name</Label>
             <Input type="text" id="firstName" />
@@ -41,7 +46,7 @@ export default function JobTicketSingleView() {
           </div>
         </div>
 
-        <div className="contact-info-row">
+        <div className="grid-2">
           <div>
             <Label>Phone Number</Label>
             <Input type="text" id="phone" />
@@ -53,7 +58,7 @@ export default function JobTicketSingleView() {
           </div>
         </div>
 
-        <div className="first-address-row">
+        <div className="grid-2">
           <div>
             <Label>Address</Label>
             <Input type="text" id="addressOne" />
@@ -65,7 +70,7 @@ export default function JobTicketSingleView() {
           </div>
         </div>
 
-        <div className="second-address-row">
+        <div className="grid-3">
           <div>
             <Label>City</Label>
             <Input type="text" id="city" />
@@ -81,28 +86,73 @@ export default function JobTicketSingleView() {
             <Input type="number" id="zip" />
           </div>
         </div>
+
+        <div className="header">
+          <h2>Mount Info</h2>
+        </div>
+
+        <div className="grid-3">
+          <div>
+            <Label>Build-A-Deer ID #</Label>
+            <Input type="number" id="build-a-deer-id" />
+          </div>
+        </div>
+
+        <div className="grid-2">
+          <div>
+            <Label>Form Pose</Label>
+            <Input type="text" id="form-pose" />
+          </div>
+          <div>
+            <Label>Form Turn</Label>
+            <Input type="text" id="form-turn" />
+          </div>
+        </div>
+
+        <div className="grid-3">
+          <div>
+            <Label>Left Ear Position</Label>
+            <Input type="text" id="left-ear-position" />
+          </div>
+          <div>
+            <Label>Right Ear Position</Label>
+            <Input type="text" id="right-ear-position" />
+          </div>
+          <div>
+            <Label>Eye Position</Label>
+            <Select
+              options={[
+                { value: 'allBrown', label: 'All Brown' },
+                { value: 'preRotated', label: 'Pre-Rotated' },
+                { value: 'forwardLooking', label: 'Forward Looking' },
+              ]}
+              instanceId="eyePosition"
+              isSearchable={false}
+              styles={selectStyles}
+            />
+          </div>
+        </div>
       </div>
     </MainContainer>
   );
 }
 
 const MainContainer = styled.div`
+  .title {
+    h3 {
+      margin-top: -0.5rem;
+      color: ${({ theme }) => theme.colors.gray};
+    }
+  }
+
   .form-container {
     background: #fff;
     padding: 1rem;
     border-radius: 5px;
 
-    .ticket-status-row {
+    .grid-3 {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      column-gap: 1rem;
-    }
-
-    .name-row,
-    .contact-info-row,
-    first-address-row {
-      display: grid;
-      grid-template-columns: 4fr 4fr;
+      grid-template-columns: repeat(3, 1fr);
       column-gap: 1rem;
 
       @media (max-width: 630px) {
@@ -110,9 +160,9 @@ const MainContainer = styled.div`
       }
     }
 
-    .second-address-row {
+    .grid-2 {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       column-gap: 1rem;
 
       @media (max-width: 630px) {
