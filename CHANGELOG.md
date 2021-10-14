@@ -1,5 +1,13 @@
 ## Development Changelog
 
+### 10/14/2021
+
+- Add ticket Id, titles, and mount into to job tickets single view, implement rest of custom job ticket information, Implement title and job count/limit to Job Tickets section. Add push router to Add from board button
+
+### 10/13/2021
+
+- Implement View job functionality for Job-Tickets section, create Job Ticket Single View component, Start implementing Job Ticket information into Single View on Taxidermist Dashboard
+
 ### 10/12/2021
 
 - Add more to job board card functionality, implement new sidebar icons. Implement faux login functionality for taxidermist. start implementing Job Tickets section of Taxidermist dashboard
