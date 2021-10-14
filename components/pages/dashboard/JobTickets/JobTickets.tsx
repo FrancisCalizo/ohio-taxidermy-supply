@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { darken, lighten } from 'polished';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,12 +8,18 @@ import { faSearch, faPlus } from '@fortawesome/free-solid-svg-icons';
 import JobTicketsCard from 'components/pages/dashboard/JobTickets/JobTicketsCard';
 
 export default function JobTickets() {
+  const router = useRouter();
+
   return (
     <div>
       <TopContainer>
+        <div className="title-container">
+          <h1>Job Tickets</h1>
+        </div>
+
         <div className="button-container">
           <div className="button">
-            <Button variant="white">
+            <Button variant="white" onClick={() => router.push('/dashboard/jobs-board')}>
               <FontAwesomeIcon icon={faSearch} style={{ marginRight: '.5rem' }} />
               Add From Jobs Board
             </Button>
@@ -26,6 +33,15 @@ export default function JobTickets() {
         </div>
       </TopContainer>
 
+      <HeaderContainer>
+        <p>
+          Current Job Tickets: <span className="ticket-number">3</span>
+        </p>
+        <p>
+          Mount Bank Limit: <span className="ticket-number">25</span>
+        </p>
+      </HeaderContainer>
+
       <JobCardsContainer>
         {FAKE_JOBS.map((job, key) => (
           <JobTicketsCard job={job} key={key} />
@@ -37,8 +53,14 @@ export default function JobTickets() {
 
 const TopContainer = styled.div`
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   margin-bottom: 2rem;
+
+  .title-container {
+    h1 {
+      margin: 0.5rem;
+    }
+  }
 
   .button-container {
     display: flex;
@@ -46,6 +68,19 @@ const TopContainer = styled.div`
     .button {
       width: 220px;
       margin-left: 1rem;
+    }
+  }
+`;
+
+const HeaderContainer = styled.div`
+  margin: 0 0 1.5rem 0.5rem;
+
+  p {
+    margin: 0 0 0.5rem;
+
+    .ticket-number {
+      color: ${({ theme }) => theme.colors.orange};
+      font-weight: 600;
     }
   }
 `;
