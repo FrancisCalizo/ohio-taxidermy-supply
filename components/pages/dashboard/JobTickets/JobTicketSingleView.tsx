@@ -132,6 +132,85 @@ export default function JobTicketSingleView() {
             />
           </div>
         </div>
+
+        <div className="header">
+          <h2>Custom</h2>
+        </div>
+
+        <div className="grid-3">
+          <div>
+            <Label>License #</Label>
+            <Input type="number" id="license" />
+          </div>
+        </div>
+
+        <div className="grid-3">
+          <div>
+            <Label>Kill Date</Label>
+            <Input type="text" id="kill-date" />
+          </div>
+          <div>
+            <Label>County</Label>
+            <Input type="text" id="county" />
+          </div>
+          <div>
+            <Label>Hunting Method</Label>
+            <Input type="text" id="hunting-method" />
+          </div>
+        </div>
+
+        <div className="grid-2">
+          <div>
+            <Label>Drop Off Date</Label>
+            <Input type="text" id="drop-off-date" />
+          </div>
+          <div>
+            <Label>Lead Time</Label>
+            <Input type="text" id="lead-time" />
+          </div>
+        </div>
+
+        <div className="grid-3">
+          <div>
+            <Label>Job Cost</Label>
+            <Input type="Number" id="job-cost" />
+          </div>
+          <div>
+            <Label>Deposit Amount</Label>
+            <Input type="number" id="deposit-amount" />
+          </div>
+          <div>
+            <Label>Deposit Amount</Label>
+            <Input type="number" id="deposit-amount" />
+          </div>
+          <div>
+            <Label>Payment Method</Label>
+            <Select
+              options={[
+                { value: 'cash', label: 'Cash' },
+                { value: 'debitCredit', label: 'Debit/Credit' },
+                { value: 'check', label: 'Check' },
+              ]}
+              instanceId="eyePosition"
+              isSearchable={false}
+              styles={selectStyles}
+            />
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <Label>Memo</Label>
+            <Input type="text" id="Memo" />
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <Label>Terms and Conditions</Label>
+            <Input type="text" id="termsAndConditions" />
+          </div>
+        </div>
       </div>
     </MainContainer>
   );
@@ -139,6 +218,8 @@ export default function JobTicketSingleView() {
 
 const MainContainer = styled.div`
   .title {
+    margin-left: 2px;
+
     h3 {
       margin-top: -0.5rem;
       color: ${({ theme }) => theme.colors.gray};

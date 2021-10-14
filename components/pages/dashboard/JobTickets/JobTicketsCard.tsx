@@ -38,7 +38,7 @@ export default function JobTicketsCard({ job }: JobTicketsCardProps) {
             View Job
           </Button>
           <Button onClick={() => alert('Coming Soon')} variant="black" placement="right">
-            Contact Hunter
+            Contact
           </Button>
         </div>
       </Card>
