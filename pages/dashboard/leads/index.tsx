@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import DashboardLayout from 'components/layout/dashboard/DashboardLayout';
+import LeadHeader from 'components/pages/dashboard/Leads/LeadHeader';
 import LeadRow from 'components/pages/dashboard/Leads/LeadRow';
 
 export default function Leads() {
@@ -23,11 +24,12 @@ export default function Leads() {
         </div>
       </TopContainer>
 
+      <LeadHeader />
+
       <JobCardsContainer>
-        {/* {FAKE_JOBS.map((job, key) => ( */}
-        {/* <LeadRow job={job} key={key} /> */}
-        <LeadRow />
-        {/* ))} */}
+        {FAKE_LEADS.map((lead, key) => (
+          <LeadRow key={key} lead={lead} />
+        ))}
       </JobCardsContainer>
     </DashboardLayout>
   );
@@ -72,3 +74,33 @@ const Button = styled.button`
 `;
 
 const JobCardsContainer = styled.div``;
+
+const FAKE_LEADS = [
+  {
+    name: 'Jake Johnston',
+    title: 'Half Moose Turned',
+    avatar: '/images/default-avatar.png',
+    email: 'jjohnson392@yahoo.com',
+    phone: '343-348-3849',
+    status: 'Prospect',
+    leadAge: 3,
+  },
+  {
+    name: 'Ryan Reynolds',
+    title: 'Deer Full Aggressive',
+    avatar: '/images/default-avatar.png',
+    email: 'rryanson3322@yahoo.com',
+    phone: '123-564-3493',
+    status: 'Opportunity',
+    leadAge: 14,
+  },
+  {
+    name: 'Ricky Bobby',
+    title: 'Half Tilt Donkey',
+    avatar: '/images/default-avatar.png',
+    email: 'rbobby392@yahoo.com',
+    phone: '553-234-4242',
+    status: 'Closed',
+    leadAge: 4,
+  },
+];

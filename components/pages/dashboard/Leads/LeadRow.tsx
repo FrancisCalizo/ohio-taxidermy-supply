@@ -3,7 +3,23 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-export default function LeadRow() {
+interface LeadRowProps {
+  lead: Lead;
+}
+
+type Lead = {
+  name: string;
+  title: string;
+  avatar: string;
+  email: string;
+  phone: string;
+  status: string;
+  leadAge: number;
+};
+
+export default function LeadRow({ lead }: LeadRowProps) {
+  const { name, title, avatar, email, phone, status, leadAge } = lead;
+
   return (
     <Row>
       <div className="row-main">
@@ -18,24 +34,24 @@ export default function LeadRow() {
         </div>
 
         <div className="row-title">
-          <h4>Emily Jenkins</h4>
-          <p>Moose Half Turned</p>
+          <h4>{name}</h4>
+          <p>{title}</p>
         </div>
 
         <div className="row-email">
-          <p>ejenkins401@gmail.com</p>
+          <p>{email}</p>
         </div>
 
         <div className="row-phone">
-          <p>384-238-3499</p>
+          <p>{phone}</p>
         </div>
 
         <div className="row-status">
-          <p>Prospect</p>
+          <p>{status}</p>
         </div>
 
         <div className="row-lead-age">
-          <p>14 days ago</p>
+          <p>{leadAge}</p>
         </div>
 
         <div className="row-view-details">
