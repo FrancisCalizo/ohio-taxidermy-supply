@@ -35,6 +35,7 @@ export const theme = {
     yellow: '#F6E9B5',
     darkGray: '#202020',
     danger: '#eb4d4b',
+    blue: '#0984e3',
 
     gray: '#7A7A7A',
     light: '#EDEDED',

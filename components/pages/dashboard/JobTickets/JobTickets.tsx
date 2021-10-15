@@ -64,6 +64,8 @@ const TopContainer = styled.div`
 
   .button-container {
     display: flex;
+    display: flex;
+    align-items: center;
 
     .button {
       width: 220px;
