@@ -51,7 +51,7 @@ export default function LeadRow({ lead }: LeadRowProps) {
         </div>
 
         <div className="row-lead-age">
-          <p>{leadAge}</p>
+          <p>{leadAge} days ago</p>
         </div>
 
         <div className="row-view-details">
@@ -69,7 +69,7 @@ const Row = styled.div`
   padding: 0.5rem 1rem;
   border: 1px solid gainsboro;
   border-radius: 5px;
-  min-width: 900px;
+  min-width: 950px;
 
   .row-main {
     display: flex;
@@ -103,7 +103,7 @@ const Row = styled.div`
     }
 
     .row-email {
-      width: 200px;
+      width: 210px;
 
       p {
         text-align: left;
@@ -122,7 +122,7 @@ const Row = styled.div`
 
     .row-status {
       width: 120px;
-
+      margin-right: 20px;
       p {
         text-align: center;
         margin: 0;
@@ -135,11 +135,10 @@ const Row = styled.div`
     }
 
     .row-lead-age {
-      width: 40px;
+      width: 110px;
 
       p {
         margin: 0;
-        margin-left: 15px;
         color: ${({ theme }) => theme.colors.gray};
       }
     }

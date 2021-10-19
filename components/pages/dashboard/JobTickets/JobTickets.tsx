@@ -25,7 +25,7 @@ export default function JobTickets() {
             </Button>
           </div>
           <div className="button">
-            <Button>
+            <Button onClick={() => alert('Coming soon')}>
               <FontAwesomeIcon icon={faPlus} style={{ marginRight: '.5rem' }} />
               Create New Ticket
             </Button>

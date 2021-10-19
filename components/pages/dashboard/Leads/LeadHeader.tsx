@@ -24,7 +24,7 @@ export default function LeadHeader() {
         </div>
 
         <div className="row-lead-age">
-          <p>leadAge</p>
+          <p>Last Contact</p>
         </div>
 
         <div className="row-view-details">
@@ -40,7 +40,7 @@ const Row = styled.div`
   padding: 0.5rem 1rem;
   border: 1px solid gainsboro;
   border-radius: 5px;
-  min-width: 900px;
+  min-width: 950px;
 
   .row-main {
     display: flex;
@@ -55,7 +55,7 @@ const Row = styled.div`
     }
 
     .row-email {
-      width: 200px;
+      width: 210px;
       text-transform: capitalize;
     }
 
@@ -65,12 +65,12 @@ const Row = styled.div`
     }
 
     .row-status {
-      width: 120px;
+      width: 140px;
       text-transform: capitalize;
     }
 
     .row-lead-age {
-      width: 40px;
+      width: 110px;
       text-transform: capitalize;
     }
 
