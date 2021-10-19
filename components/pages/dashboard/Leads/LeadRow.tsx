@@ -31,11 +31,11 @@ export default function LeadRow({ lead }: LeadRowProps) {
             height={40}
             quality={50}
           />
-        </div>
 
-        <div className="row-title">
-          <h4>{name}</h4>
-          <p>{title}</p>
+          <div className="row-title">
+            <h4>{name}</h4>
+            <p>{title}</p>
+          </div>
         </div>
 
         <div className="row-email">
@@ -73,6 +73,7 @@ const Row = styled.div`
   .row-main {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     .row-avatar {
       display: flex;
@@ -86,6 +87,7 @@ const Row = styled.div`
 
     .row-title {
       margin-left: 0.75rem;
+      width: 120px;
 
       h4 {
         margin: 0;
@@ -100,36 +102,39 @@ const Row = styled.div`
     }
 
     .row-email {
-      margin-left: 1.5rem;
+      width: 200px;
 
       p {
+        text-align: left;
         margin: 0;
       }
     }
 
     .row-phone {
-      margin-left: 1.5rem;
+      width: 200px;
 
       p {
         margin: 0;
+        text-align: left;
       }
     }
 
     .row-status {
-      margin-left: 1.5rem;
+      width: 120px;
 
       p {
+        text-align: center;
         margin: 0;
         font-weight: 500;
         background: ${({ theme }) => theme.colors.green};
         color: #fff;
-        padding: 0.35rem 0.5rem;
+        padding: 0.4rem 0.5rem;
         border-radius: 5px;
       }
     }
 
     .row-lead-age {
-      margin-left: 1.5rem;
+      width: 40px;
 
       p {
         margin: 0;
@@ -152,4 +157,8 @@ const ViewLink = styled.button`
   font-size: 1rem;
   padding: 0;
   margin: 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
