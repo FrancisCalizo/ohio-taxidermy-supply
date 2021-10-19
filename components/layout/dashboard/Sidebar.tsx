@@ -9,6 +9,7 @@ import {
   faCheckDouble,
   faNetworkWired,
   faUsers,
+  faChartLine,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { getPathName } from 'components/utils';
@@ -18,6 +19,7 @@ export const LINKS = [
   { title: 'Closed Jobs', url: 'closed-jobs', icon: faCheckDouble },
   { title: 'Leads', url: 'leads', icon: faUsers },
   { title: 'Jobs Board', url: 'jobs-board', icon: faNetworkWired },
+  { title: 'Reports', url: 'reports', icon: faChartLine },
 ];
 
 export default function Sidebar() {
