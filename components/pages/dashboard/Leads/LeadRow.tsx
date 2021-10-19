@@ -69,6 +69,7 @@ const Row = styled.div`
   padding: 0.5rem 1rem;
   border: 1px solid gainsboro;
   border-radius: 5px;
+  min-width: 900px;
 
   .row-main {
     display: flex;
@@ -111,7 +112,7 @@ const Row = styled.div`
     }
 
     .row-phone {
-      width: 200px;
+      width: 160px;
 
       p {
         margin: 0;
@@ -138,12 +139,13 @@ const Row = styled.div`
 
       p {
         margin: 0;
+        margin-left: 15px;
         color: ${({ theme }) => theme.colors.gray};
       }
     }
 
     .row-view-details {
-      margin-left: 1.5rem;
+      width: 100px;
     }
   }
 `;
