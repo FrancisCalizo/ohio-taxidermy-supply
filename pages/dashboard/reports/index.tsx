@@ -3,12 +3,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import DashboardLayout from 'components/layout/dashboard/DashboardLayout';
+import Reports from 'components/pages/dashboard/Reports';
 
-export default function Reports() {
+export default function ReportsPage() {
   return (
     <DashboardLayout>
       <TopContainer>
-        <h1>Coming Soon...</h1>
+        <Reports />
       </TopContainer>
     </DashboardLayout>
   );

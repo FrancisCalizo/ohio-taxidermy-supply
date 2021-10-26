@@ -335,3 +335,11 @@ export const US_STATES = [
     label: 'WY',
   },
 ];
+
+export const formatCurrency = (value: number, digits: number) => {
+  return Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: digits,
+  }).format(value);
+};
