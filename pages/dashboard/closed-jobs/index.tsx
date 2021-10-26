@@ -3,12 +3,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import DashboardLayout from 'components/layout/dashboard/DashboardLayout';
+import ClosedJobs from 'components/pages/dashboard/ClosedJobs';
 
-export default function ClosedJobs() {
+export default function ClosedJobsPage() {
   return (
     <DashboardLayout>
       <TopContainer>
-        <h1>Coming Soon...</h1>
+        <ClosedJobs />
       </TopContainer>
     </DashboardLayout>
   );
