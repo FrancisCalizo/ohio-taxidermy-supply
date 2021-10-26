@@ -1,5 +1,17 @@
 ## Development Changelog
 
+### 10/26/2021
+
+- implement closed jobs section,create top main reporting section
+
+### 10/19/2021
+
+- Implement styling to Leads section, add reports section to sidebar, implement Lead header
+
+### 10/15/2021
+
+- Create initial outline of leads page, implement faux data for leads to get layout creation working
+
 ### 10/14/2021
 
 - Add ticket Id, titles, and mount into to job tickets single view, implement rest of custom job ticket information, Implement title and job count/limit to Job Tickets section. Add push router to Add from board button
