@@ -2,6 +2,8 @@ import { formatCurrency } from 'components/utils';
 import React from 'react';
 import styled from 'styled-components';
 
+import Charts from 'components/pages/dashboard/Reports/Charts';
+
 export default function Reports() {
   return (
     <div>
@@ -19,6 +21,10 @@ export default function Reports() {
           </TotalsCard>
         ))}
       </TotalsContainer>
+
+      <GraphsContainer>
+        <Charts />
+      </GraphsContainer>
     </div>
   );
 }
@@ -73,6 +79,8 @@ const TotalsCard = styled.div`
     border-bottom: 5px solid ${({ theme }) => theme.colors.orange};
   }
 `;
+
+const GraphsContainer = styled.div``;
 
 const FAKE_REPORT_TOTALS = [
   { totalsTitle: 'Total Revenue', totalsAmount: 1000000 },
