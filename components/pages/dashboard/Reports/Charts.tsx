@@ -12,55 +12,102 @@ import {
   Legend,
 } from 'chart.js';
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top' as const,
-    },
-    title: {
-      display: true,
-      text: 'Chart.js Bar Chart',
-    },
-  },
-};
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-};
 
 export default function Charts() {
   return (
     <MainContainer>
       <div>
         <h2 className="chart-title">Monthly Revenue</h2>
-        <Bar options={options} data={data} />
+        <Bar
+          options={{
+            responsive: true,
+            plugins: {
+              legend: { display: false },
+              title: { display: false },
+            },
+          }}
+          data={{
+            labels,
+            datasets: [
+              {
+                label: 'Dataset 1',
+                data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+                backgroundColor: 'rgba(99, 179, 237,0.5)',
+              },
+            ],
+          }}
+        />
       </div>
+
       <div>
         <h2 className="chart-title">Total Jobs Per Month</h2>
-        <Bar options={options} data={data} />
+        <Bar
+          options={{
+            responsive: true,
+            plugins: {
+              legend: { display: false },
+              title: { display: false },
+            },
+          }}
+          data={{
+            labels,
+            datasets: [
+              {
+                label: 'Dataset 1',
+                data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+                backgroundColor: 'rgba(241, 129, 129,0.5)',
+              },
+            ],
+          }}
+        />
       </div>
       <div>
         <h2 className="chart-title">New Customers</h2>
-        <Bar options={options} data={data} />
+        <Bar
+          options={{
+            responsive: true,
+            plugins: {
+              legend: { display: false },
+              title: { display: false },
+            },
+          }}
+          data={{
+            labels,
+            datasets: [
+              {
+                label: 'Dataset 1',
+                data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+                backgroundColor: 'rgb(255,114,33, .5)',
+              },
+            ],
+          }}
+        />
       </div>
+
       <div>
         <h2 className="chart-title">Average Job Duration</h2>
-        <Bar options={options} data={data} />
+        <Bar
+          options={{
+            responsive: true,
+            plugins: {
+              legend: { display: false },
+              title: { display: false },
+            },
+          }}
+          data={{
+            labels,
+            datasets: [
+              {
+                label: 'Dataset 1',
+                data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+                backgroundColor: 'rgba(104, 211, 144,0.5)',
+              },
+            ],
+          }}
+        />
       </div>
     </MainContainer>
   );
@@ -73,6 +120,6 @@ const MainContainer = styled.div`
 
   .chart-title {
     text-align: center;
-    margin-bottom: -0.5rem;
+    margin-bottom: 1.5rem;
   }
 `;
