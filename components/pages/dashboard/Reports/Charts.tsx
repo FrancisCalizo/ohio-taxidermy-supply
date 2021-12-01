@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Line } from 'react-chartjs-2';
 import faker from 'faker';
 import styled from 'styled-components';
 import {
@@ -10,9 +10,20 @@ import {
   Title,
   Tooltip,
   Legend,
+  LineElement,
+  PointElement,
 } from 'chart.js';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
@@ -24,10 +35,7 @@ export default function Charts() {
         <Bar
           options={{
             responsive: true,
-            plugins: {
-              legend: { display: false },
-              title: { display: false },
-            },
+            plugins: { legend: { display: false }, title: { display: false } },
           }}
           data={{
             labels,
@@ -44,21 +52,19 @@ export default function Charts() {
 
       <div>
         <h2 className="chart-title">Total Jobs Per Month</h2>
-        <Bar
+        <Line
           options={{
             responsive: true,
-            plugins: {
-              legend: { display: false },
-              title: { display: false },
-            },
+            plugins: { legend: { display: false }, title: { display: false } },
           }}
           data={{
-            labels,
+            labels: labels,
             datasets: [
               {
                 label: 'Dataset 1',
-                data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-                backgroundColor: 'rgba(241, 129, 129,0.5)',
+                data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
+                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
               },
             ],
           }}
@@ -69,10 +75,7 @@ export default function Charts() {
         <Bar
           options={{
             responsive: true,
-            plugins: {
-              legend: { display: false },
-              title: { display: false },
-            },
+            plugins: { legend: { display: false }, title: { display: false } },
           }}
           data={{
             labels,
@@ -92,10 +95,7 @@ export default function Charts() {
         <Bar
           options={{
             responsive: true,
-            plugins: {
-              legend: { display: false },
-              title: { display: false },
-            },
+            plugins: { legend: { display: false }, title: { display: false } },
           }}
           data={{
             labels,
@@ -116,7 +116,13 @@ export default function Charts() {
 const MainContainer = styled.div`
   margin: 2rem 0;
   display: grid;
+  grid-gap: 2rem 1rem;
   grid-template-columns: repeat(2, 1fr);
+  /* TODO: Having issue with making the charts responsive. 
+  Look into both react-chartjs and chart.js github issues 
+  to resolve. Resize works on width expansion, but not shrink */
+  /* grid-auto-flow: column; */
+  /* grid-auto-columns: 50%; */
 
   .chart-title {
     text-align: center;
