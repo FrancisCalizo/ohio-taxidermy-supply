@@ -21,7 +21,7 @@ export default function LeadRow({ lead }: LeadRowProps) {
   const { name, title, avatar, email, phone, status, leadAge } = lead;
 
   return (
-    <Row>
+    <Row lead={lead}>
       <div className="row-main">
         <div className="row-avatar">
           <Image
@@ -64,7 +64,7 @@ export default function LeadRow({ lead }: LeadRowProps) {
   );
 }
 
-const Row = styled.div`
+const Row = styled.div<{ lead: any }>`
   background: #fff;
   padding: 0.5rem 1rem;
   border: 1px solid gainsboro;
@@ -123,11 +123,17 @@ const Row = styled.div`
     .row-status {
       width: 120px;
       margin-right: 20px;
+
       p {
         text-align: center;
         margin: 0;
         font-weight: 500;
-        background: ${({ theme }) => theme.colors.green};
+        background: ${({ theme, lead }) =>
+          lead.status === 'Prospect'
+            ? theme.colors.green
+            : lead.status === 'Opportunity'
+            ? theme.colors.orange
+            : theme.colors.danger};
         color: #fff;
         padding: 0.4rem 0.5rem;
         border-radius: 5px;
