@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { darken } from 'polished';
@@ -12,6 +13,8 @@ type FormValues = {
 };
 
 export default function TaxidermistLogin() {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -20,6 +23,8 @@ export default function TaxidermistLogin() {
 
   const onSubmit = (data: FormValues) => {
     console.log('data', data);
+
+    router.push('/taxidermist/dashboard');
   };
 
   return (

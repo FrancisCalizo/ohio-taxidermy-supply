@@ -31,7 +31,7 @@ export default function JobTicketsCard({ job }: JobTicketsCardProps) {
 
         <div className="card-footer">
           <Button
-            onClick={() => router.push('/dashboard/job-tickets/1')}
+            onClick={() => router.push('/taxidermist/dashboard/job-tickets/1')}
             variant="white"
             placement="left"
           >

@@ -10,7 +10,7 @@ export default function Taxidermist() {
   const router = useRouter();
 
   const handleLogin = () => {
-    router.push('/dashboard');
+    router.push('taxidermist/login');
   };
 
   return (

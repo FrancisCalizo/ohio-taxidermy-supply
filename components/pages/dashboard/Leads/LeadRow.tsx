@@ -55,7 +55,7 @@ export default function LeadRow({ lead }: LeadRowProps) {
         </div>
 
         <div className="row-view-details">
-          <Link href="/dashboard/leads/1">
+          <Link href="/taxidermist/dashboard/leads/1">
             <ViewLink>View Details</ViewLink>
           </Link>
         </div>

@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { lighten } from 'polished';
 import { slide as Menu } from 'react-burger-menu';
 
-import { LINKS } from 'components/layout/dashboard/Sidebar';
+import { TAXIDERMIST_LINKS } from 'components/layout/dashboard/Sidebar';
 import { getPathName } from 'components/utils';
 
 interface MobileSidebarProps {
@@ -71,18 +71,22 @@ export default function MobileSidebar({ isBurgerOpen, setIsBurgerOpen }: MobileS
         <Image src={`/images/logo-4.png`} alt="logo" width={135} height={60} quality={50} />
       </LogoContainer>
 
-      {LINKS.map((link: { title: string; url: string }, key: number) => (
+      {TAXIDERMIST_LINKS.map((link: { title: string; url: string }, key: number) => (
         <BurgerContainer
           key={key}
           isCurrent={
-            currentRoute === undefined && link.url === LINKS[0].url
+            currentRoute === undefined && link.url === TAXIDERMIST_LINKS[0].url
               ? true
               : currentRoute === link.url.toLowerCase()
           }
         >
           <BurgerLink
             className="menu-item"
-            href={key === 0 ? '/dashboard' : `/dashboard/${link.url.toLowerCase()}`}
+            href={
+              key === 0
+                ? '/taxidermist/dashboard'
+                : `/taxidermist/dashboard/${link.url.toLowerCase()}`
+            }
           >
             {link.title}
           </BurgerLink>

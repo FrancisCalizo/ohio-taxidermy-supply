@@ -19,7 +19,10 @@ export default function JobTickets() {
 
         <div className="button-container">
           <div className="button">
-            <Button variant="white" onClick={() => router.push('/dashboard/jobs-board')}>
+            <Button
+              variant="white"
+              onClick={() => router.push('/taxidermist/dashboard/jobs-board')}
+            >
               <FontAwesomeIcon icon={faSearch} style={{ marginRight: '.5rem' }} />
               Add From Jobs Board
             </Button>

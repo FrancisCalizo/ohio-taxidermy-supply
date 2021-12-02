@@ -14,7 +14,7 @@ import {
 
 import { getPathName } from 'components/utils';
 
-export const LINKS = [
+export const TAXIDERMIST_LINKS = [
   { title: 'Job Tickets', url: 'job-tickets', icon: faClipboardList },
   { title: 'Closed Jobs', url: 'closed-jobs', icon: faCheckDouble },
   { title: 'Leads', url: 'leads', icon: faUsers },
@@ -34,11 +34,18 @@ export default function Sidebar() {
   return (
     <SidebarContainer>
       <SidebarLinks>
-        {LINKS.map((link: { title: string; url: string; icon: any }, key: number) => (
-          <GLink key={key} href={key === 0 ? '/dashboard' : `/dashboard/${link.url.toLowerCase()}`}>
+        {TAXIDERMIST_LINKS.map((link: { title: string; url: string; icon: any }, key: number) => (
+          <GLink
+            key={key}
+            href={
+              key === 0
+                ? '/taxidermist/dashboard'
+                : `/taxidermist/dashboard/${link.url.toLowerCase()}`
+            }
+          >
             <Li
               isCurrent={
-                currentRoute === undefined && link.url === LINKS[0].url
+                currentRoute === undefined && link.url === TAXIDERMIST_LINKS[0].url
                   ? true
                   : currentRoute === link.url.toLowerCase()
               }
