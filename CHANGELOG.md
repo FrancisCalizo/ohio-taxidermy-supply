@@ -1,5 +1,21 @@
 ## Development Changelog
 
+### 11/2/2021
+
+- reorganize file tree to prepare for role-based authorization for the dashboard; move existing dashboard components into taxidermist/dashboard file tree
+
+### 11/29/2021
+
+- More chart implementation to Analytics page, add lead data, lead styles, create taxidermist login page and way to get to and from sign up page
+
+### 11/28/2021
+
+- Add more charts/graphs, reorganize graphs/styling
+
+### 11/19/2021
+
+- Add more charts/graphs to analytics page
+
 ### 10/26/2021
 
 - implement closed jobs section,create top main reporting section
