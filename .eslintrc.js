@@ -36,6 +36,8 @@ module.exports = {
         // This rule is not compatible with Next.js's <Link /> components
         'jsx-a11y/anchor-is-valid': 'off',
 
+        'react/no-unescaped-entities': 0,
+
         '@typescript-eslint/no-unused-vars': ['warn'],
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import Select from 'react-select';
 import { useForm, Controller } from 'react-hook-form';
@@ -40,6 +41,11 @@ export default function CreateProfile() {
       <Container>
         <h2 className="section-title">Create Taxidermist Account</h2>
         <p className="desc">Please fill out the form below!</p>
+
+        <p className="login_p1">Already have an account?</p>
+        <p className="login_p2">
+          Click <Link href="/taxidermist/login">here</Link> to login.
+        </p>
 
         <FormContainer>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -213,6 +219,24 @@ const Container = styled.div`
   max-width: 1000px;
   padding: 2rem;
   margin: 0 auto;
+
+  .login_p1 {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+
+  .login_p2 {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 0.25rem;
+
+    & > a {
+      text-decoration: underline;
+      font-weight: bold;
+      color: ${({ theme }) => theme.colors.orange};
+    }
+  }
 
   p {
     font-size: calc(16px + (20 - 16) * ((100vw - 400px) / (1800 - 400)));
