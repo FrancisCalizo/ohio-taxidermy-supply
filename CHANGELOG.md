@@ -1,5 +1,9 @@
 ## Development Changelog
 
+### 11/8/2021
+
+- implement redirect to dashboard on account signp. fix email errors display, create signup and login page for hunter, create dashboard for Hunter (currently using Taxidermist dashboard components)
+
 ### 11/2/2021
 
 - reorganize file tree to prepare for role-based authorization for the dashboard; move existing dashboard components into taxidermist/dashboard file tree
