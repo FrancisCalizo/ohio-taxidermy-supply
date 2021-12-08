@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import Select from 'react-select';
 import { useForm, Controller } from 'react-hook-form';
@@ -24,7 +25,9 @@ type FormValues = {
   yearsInBusiness: string;
 };
 
-export default function CreateProfile() {
+export default function Signup() {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -34,6 +37,9 @@ export default function CreateProfile() {
 
   const onSubmit = (data: FormValues) => {
     console.log('data', data);
+
+    // Temporary Re-route
+    router.push('/taxidermist/dashboard');
   };
 
   return (
@@ -102,7 +108,7 @@ export default function CreateProfile() {
 
               <div className="website-container">
                 <Input type="text" id="website" placeholder="Website (optional)" />
-                {errors.email && <InputErrorMessage>{errors.email.message}</InputErrorMessage>}
+                {errors.website && <InputErrorMessage>{errors.website.message}</InputErrorMessage>}
               </div>
 
               <Input
@@ -360,4 +366,4 @@ const selectStyles = {
   }),
 };
 
-CreateProfile.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
+Signup.getLayout = (page: any) => <SiteLayout>{page}</SiteLayout>;
