@@ -36,7 +36,7 @@ export default function TaxidermistLogin() {
 
             <p className="login_p1">Don't have an account?</p>
             <p className="login_p2">
-              Click <Link href="/taxidermist/create-profile">here</Link> to sign up.
+              Click <Link href="/taxidermist/signup">here</Link> to sign up.
             </p>
           </div>
 

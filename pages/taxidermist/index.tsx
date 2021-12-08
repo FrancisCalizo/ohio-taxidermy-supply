@@ -34,7 +34,7 @@ export default function Taxidermist() {
         <div className="login-container">
           <h2 className="section-ready">Ready to create a Taxidermist profile?</h2>
           <div className="login-button-container">
-            <Link href="/taxidermist/create-profile">
+            <Link href="/taxidermist/signup">
               <Button variant="outline">Create Profile</Button>
             </Link>
           </div>
