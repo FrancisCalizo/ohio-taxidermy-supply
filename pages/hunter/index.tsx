@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import { darken } from 'polished';
 
 import SiteLayout from 'components/layout/SiteLayout';
@@ -38,7 +39,9 @@ export default function Hunter() {
         <div className="login-container">
           <h2 className="section-ready">Ready to sign up?</h2>
           <div className="login-button-container">
-            <Button variant="outline">Sign Up Now</Button>
+            <Link href="/hunter/signup">
+              <Button variant="outline">Sign Up Now</Button>
+            </Link>
           </div>
         </div>
       </Container>
